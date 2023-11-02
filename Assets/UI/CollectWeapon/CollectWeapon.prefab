@@ -317,7 +317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2028064510265725360}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3167896497171280757}
+        m_TargetAssemblyTypeName: ClickEvent, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6580231901530132856
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +342,7 @@ GameObject:
   - component: {fileID: 1127331639112870138}
   - component: {fileID: 7034446479990529378}
   - component: {fileID: 605226732251282703}
+  - component: {fileID: 3167896497171280757}
   m_Layer: 5
   m_Name: CollectWeapon
   m_TagString: Untagged
@@ -419,6 +432,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3167896497171280757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580231901530132856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adc124fc57a2734494fb8e7544432eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseUI: {fileID: 0}
+  OptionUI: {fileID: 0}
 --- !u!1001 &557075364214453649
 PrefabInstance:
   m_ObjectHideFlags: 0
