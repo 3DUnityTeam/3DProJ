@@ -49,10 +49,10 @@ public class SoundSlider : MonoBehaviour
         switch (type)
         {
             case SoundType.BGM:
-                GameManager.instance.SaveBGMSound(slider.value);
+                GameManager.instance.AudioManager.SaveBGMSound(slider.value);
                 break;
             case SoundType.SFX:
-                GameManager.instance.SaveSFXSound(slider.value);
+                GameManager.instance.AudioManager.SaveSFXSound(slider.value);
                 break;
         }
     }

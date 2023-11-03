@@ -7,9 +7,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    [Header("#Player")]
+    public Player player;
+
+
     [Header("#Manager")]
     public UIManager UIManager;
     public AudioManager AudioManager;
+    public WeaponManager WeaponManager;
 
     [HideInInspector] public float sfxPer;
     [HideInInspector] public float bgmPer;
@@ -17,22 +23,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        if (Load("BGM") == -1)
-        {
-            AudioManager.bgmVolume = 0.5f;
-        }
-        else
-        {
-            AudioManager.bgmVolume = Load("BGM");
-        }
-        if (Load("SFX") == -1)
-        {
-            AudioManager.sfxVolume = 0.5f;
-        }
-        else
-        {
-            AudioManager.sfxVolume = Load("SFX");
-        }
         AudioManager.Init();
     }
     private void Start()
@@ -46,22 +36,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void SaveBGMSound(float per)
-    {
-        bgmPer = per;
-        float volume = bgmPer;
-        AudioManager.bgmVolume = volume;
-        Save("BGM", volume);
-        AudioManager.ChangeVolume();
-    }
-    public void SaveSFXSound(float per)
-    {
-        sfxPer = per;
-        float volume = sfxPer;
-        AudioManager.sfxVolume = volume;
-        Save("SFX", volume);
-        AudioManager.ChangeVolume();
-    }
     public void Save(string key,float value)
     {
         PlayerPrefs.SetFloat(key, value);

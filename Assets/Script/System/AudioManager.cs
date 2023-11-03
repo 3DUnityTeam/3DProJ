@@ -33,6 +33,24 @@ public class AudioManager : MonoBehaviour
     }
     public void Init()
     {
+        //볼륨 초기화
+        if (GameManager.instance.Load("BGM") == -1)
+        {
+            bgmVolume = 0.5f;
+        }
+        else
+        {
+            bgmVolume = GameManager.instance.Load("BGM");
+        }
+        if (GameManager.instance.Load("SFX") == -1)
+        {
+            sfxVolume = 0.5f;
+        }
+        else
+        {
+            sfxVolume = GameManager.instance.Load("SFX");
+        }
+
         //배경음 플레이어 초기화
         GameObject bgmObject = new GameObject("BgmPlayer");//지정하려면 괄호안에
         bgmObject.transform.parent = transform;
@@ -91,5 +109,22 @@ public class AudioManager : MonoBehaviour
     public void StopBgm()
     {
         bgmPlayer.Stop();
+    }
+
+    //바뀐 BGM 사운드 저장
+    public void SaveBGMSound(float per)
+    {
+        float volume = per;
+        bgmVolume = volume;
+        GameManager.instance.Save("BGM", volume);
+        ChangeVolume();
+    }
+    //바뀐 SFX 사운드 저장
+    public void SaveSFXSound(float per)
+    {
+        float volume = per;
+        sfxVolume = volume;
+        GameManager.instance.Save("SFX", volume);
+        ChangeVolume();
     }
 }
