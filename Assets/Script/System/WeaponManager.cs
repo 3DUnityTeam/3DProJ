@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class WeaponManager : MonoBehaviour
 {
     //무기 리스트
     public enum WeaponType{ 
-        MachineGun,
+        WP0,
+        WP1,
+        WP2,
+        WP3,
+        WP4,
+        WP5,
     }
     //무기 저장된 프리펩, 무기리스트와 동일하게 배치할 필요있음
     public GameObject[] WeaponPrefabs;
@@ -37,14 +44,14 @@ public class WeaponManager : MonoBehaviour
     public void GiveToWeapon()
     {
         //저장된 무기 생성
-        foreach(WeaponType ele in collect)
+        for(int i=0;i<collect.Count;i++)
         {
             //player 불러오기
             Transform ply_trans=GameManager.instance.player.transform;
             //무기 생성
-            GameObject weapon= Instantiate(WeaponPrefabs[(int)ele], ply_trans);
+            GameObject weapon= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
             //무기 위치 지정(수정 필요)
-            weapon.transform.position = ply_trans.position + new Vector3(0, 3, 0);
+            weapon.transform.position = ply_trans.position + new Vector3(-3+i*3, 3, 0);
         }
     }
 }

@@ -449,6 +449,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1088627557298921536, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1162433196703692444, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -593,10 +597,86 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4228723706291345597}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 125bb49b217257347be09ede099b888d, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: b450d0b398880cb458f83d1a01b399ca, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: eed44235dcbd621438f7c0c4f05e2356, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: a2563f2b8dbc4044b9a50537d3a29962, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08c71e4e0565fe4469d1e0a593047156, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0389074d1deba1c448d45812db40c0df, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: eed44235dcbd621438f7c0c4f05e2356, type: 3}
+    - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponImages.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: a2563f2b8dbc4044b9a50537d3a29962, type: 3}
+    - target: {fileID: 3094848339751683216, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 621138457861832354, guid: 9ec3e96182d14a143acd144a87d1e58e, type: 3}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6415294676748646050, guid: 786f8b82780fe6445b2518c08fc972ba, type: 3}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5020783791858525232, guid: fbc17b2607655214184a2407e169dda5, type: 3}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7646649070746558835, guid: bad505be32e4c7344b245ac9663e1d7e, type: 3}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 5020783791858525232, guid: e1c0e7b06ec25c045bc9a6c00d986ca6, type: 3}
+    - target: {fileID: 3216794702982540649, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 7646649070746558835, guid: 1559f74ba3902d848b2aae0ab97ce6df, type: 3}
     - target: {fileID: 3356081687377316391, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4966480624388771599, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966480624388771599, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4988577612759248729, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -661,6 +741,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6974512118402648855, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341611847568356818, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8341611848425811364, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -708,6 +796,10 @@ PrefabInstance:
     - target: {fileID: 8341611848425811365, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341611848425811365, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8998917146971348702, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

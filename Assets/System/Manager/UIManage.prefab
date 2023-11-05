@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseUI: {fileID: 790492313587596907}
+  CollectUI: {fileID: 1869361650464195599}
+  WeaponIcons: []
 --- !u!1001 &790492314784128935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,6 +57,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 790492314629077705}
     m_Modifications:
+    - target: {fileID: 858703659229498779, guid: 62cb96b02fc31f5448fea0be8964cf74, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858703659962152302, guid: 62cb96b02fc31f5448fea0be8964cf74, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858703660200720204, guid: 62cb96b02fc31f5448fea0be8964cf74, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6723989988311554692, guid: 62cb96b02fc31f5448fea0be8964cf74, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -145,7 +159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6723989988311554712, guid: 62cb96b02fc31f5448fea0be8964cf74, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62cb96b02fc31f5448fea0be8964cf74, type: 3}
@@ -164,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 6580231901530132856, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
       propertyPath: m_Name
       value: CollectWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580231901530132856, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7094534810488732374, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
       propertyPath: m_Pivot.x
@@ -251,6 +269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+--- !u!1 &1869361650464195599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6580231901530132856, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+  m_PrefabInstance: {fileID: 4801084083047077239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2365578767601987489 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7094534810488732374, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
