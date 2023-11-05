@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject PauseUI;
     public GameObject CollectUI;
+    public GameObject BattleUI;
     public Image[] WeaponIcons;
 
     public void Init()

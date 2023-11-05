@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public AudioManager AudioManager;
     //무기 매니저
     public WeaponManager WeaponManager;
+    //에임 추적 매니저
+    public AimManager AimManager;
 
     [Header("#WeaponImage")]
     //무기 이미지
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         Init();
+        // 마우스 커서를 중앙으로 고정
     }
     //매니저들 초기화
     /// <summary>
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        Time.timeScale = 0f;
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
     }

@@ -51,7 +51,7 @@ public class WeaponManager : MonoBehaviour
             //무기 생성
             GameObject weapon= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
             //무기 위치 지정(수정 필요)
-            weapon.transform.position = ply_trans.position + new Vector3(-3+i*3, 3, 0);
+            weapon.transform.position = ply_trans.position + new Vector3(0, 3, -3 + i * 3);
         }
     }
 }

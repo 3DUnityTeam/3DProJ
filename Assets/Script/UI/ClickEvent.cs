@@ -42,6 +42,10 @@ public class ClickEvent : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1f;
+        if (gameObject.name == "CollectWeapon")
+        {
+            GameManager.instance.UIManager.BattleUI.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 }
