@@ -14,7 +14,7 @@ public class AimManager : MonoBehaviour
     public TrackType type;
     public int count=0;
     public float maxDistance;
-    public List<GameObject> mobList; // 시야를 확인할 대상
+    private List<GameObject> mobList; // 시야를 확인할 대상
 
     public GameObject aimingTarget;
     void FixedUpdate()
@@ -74,8 +74,7 @@ public class AimManager : MonoBehaviour
             return nearMob;
         //else if (type == TrackType.Strong)
         //    return strongMob;
-        else
-            return null;
+        return null;
     }
     bool IsInLineOfSight(GameObject targetObj)
     {

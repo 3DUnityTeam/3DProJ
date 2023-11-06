@@ -41,11 +41,11 @@ public class ClickEvent : MonoBehaviour
     //게임 시작
     public void StartGame()
     {
-        Time.timeScale = 1f;
         if (gameObject.name == "CollectWeapon")
         {
             GameManager.instance.UIManager.BattleUI.SetActive(true);
         }
+        GameManager.instance.StopManager.TimePass();
         gameObject.SetActive(false);
     }
 }

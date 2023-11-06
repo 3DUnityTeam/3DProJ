@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public WeaponManager WeaponManager;
     //에임 추적 매니저
     public AimManager AimManager;
+    //시간 정지 매니저
+    public StopManager StopManager;
 
     [Header("#WeaponImage")]
     //무기 이미지
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        Time.timeScale = 0f;
+        StopManager.TimeStop();
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
     }
@@ -70,5 +72,10 @@ public class GameManager : MonoBehaviour
             return PlayerPrefs.GetFloat(key);
         }
         return -1;
+    }
+    void OnApplicationQuit()
+    {
+        if (AimManager != null)
+            AimManager.mobList.Clear();
     }
 }

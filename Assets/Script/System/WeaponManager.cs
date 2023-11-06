@@ -47,7 +47,7 @@ public class WeaponManager : MonoBehaviour
         for(int i=0;i<collect.Count;i++)
         {
             //player 불러오기
-            Transform ply_trans=GameManager.instance.player.transform;
+            Transform ply_trans=GameManager.instance.player.transform;`
             //무기 생성
             GameObject weapon= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
             //무기 위치 지정(수정 필요)

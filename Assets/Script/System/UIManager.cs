@@ -8,10 +8,14 @@ public class UIManager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject CollectUI;
     public GameObject BattleUI;
+    public GameObject ResultUI;
     public Image[] WeaponIcons;
 
     public void Init()
     {
+        PauseUI.SetActive(false);
+        BattleUI.SetActive(false);
+        ResultUI.SetActive(false);
         CollectUI.SetActive(true);
     }
     // Update is called once per frame
@@ -23,12 +27,12 @@ public class UIManager : MonoBehaviour
             {
                 if (PauseUI.activeSelf)
                 {
-                    Time.timeScale = 1f;
+                    GameManager.instance.StopManager.TimePass();
                     PauseUI.SetActive(false);
                 }
                 else
                 {
-                    Time.timeScale = 0f;
+                    GameManager.instance.StopManager.TimeStop();
                     PauseUI.SetActive(true);
                 }
             }
