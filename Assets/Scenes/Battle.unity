@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 1899933587}
+    - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 4228723706291345597}
     - target: {fileID: 3020544751595546074, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: player
       value: 
@@ -166,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: count
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: togle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: mobList.Array.size
@@ -1180,7 +1192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9e114a2ca6b1545abaa6689b5448a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1899933588}
 --- !u!1 &1899933587
 GameObject:
   m_ObjectHideFlags: 0

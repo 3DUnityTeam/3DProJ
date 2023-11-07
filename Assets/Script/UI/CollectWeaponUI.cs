@@ -103,7 +103,6 @@ public class CollectWeaponUI : MonoBehaviour
                 WeaponIcons[i].interactable = false;
             }
         }
-        
     }
 
     //무기 선택 취소 이벤트

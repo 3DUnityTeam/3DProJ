@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("#Player")]
     //인게임 플레이어
     public Player player;
+    //초점
+    public GameObject focus;
 
 
     [Header("#Manager")]
@@ -56,11 +58,6 @@ public class GameManager : MonoBehaviour
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
     }
 
-    private void Update()
-    {
-
-    }
-
     public void Save(string key,float value)
     {
         PlayerPrefs.SetFloat(key, value);
@@ -72,12 +69,5 @@ public class GameManager : MonoBehaviour
             return PlayerPrefs.GetFloat(key);
         }
         return -1;
-    }
-    void OnApplicationQuit()
-    {
-        if (AimManager != null)
-        {
-            AimManager.mobList.Clear();
-        }
     }
 }
