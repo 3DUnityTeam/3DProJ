@@ -116,6 +116,8 @@ public class AimManager : MonoBehaviour
             //트리거 작동
             if (togle==1)
             {
+                //다음 대상
+                count++;
                 //트리거 리셋
                 togle = 0;
                 //정렬 조건에 따라 오름 차순
@@ -131,9 +133,7 @@ public class AimManager : MonoBehaviour
                     count = 0;
                 }
                 //추적 대상 저장
-                aimingTarget=lockList[count];
-                //다음 대상
-                count++;
+                aimingTarget = lockList[count];
             }
             //추적 대상 있는지 확인
             if (lockList.Contains(aimingTarget))
