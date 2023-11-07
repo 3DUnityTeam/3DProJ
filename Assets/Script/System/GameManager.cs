@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
     void OnApplicationQuit()
     {
         if (AimManager != null)
+        {
             AimManager.mobList.Clear();
+        }
     }
 }

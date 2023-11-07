@@ -14,7 +14,7 @@ public class AimManager : MonoBehaviour
     public TrackType type;
     public int count=0;
     public float maxDistance;
-    private List<GameObject> mobList; // 시야를 확인할 대상
+    public List<GameObject> mobList; // 시야를 확인할 대상
 
     public GameObject aimingTarget;
     void FixedUpdate()
