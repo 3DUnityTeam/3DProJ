@@ -11,6 +11,8 @@ public class PlayerCtrl : MonoBehaviour
     AudioSource audio;
     //public GameManager manager;
     public GameObject tofu;
+    public GameObject boost;
+    public ParticleSystem boosterimpact;
 
     public Animator myanim;
     private Transform myTR;
@@ -74,6 +76,7 @@ public class PlayerCtrl : MonoBehaviour
             if(!isJump)
             {
                 isJump = true;
+                boosterimpact.Play();
                 rigid.velocity = new Vector3(0, JumpPower, 0);
                 isboost = true;
             }
@@ -84,11 +87,13 @@ public class PlayerCtrl : MonoBehaviour
         }
         if (isboost)
         {
+            boost.SetActive(true);
             rigid.useGravity = false;
             myTR.position += Vector3.up * 0.06f;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            boost.SetActive(false);
             rigid.useGravity = true;
             isboost = false;
         }
