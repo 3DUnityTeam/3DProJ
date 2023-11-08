@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float AP=100;
+    public float MaxAP=100;
     // Start is called before the first frame update
     void Start()
     {

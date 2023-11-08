@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WeaponManager : MonoBehaviour
 {
+    public float[] weaponCools;
     //무기 리스트
     public enum WeaponType{ 
         WP0,
@@ -19,6 +20,8 @@ public class WeaponManager : MonoBehaviour
     public GameObject[] WeaponPrefabs;
     //저장된 무기 목록
     public List<WeaponType> collect = new List<WeaponType>();
+    //생성된 무기
+    [HideInInspector]public GameObject[] Weapon;
 
     //목록에 저장
     public bool SaveWP(WeaponType type)
@@ -43,15 +46,40 @@ public class WeaponManager : MonoBehaviour
 
     public void GiveToWeapon()
     {
+        weaponCools = new float[collect.Count];
+        Weapon = new GameObject[collect.Count];
         //저장된 무기 생성
-        for(int i=0;i<collect.Count;i++)
+        for (int i=0;i<collect.Count;i++)
         {
             //player 불러오기
             Transform ply_trans=GameManager.instance.player.transform;
             //무기 생성
-            GameObject weapon= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
+            Weapon[i]= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
             //무기 위치 지정(수정 필요)
-            weapon.transform.position = ply_trans.position + new Vector3(0, 3, -3 + i * 3);
+            Weapon[i].transform.position = ply_trans.position + new Vector3(0, 3, -3 + i * 3);
         }
+        GameManager.instance.UIManager.BattleUI.SetActive(true);
+    }
+    private void FixedUpdate()
+    {
+        if (GameManager.instance.UIManager.BattleUI.activeSelf)
+        {
+            for(int i = 0; i < weaponCools.Length; i++)
+            {
+                if (weaponCools[i] == 0)
+                {
+                    StartCoroutine("CoolTime",i);
+                }
+            }
+        }
+    }
+    IEnumerator CoolTime(int i)
+    {
+        while (weaponCools[i] < 1)
+        {
+            weaponCools[i] += Time.fixedDeltaTime/10;
+            yield return new WaitForFixedUpdate();
+        }
+        weaponCools[i] = 1;
     }
 }

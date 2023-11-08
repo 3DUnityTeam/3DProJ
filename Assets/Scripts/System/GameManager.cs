@@ -9,13 +9,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public float tofuMaxHp =100f;
+    [Range(0,100)]
+    public float tofuHp=80f;
+
+    public float bossMaxHp=100f;
+    [Range(0,100)]
+    public float bossHp = 50f;
+
     [Header("#Player")]
     //인게임 플레이어
     public Player player;
     //초점
     public GameObject focus;
-
-
+    
     [Header("#Manager")]
     //UI 매니저 
     public UIManager UIManager;
