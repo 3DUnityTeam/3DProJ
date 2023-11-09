@@ -115,6 +115,7 @@ public class SnakeController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             hp++;
+            ani_.SetTrigger("Hit");
             Destroy(collision.gameObject);
         }
 

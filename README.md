@@ -1,7 +1,5 @@
 # 3DProJ
 3D 유니티 프로젝트
-혜진 - 브랜치 생성
-성영 - svn test 22 33 44
 
 # Settings
 게임 시작 전에 세팅해야하는 값 - 2023/11/04
@@ -14,4 +12,4 @@
 ## WeaponManager
 위치 GameManager 하위 자식으로 등록되어있음
 
-1. WeaponPrefabs: 무기 프리펩들
+1. WeaponPrefabs: 무기 프리펩들]

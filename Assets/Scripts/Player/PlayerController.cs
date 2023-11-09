@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         float x = Input.GetAxis("Mouse X");
-        rigid_.AddForce(new Vector3(h, 0, v), ForceMode.Impulse);
+        rigid_.AddForce(new Vector3(-h, 0, -v), ForceMode.Impulse);
         trans_.Rotate(Vector3.up * turnSpeed * Time.deltaTime * x);
 
 
