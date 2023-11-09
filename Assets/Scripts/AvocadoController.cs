@@ -18,7 +18,7 @@ public class AvocadoController : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Land"))
+        if (collision.gameObject.CompareTag("Floor"))
         {
             Destroy(this.gameObject, 1.5f);
         }

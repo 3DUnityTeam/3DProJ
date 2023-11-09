@@ -15,7 +15,7 @@ public class FireControl : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
-        muzzelFlash.enabled = false;
+        //muzzelFlash.enabled = false;
     }
 
     private void Update()
@@ -37,10 +37,10 @@ public class FireControl : MonoBehaviour
     {
         Instantiate(bullet, firePos.position, firePos.rotation);
         //audio.PlayOneShot(fireSfx, 1.0f);
-        StartCoroutine(ShowMuzzleFlash());
+        //StartCoroutine(ShowMuzzleFlash());
     }
 
-    IEnumerator ShowMuzzleFlash()
+    /*IEnumerator ShowMuzzleFlash()
     {
         Vector2 offset = new Vector3(Random.Range(0, 2), Random.Range(0, 2)) * 0.5f;
 
@@ -54,5 +54,5 @@ public class FireControl : MonoBehaviour
 
         yield return new WaitForSeconds(0.009f);
         muzzelFlash.enabled = false;
-    }
+    }*/
 }

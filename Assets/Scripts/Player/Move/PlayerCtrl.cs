@@ -13,6 +13,7 @@ public class PlayerCtrl : MonoBehaviour
     public GameObject tofu;
     public GameObject boost;
     public ParticleSystem boosterimpact;
+    public GameObject[] boosters;
 
     public Animator myanim;
     private Transform myTR;
@@ -22,17 +23,21 @@ public class PlayerCtrl : MonoBehaviour
     public float turnSpeed = 3000.0f;
     public float JumpPower = 30.0f;
     public float dashpower = 2500f;
+    public float dashcooltime = 0.3f;
 
     private bool isdashed = false;
     private bool isboost = false;
     private float v;
     private float h;
     private float mousespeed;
+    private bool ismove;
+    private float dcooltime = 0f;
     int movedirection;
 
 
     private void Awake()
     {
+        dcooltime = dashcooltime;
         Cursor.visible = false;
         isJump = false;
         speed = moveSpeed;
@@ -53,8 +58,10 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dcooltime -= Time.deltaTime;
         if (!isdashed)
         {
+
             h = Input.GetAxisRaw("Horizontal");
             v = Input.GetAxisRaw("Vertical");
         }
@@ -107,14 +114,38 @@ public class PlayerCtrl : MonoBehaviour
         myTR.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
         myTR.Rotate(Vector3.up * mousespeed * Time.deltaTime * r);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0)
         {
-            
             // 현재 방향을 기준으로 하는 벡터를 만듭니다.
             rigid.velocity = Vector3.zero;
             if(!isdashed)
             {
-                if (Input.GetKey(KeyCode.W))
+                if (v >= 0.1f)
+                {
+                    movedirection = 0;
+                    dashvector = myTR.forward;
+                }
+                else if (v <= -0.1f)
+                {
+                    movedirection = 0;
+                    dashvector = -myTR.forward;
+                }
+                else if (h >= 0.1f)
+                {
+                    movedirection = 1;
+                    dashvector = myTR.right;
+                }
+                else if (h <= -0.1f)
+                {
+                    movedirection = 1;
+                    dashvector = -myTR.right;
+                }
+                else
+                {
+                    movedirection = 0;
+                    dashvector = myTR.right * 0;
+                }
+                /*if (Input.GetKey(KeyCode.W))
                 {
                     movedirection = 0;
                     dashvector = myTR.forward;
@@ -137,15 +168,19 @@ public class PlayerCtrl : MonoBehaviour
                     movedirection = 1;
                     dashvector = -myTR.right;
                     myanim.SetInteger("dashtype", 3);
-                }
+                }*/
             }
             
             Vector3 forceDirection = dashvector * dashpower;
 
             // AddForce에 현재 방향을 기준으로 하는 힘을 가합니다.
-            StartCoroutine(Dashjinheng(0.2f));
-            myanim.SetBool("Dashed", true);
+            
+            StartCoroutine(Dashjinheng(0.22f));
+            myanim.SetTrigger("dash");
+            myanim.SetInteger("dashing", 0);
+            boosterimpact.Play();
             rigid.AddForce(forceDirection , ForceMode.Impulse);
+            dcooltime = dashcooltime;
 
 
             IEnumerator Dashjinheng(float time)
@@ -154,6 +189,7 @@ public class PlayerCtrl : MonoBehaviour
 
                 if(Input.GetKey(KeyCode.LeftShift) && !isdashed)
                 {
+                    myanim.SetInteger("dashing", 1);
                     rigid.velocity = Vector3.zero;
                     isdashed = true;
                     switch(movedirection)
@@ -171,14 +207,14 @@ public class PlayerCtrl : MonoBehaviour
                 else
                 {
                     rigid.velocity = Vector3.zero;
-                    myanim.SetBool("Dashed", false);
+                    myanim.SetInteger("dashing", 2);
                 }
                 
             }
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift) && isdashed)
         {
-            myanim.SetBool("Dashed", false);
+            myanim.SetInteger("dashing", 2);
             isdashed = false;
             rigid.useGravity = true;
             rigid.velocity = Vector3.zero;
@@ -186,7 +222,7 @@ public class PlayerCtrl : MonoBehaviour
         }
 
 
-        //PlayerAnim(h, v);
+        PlayerAnim(h, v);
 
 
     }
@@ -200,29 +236,99 @@ public class PlayerCtrl : MonoBehaviour
             
     }
 
-    /*void PlayerAnim(float h, float v)
+    void PlayerAnim(float h, float v)
     {
+        
         if(v>=0.1f)
         {
-            myanim.CrossFade("RunF", 0.25f);
+            ismove = true;
+            if (!isdashed)
+            {
+                boosters[0].SetActive(true);
+                boosters[1].SetActive(true);
+                if(h >= 0.1f)
+                {
+                        boosters[2].SetActive(true);
+                        boosters[3].SetActive(false);
+                }
+                else if (h <= -0.1f)
+                {
+                    boosters[3].SetActive(true);
+                    boosters[2].SetActive(false);
+                }
+                else
+                {
+                    boosters[3].SetActive(false);
+                    boosters[2].SetActive(false);
+                }
+            }
+            
+            myanim.SetInteger("dashtype", 0);
         }
         else if( v <= -0.1f)
         {
-            myanim.CrossFade("RunB", 0.25f);
+            ismove = true;
+            if (!isdashed)
+            {
+                boosters[0].SetActive(false);
+                boosters[1].SetActive(false);
+                if (h >= 0.1f)
+                {
+                    boosters[2].SetActive(true);
+                    boosters[3].SetActive(false);
+                }
+                else if (h <= -0.1f)
+                {
+                    boosters[3].SetActive(true);
+                    boosters[2].SetActive(false);
+                }
+                else
+                {
+                    boosters[3].SetActive(false);
+                    boosters[2].SetActive(false);
+                }
+            }
+            myanim.SetInteger("dashtype", 1);
         }
         else if (h >= 0.1f)
         {
-            myanim.CrossFade("RunR", 0.25f);
+            ismove = true;
+            if (!isdashed)
+            {
+                boosters[2].SetActive(true);
+                boosters[3].SetActive(false);
+                if(v <= -0.1f)
+                {
+                    myanim.SetInteger("dashtype", 1);
+                }
+            }
+            myanim.SetInteger("dashtype", 2);
         }
         else if (h <= -0.1f)
         {
-            myanim.CrossFade("RunL", 0.25f);
+            
+            ismove = true;
+            if (!isdashed)
+            {
+                boosters[2].SetActive(false);
+                boosters[3].SetActive(true);
+                if (v <= -0.1f)
+                {
+                    myanim.SetInteger("dashtype", 1);
+                }
+            }
+            myanim.SetInteger("dashtype", 3);
         }
         else
         {
-            myanim.CrossFade("Idle", 0.25f);
+            boosters[0].SetActive(false);
+            boosters[1].SetActive(false);
+            boosters[2].SetActive(false);
+            boosters[3].SetActive(false);
+            ismove = false;
+            myanim.SetInteger("dashtype", -1);
         }
-    }*/
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Floor"))
