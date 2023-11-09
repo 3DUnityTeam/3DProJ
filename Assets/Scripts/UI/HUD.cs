@@ -31,6 +31,7 @@ public class HUD : MonoBehaviour
                 slider.value = manager.bossHp / manager.bossMaxHp;
                 break;
             case HUDType.AP:
+
                 slider.value = manager.player.AP/ manager.player.MaxAP;
                 break;
         }

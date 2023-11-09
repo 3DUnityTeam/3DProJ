@@ -34,7 +34,6 @@ public class AimManager : MonoBehaviour
         //다음 대상으로
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("count:"+count);
             togle = 1;
         }
         //추적타입 변화
@@ -46,7 +45,6 @@ public class AimManager : MonoBehaviour
             {
                 type = 0;
             }
-            Debug.Log("type:"+ type);
         }
     }
     void FixedUpdate()

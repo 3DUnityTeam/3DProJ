@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_Pivot.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_RootOrder
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_AnchorMin.x
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -165,6 +165,14 @@ PrefabInstance:
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,7 +208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -524
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2372376151712930016, guid: 97079efad7038d341863d0e3736ec63f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -565,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1221945147548252626, guid: f35d13b75df832749b45dad7c11d916f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1221945147548252626, guid: f35d13b75df832749b45dad7c11d916f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -582,6 +590,10 @@ PrefabInstance:
     - target: {fileID: 1749718554238318544, guid: f35d13b75df832749b45dad7c11d916f, type: 3}
       propertyPath: m_Name
       value: TofuHPBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2875312915457680160, guid: f35d13b75df832749b45dad7c11d916f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6787621368680603441, guid: f35d13b75df832749b45dad7c11d916f, type: 3}
       propertyPath: m_AnchorMax.x
