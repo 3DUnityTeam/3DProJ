@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FallowCam : MonoBehaviour
 {
-    public Transform targetTR;
+    private Transform targetTR;
     private Transform myTR;
 
     [Range(2.0f, 20.0f)]
@@ -30,6 +30,7 @@ public class FallowCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        targetTR = GameManager.instance.focus.transform;
         myTR = GetComponent<Transform>();
         targetTR.position += new Vector3(width, 0, 0);
         targetTR.rotation = Quaternion.Euler(0, rotation, 0);
