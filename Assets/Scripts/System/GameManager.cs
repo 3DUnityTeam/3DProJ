@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header("#Player")]
     //인게임 플레이어
+    public Tofu tofu;
     public Player player;
     //초점
     public GameObject focus;
@@ -66,6 +67,16 @@ public class GameManager : MonoBehaviour
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
     }
 
+    private void FixedUpdate()
+    {
+        if (tofu.HP <= 0)
+        {
+            UIManager.FinshGame(false);
+        }else if (bossHp <= 0)
+        {
+            UIManager.FinshGame(true);
+        }
+    }
     public void Save(string key,float value)
     {
         PlayerPrefs.SetFloat(key, value);
