@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 8854346847008214604}
   - component: {fileID: 8854346847008214605}
   - component: {fileID: 8854346847008214606}
-  - component: {fileID: 8854346847008214607}
   - component: {fileID: 1390781908281110138}
   m_Layer: 0
   m_Name: Player
@@ -150,33 +149,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8854346847008214607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8854346847008214600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f389555c4e2ed64ea003d6a5fe7923d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemCount: 0
-  tofu: {fileID: 8854346847456453510}
-  boost: {fileID: 6297803930085989758}
-  boosterimpact: {fileID: 6350132815926090431}
-  boosters:
-  - {fileID: 6297803929685069748}
-  - {fileID: 6297803930987280015}
-  - {fileID: 6297803930309816399}
-  - {fileID: 6297803930406414032}
-  myanim: {fileID: 0}
-  moveSpeed: 12
-  turnSpeed: 3000
-  JumpPower: 30
-  dashpower: 3750
-  dashcooltime: 0.17
 --- !u!114 &1390781908281110138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +169,7 @@ MonoBehaviour:
   isJump: 0
   JumpPower: 30
   boost: {fileID: 6297803930085989758}
-  boosterimpact: {fileID: 0}
+  boosterimpact: {fileID: 6297803930085989759}
   dashpower: 2500
   dashcooltime: 0.3
   boosters:
@@ -961,11 +933,6 @@ PrefabInstance:
 --- !u!4 &6350132815926090428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2504214343621411459, guid: 21ea325bae748e24eab0daefe7457445, type: 3}
-  m_PrefabInstance: {fileID: 8854346847597975615}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6350132815926090431 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2504214343621411456, guid: 21ea325bae748e24eab0daefe7457445, type: 3}
   m_PrefabInstance: {fileID: 8854346847597975615}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8854346847955214297
@@ -1866,6 +1833,11 @@ Transform:
 --- !u!1 &6297803930085989758 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3280519133390621005, guid: 9a39061c17142164c9af1bc4b991b61f, type: 3}
+  m_PrefabInstance: {fileID: 8854346849009226803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6297803930085989759 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3280519133390621004, guid: 9a39061c17142164c9af1bc4b991b61f, type: 3}
   m_PrefabInstance: {fileID: 8854346849009226803}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8854346849012943256
