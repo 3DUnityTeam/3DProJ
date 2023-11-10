@@ -75,6 +75,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale==0 || HP<=0)
+        {
+            return;
+        }
         //대쉬 쿨타임
         dcooltime -= Time.deltaTime;
         //대쉬 상태 아닐때
