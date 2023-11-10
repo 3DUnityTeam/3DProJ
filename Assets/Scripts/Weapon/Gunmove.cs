@@ -30,7 +30,7 @@ public class Gunmove : MonoBehaviour
     {
         aimManager=GameManager.instance.AimManager;
         StartCoroutine(CheckTarget());
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        //transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         switch (state)
         {
             case State.noTarget:
