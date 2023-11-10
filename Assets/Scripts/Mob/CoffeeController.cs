@@ -1,26 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-public class FishController : MonoBehaviour
+public class CoffeeController : MonoBehaviour
 {
+    public GameObject coffee;
+    public GameObject warnCoffee;
+
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
 
     [SerializeField]
-    int maxHp = 3;
+    int maxHp = 5;
     int hp = 0;
 
-    float traceDist = 6.0f;
+    float traceDist = 3.0f;
     float speed = 1.0f;
 
     Vector3 dirr = Vector3.zero;
-    Vector3 poz = Vector3.zero;
 
     bool isTrace = false;
     bool flag = false;
     bool checkFlag = false;
-    bool isArrive = false;
 
     private void Awake()
     {
@@ -45,11 +46,12 @@ public class FishController : MonoBehaviour
 
             if (!isTrace)
             {
-                trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                trans_.Translate(dirr * speed * Time.deltaTime);
                 ani_.SetBool("Atk", false);
             }
             else
             {
+                //trans_.Translate(dirr * speed * 2.5f* Time.deltaTime);
                 trans_.LookAt(playerTrans_);
             }
         }
@@ -63,13 +65,18 @@ public class FishController : MonoBehaviour
             {
                 trans_.Rotate(0, Random.Range(0, 180f), 0);
                 dirr = Vector3.forward;
-                yield return new WaitForSeconds(1.8f);
-                dirr = Vector3.zero;
+                yield return new WaitForSeconds(6.5f);
             }
             else
             {
-                CheckRange();
-                yield return new WaitForSeconds(10.5f);
+                ani_.SetBool("Atk", true);
+                Vector3 firePoz = playerTrans_.position + new Vector3(0, 5, 0);
+                Instantiate(warnCoffee, firePoz, playerTrans_.rotation);
+                yield return new WaitForSeconds(0.8f);
+                ani_.SetBool("Atk", false);
+                firePoz += new Vector3(0, 5, 0);
+                Instantiate(coffee, firePoz, playerTrans_.rotation);
+                yield return new WaitForSeconds(8f);
             }
             flag = false;
         }
@@ -85,7 +92,7 @@ public class FishController : MonoBehaviour
             if (dist <= traceDist)
             {
                 isTrace = true;
-                yield return new WaitForSeconds(9);
+                yield return new WaitForSeconds(10f);
             }
             else
             {
@@ -94,19 +101,6 @@ public class FishController : MonoBehaviour
             }
             checkFlag = false;
         }
-
-    }
-
-
-    void CheckRange()
-    {
-        poz = trans_.position;
-        float x = poz.x;    float z = poz.z;
-        x = Random.Range(x - 2.5f , x+ 2.5f );
-        z = Random.Range(z - 2.5f, x + 2.5f );
-        poz = new Vector3(x, 0, z);
-        dirr = poz;
-        Debug.Log(dirr);
     }
 
     void IsDead()
