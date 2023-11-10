@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8854346847008214605}
   - component: {fileID: 8854346847008214606}
   - component: {fileID: 8854346847008214607}
+  - component: {fileID: 1390781908281110138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -176,6 +177,34 @@ MonoBehaviour:
   JumpPower: 30
   dashpower: 3750
   dashcooltime: 0.17
+--- !u!114 &1390781908281110138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854346847008214600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5dd83ca0a830c43a90fdbf47f8c9c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCount: 0
+  tofu: {fileID: 8854346847456453510}
+  ap: 200
+  moveSpeed: 5
+  turnSpeed: 3000
+  isJump: 0
+  JumpPower: 30
+  boost: {fileID: 6297803930085989758}
+  boosterimpact: {fileID: 0}
+  dashpower: 2500
+  dashcooltime: 0.3
+  boosters:
+  - {fileID: 6297803929685069748}
+  - {fileID: 6297803930987280015}
+  - {fileID: 6297803930309816399}
+  - {fileID: 6297803930406414032}
 --- !u!1 &8854346847011282232
 GameObject:
   m_ObjectHideFlags: 0
