@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: maxDistance
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: mobList.Array.size
@@ -762,8 +762,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4729883089100096010, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: "\uC0C1\uB2E8\uAC01\uB3C4"
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729883089100096010, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: "\uC6B0\uCE21\uAC01\uB3C4"
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729883089100096010, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: "\uC88C\uCE21\uAC01\uB3C4"
-      value: 30
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729883089100096010, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: "\uD558\uB2E8\uAC01\uB3C4"
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6029240855393264400, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: basic
@@ -870,8 +882,20 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7832157574155381322, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: "\uC0C1\uB2E8\uAC01\uB3C4"
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832157574155381322, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: "\uC6B0\uCE21\uAC01\uB3C4"
-      value: 30
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832157574155381322, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: "\uC88C\uCE21\uAC01\uB3C4"
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832157574155381322, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: "\uD558\uB2E8\uAC01\uB3C4"
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8854346847008214578, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_RootOrder
@@ -1056,8 +1080,8 @@ MonoBehaviour:
   state: 0
   basic: {fileID: 0}
   target: {fileID: 0}
-  "\uC88C\uCE21\uAC01\uB3C4": 30
-  "\uC6B0\uCE21\uAC01\uB3C4": 30
+  "\uC88C\uCE21\uAC01\uB3C4": 50
+  "\uC6B0\uCE21\uAC01\uB3C4": 50
   "\uC0C1\uB2E8\uAC01\uB3C4": 10
   "\uD558\uB2E8\uAC01\uB3C4": 10
 --- !u!1 &1096539128
