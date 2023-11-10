@@ -34,7 +34,7 @@ public class Tofuwatching : MonoBehaviour
         switch (state)
         {
             case State.noTarget:
-                
+                transform.localEulerAngles = new Vector3(0, 0, 0);
                 break;
             case State.Targeted:
                 transform.LookAt(target.position);
