@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public class RollingFire : MonoBehaviour
+public class FlameShot : MonoBehaviour
 {
     Player player;
 
-    public float fireDmg = 0.5f;  //平寸 单固瘤
+    public float flameDmg = 0.3f;  //平寸 单固瘤
     bool flag = false;
 
     private void Start()
     {
-        Destroy(this.gameObject, 2.3f);
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         if (!player)
             Debug.Log("Player is missing");
@@ -19,7 +18,7 @@ public class RollingFire : MonoBehaviour
     {
         if (flag)
         {
-            player.HP -= fireDmg;
+            player.HP -= flameDmg;
         }
     }
 
