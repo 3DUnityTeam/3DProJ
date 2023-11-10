@@ -67,7 +67,6 @@ public class Player : MonoBehaviour
 
     IEnumerator Start()
     {
-        //myanim.Play("Idle");
         turnSpeed = 0.0f;
         yield return new WaitForSeconds(1.0f);
         turnSpeed = 3000.0f;
@@ -136,7 +135,7 @@ public class Player : MonoBehaviour
             isboost = false;
         }
         //부스트
-        if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0 && AP>=40)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0 && AP>0)
         {
             // 현재 방향을 기준으로 하는 벡터를 만듭니다.
             rigid.velocity = Vector3.zero;
@@ -200,19 +199,6 @@ public class Player : MonoBehaviour
         PlayerAnim(h, v);
 
         //스태미나
-        if (AP <= 0)
-        {
-            //대쉬 초기화
-            myanim.SetInteger("dashing", 2);
-            isdashed = false;
-            rigid.useGravity = true;
-            rigid.velocity = Vector3.zero;
-            moveSpeed = speed;
-            //점프 종료
-            boost.SetActive(false);
-            rigid.useGravity = true;
-            isboost = false;
-        }
         if (!isboost && !isdashed)
         {
             //부스트,점부 상태 확인용
@@ -241,6 +227,17 @@ public class Player : MonoBehaviour
         }
         else
         {
+            if (AP <= 0)
+            {
+                myanim.SetInteger("dashing", 2);
+                isdashed = false;
+                rigid.velocity = Vector3.zero;
+                moveSpeed = speed;
+                //점프 종료
+                boost.SetActive(false);
+                rigid.useGravity = true;
+                isboost = false;
+            }
             regenAPStart = false;
             regenAPTime = 0;
             //시간 측정
@@ -371,6 +368,11 @@ public class Player : MonoBehaviour
     {
         if (AP < 8)
         {
+            //대쉬 초기화
+            myanim.SetInteger("dashing", 2);
+            isdashed = false;
+            rigid.velocity = Vector3.zero;
+            moveSpeed = speed;
             yield return null;
         }
         yield return new WaitForSeconds(time);

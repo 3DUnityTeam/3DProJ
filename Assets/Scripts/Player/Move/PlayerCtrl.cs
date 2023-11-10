@@ -101,7 +101,10 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             boost.SetActive(false);
-            rigid.useGravity = true;
+            if(!isdashed)
+            {
+                rigid.useGravity = true;
+            }
             isboost = false;
         }
 

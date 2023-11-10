@@ -26,6 +26,6 @@ public class Gunmove : MonoBehaviour
         }*/
 
         // 새로운 회전값을 적용
-        transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, 0f);
+        transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }
 }

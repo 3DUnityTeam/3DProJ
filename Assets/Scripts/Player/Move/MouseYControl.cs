@@ -19,6 +19,7 @@ public class MouseYControl : MonoBehaviour
         mouseR = Vector3.zero;
         yield return new WaitForSeconds(0.5f);
         mouseR = Vector3.left;
+        //myTR.Rotate(new Vector3(-80f, 0, 0));
     }
 
     // Update is called once per frame
@@ -27,5 +28,11 @@ public class MouseYControl : MonoBehaviour
         mouse = Input.GetAxis("Mouse Y");
 
         myTR.Rotate(mouseR * mouse * Time.deltaTime * mouseRmingamdo);
+
+        Vector3 trangle = myTR.localEulerAngles;
+        trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
+        trangle.x = Mathf.Clamp(trangle.x, -60, 30);
+        // 자식 개체의 localrotation을 제한을 줄 쿼터니언으로 설정
+        myTR.localEulerAngles = trangle;
     }
 }
