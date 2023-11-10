@@ -9,13 +9,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public float tofuMaxHp =100f;
-    [Range(0,100)]
-    public float tofuHp=80f;
 
-    public float bossMaxHp=100f;
-    [Range(0,100)]
+    public float bossMaxHp = 100f;
+    [Range(0, 100)]
     public float bossHp = 50f;
+    private float maxHP = 100f;
+    public float MaxHP { get { return this.maxHP; } }
+    private float hp = 100f;
+    public float HP { get { return this.hp; } set { this.hp = value; } }
 
     [Header("#Player")]
     //인게임 플레이어

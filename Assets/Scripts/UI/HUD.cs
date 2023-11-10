@@ -25,14 +25,14 @@ public class HUD : MonoBehaviour
         switch (type)
         {
             case HUDType.Tofu:
-                slider.value = manager.tofuHp / manager.tofuMaxHp;
+                slider.value = manager.player.HP / manager.player.MaxHP;
                 break;
             case HUDType.Boss:
                 slider.value = manager.bossHp / manager.bossMaxHp;
                 break;
             case HUDType.AP:
 
-                slider.value = manager.player.AP/ manager.player.MaxAP;
+                slider.value = manager.player.AP / manager.player.MaxAP;
                 break;
         }
     }

@@ -54,9 +54,9 @@ public class WeaponManager : MonoBehaviour
             //player 불러오기
             Transform ply_trans=GameManager.instance.player.transform;
             //무기 생성
-            Weapon[i]= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
+            //Weapon[i]= Instantiate(WeaponPrefabs[(int)collect[i]], ply_trans);
             //무기 위치 지정(수정 필요)
-            Weapon[i].transform.position = ply_trans.position + new Vector3(0, 3, -3 + i * 3);
+            //Weapon[i].transform.position = ply_trans.position + new Vector3(0, 3, -3 + i * 3);
         }
         GameManager.instance.UIManager.BattleUI.SetActive(true);
     }

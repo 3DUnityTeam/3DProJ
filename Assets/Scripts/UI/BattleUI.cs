@@ -46,6 +46,6 @@ public class BattleUI : MonoBehaviour
     }
     public void ResetAim()
     {
-        AimRect.position =new Vector2(mine.rect.width/2,mine.rect.height/2);
+        AimRect.anchoredPosition = Vector2.zero;
     }
 }
