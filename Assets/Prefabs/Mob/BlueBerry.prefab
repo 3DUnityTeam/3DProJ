@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 6648774231275713149}
   - component: {fileID: 6499950222576421937}
   - component: {fileID: 9210995771113550855}
-  - component: {fileID: 1608449853}
   - component: {fileID: 1608449854}
   - component: {fileID: 1608449855}
   - component: {fileID: 1608449856}
+  - component: {fileID: -1736932562856604649}
   m_Layer: 0
   m_Name: BlueBerry
   m_TagString: Bomb
@@ -103,22 +103,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1608449853
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482132250158656441}
-  serializedVersion: 2
-  m_Mass: 3
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!135 &1608449854
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -253,6 +237,22 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!54 &-1736932562856604649
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482132250158656441}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &4740421770006372947
 PrefabInstance:
   m_ObjectHideFlags: 0

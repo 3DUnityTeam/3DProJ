@@ -33,6 +33,7 @@ public class DragonController : MonoBehaviour
     bool looking = true;
     bool moveLock = true;
     bool dmgFlag = false;
+    bool atkFlag = false;
 
     bool flame = false;
     bool rolling = false;
@@ -56,48 +57,62 @@ public class DragonController : MonoBehaviour
 
     IEnumerator Start()
     {
+        BodyFx(true);
         while (leftMob > 0)
         {
             int n = Random.Range(1, 6);
             leftMob -= n;
             Debug.Log("Summon" + n);
-            for(int i = 0; i < n; i++)
+            ani_.SetBool("Summon", true);
+            fxs[4].SetActive(true);
+            for (int i = 0; i < n; i++)
             {
-                ani_.SetBool("Summon",true);
                 Instantiate(mobs[Random.Range(0, mobs.Length)],
                     new Vector3(trans_.position.x, trans_.position.y, trans_.position.z + 5),    //spawn dragon's front
                     trans_.rotation);
                 yield return new WaitForSeconds(0.4f);
-                Instantiate(fxs[0], new Vector3(trans_.position.x, 0, trans_.position.z), trans_.rotation);
-                ani_.SetBool("Summon", false);
             }
+            fxs[4].SetActive(false);
+            ani_.SetBool("Summon", false);
             yield return new WaitForSeconds(Random.Range(5,11));
         }
         ani_.SetTrigger("Phase2");
         Debug.Log("Phase2 start");
+        BodyFx(false);
         dirr = Vector3.forward;
         StartCoroutine("Phase2");
     }
 
     private void Update()
     {
-        if(looking)
-            trans_.LookAt(playerTrans_);
 
+        if(looking)
+            trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+
+
+    }
+
+    private void FixedUpdate()
+    {
         float dit = Vector3.Distance(playerTrans_.position, trans_.position);
-        if(dit >= 5)
-            trans_.Translate(dirr * speed * Time.deltaTime);
+        if (dit >= 5)
+        {
+            trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+            normalAtk = false;
+        }
         else
         {
-            trans_.Translate(dirr * 0 * Time.deltaTime);
-            ani_.SetTrigger("Atk");
+            trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+            if (!atkFlag)
+                ani_.SetTrigger("Atk");
+            normalAtk = true;
         }
 
         if (flame)
         {
             Vector3 dir = playerTrans_.position - this.transform.position;
             float turnSpeed = 0.4f;
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * turnSpeed);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(dir), Time.fixedDeltaTime * turnSpeed);
         }
     }
 
@@ -111,8 +126,9 @@ public class DragonController : MonoBehaviour
             }
             else
             {
-
-                int p = Random.Range(4, fxs.Length);
+                atkFlag = true;
+                ani_.SetTrigger("Reset");
+                int p = Random.Range(0, fxs.Length + 1);
                 switch (p)
                 {
                     case 0:
@@ -129,11 +145,16 @@ public class DragonController : MonoBehaviour
                     case 4:
                         StartCoroutine("Meteo");
                         break;
+                    case 5:
+                        StartCoroutine("Summon");
+                        break;
                     default:
                         Debug.Log("Dragon Script: Out of index!");
                         break;
                 }
-                yield return new WaitForSeconds(waitingTime + Random.Range(2f, 5.1f));
+                yield return new WaitForSeconds(waitingTime);
+                atkFlag = false;
+                yield return new WaitForSeconds(Random.Range(1.5f, 3.1f));
             }
         }
     }
@@ -285,36 +306,58 @@ public class DragonController : MonoBehaviour
             dirr = Vector3.zero;
             BodyFx(true);
             ani_.SetBool("Spin", true);
-            Debug.Log("After Spining");
+            //Debug.Log("After Spining");
             fxs[4].SetActive(true);
-            Debug.Log("Fx On");
-            //if(Random.Range(0, 1) == 0)  //한번에 랜덤한 위치로 10~20개의 메테오 분출
-            //{
-                Debug.Log("Before selecting N");
-                int n = Random.Range(10, 21);
-                Debug.Log("N="+n);
+            //Debug.Log("Fx On");
+            if(Random.Range(0, 2) == 0)  //한번에 랜덤한 위치로 10~30개의 메테오 분출
+            {
+                //Debug.Log("Before selecting N");
+                int n = Random.Range(10, 31);
+                //Debug.Log("N="+n);
                 waitingTime = (float)n * 0.1f + 1.5f;
                 Debug.Log("Summon " + n + "meteors!!");
                 Vector3 nowPoz = trans_.position;
                 for(int i = 0; i < n; i++)
                 {
-                    float x = Random.Range(-50f, 50f);
-                    float z = Random.Range(-50f, 50f);
+                    float x = Random.Range(-45f, 45f);
+                    float z = Random.Range(-45f, 45f);
                     Vector3 spawnPoz = nowPoz + new Vector3(x, 0, z);
-                    GameObject land = GameObject.FindWithTag("Land");
                     GameObject obj =  Instantiate(meteos[0]);
                     obj.transform.position = spawnPoz;
-                    obj.name = "MeteoPoz " + n;
+                    obj.name = "MeteoPoz " + i;
 
                     spawnPoz += new Vector3(0, 10, 0);
                     obj = Instantiate(meteos[1]);
                     obj.transform.position = spawnPoz;
-                    obj.name = "Meteo " + n;
-                    yield return new WaitForSeconds(0.3f);
+                    obj.name = "Meteo " + i;
+                    yield return new WaitForSeconds(0.45f);
                 }
                 yield return new WaitForSeconds(1.5f);
                 meteoAll = true;
-            //}
+            }
+            else  //메테오 5개~10개를 플레이어 머리위에 떨굼
+            {
+                int n = Random.Range(5, 11);
+                waitingTime = 0.5f * n;
+                Debug.Log(n + "Meteos!");
+                for(int i = 0; i < n; i++)
+                {
+                    float x = playerTrans_.position.x;
+                    float z = playerTrans_.position.z;
+                    Vector3 spawnPoz =  new Vector3(x, 0, z);
+                    GameObject obj = Instantiate(meteos[0]);
+                    obj.transform.position = spawnPoz;
+                    obj.name = "MeteoPoz " + i;
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    spawnPoz += new Vector3(0, 10, 0);
+                    obj = Instantiate(meteos[1]);
+                    obj.transform.position = spawnPoz;
+                    obj.name = "Meteo " + i;
+                }
+
+            }
 
             yield return new WaitForSeconds(0.1f);
             fxs[4].SetActive(false);
@@ -326,6 +369,40 @@ public class DragonController : MonoBehaviour
             flag = false;
         }
 
+    }
+
+    IEnumerator Summon()
+    {
+        if (!flag)
+        {
+            flag = true;
+            looking = false;
+            BodyFx(true);
+            dirr = Vector3.zero;
+            leftMob = Random.Range(3, 13);
+            waitingTime = leftMob * 3f;
+            while (leftMob > 0)
+            {
+                int n = Random.Range(1, 6);
+                leftMob -= n;
+                Debug.Log("Summon" + n);
+                fxs[4].SetActive(true);
+                ani_.SetBool("Spin", true);
+                for (int i = 0; i < n; i++)
+                {               
+                    Instantiate(mobs[Random.Range(0, mobs.Length)],
+                        new Vector3(trans_.position.x, trans_.position.y, trans_.position.z + 5),    //spawn dragon's front
+                        trans_.rotation);
+                    yield return new WaitForSeconds(0.4f);
+                }
+                fxs[4].SetActive(false);
+                ani_.SetBool("Spin", false);
+                yield return new WaitForSeconds(3);
+            }
+            BodyFx(false);
+            dirr = Vector3.forward;
+            flag = false;
+        }
     }
 
     //full happy dragon

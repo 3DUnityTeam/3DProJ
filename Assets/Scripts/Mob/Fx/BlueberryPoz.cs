@@ -11,5 +11,11 @@ public class BlueberryPoz : MonoBehaviour
             Destroy(this.gameObject, 0.8f);
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bomb"))
+        {
+            Destroy(this.gameObject, 0.2f);
+        }
+    }
 }
