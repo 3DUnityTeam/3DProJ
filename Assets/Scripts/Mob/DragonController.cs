@@ -67,8 +67,11 @@ public class DragonController : MonoBehaviour
             fxs[4].SetActive(true);
             for (int i = 0; i < n; i++)
             {
+                float tX = trans_.position.x + Random.Range(-50f, 50f);
+                float tZ = trans_.position.x + Random.Range(-50f, 50f);
+
                 Instantiate(mobs[Random.Range(0, mobs.Length)],
-                    new Vector3(trans_.position.x, trans_.position.y, trans_.position.z + 5),    //spawn dragon's front
+                    new Vector3(tX, trans_.position.y, tZ),    //spawn dragon's front
                     trans_.rotation);
                 yield return new WaitForSeconds(0.4f);
             }
