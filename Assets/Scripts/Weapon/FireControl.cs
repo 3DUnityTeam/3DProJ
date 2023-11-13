@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireControl : MonoBehaviour
 {
+    public AimManager aimManager;
     public GameObject bullet;
     public Transform firePos;
     public AudioClip fireSfx;
@@ -11,10 +12,17 @@ public class FireControl : MonoBehaviour
     public MeshRenderer muzzelFlash;
     public float cooltime = 0.7f;
     private float ctime = 0.7f;
+
+    private void Awake()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        aimManager = GameManager.instance.AimManager;
+        ctime = cooltime;
+        //audio = GetComponent<AudioSource>();
         //muzzelFlash.enabled = false;
     }
 
@@ -35,7 +43,15 @@ public class FireControl : MonoBehaviour
     // Update is called once per frame
     void Fire()
     {
-        Instantiate(bullet, firePos.position, firePos.rotation);
+        GameObject firedbullet = Instantiate(bullet, firePos.position, firePos.rotation);
+        if (aimManager.aimingTarget != null)
+        {
+            //Vector3 direction = aimManager.aimingTarget.transform.position - firePos.position;
+            //Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.up);
+            //firedbullet.transform.rotation = lookRotation;
+            firedbullet.transform.LookAt(aimManager.aimingTarget.transform.position);
+
+        }
         //audio.PlayOneShot(fireSfx, 1.0f);
         //StartCoroutine(ShowMuzzleFlash());
     }

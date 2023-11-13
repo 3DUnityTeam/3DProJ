@@ -31,6 +31,14 @@ public class BattleUI : MonoBehaviour
     {
         //타켓 설정 필요
         targetMob = GameManager.instance.AimManager.aimingTarget;
+        if (GameManager.instance.player.gameObject.activeSelf)
+        {
+            CrossHair.SetActive(true);
+        }
+        else
+        {
+            CrossHair.SetActive(false);
+        }
         if (targetMob != null)
         {
             FollowTarget(targetMob);
