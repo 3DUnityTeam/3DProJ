@@ -49,10 +49,10 @@ MonoBehaviour:
   state: 0
   basic: {fileID: 0}
   target: {fileID: 0}
-  "\uC88C\uCE21\uAC01\uB3C4": 10
+  "\uC88C\uCE21\uAC01\uB3C4": 50
   "\uC6B0\uCE21\uAC01\uB3C4": 10
-  "\uC0C1\uB2E8\uAC01\uB3C4": 50
-  "\uD558\uB2E8\uAC01\uB3C4": 50
+  "\uC0C1\uB2E8\uAC01\uB3C4": 80
+  "\uD558\uB2E8\uAC01\uB3C4": 60
 --- !u!114 &1054957233805711078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,11 +66,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimManager: {fileID: 0}
-  bullet: {fileID: 8154665223632144087, guid: 24864a298bcb42541ae2fd73af0e84ae, type: 3}
+  bulletID: 1
   firePos: {fileID: 0}
   fireSfx: {fileID: 0}
   muzzelFlash: {fileID: 0}
-  cooltime: 0.2
+  "\uACF5\uACA9\uC18D\uB3C4": 0.7
+  "\uCD1D\uC54C\uC18D\uB3C4": 4000
 --- !u!1001 &3553744355243831743
 PrefabInstance:
   m_ObjectHideFlags: 0
