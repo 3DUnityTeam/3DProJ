@@ -30,34 +30,55 @@ public class Player : MonoBehaviour
     private float v;
     private float h;
     private bool ismove;
-    //회전
+    private bool inputMove;
+    private float regenAPTime = 0;
+    private bool regenAPStart = false;
+
+    //카메라 회전
     [Header("Rotaion")]
-    public float turnSpeed = 3000.0f;
+    private float xTurnSpeed = 250f;
+    public float XTurnSpeed { get { return this.xTurnSpeed; } set { this.xTurnSpeed = value; } }
+    private float yTurnSpeed = 50f;
+    public float YTurnSpeed { get { return this.yTurnSpeed; } set { this.yTurnSpeed = value; } }
     private float mousespeed;
+    private bool inputRotate;
+    float accumulatedInput = 0f;
+
+    //대쉬
+    [Header("Dash")]
+    private bool isdashed = false; 
+    //대쉬 힘
+    public float dashpower = 2500f;
+    //대쉬 방향
+    private Vector3 dashvector;
+    //대쉬쿨
+    public float dashcooltime = 0.3f;
+    //대쉬 쿨 지난 시간
+    private float dcooltime = 0f;
+    //대쉬 쉬는 시간
+    private float dashTime = 0;
+    private bool inputShift;
+
     //점프
     [Header("Jump")]
     public bool isJump;
     public float JumpPower = 30.0f;
+    private bool inputSpace;
+    private bool inputSpaceDown;
+    private bool inputSpaceUP;
     //부스터
     [Header("Boost")]
+    private bool isboost = false;
     public GameObject boost;
     public ParticleSystem boosterimpact;
-    public float dashpower = 2500f;
-    public float dashcooltime = 0.3f;
     public GameObject[] boosters;
-    private Vector3 dashvector;
-    private bool isdashed = false;
-    private bool isboost = false;
-    private float dcooltime = 0f;
-    private float dashTime = 0;
-    private float regenAPTime = 0;
-    private bool regenAPStart = false;
+
     int movedirection;
+
 
     private void Awake()
     {
         dcooltime = dashcooltime;
-        //Cursor.visible = false;
         isJump = false;
         speed = moveSpeed;
         rigid = GetComponent<Rigidbody>();
@@ -65,39 +86,37 @@ public class Player : MonoBehaviour
         myanim = tofu.GetComponent<Animator>();
     }
 
-    IEnumerator Start()
-    {
-        turnSpeed = 0.0f;
-        yield return new WaitForSeconds(1.0f);
-        turnSpeed = 3000.0f;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //대쉬 쿨타임
-        dcooltime -= Time.deltaTime;
         //대쉬 상태 아닐때
         if (!isdashed)
         {
             //바뀐 화면 회전 속도 조정
-            mousespeed = turnSpeed; 
+            mousespeed = xTurnSpeed;
             //키입력
             h = Input.GetAxisRaw("Horizontal");
             v = Input.GetAxisRaw("Vertical");
+            inputMove = (h != 0f || v != 0f);
+            //이동은 fixedupdate
         }
         //대쉬 상태일때
         else if (isdashed)
         {
             //마우스 회전 속도 줄이기
-            mousespeed = turnSpeed / 10;
+            mousespeed = xTurnSpeed / 10;
         }
-        //이동
-        Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
-        myTR.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
-        //회전
-        float r = Input.GetAxisRaw("Mouse X");
-        myTR.Rotate(Vector3.up * mousespeed * Time.deltaTime * r);
+
+        //회전 입력
+        if (GameManager.instance.isCursorLocked)
+        {
+            float r = Input.GetAxisRaw("Mouse X"); 
+            accumulatedInput += r;
+            inputRotate = (accumulatedInput != 0f);
+            //회전은 fixedupdate
+        }
+        else
+            inputRotate = false;
 
         //점프 부스트
         if (Input.GetKeyDown(KeyCode.Space))
@@ -130,9 +149,11 @@ public class Player : MonoBehaviour
             rigid.useGravity = true;
             isboost = false;
         }
+
         //부스트
-        if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0 && AP>0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0 && AP > 0)
         {
+            inputShift = true;
             // 현재 방향을 기준으로 하는 벡터를 만듭니다.
             rigid.velocity = Vector3.zero;
             //대쉬 방향
@@ -184,6 +205,8 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift) && isdashed)
         {
+            inputShift = false;
+
             myanim.SetInteger("dashing", 2);
             isdashed = false;
             rigid.useGravity = true;
@@ -191,8 +214,48 @@ public class Player : MonoBehaviour
             moveSpeed = speed;
         }
 
+        
+    }
 
+    private void FixedUpdate()
+    {
+        if (Time.timeScale == 0 || HP <= 0)
+        {
+            return;
+        }
+        //대쉬 쿨타임
+        dcooltime -= Time.fixedDeltaTime;
+        //이동
+        if (inputMove)
+        {
+            Vector3 moveDir = (myTR.forward * v) + (myTR.right * h);
+            //myTR.Translate(moveDir.normalized * moveSpeed * Time.fixedDeltaTime);
+            rigid.velocity=moveDir.normalized * moveSpeed ;
+        }
+        else
+        {
+            rigid.velocity=Vector3.zero ;
+        }
+        //회전
+        if (inputRotate)
+        {
+            float rot= mousespeed * Time.fixedDeltaTime * accumulatedInput;
+            //rigid.rotation= Quaternion.AngleAxis(rot, Vector3.up) * rigid.rotation; // 좌우 회전
+            myTR.Rotate(rot * Vector3.up);
+            accumulatedInput = 0;
+        }
+
+        
+
+        //애니메이션 작동(전방 후방 좌우)
         PlayerAnim(h, v);
+
+        
+        //빠르게 떨어지기
+        if (!isdashed)
+        {
+            rigid.AddForce(Vector3.down * 500f);
+        }
 
         //스태미나
         if (!isboost && !isdashed)
@@ -200,7 +263,7 @@ public class Player : MonoBehaviour
             //부스트,점부 상태 확인용
             dashTime = 0;
             //스태미나 회복
-            regenAPTime += Time.deltaTime;
+            regenAPTime += Time.fixedDeltaTime;
             if (!regenAPStart)
             {
                 if (AP <= 0)
@@ -237,7 +300,7 @@ public class Player : MonoBehaviour
             regenAPStart = false;
             regenAPTime = 0;
             //시간 측정
-            dashTime += Time.deltaTime;
+            dashTime += Time.fixedDeltaTime;
             //1초마다
             if (dashTime > 1)
             {
@@ -246,9 +309,9 @@ public class Player : MonoBehaviour
             }
         }
         //AP 스태미나 회복
-        if (regenAPStart && AP<=200)
+        if (regenAPStart && AP <= 200)
         {
-            AP = AP + (10 * Time.deltaTime);
+            AP = AP + (10 * Time.fixedDeltaTime);
             if (AP > 200)
             {
                 AP = 200;
@@ -257,15 +320,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (!isdashed)
-        {
-            rigid.AddForce(Vector3.down * 500f);
-        }
-
-    }
-    //플레이어 이동 애니메이션
     void PlayerAnim(float h, float v)
     {
 
@@ -367,7 +421,7 @@ public class Player : MonoBehaviour
             //대쉬 초기화
             myanim.SetInteger("dashing", 2);
             isdashed = false;
-            rigid.velocity = Vector3.zero;
+            //rigid.velocity = Vector3.zero;
             moveSpeed = speed;
             yield return null;
         }
@@ -376,7 +430,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && !isdashed)
         {
             myanim.SetInteger("dashing", 1);
-            rigid.velocity = Vector3.zero;
+            //rigid.velocity = Vector3.zero;
             isdashed = true;
             switch (movedirection)
             {
@@ -405,5 +459,4 @@ public class Player : MonoBehaviour
             isJump = false;
         }
     }
-
 }
