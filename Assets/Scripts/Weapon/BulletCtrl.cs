@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
-
+    public int effectID = 1;
     public float damage = 20.0f;
-    public float force = 1000.0f;
-    private Rigidbody myRD;
     // Start is called before the first frame update
     void Start()
     {
-        myRD = GetComponent<Rigidbody>();
-        myRD.AddRelativeForce(new Vector3(0,0,1) * force);
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(ActiveFalse());
     }
 
     // Update is called once per frame
     void Update()
     {
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Land"))
+        {
+            GameObject effect = GameManager.instance.effectPoolManger.Get(effectID - 1);
+            effect.transform.position = gameObject.transform.position;
+            gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator ActiveFalse()
+    {
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
+    }
+    
 }
