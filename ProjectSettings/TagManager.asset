@@ -8,6 +8,9 @@ TagManager:
   - Floor
   - Lemon
   - Land
+  - Bomb
+  - FxTemporaire
+  - wall
   - Wall
   layers:
   - Default
@@ -16,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 
