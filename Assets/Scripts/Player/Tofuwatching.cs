@@ -26,8 +26,9 @@ public class Tofuwatching : MonoBehaviour
 
     private void Start()
     {
-        limit = GameManager.instance.AimManager.limitAngle; 
-        angle = Mathf.Acos(limit) * (180 / Mathf.PI);
+        float limit = GameManager.instance.AimManager.limitAngle;
+        float angle = Mathf.Acos(limit) * (180 / Mathf.PI);
+
         좌측각도 = Mathf.Acos(angle);
         우측각도 = Mathf.Acos(angle);
     }

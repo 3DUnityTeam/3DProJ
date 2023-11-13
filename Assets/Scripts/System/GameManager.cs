@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
     public Player player;
     //초점
     public GameObject focus;
-    
+    //커서
+    public bool isCursorLocked;
+
     [Header("#Manager")]
     //UI 매니저 
     public UIManager UIManager;
@@ -62,12 +64,20 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        isCursorLocked = true;
         StopManager.TimeStop();
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C)){
+            isCursorLocked = !isCursorLocked;
+        }
+        player.AP = 100;
+    }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (tofuFoolr == null)
         {
@@ -80,6 +90,8 @@ public class GameManager : MonoBehaviour
         {
             UIManager.FinshGame(true);
         }
+        //커서 중앙 잠금 구현
+        Cursor.visible = !isCursorLocked;
     }
     public void Save(string key,float value)
     {
