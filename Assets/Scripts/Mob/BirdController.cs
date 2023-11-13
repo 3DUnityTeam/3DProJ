@@ -6,6 +6,9 @@ public class BirdController : MonoBehaviour
     public Transform firePoz;
     public GameObject bomb;
 
+    public GameObject[] lods;
+    public GameObject fx;
+
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
@@ -23,6 +26,7 @@ public class BirdController : MonoBehaviour
     bool isTrace = false;
     bool flag = false;
     bool expFlag = false;
+    bool spawn = true;  
 
     private void Awake()
     {
@@ -30,6 +34,25 @@ public class BirdController : MonoBehaviour
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
+    }
+
+    void Fx(bool t)
+    {
+        for (int i = 0; i < lods.Length; i++)
+        {
+            lods[i].SetActive(t);
+        }
+    }
+
+    private IEnumerator Start()
+    {
+        fx.SetActive(true);
+        Fx(false);
+        yield return new WaitForSeconds(1.5f);
+        this.gameObject.SetActive(true);
+        Fx(true);
+        spawn = false;
+        fx.SetActive(false);
     }
 
     private void Update()
@@ -47,15 +70,27 @@ public class BirdController : MonoBehaviour
             IsDead();
         else
         {
-
-            if (!isTrace)
-            {
-                trans_.Translate(dirr * speed * Time.deltaTime);
-            }
+            if (spawn)
+                dirr = Vector3.zero;
             else
             {
-                trans_.LookAt(playerTrans_);
-                trans_.Translate(dirr * speed * 2f* Time.deltaTime);
+                if (!isTrace)
+                {
+                    trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+                    float dit = Vector3.Distance(playerTrans_.position, trans_.position);
+                    if (dit >= 5)
+                    {
+                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                    }
+                    else
+                    {
+                        trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+                    }
+                }
             }
         }
     }

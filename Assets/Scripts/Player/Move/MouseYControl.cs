@@ -6,8 +6,10 @@ public class MouseYControl : MonoBehaviour
 {
     private Transform myTR;
     private Vector3 mouseR;
-    public float mouseRmingamdo = 600f;
+    private float mouseRmingamdo;
     private float mouse;
+    private float accumulatedInput = 0f;
+    private bool inputRotate = false;
     // Start is called before the first frame update
 
     private void Awake()
@@ -25,9 +27,25 @@ public class MouseYControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouse = Input.GetAxis("Mouse Y");
+        if (GameManager.instance.isCursorLocked) { 
+            mouse = Input.GetAxis("Mouse Y");
+            accumulatedInput += mouse;
+            inputRotate = (accumulatedInput != 0f);
+        }
+        else
+        {
+            inputRotate = false;
+        }
+    }
+    private void FixedUpdate()
+    {
+        mouseRmingamdo = GameManager.instance.player.YTurnSpeed;
 
-        myTR.Rotate(mouseR * mouse * Time.deltaTime * mouseRmingamdo);
+        if (inputRotate)
+        {
+            myTR.Rotate(mouseR * accumulatedInput * Time.fixedDeltaTime * mouseRmingamdo);
+            accumulatedInput = 0;
+        }
 
         Vector3 trangle = myTR.localEulerAngles;
         trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
