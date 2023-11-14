@@ -1,17 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Player : MonoBehaviour
 {
     Rigidbody rigid;
     Animator myanim;
     private Transform myTR;
 
-    public int itemCount;
-    //public GameManager manager;
-    [Header("Mine")]
-    public GameObject tofu;
+    //Status
     //HP
     private float maxHP = 100f;
     public float MaxHP { get { return this.maxHP; } }
@@ -22,6 +18,12 @@ public class Player : MonoBehaviour
     public float MaxAP { get { return this.maxAP; } }
     public float ap = 200f;
     public float AP { get { return this.ap; } set { this.ap = value; } }
+    //public GameManager manager;
+
+    [Header("Mine")]
+    public GameObject tofu;
+    public GameObject CommonParent;
+    public GameObject SpecialParent;
 
     //이동
     [Header("Move")]
@@ -29,8 +31,10 @@ public class Player : MonoBehaviour
     private float speed = 6.0f;
     private float v;
     private float h;
-    private bool ismove;
+    Vector3 moveDir;
+    private bool ismove;    
     private bool inputMove;
+    private bool wallcollision; //벽과 닿은상태
     private float regenAPTime = 0;
     private bool regenAPStart = false;
 
@@ -46,7 +50,8 @@ public class Player : MonoBehaviour
 
     //대쉬
     [Header("Dash")]
-    private bool isdashed = false; 
+    private bool isdashed = false;
+    private bool isImpulse = false;
     //대쉬 힘
     public float dashpower = 2500f;
     //대쉬 방향
@@ -57,15 +62,11 @@ public class Player : MonoBehaviour
     private float dcooltime = 0f;
     //대쉬 쉬는 시간
     private float dashTime = 0;
-    private bool inputShift;
 
     //점프
     [Header("Jump")]
     public bool isJump;
     public float JumpPower = 30.0f;
-    private bool inputSpace;
-    private bool inputSpaceDown;
-    private bool inputSpaceUP;
     //부스터
     [Header("Boost")]
     private bool isboost = false;
@@ -89,6 +90,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         //대쉬 상태 아닐때
         if (!isdashed)
         {
@@ -150,10 +154,10 @@ public class Player : MonoBehaviour
             isboost = false;
         }
 
-        //부스트
+        //대쉬
         if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0 && AP > 0)
         {
-            inputShift = true;
+            isImpulse = true;
             // 현재 방향을 기준으로 하는 벡터를 만듭니다.
             rigid.velocity = Vector3.zero;
             //대쉬 방향
@@ -205,8 +209,6 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift) && isdashed)
         {
-            inputShift = false;
-
             myanim.SetInteger("dashing", 2);
             isdashed = false;
             rigid.useGravity = true;
@@ -226,16 +228,23 @@ public class Player : MonoBehaviour
         //대쉬 쿨타임
         dcooltime -= Time.fixedDeltaTime;
         //이동
+        moveDir = (Vector3.forward * v) + (Vector3.right * h);
+        Vector3 rayVec = (myTR.forward * v) + (myTR.right * h);
+        Debug.DrawRay(myTR.position + new Vector3(0, 1.0f, 0) - rayVec.normalized, rayVec.normalized * (0.6f + rayVec.magnitude), Color.red);
+        wallcollision = Physics.Raycast(myTR.position + new Vector3(0, 1.0f, 0)- rayVec, rayVec, 0.6f+rayVec.magnitude, LayerMask.GetMask("Wall"));
         if (inputMove)
         {
-            Vector3 moveDir = (myTR.forward * v) + (myTR.right * h);
-            //myTR.Translate(moveDir.normalized * moveSpeed * Time.fixedDeltaTime);
-            rigid.velocity=moveDir.normalized * moveSpeed ;
+            if (!wallcollision)
+            {
+                myTR.Translate(moveDir.normalized * moveSpeed * Time.fixedDeltaTime);
+                ///
+                /// 1. rigidbody.velocity : addforce 무시해서 사용안됨
+                /// 2. rigidbody.addforce : 가속도 붙어서 사용안됨
+                /// 3. rigidbody.MovePosition : 점프 부스트의 Transform 이동으로 씹힘
+                ///
+            }
         }
-        else
-        {
-            rigid.velocity=Vector3.zero ;
-        }
+
         //회전
         if (inputRotate)
         {
@@ -421,16 +430,16 @@ public class Player : MonoBehaviour
             //대쉬 초기화
             myanim.SetInteger("dashing", 2);
             isdashed = false;
-            //rigid.velocity = Vector3.zero;
+            rigid.velocity = Vector3.zero;
             moveSpeed = speed;
             yield return null;
         }
         yield return new WaitForSeconds(time);
-
+        isImpulse = false;
         if (Input.GetKey(KeyCode.LeftShift) && !isdashed)
         {
             myanim.SetInteger("dashing", 1);
-            //rigid.velocity = Vector3.zero;
+            rigid.velocity = Vector3.zero;
             isdashed = true;
             switch (movedirection)
             {

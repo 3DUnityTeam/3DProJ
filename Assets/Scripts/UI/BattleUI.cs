@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class BattleUI : MonoBehaviour
 {
+    [Header("Weapon")]
     public GameObject[] CollectWeapon;
+    public GameObject CollectSpecialWeapon;
+    [Header("Aim")]
     public GameObject CrossHair;
 
     RectTransform mine;
@@ -20,11 +23,14 @@ public class BattleUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager game = GameManager.instance;
+        game.isCursorLocked = true;
         List<WeaponManager.WeaponType> collect = game.WeaponManager.collect;
         for (int i = 0; i < collect.Count; i++)
         {
             CollectWeapon[i].GetComponent<Image>().sprite = game.WeaponImages[(int)collect[i]];
         }
+        WeaponManager.SpecialWeaponType specialCollect = game.WeaponManager.specialCollect[0];
+        CollectSpecialWeapon.GetComponent<Image>().sprite = game.SpecialWeaponImages[(int)specialCollect];
     }
 
     private void FixedUpdate()
