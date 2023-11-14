@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
     //대쉬
     [Header("Dash")]
     private bool isdashed = false;
-    private bool isImpulse = false;
     //대쉬 힘
     public float dashpower = 2500f;
     //대쉬 방향
@@ -157,7 +156,6 @@ public class Player : MonoBehaviour
         //대쉬
         if (Input.GetKeyDown(KeyCode.LeftShift) && ismove && dcooltime <= 0 && AP > 0)
         {
-            isImpulse = true;
             // 현재 방향을 기준으로 하는 벡터를 만듭니다.
             rigid.velocity = Vector3.zero;
             //대쉬 방향
@@ -435,7 +433,6 @@ public class Player : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(time);
-        isImpulse = false;
         if (Input.GetKey(KeyCode.LeftShift) && !isdashed)
         {
             myanim.SetInteger("dashing", 1);
@@ -463,7 +460,7 @@ public class Player : MonoBehaviour
     //충돌 이벤트
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Land"))
         {
             isJump = false;
         }
