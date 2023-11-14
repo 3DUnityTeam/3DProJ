@@ -174,7 +174,7 @@ public class WeaponManager : MonoBehaviour
                 for (int j = 0; j < childCount; j++)
                 {
                     Transform child = WP[i].transform.GetChild(j);
-                    child.gameObject.SetActive(i == 1); // i가 0이면 활성화, 아니면 비활성화
+                    child.gameObject.SetActive(i == 1); // i가 1이면 활성화, 아니면 비활성화
                 }
             }
         }
@@ -192,7 +192,7 @@ public class WeaponManager : MonoBehaviour
                 for (int j = 0; j < childCount; j++)
                 {
                     Transform child = WP[i].transform.GetChild(j);
-                    child.gameObject.SetActive(i == 2); // i가 0이면 활성화, 아니면 비활성화
+                    child.gameObject.SetActive(i == 2); // i가 2이면 활성화, 아니면 비활성화
                 }
             }
         }

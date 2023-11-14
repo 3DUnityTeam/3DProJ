@@ -42,7 +42,7 @@ public class WeaponControl : MonoBehaviour
                 currentheat = Heat;
                 break;
             case State.cooling:
-                currentheat -= heatDecrease * Time.deltaTime;
+                currentheat -= (heatDecrease * 6 * Time.deltaTime);
 
                 if (currentheat <= 0)
                 {

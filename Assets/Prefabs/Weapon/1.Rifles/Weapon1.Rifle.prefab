@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   Heat: 1000
+  currentheat: 0
   HeatCooltime: 0.7
-  heatIncrease: 25
+  heatIncrease: 7
   heatDecrease: 20
 --- !u!1 &2938176249413868260
 GameObject:
