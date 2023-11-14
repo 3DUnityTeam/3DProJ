@@ -53,8 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossMaxHp: 100
   bossHp: 50
+  tofuFoolr: {fileID: 0}
   player: {fileID: 0}
   focus: {fileID: 0}
+  isCursorLocked: 0
   UIManager: {fileID: 8341611847568356816}
   AudioManager: {fileID: 1769951722274786521}
   WeaponManager: {fileID: 3216794702982540649}
@@ -69,6 +71,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 300abdf8cbdd5c742a05b6506767fd64, type: 3}
   - {fileID: 21300000, guid: 61dab0b6e506c6a43b12d9fde15b2393, type: 3}
   - {fileID: 21300000, guid: bbe833a9207e7fa41bbd3ce71ad09605, type: 3}
+  SpecialWeaponImages:
+  - {fileID: 21300000, guid: 2a5c892bdd014164da633b8c6fd0f246, type: 3}
+  - {fileID: 21300000, guid: 6960c6bd5088317429f7e0e033bee813, type: 3}
+  - {fileID: 21300000, guid: 0825dfa25de4551469e65496af7b3c71, type: 3}
   BaseImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &551858577900020405
 PrefabInstance:
@@ -205,7 +211,7 @@ PrefabInstance:
     - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
       propertyPath: prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 8154665223632144087, guid: 24864a298bcb42541ae2fd73af0e84ae, type: 3}
+      objectReference: {fileID: 8154665223632144087, guid: 0d21dce3accc519448a970d51a5bdc5e, type: 3}
     - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
       propertyPath: prefabs.Array.data[1]
       value: 

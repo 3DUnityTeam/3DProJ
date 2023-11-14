@@ -133,7 +133,8 @@ public class DragonController : MonoBehaviour
             {
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                int p = Random.Range(0, fxs.Length + 1);
+                //int p = Random.Range(0, fxs.Length + 1);
+                int p = 4;
                 switch (p)
                 {
                     case 0:
