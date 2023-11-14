@@ -14,7 +14,9 @@ public class FishController : MonoBehaviour
     int maxHp = 3;
     int hp = 0;
 
+    [SerializeField]
     float traceDist = 6.0f;
+    [SerializeField]
     float speed = 1.0f;
 
     Vector3 dirr = Vector3.zero;
