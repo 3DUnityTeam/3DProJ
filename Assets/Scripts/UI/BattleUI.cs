@@ -56,7 +56,8 @@ public class BattleUI : MonoBehaviour
     }
     public void FollowTarget(GameObject obj)
     {
-        AimRect.position = Camera.main.WorldToScreenPoint(obj.transform.position);
+        Vector3 center = obj.GetComponent<Collider>().bounds.center;
+        AimRect.position = Camera.main.WorldToScreenPoint(center);
     }
     public void ResetAim()
     {
