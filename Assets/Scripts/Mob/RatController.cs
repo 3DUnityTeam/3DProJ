@@ -17,7 +17,9 @@ public class RatController : MonoBehaviour
     int maxHp = 1;
     int hp = 0;
 
+    [SerializeField]
     float traceDist = 6.5f;
+    [SerializeField]
     float speed = 4.5f;
 
     Vector3 dirr = Vector3.zero;

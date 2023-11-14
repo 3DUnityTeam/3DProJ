@@ -57,7 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 371caa249f4c6d4418ab241f4b60688b, type: 2}
     - target: {fileID: 919132149155446097, guid: 1794450f220477e47a10c39e8146079c, type: 3}
       propertyPath: m_Name
-      value: Ladder
+      value: Ladder Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1794450f220477e47a10c39e8146079c, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1794450f220477e47a10c39e8146079c, type: 3}
       propertyPath: m_TagString

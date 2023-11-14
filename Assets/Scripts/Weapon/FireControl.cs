@@ -67,8 +67,9 @@ public class FireControl : MonoBehaviour
             if (aimManager.aimingTarget != null)
             {
                 // 타겟을 향하도록 회전 설정
-                firedbullet.transform.LookAt(aimManager.aimingTarget.transform.position);
-                direction = (aimManager.aimingTarget.transform.position - firePos.transform.position).normalized;
+                Vector3 center = aimManager.aimingTarget.GetComponent<Collider>().bounds.center;
+                firedbullet.transform.LookAt(center);
+                direction = (center - firePos.transform.position).normalized;
             }
             else
             {
