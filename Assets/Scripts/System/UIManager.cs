@@ -37,6 +37,10 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        if (PauseUI.activeSelf || ResultUI.activeSelf || CollectUI.activeSelf)
+        {
+            GameManager.instance.isCursorLocked = false;
+        }
     }
 
     public void FinshGame(bool result)

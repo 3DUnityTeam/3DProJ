@@ -6,13 +6,17 @@ public class FallowCam : MonoBehaviour
 {
     private Transform targetTR;
     private Transform myTR;
+    private Transform plyTR;
+    RaycastHit hit;
+    Vector3 speed = Vector3.zero;
 
     [Range(2.0f, 20.0f)]
-    public float distance = 10.0f;
-    private float maxDistance;
+    public float maxDistance = 5f;
+    private float distance;
 
     [Range(0.0f, 10.0f)]
-    public float height = 2.0f;
+    public float maxHeight = 0f;
+    private float height;
 
     [Range(-10f, 10f)]
     public float width = 0f;
@@ -35,24 +39,23 @@ public class FallowCam : MonoBehaviour
         myTR = GetComponent<Transform>();
         targetTR.position += new Vector3(width, 0, 0);
         targetTR.rotation = Quaternion.Euler(0, rotation, 0);
+        plyTR = GameManager.instance.player.gameObject.transform;
     }
 
-    private void Update()
-    {
-        if (maxDistance < distance)
-        {
-            maxDistance = distance;
-        }
-
-    }
     // Update is called once per frame
     private void LateUpdate()
     {
-        if (distance > maxDistance)
+        if(Physics.Raycast(GameManager.instance.player.gameObject.transform.position , (-targetTR.forward * distance) + (Vector3.up * height), out hit, maxDistance))
         {
-
+            distance = hit.distance;
+            height = maxHeight * (distance / maxDistance);
         }
-        myTR.position = targetTR.position + (-targetTR.forward * distance) + (Vector3.up * height);
+        else
+        {
+            distance = maxDistance;
+            height = maxHeight;
+        }
+        myTR.position = plyTR.position+Vector3.up*1.5f+plyTR.forward*0.5f+(-targetTR.forward * distance) + (Vector3.up * height);
         myTR.LookAt(targetTR.position);
     }
 }

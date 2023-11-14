@@ -12,6 +12,7 @@ TagManager:
   - FxTemporaire
   - wall
   - Wall
+  - Mob
   layers:
   - Default
   - TransparentFX

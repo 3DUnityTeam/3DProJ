@@ -19088,7 +19088,7 @@ GameObject:
   - component: {fileID: 5077624092548844716}
   m_Layer: 0
   m_Name: Effect_Weapon3
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23853,7 +23853,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2878d101930fd47b416323242b2ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapontype: 0
   effectTime: 2.5
+  damage: 0
+  effect: {fileID: 0}
+  effectcode: 4
 --- !u!1 &6646146572685632117
 GameObject:
   m_ObjectHideFlags: 0
