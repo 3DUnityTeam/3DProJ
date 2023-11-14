@@ -68,7 +68,7 @@ public class BirdController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp == maxHp)
+        if (hp >= maxHp)
             IsDead();
         else
         {

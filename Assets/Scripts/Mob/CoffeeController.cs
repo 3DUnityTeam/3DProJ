@@ -64,7 +64,7 @@ public class CoffeeController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp == maxHp)
+        if (hp >= maxHp)
             IsDead();
         else
         {
