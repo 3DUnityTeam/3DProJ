@@ -23,7 +23,7 @@ public class BulletCtrl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Land"))
+        if(collision.gameObject.CompareTag("Mob"))
         {
             GameObject effect = GameManager.instance.effectPoolManger.Get(effectID - 1);
             effect.transform.position = gameObject.transform.position;

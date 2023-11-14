@@ -883,6 +883,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1131222428449617285}
     m_Modifications:
+    - target: {fileID: 1318935079978438870, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318935079978438870, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318935079978438870, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133223516628, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133223516628, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133223516628, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621004, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621004, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621004, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621004, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621004, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621004, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.09803922
+      objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621005, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_Name
       value: CFXR3 Magic Aura A (Runic) 1
@@ -930,6 +978,30 @@ PrefabInstance:
     - target: {fileID: 3280519133390621042, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133430969737, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133430969737, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280519133430969737, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679182840704168355, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679182840704168355, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679182840704168355, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.09803922
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
