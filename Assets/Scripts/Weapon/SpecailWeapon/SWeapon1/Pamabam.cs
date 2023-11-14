@@ -112,7 +112,8 @@ public class Pamabam : MonoBehaviour
             GameObject bullet = GameManager.instance.bulletPoolManger.Get(1);
             bullet.transform.position = firePos.position;
             bullet.transform.rotation = firePos.rotation;
-            direction = (target.transform.position - firePos.transform.position).normalized;
+            Vector3 center = target.GetComponent<Collider>().bounds.center;
+            direction = (center - firePos.transform.position).normalized;
             bullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
         }
     }
