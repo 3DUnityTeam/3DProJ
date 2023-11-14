@@ -17,7 +17,9 @@ public class CoffeeController : MonoBehaviour
     int maxHp = 5;
     int hp = 0;
 
+    [SerializeField]
     float traceDist = 3.0f;
+    [SerializeField]
     float speed = 1.0f;
 
     Vector3 dirr = Vector3.zero;
