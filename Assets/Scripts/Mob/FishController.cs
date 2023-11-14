@@ -25,7 +25,6 @@ public class FishController : MonoBehaviour
     bool isTrace = false;
     bool flag = false;
     bool checkFlag = false;
-    bool isArrive = false;
     bool spawn = true;
 
     private void Awake()

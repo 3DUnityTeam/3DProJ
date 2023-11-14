@@ -16,8 +16,6 @@ public class Pamabam_muzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction;
-
         if (target)
         {
             transform.LookAt(target.position);
