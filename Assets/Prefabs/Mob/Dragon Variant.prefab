@@ -945,6 +945,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 511723563, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1167235980405476186, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
       propertyPath: simulationSpeed
       value: 3
@@ -984,6 +988,10 @@ PrefabInstance:
     - target: {fileID: 3456979191618986584, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.28627452
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456979191981108741, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456979191988998848, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
       propertyPath: simulationSpeed
@@ -1027,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456979191988998849, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3456979191988998849, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
       propertyPath: m_TagString
@@ -1193,7 +1201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2881032626793173798, guid: 8d5d70b8547d4814b93de2d774d8848d, type: 3}
       propertyPath: m_Name
-      value: Dragon
+      value: Dragon Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2881032626793173798, guid: 8d5d70b8547d4814b93de2d774d8848d, type: 3}
       propertyPath: m_TagString
@@ -1419,6 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d5091e4ba4f704193993d2be6a7579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobSpawn: {fileID: 0}
   mobs:
   - {fileID: 1131222428449617283, guid: 68e2f5123a281c14ebf65600f0e4caec, type: 3}
   - {fileID: 4868344612650304854, guid: fe7c19621e28444438a2676c6d4e9e9f, type: 3}

@@ -23,6 +23,7 @@ public class SnakeController : MonoBehaviour
 
     [SerializeField]
     float traceDist = 50f;
+    [SerializeField]
     float speed = 3.0f;
     float rollingTime = 5.0f;
 

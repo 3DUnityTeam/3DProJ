@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 745681865}
   - component: {fileID: 745681864}
   - component: {fileID: 745681863}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 371caa249f4c6d4418ab241f4b60688b, type: 2}
     - target: {fileID: 919132149155446097, guid: e9e741cabe301f24e894a13d2a24c757, type: 3}
       propertyPath: m_Name
-      value: Tile_Corner_Foundation_End
+      value: Tile_Corner_Foundation_End Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e9e741cabe301f24e894a13d2a24c757, type: 3}
       propertyPath: m_TagString

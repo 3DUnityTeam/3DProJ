@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 870269489}
   - component: {fileID: 870269490}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 371caa249f4c6d4418ab241f4b60688b, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a8df4b09a45ec14db83a93030c3bb06, type: 3}
       propertyPath: m_Name
-      value: Tile_Solo_Island
+      value: Tile_Solo_Island Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a8df4b09a45ec14db83a93030c3bb06, type: 3}
       propertyPath: m_TagString
