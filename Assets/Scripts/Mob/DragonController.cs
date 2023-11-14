@@ -65,14 +65,11 @@ public class DragonController : MonoBehaviour
         StartCoroutine("Phase2");
     }
 
-    private void Update()
-    {
-        if(looking)
-            trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
-    }
-
     private void FixedUpdate()
     {
+        if (looking)
+            trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+
         float dit = Vector3.Distance(playerTrans_.position, trans_.position);
         if (dit >= 5)
         {
@@ -107,8 +104,8 @@ public class DragonController : MonoBehaviour
             {
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                //int p = Random.Range(0, fxs.Length + 1);
-                int p = 4;
+                int p = Random.Range(0, fxs.Length + 1);
+                //int p = 4;
                 switch (p)
                 {
                     case 0:
