@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 1390781908281110138}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -814,13 +814,12 @@ MonoBehaviour:
   tofu: {fileID: 8854346847456453510}
   ap: 200
   moveSpeed: 5
-  turnSpeed: 3000
+  dashpower: 2500
+  dashcooltime: 0.3
   isJump: 0
   JumpPower: 30
   boost: {fileID: 6297803930085989758}
   boosterimpact: {fileID: 6350132815926090431}
-  dashpower: 2500
-  dashcooltime: 0.3
   boosters:
   - {fileID: 6297803929685069748}
   - {fileID: 6297803930987280015}
@@ -1149,7 +1148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64321bb1b1a96114bbca8a8e54d2717f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseRmingamdo: 600
 --- !u!1 &8854346848368723609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,7 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64321bb1b1a96114bbca8a8e54d2717f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseRmingamdo: 600
 --- !u!1 &8854346848527079754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64321bb1b1a96114bbca8a8e54d2717f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseRmingamdo: 600
 --- !u!1 &8854346848627532378
 GameObject:
   m_ObjectHideFlags: 0
