@@ -64,7 +64,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectID: 1
   damage: 20
-  force: 4000
 --- !u!54 &2213463559815230074
 Rigidbody:
   m_ObjectHideFlags: 0
