@@ -40,28 +40,33 @@ public class Gunmove : MonoBehaviour
         {
             case State.noTarget:
                 transform.LookAt(basic.position);
-                float xRotation = transform.rotation.eulerAngles.x;
-                transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                //float xRotation = transform.rotation.eulerAngles.x;
+                //transform.localEulerAngles = transform.localEulerAngles;
+                //transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 break;
             case State.Targeted:
                 transform.LookAt(target.position);
-                Vector3 trangle = transform.localEulerAngles;
-                trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
-                trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
-                trangle.x = Mathf.Clamp(trangle.x, -(하단각도), 상단각도);
-                trangle.y = Mathf.Clamp(trangle.y, -(좌측각도), 우측각도);
+                
                 // 자식 개체의 localrotation을 제한을 줄 쿼터니언으로 설정
-                transform.localEulerAngles = trangle;
+                
 
                 break;
+
+
         }
         // 오브젝트의 y, z 축 회전을 고정
+        Vector3 trangle = transform.localEulerAngles;
+        trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
+        trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
+        trangle.x = Mathf.Clamp(trangle.x, -(하단각도), 상단각도);
+        trangle.y = Mathf.Clamp(trangle.y, -(좌측각도), 우측각도);
+        trangle.z = 0;
+        transform.localEulerAngles = trangle;
 
-        
 
         // 새로운 회전값을 적용
-        
-        
+
+
     }
 
     IEnumerator CheckTarget()
