@@ -16,8 +16,6 @@ public class Tofuwatching : MonoBehaviour
 
     private float 좌측각도;
     private float 우측각도;
-    private float 상단각도 = 10;
-    private float 하단각도 = 10;
     float limit ;
     float angle ;
     private void Awake()

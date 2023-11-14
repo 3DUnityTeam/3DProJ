@@ -32,7 +32,6 @@ public class DragonController : MonoBehaviour
 
     bool flag = false;
     bool looking = true;
-    bool moveLock = true;
     bool dmgFlag = false;
     bool atkFlag = false;
 
