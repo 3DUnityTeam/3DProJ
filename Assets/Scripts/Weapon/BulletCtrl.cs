@@ -26,7 +26,7 @@ public class BulletCtrl : MonoBehaviour
         if(collision.gameObject.CompareTag("Mob"))
         {
             GameObject effect = GameManager.instance.effectPoolManger.Get(effectID - 1);
-            effect.transform.position = gameObject.transform.position;
+            effect.transform.position = collision.contacts[0].point;
             gameObject.SetActive(false);
         }
     }

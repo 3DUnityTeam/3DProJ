@@ -144,17 +144,19 @@ public class WeaponManager : MonoBehaviour
         //무기 바꾸기
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            for(int i = 0; i < WP.Length; i++)
+            for (int i = 0; i < WP.Length; i++)
             {
                 if (WP[i] == null)
                     continue;
-                if (i != 0)
+
+                // 현재 WP[i]의 자식 오브젝트 수
+                int childCount = WP[i].transform.childCount;
+
+                // 모든 자식 오브젝트에 대해 활성화 또는 비활성화
+                for (int j = 0; j < childCount; j++)
                 {
-                    WP[i].SetActive(false);
-                }
-                else
-                {
-                    WP[i].SetActive(true);
+                    Transform child = WP[i].transform.GetChild(j);
+                    child.gameObject.SetActive(i == 0); // i가 0이면 활성화, 아니면 비활성화
                 }
             }
         }
@@ -164,13 +166,15 @@ public class WeaponManager : MonoBehaviour
             {
                 if (WP[i] == null)
                     continue;
-                if (i != 1)
+
+                // 현재 WP[i]의 자식 오브젝트 수
+                int childCount = WP[i].transform.childCount;
+
+                // 모든 자식 오브젝트에 대해 활성화 또는 비활성화
+                for (int j = 0; j < childCount; j++)
                 {
-                    WP[i].SetActive(false);
-                }
-                else
-                {
-                    WP[i].SetActive(true);
+                    Transform child = WP[i].transform.GetChild(j);
+                    child.gameObject.SetActive(i == 1); // i가 0이면 활성화, 아니면 비활성화
                 }
             }
         }
@@ -180,13 +184,15 @@ public class WeaponManager : MonoBehaviour
             {
                 if (WP[i] == null)
                     continue;
-                if (i != 2)
+
+                // 현재 WP[i]의 자식 오브젝트 수
+                int childCount = WP[i].transform.childCount;
+
+                // 모든 자식 오브젝트에 대해 활성화 또는 비활성화
+                for (int j = 0; j < childCount; j++)
                 {
-                    WP[i].SetActive(false);
-                }
-                else
-                {
-                    WP[i].SetActive(true);
+                    Transform child = WP[i].transform.GetChild(j);
+                    child.gameObject.SetActive(i == 2); // i가 0이면 활성화, 아니면 비활성화
                 }
             }
         }
