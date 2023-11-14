@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FireControl : MonoBehaviour
 {
-    [Header ("외부 오브젝트")]
+    [Header("외부 오브젝트")]
+    public WeaponControl parent;
     public AimManager aimManager;
     public int bulletID;
     public Transform firePos;
@@ -22,7 +23,7 @@ public class FireControl : MonoBehaviour
 
     private void Awake()
     {
-        
+        parent = gameObject.GetComponentInParent<WeaponControl>();
     }
     // Start is called before the first frame update
     void Start()
@@ -41,9 +42,11 @@ public class FireControl : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                Fire();
-                ctime = rapidspeed;
-                
+                if (parent.state == WeaponControl.State.normal || parent.state == WeaponControl.State.shooted)
+                {
+                    Fire();
+                    ctime = rapidspeed;
+                } 
             }
         }
         
@@ -75,6 +78,7 @@ public class FireControl : MonoBehaviour
             }
 
             firedbullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
+            StartCoroutine(parent.Shoot());
         }
         //audio.PlayOneShot(fireSfx, 1.0f);
         if(muzzelFlash != null)
