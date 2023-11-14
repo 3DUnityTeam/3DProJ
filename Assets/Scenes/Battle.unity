@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: maxDistance
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: mobList.Array.size
@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 1035386320}
     - target: {fileID: 8341611848425811364, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8341611848425811364, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 97900961}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,7 +645,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &117804083
 GameObject:
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 117804084}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,6 +788,14 @@ PrefabInstance:
     - target: {fileID: 4729883089100096010, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: "\uD558\uB2E8\uAC01\uB3C4"
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483465480419110155, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: bulletID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483465480419110155, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: rapidspeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6029240855393264400, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: basic
@@ -993,7 +1001,7 @@ GameObject:
   - component: {fileID: 1035386321}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1110,7 +1118,7 @@ GameObject:
   - component: {fileID: 1096539129}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1290,7 +1298,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1452417674
 GameObject:
@@ -1402,7 +1410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2165933271028621745, guid: c9c9e36247e92b34ebc60d29de65e4e9, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2165933271028621745, guid: c9c9e36247e92b34ebc60d29de65e4e9, type: 3}
       propertyPath: m_LocalScale.x

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DragonController : MonoBehaviour
 {
+    public GameObject mobSpawn;
     public GameObject[] mobs;
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
     public GameObject[] bodyFxs;
@@ -70,9 +71,10 @@ public class DragonController : MonoBehaviour
                 float tX = trans_.position.x + Random.Range(-50f, 50f);
                 float tZ = trans_.position.x + Random.Range(-50f, 50f);
 
-                Instantiate(mobs[Random.Range(0, mobs.Length)],
-                    new Vector3(tX, trans_.position.y, tZ),    //spawn dragon's front
-                    trans_.rotation);
+                GameObject obj = Instantiate(mobs[Random.Range(0, mobs.Length)]);
+                obj.transform.position = new Vector3(tX, 0, tZ);
+                obj.transform.parent = mobSpawn.transform;
+
                 yield return new WaitForSeconds(0.4f);
             }
             fxs[4].SetActive(false);
@@ -131,7 +133,8 @@ public class DragonController : MonoBehaviour
             {
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                int p = Random.Range(0, fxs.Length + 1);
+                //int p = Random.Range(0, fxs.Length + 1);
+                int p = 4;
                 switch (p)
                 {
                     case 0:
@@ -392,10 +395,14 @@ public class DragonController : MonoBehaviour
                 fxs[4].SetActive(true);
                 ani_.SetBool("Spin", true);
                 for (int i = 0; i < n; i++)
-                {               
-                    Instantiate(mobs[Random.Range(0, mobs.Length)],
-                        new Vector3(trans_.position.x, trans_.position.y, trans_.position.z + 5),    //spawn dragon's front
-                        trans_.rotation);
+                {
+                    float tX = trans_.position.x + Random.Range(-50f, 50f);
+                    float tZ = trans_.position.x + Random.Range(-50f, 50f);
+
+                    GameObject obj = Instantiate(mobs[Random.Range(0, mobs.Length)]);
+                    obj.transform.position = new Vector3(tX, 0, tZ);
+                    obj.transform.parent = mobSpawn.transform;
+
                     yield return new WaitForSeconds(0.4f);
                 }
                 fxs[4].SetActive(false);
