@@ -17,7 +17,9 @@ public class BirdController : MonoBehaviour
     int maxHp = 1;
     int hp = 0;
 
+    [SerializeField]
     float traceDist = 3.0f;
+    [SerializeField]
     float speed = 4.0f;
     float rollingTime = 3.0f;
 
@@ -66,7 +68,7 @@ public class BirdController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp == maxHp)
+        if (hp >= maxHp)
             IsDead();
         else
         {

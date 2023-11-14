@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984667939}
   - component: {fileID: 984667940}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 371caa249f4c6d4418ab241f4b60688b, type: 2}
     - target: {fileID: 919132149155446097, guid: f47c08ee0d8c52d40bf295cd48a04da7, type: 3}
       propertyPath: m_Name
-      value: Tile_Center_Foundation
+      value: Tile_Center_Foundation Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f47c08ee0d8c52d40bf295cd48a04da7, type: 3}
       propertyPath: m_TagString

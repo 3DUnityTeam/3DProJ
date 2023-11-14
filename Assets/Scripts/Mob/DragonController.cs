@@ -56,31 +56,8 @@ public class DragonController : MonoBehaviour
     }
 
 
-    IEnumerator Start()
+    public void NextPhase()
     {
-        BodyFx(true);
-        while (leftMob > 0)
-        {
-            int n = Random.Range(1, 6);
-            leftMob -= n;
-            Debug.Log("Summon" + n);
-            ani_.SetBool("Summon", true);
-            fxs[4].SetActive(true);
-            for (int i = 0; i < n; i++)
-            {
-                float tX = trans_.position.x + Random.Range(-50f, 50f);
-                float tZ = trans_.position.x + Random.Range(-50f, 50f);
-
-                GameObject obj = Instantiate(mobs[Random.Range(0, mobs.Length)]);
-                obj.transform.position = new Vector3(tX, 0, tZ);
-                obj.transform.parent = mobSpawn.transform;
-
-                yield return new WaitForSeconds(0.4f);
-            }
-            fxs[4].SetActive(false);
-            ani_.SetBool("Summon", false);
-            yield return new WaitForSeconds(Random.Range(5,11));
-        }
         ani_.SetTrigger("Phase2");
         Debug.Log("Phase2 start");
         BodyFx(false);
@@ -88,17 +65,11 @@ public class DragonController : MonoBehaviour
         StartCoroutine("Phase2");
     }
 
-    private void Update()
-    {
-
-        if(looking)
-            trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
-
-
-    }
-
     private void FixedUpdate()
     {
+        if (looking)
+            trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+
         float dit = Vector3.Distance(playerTrans_.position, trans_.position);
         if (dit >= 5)
         {
@@ -133,8 +104,8 @@ public class DragonController : MonoBehaviour
             {
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                //int p = Random.Range(0, fxs.Length + 1);
-                int p = 4;
+                int p = Random.Range(0, fxs.Length + 1);
+                //int p = 4;
                 switch (p)
                 {
                     case 0:

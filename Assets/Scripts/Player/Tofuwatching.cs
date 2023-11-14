@@ -11,7 +11,7 @@ public class Tofuwatching : MonoBehaviour
 
     public State state = State.noTarget;
     public Transform basic;
-    public Transform target;
+    public Vector3 target;
     AimManager aimManager;
 
     private float ÁÂÃø°¢µµ;
@@ -43,7 +43,7 @@ public class Tofuwatching : MonoBehaviour
                 transform.localEulerAngles = new Vector3(0, 0, 0);
                 break;
             case State.Targeted:
-                transform.LookAt(target.position);
+                transform.LookAt(target);
                 Vector3 trangle = transform.localEulerAngles;
                 trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
                 trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
@@ -73,7 +73,8 @@ public class Tofuwatching : MonoBehaviour
         }
         else if (aimManager.aimingTarget != null)
         {
-            target = aimManager.aimingTarget.transform;
+            Vector3 center = aimManager.aimingTarget.GetComponent<Collider>().bounds.center;
+            target = center;
             state = State.Targeted;
         }
     }
