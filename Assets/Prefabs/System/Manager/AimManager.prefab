@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d7dd071cff47045ab0682d84f7c142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  maxDistance: 0
+  type: 1
+  maxDistance: 10
   mobList: []
   aimingTarget: {fileID: 0}
+  limitAngle: 0
