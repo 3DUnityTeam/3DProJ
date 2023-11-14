@@ -5,73 +5,99 @@ using UnityEngine.UI;
 
 public class CollectWeaponUI : MonoBehaviour
 {
-    //무기 선택 아이콘 6종
-    public GameObject[] WeaponObjs;
-    //오브젝트 버튼 컴포넌트
-    private Button[] WeaponIcons;
-
+    //일반
+    //일반 무기 선택 아이콘 3종
+    public GameObject[] CommonWPObjs;
+    //일반 무기 오브젝트 버튼 컴포넌트
+    private Button[] CommonWeaponIcons;
     //선택된 무기 아이콘 3종
-    public GameObject[] CollectIcons;
+    public GameObject[] CollectCommonIcons;
+    //현재 선택된 일반 무기 번호 목록
+    private int[] Com_CollectNum;
+
+    //특수
+    //특수 무기 선택 아이콘 3종
+    public GameObject[] SpecialWPObjs;
+    //특수 무기 오브젝트 버튼 컴포넌트
+    private Button[] SpecialWeaponIcons;
+    //선택된 무기 아이콘 1종
+    public GameObject CollectSpecialIcons;
+    //현재 선택된 특수 무기 번호 목록
+    private int Spe_CollectNum;
 
 
-    //현재 선택된 무기 수 텍스트
     public Button StartButton;
-    public Text weaponNum;
-    //현재 선택된 무기 번호 목록
-    private int[] CollectNum;
     private void Awake()
     {
+        //무기 버튼 오브젝트 버튼 할당
+        CommonWeaponIcons = new Button[CommonWPObjs.Length];
+        for (int i = 0; i < CommonWPObjs.Length; i++)
+        {
+            CommonWeaponIcons[i] = CommonWPObjs[i].GetComponent<Button>();
+        }
+
         //번호 목록 초기화
-        CollectNum = new int[CollectIcons.Length];
-        CollectNum[0] = -1;
-        CollectNum[1] = -1;
-        CollectNum[2] = -1;
+        Com_CollectNum = new int[CollectCommonIcons.Length];
+        Com_CollectNum[0] = -1;
+        Com_CollectNum[1] = -1;
+        Com_CollectNum[2] = -1;
 
         //선택된 무기 아이콘 핸들러 - for문과 작동되지 않음
         //무기 번호 목록으로 작동
         //0번 버튼 컴포넌트 선언
-        Button button0 = CollectIcons[0].GetComponent<Button>();
+        Button combutton0 = CollectCommonIcons[0].GetComponent<Button>();
         //1번 버튼 컴포넌트 선언
-        Button button1 = CollectIcons[1].GetComponent<Button>();
+        Button combutton1 = CollectCommonIcons[1].GetComponent<Button>();
         //2번 버튼 컴포넌트 선언
-        Button button2 = CollectIcons[2].GetComponent<Button>();
-        //무기 버튼 오브젝트 버튼 할당
-        WeaponIcons = new Button[WeaponObjs.Length];
-        WeaponIcons[0] = WeaponObjs[0].GetComponent<Button>();
-        WeaponIcons[1] = WeaponObjs[1].GetComponent<Button>();
-        WeaponIcons[2] = WeaponObjs[2].GetComponent<Button>();
-        WeaponIcons[3] = WeaponObjs[3].GetComponent<Button>();
-        WeaponIcons[4] = WeaponObjs[4].GetComponent<Button>();
-        WeaponIcons[5] = WeaponObjs[5].GetComponent<Button>();
+        Button combutton2 = CollectCommonIcons[2].GetComponent<Button>();
 
         //리스너 작동으로 버튼 대기
-        button0.onClick.AddListener(() =>
+        combutton0.onClick.AddListener(() =>
         {
             //무기 취소 이벤트 작동
             CancelWeapon(0);
         });
-        button1.onClick.AddListener(() =>
+        combutton1.onClick.AddListener(() =>
         {
             //무기 취소 이벤트 작동
             CancelWeapon(1);
         });
-        button2.onClick.AddListener(() =>
+        combutton2.onClick.AddListener(() =>
         {
             //무기 취소 이벤트 작동
             CancelWeapon(2);
+        });
+
+        SpecialWeaponIcons = new Button[SpecialWPObjs.Length];
+        for (int j = 0; j < SpecialWPObjs.Length; j++)
+        {
+            SpecialWeaponIcons[j] = SpecialWPObjs[j].GetComponent<Button>();
+        }
+        //번호 목록 초기화
+        Spe_CollectNum = -1;
+        //특수 무기 버튼 컴포넌트 선언
+        Button spebutton = CollectSpecialIcons.GetComponent<Button>();
+        spebutton.onClick.AddListener(() =>
+        {
+            //무기 취소 이벤트 작동
+            CancelSpecialWeapon(0);
         });
     }
     //GameManager생성 뒤에 적용되야함
     private void OnEnable()
     {
-        //6종 무기 이미지 세팅
-        WeaponObjs[0].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[0];
-        WeaponObjs[1].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[1];
-        WeaponObjs[2].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[2];
-        WeaponObjs[3].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[3];
-        WeaponObjs[4].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[4];
-        WeaponObjs[5].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[5];
+        //3종 무기 이미지 세팅
+        for(int i = 0; i < CommonWPObjs.Length; i++)
+        {
+            CommonWPObjs[i].GetComponent<Image>().sprite = GameManager.instance.WeaponImages[i];
+        }
+        for (int j = 0; j < SpecialWPObjs.Length; j++)
+        {
+            SpecialWPObjs[j].GetComponent<Image>().sprite = GameManager.instance.SpecialWeaponImages[j];
+        }
+
     }
+    //일반
     //무기 선택 이벤트
     public void CollectWeapon(int i)
     {
@@ -82,9 +108,9 @@ public class CollectWeaponUI : MonoBehaviour
         {
             //비어있는 칸 구하기 비어있으면 -1 아니면 채워짐
             int clickCount = -1;
-            for (int j = 0; j < CollectNum.Length; j++)
+            for (int j = 0; j < Com_CollectNum.Length; j++)
             {
-                if (CollectNum[j] == -1)
+                if (Com_CollectNum[j] == -1)
                 {
                     clickCount = j;
                     break;
@@ -94,43 +120,83 @@ public class CollectWeaponUI : MonoBehaviour
             if (clickCount != -1)
             {
                 //선택된 무기 번호
-                CollectNum[clickCount] = i;
+                Com_CollectNum[clickCount] = i;
                 //선택된 무기 이미지 및 이펙트
-                CollectIcons[clickCount].GetComponent<Button>().interactable = true;
-                CollectIcons[clickCount].GetComponent<Image>().sprite 
+                CollectCommonIcons[clickCount].GetComponent<Button>().interactable = true;
+                CollectCommonIcons[clickCount].GetComponent<Image>().sprite 
                     = GameManager.instance.WeaponImages[i];
                 //고른 무기 버튼 비활성화
-                WeaponIcons[i].interactable = false;
+                CommonWeaponIcons[i].interactable = false;
             }
         }
     }
-
     //무기 선택 취소 이벤트
     public void CancelWeapon(int i)
     {
-        CollectIcons[i].GetComponent<Image>().sprite = GameManager.instance.BaseImage;
+        CollectCommonIcons[i].GetComponent<Image>().sprite = GameManager.instance.BaseImage;
         //무기번호
-        int WPnum = CollectNum[i];
+        int WPnum = Com_CollectNum[i];
         if (WPnum == -1)
             return;
         bool result=GameManager.instance.WeaponManager.RemoveWP((WeaponManager.WeaponType)WPnum);
         if (result)
         {
-            WeaponIcons[WPnum].interactable = true;
-            CollectNum[i]= -1;
+            CommonWeaponIcons[WPnum].interactable = true;
+            Com_CollectNum[i]= -1;
+        }
+    }
+
+    //특수
+    //무기 선택 이벤트
+    public void CollectSpecialWeapon(int i)
+    {
+        //추가되면 true, 안되면 false(3개보다 많이 선택할수없음)
+        bool result = GameManager.instance.WeaponManager.SaveSpecialWP((WeaponManager.SpecialWeaponType)i);
+        //추가되었을때
+        if (result)
+        {
+            //선택된 무기 번호
+            Spe_CollectNum = i;
+            //선택된 무기 이미지 및 이펙트
+            CollectSpecialIcons.GetComponent<Button>().interactable = true;
+            CollectSpecialIcons.GetComponent<Image>().sprite= GameManager.instance.SpecialWeaponImages[i];
+            //고른 무기 버튼 비활성화
+            SpecialWeaponIcons[i].interactable = false;
+        }
+    }
+
+    //무기 선택 취소 이벤트
+    public void CancelSpecialWeapon(int i)
+    {
+        CollectSpecialIcons.GetComponent<Image>().sprite = GameManager.instance.BaseImage;
+        //무기번호
+        int WPnum = Spe_CollectNum;
+        if (WPnum == -1)
+            return;
+        bool result=GameManager.instance.WeaponManager.RemoveSpecialWP((WeaponManager.SpecialWeaponType)WPnum);
+        if (result)
+        {
+            SpecialWeaponIcons[WPnum].interactable = true;
+            Spe_CollectNum= -1;
         }
     }
     private void LateUpdate()
     {
         int num=0;
-        for (int j = 0; j < CollectNum.Length; j++)
+        for (int j = 0; j < Com_CollectNum.Length; j++)
         {
-            if (CollectNum[j] != -1)
+            if (Com_CollectNum[j] != -1)
             {
                 num++;
             }
         }
-        if(num== CollectNum.Length)
+        int sNum = 0;
+        if (Spe_CollectNum != -1)
+        {
+            sNum = 1;
+        }
+
+        if(num== Com_CollectNum.Length && sNum==1)
         {
             StartButton.interactable = true;
         }
@@ -138,7 +204,6 @@ public class CollectWeaponUI : MonoBehaviour
         {
             StartButton.interactable = false;
         }
-        weaponNum.text = num + "/" + CollectIcons.Length;
     }
     private void OnDisable()
     {

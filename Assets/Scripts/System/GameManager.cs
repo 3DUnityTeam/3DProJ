@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     [Header("#WeaponImage")]
     //무기 이미지
     public Sprite[] WeaponImages;
+    public Sprite[] SpecialWeaponImages;
     public Sprite BaseImage;
 
     private void Awake()
@@ -83,19 +84,20 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (tofuFoolr == null)
-        {
-            return;
-        }
-        if (tofuFoolr.HP <= 0)
-        {
-            UIManager.FinshGame(false);
-        }else if (bossHp <= 0)
-        {
-            UIManager.FinshGame(true);
-        }
+        //if (tofuFoolr == null)
+        //{
+        //    return;
+        //}
+        //if (tofuFoolr.HP <= 0)
+        //{
+        //    UIManager.FinshGame(false);
+        //}else if (bossHp <= 0)
+        //{
+        //    UIManager.FinshGame(true);
+        //}
         //커서 중앙 잠금 구현
         Cursor.visible = !isCursorLocked;
+        Cursor.lockState= !isCursorLocked?(CursorLockMode)0:(CursorLockMode)1;
     }
     public void Save(string key,float value)
     {
