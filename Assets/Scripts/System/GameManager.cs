@@ -71,7 +71,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        isCursorLocked = true;
+        if (UIManager != null)
+        {
+            isCursorLocked = true;
+        }
         StopManager.TimeStop();
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
@@ -81,7 +84,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)){
             isCursorLocked = !isCursorLocked;
         }
-        player.AP = 100;
+        if (UIManager != null)
+        {
+            player.AP = 100;
+        }
     }
 
     private void LateUpdate()
