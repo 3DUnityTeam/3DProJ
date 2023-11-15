@@ -18324,59 +18324,6 @@ Transform:
   m_Father: {fileID: 1027389175}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1123198780
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1123198782}
-  - component: {fileID: 1123198781}
-  m_Layer: 0
-  m_Name: MobSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1123198781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123198780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff41b488c7c58b344986d34e85214338, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dragon: {fileID: 1168691366}
-  mobs:
-  - {fileID: 4868344612650304854, guid: fe7c19621e28444438a2676c6d4e9e9f, type: 3}
-  - {fileID: 1131222428449617283, guid: 68e2f5123a281c14ebf65600f0e4caec, type: 3}
-  - {fileID: 803352828588980492, guid: 5cd64778b64fed64da627579481d28b7, type: 3}
-  - {fileID: 1587505937867637595, guid: fae916008acfa644085c42f5b2847564, type: 3}
-  - {fileID: 6726140795187078608, guid: ad4137f595ec8e2449cacca9df7d3735, type: 3}
-  mobSpawn: {fileID: 1123198780}
-  maxMob: 50
---- !u!4 &1123198782
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123198780}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1126902006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18969,7 +18916,7 @@ PrefabInstance:
     - target: {fileID: 2605700062336025245, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: mobSpawn
       value: 
-      objectReference: {fileID: 1123198780}
+      objectReference: {fileID: 0}
     - target: {fileID: 4246169673696567882, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_Name
       value: Dragon
@@ -24690,7 +24637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 5
   maxHeight: 0
-  width: 0
+  width: -10
   rotation: 0
   sightspeed: 0.01
 --- !u!81 &1525716968

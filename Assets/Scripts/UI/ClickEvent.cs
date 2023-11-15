@@ -5,40 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class ClickEvent : MonoBehaviour
 {
-    //º£ÀÌ½ºµÇ´Â UI
+    //ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ç´ï¿½ UI
     public GameObject BaseUI;
-    //¿É¼ÇÃ¢
+    //ï¿½É¼ï¿½Ã¢
     public GameObject OptionUI;
-    //Battle ¾ÀÀ¸·Î ÀÌµ¿
+    //Battle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     public void GoToBattle()
     {
         SceneManager.LoadScene(1);
     }
-    //Å¸ÀÌÆ² ¾ÀÀ¸·Î ÀÌµ¿
+    //Å¸ï¿½ï¿½Æ² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     public void GoToTitle()
     {
         SceneManager.LoadScene("Title");
     }
-    //¼³Á¤Ã¢ ¿­±â(±âÁ¸ÀÇ Ã¢ ºñÈ°¼ºÈ­)
+    //ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ ï¿½ï¿½È°ï¿½ï¿½È­)
     public void OpenOption()
     {
         OptionUI.SetActive(true);
         BaseUI.SetActive(false);
     }
-    //¼³Á¤Ã¢ ´Ý±â(¿É¼ÇÀÇ Ã¢ ºñÈ°¼ºÈ­)
+    //ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½Ý±ï¿½(ï¿½É¼ï¿½ï¿½ï¿½ Ã¢ ï¿½ï¿½È°ï¿½ï¿½È­)
     public void BackOption()
     {
         BaseUI.SetActive(true);
         OptionUI.SetActive(false);
     }
-    //°ÔÀÓ Á¾·á ¹öÆ°
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
     public void ExitGame()
     {
         Debug.Log("test");
         Application.Quit();
     }
 
-    //°ÔÀÓ ½ÃÀÛ
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void StartGame()
     {
         GameManager.instance.StopManager.TimePass();
