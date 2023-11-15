@@ -22,6 +22,7 @@ public class DragonController : MonoBehaviour
     [SerializeField]
     int maxMob = 50;
     int leftMob;
+    int phaseMob;
     [SerializeField]
     int maxHunger = 100;
     int nowHunger = 0;
@@ -48,7 +49,6 @@ public class DragonController : MonoBehaviour
         rigid_ = GetComponent<Rigidbody>();
         ani_ = GetComponent<Animator>();
         BodyFx(false);
-
     }
     private void Start()
     {
@@ -61,14 +61,12 @@ public class DragonController : MonoBehaviour
 
     public void NextPhase()
     {
-        /*
         ani_.SetTrigger("Phase2");
         Debug.Log("Phase2 start");
         BodyFx(false);
+        fxs[4].SetActive(false);
         dirr = Vector3.forward;
         StartCoroutine("Phase2");
-        */
-        BeHappy();
     }
 
     private void FixedUpdate()
