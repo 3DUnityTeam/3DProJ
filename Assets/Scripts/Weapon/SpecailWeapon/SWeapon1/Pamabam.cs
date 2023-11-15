@@ -61,24 +61,32 @@ public class Pamabam : MonoBehaviour
 
                 if (Input.GetKey(KeyCode.Q))
                 {
-                    //SpecialShoot();
+                    SpecialShoot();
                 }
 
                 break;
 
             case State.special:
-                transform.LookAt(target.position);
-                Vector3 strangle = transform.localEulerAngles;
-                strangle.x = 0;
-                strangle.z = 0;
-                // 자식 개체의 localrotation을 제한을 줄 쿼터니언으로 설정
-                transform.localEulerAngles = strangle;
+                if (target)
+                {
+                    transform.LookAt(target.position);
+                    Vector3 strangle = transform.localEulerAngles;
+                    strangle.x = 0;
+                    strangle.z = 0;
+                    // 자식 개체의 localrotation을 제한을 줄 쿼터니언으로 설정
+                    transform.localEulerAngles = strangle;
+                }
+                else
+                {
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
                 break;
         }
        
 
     }
 
+    
     void UpdateTraget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -133,7 +141,7 @@ public class Pamabam : MonoBehaviour
 
     IEnumerator Shootstop()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         beam.SetActive(false);
         state = State.normal;
     }
