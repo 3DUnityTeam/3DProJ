@@ -29,7 +29,8 @@ public class WeaponControl : MonoBehaviour
         switch(state)
         {
             case State.normal:
-                currentheat = Mathf.Clamp(currentheat - heatDecrease * Time.deltaTime, 0f, float.MaxValue);
+                currentheat -= heatDecrease * Time.deltaTime;
+                currentheat = Mathf.Clamp(currentheat, 0f, float.MaxValue);
                 
                 if(currentheat >= Heat)
                 {

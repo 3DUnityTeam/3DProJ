@@ -48,8 +48,8 @@ MonoBehaviour:
   state: 0
   Heat: 1000
   currentheat: 0
-  HeatCooltime: 1
-  heatIncrease: 70
+  HeatCooltime: 3
+  heatIncrease: 100
   heatDecrease: 50
 --- !u!1001 &3839395495729270418
 PrefabInstance:
