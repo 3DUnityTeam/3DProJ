@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     public PoolManager bulletPoolManger;
     //이펙트 풀 매니저
     public PoolManager effectPoolManger;
+    //스폰 매니저
+    public SpawnManager SpawnManager;
 
     [Header("#WeaponImage")]
     //무기 이미지

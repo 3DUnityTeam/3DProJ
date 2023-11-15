@@ -43,17 +43,20 @@ public class DragonController : MonoBehaviour
     private void Awake()
     {
         leftMob = maxMob;
-        playerTrans_ = GameObject.FindGameObjectWithTag("Player").transform;
         trans_ = GetComponent<Transform>();
         rigid_ = GetComponent<Rigidbody>();
         ani_ = GetComponent<Animator>();
         BodyFx(false);
 
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+    }
+    private void Start()
+    {
+        playerTrans_ = GameManager.instance.player.transform;
+
+        player = GameManager.instance.player;
         if (!player)
             Debug.Log("Player is missing");
     }
-
 
     public void NextPhase()
     {

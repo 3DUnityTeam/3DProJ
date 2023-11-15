@@ -127,12 +127,34 @@ public class WeaponManager : MonoBehaviour
         //첫 번째 무기 활성화
         if (ply.CommonParent != null)
         {
-            GameManager.instance.WeaponManager.Weapon[0].SetActive(true);
+            GameObject[] WP = GameManager.instance.WeaponManager.Weapon;
+            for (int i = 0; i < WP.Length; i++)
+            {
+                if (WP[i] == null)
+                    continue;
+
+                // 현재 WP[i]의 자식 오브젝트 수
+                int childCount = WP[i].transform.childCount;
+
+                // 모든 자식 오브젝트에 대해 활성화 또는 비활성화
+                for (int j = 0; j < childCount; j++)
+                {
+                    Transform child = WP[i].transform.GetChild(j);
+                    child.gameObject.SetActive(i == 0); // i가 0이면 활성화, 아니면 비활성화
+                }
+            }
         }
         //특수 무기 활성화
         if (ply.SpecialParent != null)
         {
-            GameManager.instance.WeaponManager.SpecialWeapon.SetActive(true);
+            GameObject WP = GameManager.instance.WeaponManager.SpecialWeapon;
+            // 모든 자식 오브젝트에 대해 활성화 또는 비활성화
+            int childCount = WP.transform.childCount;
+            for (int j = 0; j < childCount; j++)
+            {
+                Transform child = WP.transform.GetChild(j);
+                child.gameObject.SetActive(true); // i가 0이면 활성화, 아니면 비활성화
+            }
         }
     }
     private void Update()

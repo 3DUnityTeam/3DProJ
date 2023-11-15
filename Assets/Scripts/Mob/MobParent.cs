@@ -14,6 +14,10 @@ public class MobParent : MonoBehaviour
     //현재 체력 프로퍼티
     public int HP { get { return this.hp; } set { this.hp = value; } }
 
+    public void DeleteDict()
+    {
+        GameManager.instance.SpawnManager.spawnMob.Remove(gameObject.GetInstanceID());
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
