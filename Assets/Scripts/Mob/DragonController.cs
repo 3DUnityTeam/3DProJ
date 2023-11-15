@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DragonController : MonoBehaviour
 {
@@ -57,11 +58,14 @@ public class DragonController : MonoBehaviour
 
     public void NextPhase()
     {
+        /*
         ani_.SetTrigger("Phase2");
         Debug.Log("Phase2 start");
         BodyFx(false);
         dirr = Vector3.forward;
         StartCoroutine("Phase2");
+        */
+        BeHappy();
     }
 
     private void FixedUpdate()
@@ -391,6 +395,7 @@ public class DragonController : MonoBehaviour
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
         nowHunger = maxHunger;
+        SceneManager.LoadScene("Win");
     }
 
     void BodyFx(bool t)
