@@ -18926,8 +18926,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -91.7
+      value: -98.7
       objectReference: {fileID: 0}
     - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18935,7 +18947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 60.5
+      value: 72.7
       objectReference: {fileID: 0}
     - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24637,7 +24649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 5
   maxHeight: 0
-  width: -10
+  width: 10
   rotation: 0
   sightspeed: 0.01
 --- !u!81 &1525716968

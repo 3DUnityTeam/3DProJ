@@ -258,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 1131222428449617283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2, y: 0.89, z: 20}
-  m_LocalScale: {x: 5.5, y: 5.5, z: 5.5}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1131222428670062216}
@@ -372,7 +372,6 @@ MonoBehaviour:
   - {fileID: 1131222429346393440}
   - {fileID: 1131222428937974245}
   fx: {fileID: 3280519132532786105}
-  maxHp: 5
   traceDist: 5
   speed: 3
 --- !u!1 &1131222428454449242
