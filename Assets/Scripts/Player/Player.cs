@@ -85,12 +85,13 @@ public class Player : MonoBehaviour
         myTR = GetComponent<Transform>();
         myanim = tofu.GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
         if (Time.timeScale == 0)
+        {
             return;
+        }
 
         //대쉬 상태 아닐때
         if (!isdashed)
