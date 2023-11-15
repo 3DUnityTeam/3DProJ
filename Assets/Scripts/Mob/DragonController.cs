@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DragonController : MonoBehaviour
+public class DragonController : MobParent
 {
-    public GameObject mobSpawn;
+    GameObject mobSpawn;
     public GameObject[] mobs;
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
     public GameObject[] bodyFxs;
@@ -22,10 +22,6 @@ public class DragonController : MonoBehaviour
     [SerializeField]
     int maxMob = 50;
     int leftMob;
-    int phaseMob;
-    [SerializeField]
-    int maxHunger = 100;
-    int nowHunger = 0;
 
     float waitingTime;
     float speed = 10f;
@@ -44,6 +40,9 @@ public class DragonController : MonoBehaviour
 
     private void Awake()
     {
+        MaxHP = 100;
+        HP = 0;
+
         leftMob = maxMob;
         trans_ = GetComponent<Transform>();
         rigid_ = GetComponent<Rigidbody>();
@@ -52,6 +51,8 @@ public class DragonController : MonoBehaviour
     }
     private void Start()
     {
+        mobSpawn = GameManager.instance.SpawnManager.gameObject;
+
         playerTrans_ = GameManager.instance.player.transform;
 
         player = GameManager.instance.player;
@@ -71,6 +72,11 @@ public class DragonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (HP >= MaxHP)
+        {
+            BeHappy();
+        }
+
         if (looking)
             trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
 
@@ -98,9 +104,9 @@ public class DragonController : MonoBehaviour
 
     IEnumerator Phase2()
     {
-        while(nowHunger < maxHunger)
+        while(HP < MaxHP)
         {
-            if (nowHunger >= maxHunger)
+            if (HP >= MaxHP)
             {
                 BeHappy();
             }
@@ -393,10 +399,11 @@ public class DragonController : MonoBehaviour
     //full happy dragon
     void BeHappy()
     {
+        base.IsDead();
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
-        nowHunger = maxHunger;
-        SceneManager.LoadScene("Win");
+        HP = MaxHP;
+        //SceneManager.LoadScene("Win");
     }
 
     void BodyFx(bool t)
@@ -407,18 +414,10 @@ public class DragonController : MonoBehaviour
         bodyFxs[3].SetActive(t);
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    public new void OnCollisionEnter(Collision collision)  //µå·¡°ï ¸öÅë µ¥¹ÌÁö
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        { 
-            nowHunger++;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)  //µå·¡°ï ¸öÅë µ¥¹ÌÁö
-    {
-        if (other.gameObject.CompareTag("Player"))
+        base.OnCollisionEnter(collision);
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (rolling)
             {

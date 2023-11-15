@@ -9,15 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-
-    public float bossMaxHp = 100f;
-    [Range(0, 100)]
-    public float bossHp = 50f;
-    private float maxHP = 100f;
-    public float MaxHP { get { return this.maxHP; } }
-    private float hp = 100f;
-    public float HP { get { return this.hp; } set { this.hp = value; } }
-
     [Header("#Player")]
     //인게임 플레이어
     public Tofu tofuFoolr;
@@ -92,17 +83,22 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        //if (tofuFoolr == null)
-        //{
-        //    return;
-        //}
-        //if (tofuFoolr.HP <= 0)
-        //{
-        //    UIManager.FinshGame(false);
-        //}else if (bossHp <= 0)
-        //{
-        //    UIManager.FinshGame(true);
-        //}
+        if (tofuFoolr == null)
+        {
+            return;
+        }
+        DragonController dragon;
+        if (tofuFoolr.HP <= 0)
+        {
+            UIManager.FinshGame(false);
+        }
+        else if (SpawnManager.Boss.TryGetComponent<DragonController>(out dragon))
+        {
+            if (dragon.HP >= dragon.MaxHP)
+            {
+                //UIManager.FinshGame(true);
+            }
+        }
         //커서 중앙 잠금 구현
         Cursor.visible = !isCursorLocked;
         Cursor.lockState= !isCursorLocked?(CursorLockMode)0:(CursorLockMode)1;

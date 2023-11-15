@@ -51,6 +51,9 @@ public class FishController : MobParent
         Fx(true);
         spawn = false;
         fx.SetActive(false);
+
+        //모판 지속데미지
+        StartCoroutine(IsLive(15));
     }
 
     private void Update()
@@ -63,7 +66,6 @@ public class FishController : MobParent
     {
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -148,7 +150,7 @@ public class FishController : MobParent
         Debug.Log(dirr);
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);

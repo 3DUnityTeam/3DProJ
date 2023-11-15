@@ -26,7 +26,7 @@ public class RatController : MobParent
 
     private void Awake()
     {
-        MaxHP= 1;
+        MaxHP = 1;
         HP = 0;
 
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -52,6 +52,9 @@ public class RatController : MobParent
         Fx(true);
         spawn = false;
         fx.SetActive(false);
+
+        //모판 지속데미지
+        StartCoroutine(IsLive(10));
     }
 
     private void Update()
@@ -64,7 +67,6 @@ public class RatController : MobParent
     {
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -130,7 +132,7 @@ public class RatController : MobParent
         yield return new WaitForSeconds(0.3f);
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);
