@@ -12,7 +12,7 @@ public class ClickEvent : MonoBehaviour
     //Battle 씬으로 이동
     public void GoToBattle()
     {
-        SceneManager.LoadScene("Battle");
+        SceneManager.LoadScene(1);
     }
     //타이틀 씬으로 이동
     public void GoToTitle()
