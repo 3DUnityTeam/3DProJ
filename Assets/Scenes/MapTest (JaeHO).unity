@@ -33198,6 +33198,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 901143011801363609, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419280200662785241, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721710022595165294, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775348931784556245, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3819502652143046084, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6297803929822288755, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_Intensity
       value: 0
@@ -33218,6 +33238,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6578216536535164982, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6878709138971638985, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_Range
       value: 4
@@ -33226,9 +33250,21 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7224834343673633563, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379675511279011288, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7483378080234348816, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_Intensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974926613698445801, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8854346847008214578, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_RootOrder

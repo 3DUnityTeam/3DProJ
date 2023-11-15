@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class RatController : MonoBehaviour
+public class RatController : MobParent
 {
     public Transform firePoz;
     public GameObject lemon;
@@ -12,10 +12,6 @@ public class RatController : MonoBehaviour
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
-
-    [SerializeField]
-    int maxHp = 1;
-    int hp = 0;
 
     [SerializeField]
     float traceDist = 6.5f;
@@ -30,6 +26,9 @@ public class RatController : MonoBehaviour
 
     private void Awake()
     {
+        MaxHP= 1;
+        HP = 0;
+
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
@@ -63,7 +62,7 @@ public class RatController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp >= maxHp)
+        if (HP >= MaxHP)
             IsDead();
         else
         {
@@ -132,19 +131,5 @@ public class RatController : MonoBehaviour
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
     }
 }

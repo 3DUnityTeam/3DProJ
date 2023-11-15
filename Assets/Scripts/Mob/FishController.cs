@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class FishController : MonoBehaviour
+public class FishController : MobParent
 {
     Transform playerTrans_;
     Transform trans_;
@@ -9,10 +9,6 @@ public class FishController : MonoBehaviour
 
     public GameObject[] lods;
     public GameObject fx;
-
-    [SerializeField]
-    int maxHp = 3;
-    int hp = 0;
 
     [SerializeField]
     float traceDist = 6.0f;
@@ -29,6 +25,9 @@ public class FishController : MonoBehaviour
 
     private void Awake()
     {
+        MaxHP = 3;
+        HP = 0;
+
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
@@ -62,7 +61,7 @@ public class FishController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp >= maxHp)
+        if (HP >= MaxHP)
             IsDead();
         else
         {
@@ -150,19 +149,5 @@ public class FishController : MonoBehaviour
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
     }
 }
