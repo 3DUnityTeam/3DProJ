@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
         StopManager.TimeStop();
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
+        if (UIManager == null)
+        {
+            isCursorLocked = false;
+            StopManager.TimePass();
+        }
     }
     private void Update()
     {
