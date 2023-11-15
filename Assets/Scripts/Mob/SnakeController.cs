@@ -67,7 +67,10 @@ public class SnakeController : MobParent
     private void FixedUpdate()
     {
         if (HP >= MaxHP)
+        {
+            DeleteDict();
             IsDead();
+        }
         else
         {
             if (spawn)

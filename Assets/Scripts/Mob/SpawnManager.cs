@@ -1,11 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MobSpawn : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
     public GameObject dragon;
     public GameObject[] mobs;
     public GameObject mobSpawn;
+    public Dictionary<int, GameObject> spawnMob= new Dictionary<int, GameObject>();
 
     Transform trans_;
 
@@ -15,6 +17,7 @@ public class MobSpawn : MonoBehaviour
 
     private void Awake()
     {
+        spawnMob.Add(dragon.GetInstanceID(), dragon);
         trans_ = GetComponent<Transform>();
         leftMob = maxMob;
     }
@@ -32,6 +35,7 @@ public class MobSpawn : MonoBehaviour
                 float tZ = trans_.position.x + Random.Range(-100f, 100f);
 
                 GameObject obj = Instantiate(mobs[Random.Range(0, mobs.Length)]);
+                spawnMob.Add(obj.GetInstanceID(), obj);
                 obj.transform.position = new Vector3(tX,1, tZ);
                 obj.transform.parent = mobSpawn.transform;
 
