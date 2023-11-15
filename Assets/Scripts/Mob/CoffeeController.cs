@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CoffeeController : MonoBehaviour
+public class CoffeeController : MobParent
 {
     public GameObject coffee;
     public GameObject warnCoffee;
@@ -12,10 +12,6 @@ public class CoffeeController : MonoBehaviour
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
-
-    [SerializeField]
-    int maxHp = 5;
-    int hp = 0;
 
     [SerializeField]
     float traceDist = 3.0f;
@@ -31,6 +27,8 @@ public class CoffeeController : MonoBehaviour
 
     private void Awake()
     {
+        MaxHP= 5;
+        HP = 0;
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
@@ -64,8 +62,11 @@ public class CoffeeController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp >= maxHp)
+        if (HP >= MaxHP)
+        {
+            DeleteDict();
             IsDead();
+        }
         else
         {
             if (spawn)
@@ -144,19 +145,5 @@ public class CoffeeController : MonoBehaviour
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
     }
 }

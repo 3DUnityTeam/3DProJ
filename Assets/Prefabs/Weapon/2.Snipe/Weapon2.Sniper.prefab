@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   Heat: 1000
-  HeatCooltime: 1
-  heatIncrease: 70
+  currentheat: 0
+  HeatCooltime: 3
+  heatIncrease: 100
   heatDecrease: 50
 --- !u!1001 &3839395495729270418
 PrefabInstance:
@@ -132,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: cooltime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: bulletspeed
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: muzzelFlash

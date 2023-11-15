@@ -17,7 +17,7 @@ public class FireControl : MonoBehaviour
 
     [Header ("내부 수치")]
     public float rapidspeed = 0.7f;
-    private float ctime = 0.7f;
+    private float ctime = 0f;
     public float bulletspeed = 2000f;
     
 

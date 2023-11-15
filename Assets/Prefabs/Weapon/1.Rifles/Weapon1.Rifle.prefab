@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   Heat: 1000
+  currentheat: 0
   HeatCooltime: 0.7
-  heatIncrease: 25
+  heatIncrease: 7
   heatDecrease: 20
 --- !u!1 &2938176249413868260
 GameObject:
@@ -245,6 +246,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: bulletspeed
+      value: 3500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: muzzelFlash
       value: 
       objectReference: {fileID: 936529071413501958}
@@ -366,6 +371,10 @@ PrefabInstance:
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: rapidspeed
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: bulletspeed
+      value: 3500
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: muzzelFlash

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SnakeController : MonoBehaviour
+public class SnakeController : MobParent
 {
     enum State
     {
@@ -18,10 +18,6 @@ public class SnakeController : MonoBehaviour
     public GameObject[] lods;
 
     [SerializeField]
-    int maxHp = 2;
-    int hp = 0;
-
-    [SerializeField]
     float traceDist = 50f;
     [SerializeField]
     float speed = 3.0f;
@@ -32,9 +28,11 @@ public class SnakeController : MonoBehaviour
     bool flag = false;
     bool atk = false;
     bool spawn = true;
-
     private void Awake()
     {
+        MaxHP = 2;
+        HP = 0;
+
         Fx(false);
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
@@ -68,8 +66,11 @@ public class SnakeController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp >= maxHp)
+        if (HP >= MaxHP)
+        {
+            DeleteDict();
             IsDead();
+        }
         else
         {
             if (spawn)
@@ -147,18 +148,4 @@ public class SnakeController : MonoBehaviour
         Destroy(this.gameObject, 2.5f);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            ani_.SetTrigger("Hit");
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            
-        }
-    }
 }
