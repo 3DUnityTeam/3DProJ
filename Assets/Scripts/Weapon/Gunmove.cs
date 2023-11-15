@@ -76,14 +76,15 @@ public class Gunmove : MonoBehaviour
     IEnumerator CheckTarget()
     {
         yield return new WaitForSeconds(0.1f);
-        if (aimManager.aimingTarget == null)
-        {
-            state = State.noTarget;
-        }
-        else if (aimManager.aimingTarget != null)
+        if (aimManager.aimingTarget != null)
         {
             target = aimManager.aimingTarget.transform;
             state = State.Targeted;
+        }
+        else
+        {
+            target = basic;
+            state = State.noTarget;
         }
     }
 }
