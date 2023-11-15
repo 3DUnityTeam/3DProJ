@@ -45,7 +45,11 @@ public class Gunmove : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 break;
             case State.Targeted:
-                transform.LookAt(target.position);
+                if(target)
+                {
+                    transform.LookAt(target.position);
+                }
+                
                 
                 // 자식 개체의 localrotation을 제한을 줄 쿼터니언으로 설정
                 
