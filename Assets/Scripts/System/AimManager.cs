@@ -31,7 +31,6 @@ public class AimManager : MonoBehaviour
     private int togle=0;
     private void Update()
     {
-        mobList = GameManager.instance.SpawnManager.spawnMob;
         //다음 대상으로
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -50,6 +49,7 @@ public class AimManager : MonoBehaviour
     }
     void FixedUpdate()
     {
+        mobList = GameManager.instance.SpawnManager.spawnMob;
         //추적 대상 저장
         //mobList=GameManager.instance.
         aimingTarget =IsTrackingTarget();
