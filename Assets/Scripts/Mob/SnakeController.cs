@@ -148,7 +148,8 @@ public class SnakeController : MobParent
     void IsDead()
     {
         ani_.SetTrigger("Happy");
-        Destroy(this.gameObject, 2.5f);
+        //Destroy(this.gameObject, 2.5f);
+
     }
 
 }

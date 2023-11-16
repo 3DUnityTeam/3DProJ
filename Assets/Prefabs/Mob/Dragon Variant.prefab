@@ -1448,6 +1448,7 @@ MonoBehaviour:
   meteos:
   - {fileID: 3456979191988998849, guid: b809f72d9577789448b2e7331212fdc3, type: 3}
   - {fileID: 482132250158656441, guid: 450a2c4f2bca9c24aa7b8bb09af2a9d0, type: 3}
+  Player: {fileID: 0}
   skillDmg: 0
   maxMob: 1
   maxHunger: 100

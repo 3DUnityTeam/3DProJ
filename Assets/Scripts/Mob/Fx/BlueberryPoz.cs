@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class BlueberryPoz : MonoBehaviour
 {
-    bool isAll;
 
     private void Update()
     {
-        isAll = GameObject.Find("Dragon").GetComponent<DragonController>().meteoAll;
-        if (isAll)
-            Destroy(this.gameObject, 0.8f);
+            Destroy(this.gameObject, 1.8f);
     }
 
     private void OnTriggerEnter(Collider other)
