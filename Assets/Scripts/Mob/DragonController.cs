@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class DragonController : MobParent
 {
     GameObject mobSpawn;
-    public GameObject[] mobs;
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
     public GameObject[] bodyFxs;
     public GameObject[] meteos;   //blueberry poz blueberry bomb
@@ -40,7 +39,7 @@ public class DragonController : MobParent
 
     private void Awake()
     {
-        MaxHP = 100;
+        MaxHP = 4000;
         HP = 0;
 
         leftMob = maxMob;
@@ -58,6 +57,8 @@ public class DragonController : MobParent
         player = GameManager.instance.player;
         if (!player)
             Debug.Log("Player is missing");
+
+        NextPhase();
     }
 
     public void NextPhase()
@@ -114,8 +115,8 @@ public class DragonController : MobParent
             {
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                int p = Random.Range(0, fxs.Length + 1);
-                //int p = 4;
+                //int p = Random.Range(0, fxs.Length + 1);
+                int p = 5;
                 switch (p)
                 {
                     case 0:
@@ -379,9 +380,9 @@ public class DragonController : MobParent
                 {
                     float tX = trans_.position.x + Random.Range(-50f, 50f);
                     float tZ = trans_.position.x + Random.Range(-50f, 50f);
-
-                    GameObject obj = Instantiate(mobs[Random.Range(0, mobs.Length)]);
-                    obj.transform.position = new Vector3(tX, 0, tZ);
+                    int random = Random.Range(0, GameManager.instance.SpawnManager.pools.Length);
+                    GameObject obj = GameManager.instance.SpawnManager.Get(random);
+                    obj.transform.position = new Vector3(tX, 1, tZ);
                     obj.transform.parent = mobSpawn.transform;
 
                     yield return new WaitForSeconds(0.4f);
@@ -399,11 +400,11 @@ public class DragonController : MobParent
     //full happy dragon
     void BeHappy()
     {
-        base.IsDead();
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
         HP = MaxHP;
         //SceneManager.LoadScene("Win");
+        base.IsDead();
     }
 
     void BodyFx(bool t)

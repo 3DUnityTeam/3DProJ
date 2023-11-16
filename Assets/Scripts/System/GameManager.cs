@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("#Boss")]
+    public GameObject Boss;
     [Header("#Player")]
     //인게임 플레이어
     public Tofu tofuFoolr;
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
     //이펙트 풀 매니저
     public PoolManager effectPoolManger;
     //스폰 매니저
-    public SpawnManager SpawnManager;
+    public PoolManager SpawnManager;
 
     [Header("#WeaponImage")]
     //무기 이미지
@@ -97,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             UIManager.FinshGame(false);
         }
-        else if (SpawnManager.Boss.TryGetComponent<DragonController>(out dragon))
+        else if (Boss.TryGetComponent<DragonController>(out dragon))
         {
             if (dragon.HP >= dragon.MaxHP)
             {

@@ -31,8 +31,8 @@ public class HUD : MonoBehaviour
                 slider.value = manager.player.HP / manager.player.MaxHP;
                 break;
             case HUDType.Boss:
-                float hp = manager.SpawnManager.Boss.GetComponent<DragonController>().HP;
-                float maxHP= manager.SpawnManager.Boss.GetComponent<DragonController>().MaxHP;
+                float hp = manager.Boss.GetComponent<DragonController>().HP;
+                float maxHP= manager.Boss.GetComponent<DragonController>().MaxHP;
                 slider.value = (maxHP-hp) / maxHP;
                 break;
             case HUDType.AP:

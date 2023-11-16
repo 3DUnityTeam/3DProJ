@@ -7889,6 +7889,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5725140001408169058, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: maxDistance
       value: 100
@@ -7942,7 +7946,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager(Battle)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 893599714002438157, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
 --- !u!1001 &439663138
 PrefabInstance:

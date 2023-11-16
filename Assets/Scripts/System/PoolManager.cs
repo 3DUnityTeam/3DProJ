@@ -10,7 +10,7 @@ public class PoolManager : MonoBehaviour
 
 
     //풀 담당을 하는 리스트
-    List<GameObject>[] pools;
+    public List<GameObject>[] pools;
 
     private void Awake()
     {

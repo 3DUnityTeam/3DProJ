@@ -30,11 +30,8 @@ public class SnakeController : MobParent
     bool spawn = true;
     private void Awake()
     {
-        MaxHP = 10;
-        HP = 0;
-
+        MaxHP = 80;
         Fx(false);
-        playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
@@ -48,8 +45,19 @@ public class SnakeController : MobParent
         }
     }
 
+    public override void OnEnable()
+    {
+        atk = false;
+        flag = false;
+        spawn = true;
+        StartCoroutine(Start());
+        base.OnEnable();
+    }
+
     private IEnumerator Start()
     {
+        playerTrans_ = GameManager.instance.player.transform;
+
         fx.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         this.gameObject.SetActive(true);
@@ -63,12 +71,16 @@ public class SnakeController : MobParent
 
     private void Update()
     {
+        if (Dead)
+            return;
         StartCoroutine("CheckState");
         StartCoroutine("DoMove");
     }
 
     private void FixedUpdate()
     {
+        if (Dead)
+            return;
         if (HP >= MaxHP)
         {
             IsDead();
@@ -147,7 +159,7 @@ public class SnakeController : MobParent
     public override void IsDead()
     {
         ani_.SetTrigger("Happy");
-        Destroy(this.gameObject, 2.5f);
+        base.IsDead();
     }
 
 }

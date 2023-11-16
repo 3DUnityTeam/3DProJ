@@ -25,10 +25,7 @@ public class FishController : MobParent
 
     private void Awake()
     {
-        MaxHP = 3;
-        HP = 0;
-
-        playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        MaxHP = 120;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
@@ -42,8 +39,19 @@ public class FishController : MobParent
         }
     }
 
+    public override void OnEnable()
+    {
+        isTrace = false;
+        flag = false;
+        spawn = true;
+        StartCoroutine(Start());
+        base.OnEnable();
+    }
+
     private IEnumerator Start()
     {
+        playerTrans_ = GameManager.instance.player.transform;
+
         fx.SetActive(true);
         Fx(false);
         yield return new WaitForSeconds(1.5f);
@@ -58,12 +66,16 @@ public class FishController : MobParent
 
     private void Update()
     {
+        if (Dead)
+            return;
         StartCoroutine("CheckState");
         StartCoroutine("DoMove");
     }
 
     private void FixedUpdate()
     {
+        if (Dead)
+            return;
         if (HP >= MaxHP)
         {
             IsDead();
@@ -153,6 +165,6 @@ public class FishController : MobParent
     public override void IsDead()
     {
         ani_.SetTrigger("Happy");
-        Destroy(this.gameObject, 2.5f);
+        base.IsDead();
     }
 }

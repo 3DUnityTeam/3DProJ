@@ -5,8 +5,8 @@ using UnityEngine;
 public class FireControl : MonoBehaviour
 {
     [Header("외부 오브젝트")]
-    public WeaponControl parent;
-    public AimManager aimManager;
+    private WeaponControl parent;
+    private AimManager aimManager;
     public int bulletID;
     public Transform firePos;
     public AudioClip fireSfx;
@@ -111,7 +111,6 @@ public class FireControl : MonoBehaviour
     IEnumerator ShowMuzzleFlash()
     {
         Vector3 localscale = muzzelFlash.transform.localScale;
-        Vector2 offset = new Vector3(Random.Range(0, 2), Random.Range(0, 2)) * 0.5f;
 
         float angle = Random.Range(0, 360);
         muzzelFlash.transform.localRotation = Quaternion.Euler(0, 0, angle);
@@ -129,7 +128,6 @@ public class FireControl : MonoBehaviour
     }
     IEnumerator ShowMuzzleFire()
     {
-
         yield return new WaitForSeconds(rapidspeed - 0.2f);
         muzzlefire.SetActive(false);
         muzzlelight.enabled = false;

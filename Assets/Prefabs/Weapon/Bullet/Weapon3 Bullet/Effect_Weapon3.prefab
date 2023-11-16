@@ -19085,8 +19085,8 @@ GameObject:
   - component: {fileID: 164666595697059163}
   - component: {fileID: 164666595697024251}
   - component: {fileID: 7971586974847240022}
-  - component: {fileID: 1018282299783230528}
   - component: {fileID: 12603500655897501}
+  - component: {fileID: 2877690302396142513}
   m_Layer: 0
   m_Name: Effect_Weapon3
   m_TagString: Trigger
