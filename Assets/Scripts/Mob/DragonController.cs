@@ -52,10 +52,6 @@ public class DragonController : MobParent
 
         playerTrans_ = GameManager.instance.player.transform;
 
-        player = GameManager.instance.player;
-        if (!player)
-            Debug.Log("Player is missing");
-
         NextPhase();
     }
 
