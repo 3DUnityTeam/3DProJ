@@ -115,8 +115,8 @@ public class DragonController : MobParent
             {
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                //int p = Random.Range(0, fxs.Length + 1);
-                int p = 5;
+                int p = Random.Range(0, fxs.Length + 1);
+                //int p = 5;
                 switch (p)
                 {
                     case 0:

@@ -14,10 +14,10 @@ public class Gunmove : MonoBehaviour
     public Transform target;
     AimManager aimManager;
 
-    public float �������� = 10f;
-    public float �������� = 10f;
-    public float ��ܰ��� = 10f;
-    public float �ϴܰ��� = 10f;
+    public float upperAngle = 10f;
+    public float downAngle = 10f;
+    public float leftAngle = 10f;
+    public float rightAngle = 10f;
 
     private void Awake()
     {
@@ -28,8 +28,8 @@ public class Gunmove : MonoBehaviour
         float limit = GameManager.instance.AimManager.limitAngle;
         float angle = Mathf.Acos(limit) * (180 / Mathf.PI);
 
-        �������� = Mathf.Acos(angle);
-        �������� = Mathf.Acos(angle);
+        leftAngle = Mathf.Acos(angle);
+        rightAngle = Mathf.Acos(angle);
     }
     void Update()
     {
@@ -59,8 +59,8 @@ public class Gunmove : MonoBehaviour
         Vector3 trangle = transform.localEulerAngles;
         trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
         trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
-        trangle.x = Mathf.Clamp(trangle.x, -(�ϴܰ���), ��ܰ���);
-        trangle.y = Mathf.Clamp(trangle.y, -(��������), ��������);
+        trangle.x = Mathf.Clamp(trangle.x, -(downAngle), upperAngle);
+        trangle.y = Mathf.Clamp(trangle.y, -(leftAngle), rightAngle);
         trangle.z = 0;
         transform.localEulerAngles = trangle;
 
