@@ -488,4 +488,17 @@ public class Player : MonoBehaviour
             isJump = false;
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        FlameShot shot;
+        if(other.TryGetComponent<FlameShot>(out shot))
+        {
+            HP = HP - shot.flameDmg* Time.fixedDeltaTime;
+        }
+        RollingFire rolling;
+        if (other.TryGetComponent<RollingFire>(out rolling))
+        {
+            HP = HP - rolling.fireDmg * Time.fixedDeltaTime;
+        }
+    }
 }

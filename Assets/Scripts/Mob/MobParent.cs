@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class MobParent : MonoBehaviour
 {
+    private float damage;
     private bool dead;
     private float dotDamage;
     //�ִ� ü��
     private float maxHp;
     //���� ü��
     private float hp=0;
+    private float directTimer = 0;
 
     //������Ƽ
     //���� ������
+
+    public float DirectTimer { get { return this.directTimer; } set { this.directTimer = value; } }
+    public float Damage { get { return this.damage; } set { this.damage = value; } }
     public bool Dead { get { return this.dead; }set { this.dead = value; } }
     //���� ������
     public float DotDamage { get { return this.dotDamage; }set { this.dotDamage = value; } }
@@ -37,7 +42,7 @@ public class MobParent : MonoBehaviour
         ///}
         ///
     }
-
+    //enter(collider,trigger)
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.gameObject.GetComponent<TriggerCollison>() != null)
@@ -53,6 +58,29 @@ public class MobParent : MonoBehaviour
             }
             
 			HP = HP + effectInfo.damage;
+        }
+    }
+    //stay(collider,trigger)
+    
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (DirectTimer >= 1)
+            {
+                GameManager.instance.player.HP -= Damage;
+                DirectTimer = 0;
+            }
+            DirectTimer += Time.fixedDeltaTime;
+        }
+    }
+
+    //exit(collider,trigger)
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            DirectTimer = 0;
         }
     }
 
