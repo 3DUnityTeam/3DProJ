@@ -184,6 +184,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 790492314629077705}
     m_Modifications:
+    - target: {fileID: 4113076220525043978, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113076220525043978, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113076220525043978, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817761980477517080, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817761980477517080, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817761980477517080, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6580231901530132856, guid: 980e7c47cfe445048a5484c7c6aa1c17, type: 3}
       propertyPath: m_Name
       value: CollectWeapon
@@ -519,12 +543,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2087198536570018720, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087198536570018720, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699097342172841820, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5699097342172841820, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810991940241121959, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6077776403314548823, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: m_AnchorMax.x
@@ -541,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 6250715720030847140, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6350522784502927730, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6350522784502927730, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: m_AnchorMax.y
