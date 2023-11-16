@@ -52,6 +52,9 @@ public class RatController : MobParent
         Fx(true);
         spawn = false;
         fx.SetActive(false);
+
+        //���� ���ӵ�����
+        StartCoroutine(IsLive(10));
     }
 
     private void Update()
@@ -64,7 +67,6 @@ public class RatController : MobParent
     {
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -131,7 +133,7 @@ public class RatController : MobParent
         yield return new WaitForSeconds(0.3f);
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);

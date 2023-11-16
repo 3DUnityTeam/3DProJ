@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject dragon;
+    public GameObject Boss;
     public GameObject[] mobs;
     public GameObject mobSpawn;
     public Dictionary<int, GameObject> spawnMob= new Dictionary<int, GameObject>();
@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        spawnMob.Add(dragon.GetInstanceID(), dragon);
+        spawnMob.Add(Boss.GetInstanceID(), Boss);
         trans_ = GetComponent<Transform>();
         leftMob = maxMob;
     }
@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
         }
         if(leftMob <= 0)
         {
-            dragon.GetComponent<DragonController>().NextPhase();
+            Boss.GetComponent<DragonController>().NextPhase();
         }
     }
 }

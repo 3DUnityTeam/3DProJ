@@ -14,10 +14,10 @@ public class Gunmove : MonoBehaviour
     public Transform target;
     AimManager aimManager;
 
-    public float ÁÂÃø°¢µµ = 10f;
-    public float ¿ìÃø°¢µµ = 10f;
-    public float »ó´Ü°¢µµ = 10f;
-    public float ÇÏ´Ü°¢µµ = 10f;
+    public float ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = 10f;
+    public float ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = 10f;
+    public float ï¿½ï¿½Ü°ï¿½ï¿½ï¿½ = 10f;
+    public float ï¿½Ï´Ü°ï¿½ï¿½ï¿½ = 10f;
 
     private void Awake()
     {
@@ -28,8 +28,8 @@ public class Gunmove : MonoBehaviour
         float limit = GameManager.instance.AimManager.limitAngle;
         float angle = Mathf.Acos(limit) * (180 / Mathf.PI);
 
-        ÁÂÃø°¢µµ = Mathf.Acos(angle);
-        ¿ìÃø°¢µµ = Mathf.Acos(angle);
+        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = Mathf.Acos(angle);
+        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = Mathf.Acos(angle);
     }
     void Update()
     {
@@ -45,30 +45,27 @@ public class Gunmove : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 break;
             case State.Targeted:
-                if(target)
-                {
-                    transform.LookAt(target.position);
-                }
+                Vector3 center = target.GetComponent<Collider>().bounds.center;
+                transform.LookAt(center);
                 
-                
-                // ÀÚ½Ä °³Ã¼ÀÇ localrotationÀ» Á¦ÇÑÀ» ÁÙ ÄõÅÍ´Ï¾ðÀ¸·Î ¼³Á¤
+                // ï¿½Ú½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ localrotationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í´Ï¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 
 
                 break;
 
 
         }
-        // ¿ÀºêÁ§Æ®ÀÇ y, z Ãà È¸ÀüÀ» °íÁ¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ y, z ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 trangle = transform.localEulerAngles;
         trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
         trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
-        trangle.x = Mathf.Clamp(trangle.x, -(ÇÏ´Ü°¢µµ), »ó´Ü°¢µµ);
-        trangle.y = Mathf.Clamp(trangle.y, -(ÁÂÃø°¢µµ), ¿ìÃø°¢µµ);
+        trangle.x = Mathf.Clamp(trangle.x, -(ï¿½Ï´Ü°ï¿½ï¿½ï¿½), ï¿½ï¿½Ü°ï¿½ï¿½ï¿½);
+        trangle.y = Mathf.Clamp(trangle.y, -(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½), ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½);
         trangle.z = 0;
         transform.localEulerAngles = trangle;
 
 
-        // »õ·Î¿î È¸Àü°ªÀ» Àû¿ë
+        // ï¿½ï¿½ï¿½Î¿ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
     }

@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DragonController : MonoBehaviour
+public class DragonController : MobParent
 {
-    public GameObject mobSpawn;
+    GameObject mobSpawn;
     public GameObject[] mobs;
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
     public GameObject[] bodyFxs;
@@ -22,10 +22,6 @@ public class DragonController : MonoBehaviour
     [SerializeField]
     int maxMob = 50;
     int leftMob;
-    int phaseMob;
-    [SerializeField]
-    int maxHunger = 100;
-    int nowHunger = 0;
 
     float waitingTime;
     float speed = 10f;
@@ -44,6 +40,9 @@ public class DragonController : MonoBehaviour
 
     private void Awake()
     {
+        MaxHP = 100;
+        HP = 0;
+
         leftMob = maxMob;
         trans_ = GetComponent<Transform>();
         rigid_ = GetComponent<Rigidbody>();
@@ -52,6 +51,8 @@ public class DragonController : MonoBehaviour
     }
     private void Start()
     {
+        mobSpawn = GameManager.instance.SpawnManager.gameObject;
+
         playerTrans_ = GameManager.instance.player.transform;
 
         player = GameManager.instance.player;
@@ -71,6 +72,11 @@ public class DragonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (HP >= MaxHP)
+        {
+            BeHappy();
+        }
+
         if (looking)
             trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
 
@@ -98,9 +104,9 @@ public class DragonController : MonoBehaviour
 
     IEnumerator Phase2()
     {
-        while(nowHunger < maxHunger)
+        while(HP < MaxHP)
         {
-            if (nowHunger >= maxHunger)
+            if (HP >= MaxHP)
             {
                 BeHappy();
             }
@@ -290,7 +296,7 @@ public class DragonController : MonoBehaviour
             //Debug.Log("After Spining");
             fxs[4].SetActive(true);
             //Debug.Log("Fx On");
-            if(Random.Range(0, 2) == 0)  //ÇÑ¹ø¿¡ ·£´ýÇÑ À§Ä¡·Î 10~30°³ÀÇ ¸ÞÅ×¿À ºÐÃâ
+            if(Random.Range(0, 2) == 0)  //ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ 10~30ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×¿ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
                 //Debug.Log("Before selecting N");
                 int n = Random.Range(10, 31);
@@ -316,7 +322,7 @@ public class DragonController : MonoBehaviour
                 yield return new WaitForSeconds(1.5f);
                 meteoAll = true;
             }
-            else  //¸ÞÅ×¿À 5°³~10°³¸¦ ÇÃ·¹ÀÌ¾î ¸Ó¸®À§¿¡ ¶³±À
+            else  //ï¿½ï¿½ï¿½×¿ï¿½ 5ï¿½ï¿½~10ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ó¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
                 int n = Random.Range(5, 11);
                 waitingTime = 0.5f * n;
@@ -393,10 +399,11 @@ public class DragonController : MonoBehaviour
     //full happy dragon
     void BeHappy()
     {
+        base.IsDead();
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
-        nowHunger = maxHunger;
-        SceneManager.LoadScene("Win");
+        HP = MaxHP;
+        //SceneManager.LoadScene("Win");
     }
 
     void BodyFx(bool t)
@@ -407,15 +414,10 @@ public class DragonController : MonoBehaviour
         bodyFxs[3].SetActive(t);
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    public new void OnCollisionEnter(Collision collision)  //ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        { 
-            nowHunger++;
-        }
-
-        if (collision.gameObject.CompareTag("Player"))  //µå·¡°ï ¸öÅë µ¥¹ÌÁö
+        base.OnCollisionEnter(collision);
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (rolling)
             {

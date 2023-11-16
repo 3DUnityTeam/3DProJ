@@ -56,6 +56,9 @@ public class SnakeController : MobParent
         Fx(true);
         fx.SetActive(false);
         spawn = false;
+
+        //모판 지속데미지
+        StartCoroutine(IsLive(10));
     }
 
     private void Update()
@@ -68,7 +71,6 @@ public class SnakeController : MobParent
     {
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -142,7 +144,7 @@ public class SnakeController : MobParent
         yield return new WaitForSeconds(0.3f);
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);

@@ -27,7 +27,7 @@ public class CoffeeController : MobParent
 
     private void Awake()
     {
-        MaxHP= 5;
+        MaxHP = 5;
         HP = 0;
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
@@ -52,6 +52,9 @@ public class CoffeeController : MobParent
         Fx(true);
         spawn = false;
         fx.SetActive(false);
+        
+        //모판 지속데미지
+        StartCoroutine(IsLive(10));
     }
 
     private void Update()
@@ -64,7 +67,6 @@ public class CoffeeController : MobParent
     {
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -141,7 +143,7 @@ public class CoffeeController : MobParent
         }
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);

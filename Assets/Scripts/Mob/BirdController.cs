@@ -53,6 +53,9 @@ public class BirdController : MobParent
         Fx(true);
         spawn = false;
         fx.SetActive(false);
+
+        //모판 지속데미지
+        StartCoroutine(IsLive(10));
     }
 
     private void Update()
@@ -68,7 +71,6 @@ public class BirdController : MobParent
     {
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -149,7 +151,7 @@ public class BirdController : MobParent
         }
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         StartCoroutine("Explore");
     }
