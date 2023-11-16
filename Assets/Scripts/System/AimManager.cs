@@ -19,7 +19,7 @@ public class AimManager : MonoBehaviour
     //최대 거리
     public float maxDistance;
     //거리 이내의 몹
-    private Dictionary<int, GameObject> mobList; // 시야를 확인할 대상
+    public List<GameObject> mobList; // 시야를 확인할 대상
 
     //조준 중인 타겟
     public GameObject aimingTarget;
@@ -49,9 +49,28 @@ public class AimManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-        mobList = GameManager.instance.SpawnManager.spawnMob;
+        List<GameObject>[] pools = GameManager.instance.SpawnManager.pools;
+        for (int i=0; i < pools.Length; i++)
+        {
+            for(int j = 0; j < pools[i].Count; j++)
+            {
+                if (!pools[i][j].GetComponent<MobParent>().Dead)
+                {
+                    if (!mobList.Contains(pools[i][j]))
+                        mobList.Add(pools[i][j]);
+                }
+                else
+                {
+                    if (mobList.Contains(pools[i][j]))
+                    {
+                        mobList.Remove(pools[i][j]);
+                    }
+                }
+            }
+        }
         //추적 대상 저장
-        //mobList=GameManager.instance.
+        if (!mobList.Contains(GameManager.instance.Boss))
+            mobList.Add(GameManager.instance.Boss);
         aimingTarget =IsTrackingTarget();
     }
     //추적 대상 구하기
@@ -79,18 +98,18 @@ public class AimManager : MonoBehaviour
         if (mobList == null)
             return null;
         //추적할 몹 조건 맞는 몹 검색
-        foreach(KeyValuePair<int,GameObject> mob in mobList)
+        foreach(GameObject mob in mobList)
         {
             //캔버스 내의 몹 
-            if (IsInLineOfSight(mob.Value))
+            if (IsInLineOfSight(mob))
             {
                 //몹과 플레이어의 거리
-                float distance = Vector3.Distance(mob.Value.transform.position, ply.transform.position);
+                float distance = Vector3.Distance(mob.transform.position, ply.transform.position);
                 //최대거리보다 작은 몹
                 if (distance <= maxDistance)
                 {
                     //플레이어 시점 제한
-                    float angle = IsPlayerSeenOfSight(mob.Value);
+                    float angle = IsPlayerSeenOfSight(mob);
                     //최대 각도보다 큰 애들을 넘기기
                     if (angle< limitAngle)
                     {
@@ -98,14 +117,14 @@ public class AimManager : MonoBehaviour
                     }
 
                     //조건에 맞는 애들 사전,리스트 포함
-                    lockDic.Add(mob.Value, angle);
-                    lockList.Add(mob.Value);
+                    lockDic.Add(mob, angle);
+                    lockList.Add(mob);
 
                     //최소거리보다 작은 애들로 초기화
                     if(minDistance> distance)
                     {
                         minDistance = distance;
-                        nearMob = mob.Value;
+                        nearMob = mob;
                     }
                 }
             }

@@ -13,7 +13,6 @@ public class WeaponControl : MonoBehaviour
     public float Heat;
     public float currentheat = 0;
     public float HeatCooltime;
-    private float cooltime;
     public float heatIncrease;
     public float heatDecrease;
 

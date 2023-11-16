@@ -9,15 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-
-    public float bossMaxHp = 100f;
-    [Range(0, 100)]
-    public float bossHp = 50f;
-    private float maxHP = 100f;
-    public float MaxHP { get { return this.maxHP; } }
-    private float hp = 100f;
-    public float HP { get { return this.hp; } set { this.hp = value; } }
-
+    [Header("#Boss")]
+    public GameObject Boss;
     [Header("#Player")]
     //인게임 플레이어
     public Tofu tofuFoolr;
@@ -43,7 +36,7 @@ public class GameManager : MonoBehaviour
     //이펙트 풀 매니저
     public PoolManager effectPoolManger;
     //스폰 매니저
-    public SpawnManager SpawnManager;
+    public PoolManager SpawnManager;
 
     [Header("#WeaponImage")]
     //무기 이미지
@@ -71,7 +64,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        isCursorLocked = true;
+        if (UIManager != null)
+        {
+            isCursorLocked = true;
+        }
         StopManager.TimeStop();
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
@@ -86,22 +82,30 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)){
             isCursorLocked = !isCursorLocked;
         }
-        player.AP = 100;
+        if (UIManager != null)
+        {
+            player.AP = 100;
+        }
     }
 
     private void LateUpdate()
     {
-        //if (tofuFoolr == null)
-        //{
-        //    return;
-        //}
-        //if (tofuFoolr.HP <= 0)
-        //{
-        //    UIManager.FinshGame(false);
-        //}else if (bossHp <= 0)
-        //{
-        //    UIManager.FinshGame(true);
-        //}
+        if (tofuFoolr == null)
+        {
+            return;
+        }
+        DragonController dragon;
+        if (tofuFoolr.HP <= 0)
+        {
+            UIManager.FinshGame(false);
+        }
+        else if (Boss.TryGetComponent<DragonController>(out dragon))
+        {
+            if (dragon.HP >= dragon.MaxHP)
+            {
+                //UIManager.FinshGame(true);
+            }
+        }
         //커서 중앙 잠금 구현
         Cursor.visible = !isCursorLocked;
         Cursor.lockState= !isCursorLocked?(CursorLockMode)0:(CursorLockMode)1;
