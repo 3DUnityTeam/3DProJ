@@ -6,63 +6,36 @@ public class BossSnake : MonoBehaviour
     public GameObject[] Fxs; //Summon, Fire Breath
     public GameObject Player;
     Transform trans_;
+    Animator ani_;
 
-    bool isWatching = true;
+    public float traceDist = 6.5f;
+    int summons = 50;
+
+    bool isWatching = false;
     bool timeFlag = false;
     bool atkFlag = false;
 
     bool isFlame = false;
-    bool isSummon = false;
 
     private void Awake()
     {
         trans_ = GetComponent<Transform>();
+        ani_ = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        StartCoroutine(CheckState());
+
         if (isWatching)
         {
-            trans_.LookAt(Player.transform);
-        }
-        else
-        {
-            if (isFlame)
-            {
-
-            }
-            if (isSummon)
-            {
-
-            }
+            trans_.LookAt(new Vector3(Player.transform.position.x, trans_.position.y, Player.transform.position.z));
         }
     }
 
     private void FixedUpdate()
     {
-        if (!atkFlag)
-        {
-            atkFlag = true;
-            int n = Random.Range(0, 3);
-            switch (n)
-            {
-                case 0:
-                    Debug.Log("Stay");
-                    StartCoroutine(Timmer(3.0f));
-                    break;
-                case 1:    //flame
-                    Debug.Log("Snake's Flame shot");
-                    isWatching = false;
-                    StartCoroutine(Timmer(5.0f));
-                    break;
-                case 2:    //summon
-                    Debug.Log("Snake's summon");
-                    isWatching = false;
-                    StartCoroutine(Timmer(8.0f));
-                    break;
-            }
-            isWatching = true;
-        }
+
     }
 
     IEnumerator Timmer(float time)
@@ -71,10 +44,31 @@ public class BossSnake : MonoBehaviour
         {
             timeFlag = true;
             yield return new WaitForSeconds(time);
-            isSummon = false;
             isFlame = false;
             atkFlag = false;
             timeFlag = false;
         }
+    }
+
+    IEnumerator CheckState()
+    {
+        float dist = Vector3.Distance(Player.transform.position, trans_.position);
+
+        if (dist <= traceDist)
+        {
+            Debug.Log("Snake found player");
+            isWatching = true;
+        }
+        else
+        {
+        }
+
+        yield return new WaitForSeconds(0.3f);
+    }
+
+    void IsDead()
+    {
+        ani_.SetTrigger("Happy");
+        Destroy(this.gameObject, 2.5f);
     }
 }

@@ -36793,6 +36793,7 @@ MonoBehaviour:
   - {fileID: 2079941862}
   - {fileID: 570978697}
   Player: {fileID: 701568498}
+  traceDist: 100
 --- !u!136 &3596399382493093177
 CapsuleCollider:
   m_ObjectHideFlags: 0
