@@ -47,5 +47,10 @@ public class MainKey : MonoBehaviour
             pressed[7].SetActive(true);
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
             pressed[7].SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            pressed[8].SetActive(true);
+        if (Input.GetKeyUp(KeyCode.Space))
+            pressed[8].SetActive(false);
     }
 }
