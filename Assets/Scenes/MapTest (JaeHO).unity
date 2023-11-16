@@ -7885,6 +7885,10 @@ PrefabInstance:
       propertyPath: tofuFoolr
       value: 
       objectReference: {fileID: 324691948}
+    - target: {fileID: 3356081687377316391, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8240497394096601609, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: maxDistance
       value: 100
