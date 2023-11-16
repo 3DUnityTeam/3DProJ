@@ -9,6 +9,7 @@ public class DragonController : MobParent
     public GameObject[] bodyFxs;
     public GameObject[] meteos;   //blueberry poz blueberry bomb
     public GameObject Player;
+    public Player player;
 
     Transform trans_;
     Transform playerTrans_;
