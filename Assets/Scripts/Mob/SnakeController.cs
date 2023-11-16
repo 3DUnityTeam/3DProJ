@@ -65,7 +65,7 @@ public class SnakeController : MobParent
         fx.SetActive(false);
         spawn = false;
 
-        //¸ðÆÇ Áö¼Óµ¥¹ÌÁö
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
         StartCoroutine(IsLive(10));
     }
 
@@ -104,10 +104,11 @@ public class SnakeController : MobParent
                     float dit = Vector3.Distance(playerTrans_.position, trans_.position);
                     if (dit >= 5)
                     {
-                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                        trans_.Translate(dirr * speed*1.2f * Time.fixedDeltaTime);
                     }
                     else
                     {
+                        ani_.SetTrigger("Atk");
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
                     }
                 }
@@ -132,7 +133,9 @@ public class SnakeController : MobParent
                 trans_.LookAt(playerTrans_);
                 dirr = Vector3.forward;
                 atk = true;
+                ani_.SetBool("Spin", true);
                 yield return new WaitForSeconds(rollingTime);
+                ani_.SetBool("Spin", false);
                 dirr = Vector3.zero;
             }
             flag = false;

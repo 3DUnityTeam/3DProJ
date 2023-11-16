@@ -9532,7 +9532,7 @@ GameObject:
   - component: {fileID: 4021103657954561942}
   - component: {fileID: 4021103657954561943}
   - component: {fileID: 4021103657954561960}
-  - component: {fileID: 3759082322272305374}
+  - component: {fileID: 2947219487169014424}
   m_Layer: 0
   m_Name: Hit_Weapon3Effect
   m_TagString: Untagged
@@ -14257,7 +14257,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &3759082322272305374
+--- !u!114 &2947219487169014424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

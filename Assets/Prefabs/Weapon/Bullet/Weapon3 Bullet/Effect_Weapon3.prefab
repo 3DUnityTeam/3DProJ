@@ -19086,7 +19086,7 @@ GameObject:
   - component: {fileID: 164666595697024251}
   - component: {fileID: 7971586974847240022}
   - component: {fileID: 12603500655897501}
-  - component: {fileID: 2877690302396142513}
+  - component: {fileID: 3394160722742805206}
   m_Layer: 0
   m_Name: Effect_Weapon3
   m_TagString: Trigger
@@ -23842,21 +23842,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1018282299783230528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164666595712105531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e454fa650772c9b4380ef0926d8ebee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectTime: 2
-  lightTime: 1
-  effectlight: {fileID: 164666595712105525}
 --- !u!108 &12603500655897501
 Light:
   m_ObjectHideFlags: 0
@@ -23919,6 +23904,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3394160722742805206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164666595712105531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8a6fe687277f848b27502d5695133a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapontype: 0
+  effectTime: 2.5
+  damage: 0
+  effect: {fileID: 0}
+  effectcode: 2
+  width: 2
 --- !u!1 &6646146572685632117
 GameObject:
   m_ObjectHideFlags: 0

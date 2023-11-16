@@ -6,19 +6,19 @@ public class MobParent : MonoBehaviour
 {
     private bool dead;
     private float dotDamage;
-    //ÃÖ´ë Ã¼·Â
+    //ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½
     private float maxHp;
-    //ÇöÀç Ã¼·Â
+    //ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
     private float hp=0;
 
-    //ÇÁ·ÎÆÛÆ¼
-    //Áö¼Ó µ¥¹ÌÁö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public bool Dead { get { return this.dead; }set { this.dead = value; } }
-    //Áö¼Ó µ¥¹ÌÁö
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public float DotDamage { get { return this.dotDamage; }set { this.dotDamage = value; } }
-    //ÃÖ´ë Ã¼·Â ÇÁ·ÎÆÛÆ¼
+    //ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     public float MaxHP { get { return this.maxHp; } set { this.maxHp = value; } }
-    //ÇöÀç Ã¼·Â ÇÁ·ÎÆÛÆ¼
+    //ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     public float HP { get { return this.hp; } set { this.hp = value; } }
 
     public void OnCollisionEnter(Collision collision)
@@ -28,12 +28,12 @@ public class MobParent : MonoBehaviour
             BulletCtrl bulletInfo = collision.gameObject.GetComponent<BulletCtrl>();
             HP = HP + bulletInfo.damage;
         }
-        //ÇÃ·¹ÀÌ¾î¿¡°Ô µ¥¹ÌÁö ÀÔÈ÷´Â°Ç °¢ ¸ó½ºÅÍ ÄÚµå·Î 
+        //ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ 
         ///
-        /// public new void OnCollisionEnter(Collision collision)  //µå·¡°ï ¸öÅë µ¥¹ÌÁö
+        /// public new void OnCollisionEnter(Collision collision)  //ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ///{
         ///    base.OnCollisionEnter(collision);
-        ///    #µ¥¹ÌÁö ÄÚµå »ðÀÔ
+        ///    #ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
         ///}
         ///
     }
@@ -42,9 +42,16 @@ public class MobParent : MonoBehaviour
     {
         if (other.gameObject.gameObject.GetComponent<TriggerCollison>() != null)
         {
+            bool caneffect = true;
             TriggerCollison effectInfo = other.gameObject.GetComponent<TriggerCollison>();
-            GameObject effect = GameManager.instance.effectPoolManger.Get(effectInfo.effectcode - 1);
-            effect.transform.position = other.ClosestPoint(transform.position);
+            if(caneffect)
+            {
+                caneffect = false;
+                GameObject effect = GameManager.instance.effectPoolManger.Get(effectInfo.effectcode - 1);
+                effect.transform.position = other.ClosestPoint(transform.position);
+                
+            }
+            
 			HP = HP + effectInfo.damage;
         }
     }

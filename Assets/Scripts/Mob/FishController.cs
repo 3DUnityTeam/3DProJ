@@ -60,7 +60,7 @@ public class FishController : MobParent
         spawn = false;
         fx.SetActive(false);
 
-        //¸ðÆÇ Áö¼Óµ¥¹ÌÁö
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
         StartCoroutine(IsLive(15));
     }
 
@@ -89,19 +89,19 @@ public class FishController : MobParent
                 if (!isTrace)
                 {
                     trans_.Translate(dirr * speed * Time.fixedDeltaTime);
-                    ani_.SetBool("Atk", false);
                 }
                 else
                 {
                     trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
                     float dit = Vector3.Distance(playerTrans_.position, trans_.position);
-                    if (dit >= 5)
+                    if (dit <= 5)
                     {
-                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                        trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+
                     }
                     else
                     {
-                        trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
                     }
                 }
             }
@@ -121,8 +121,8 @@ public class FishController : MobParent
             }
             else
             {
-                CheckRange();
-                yield return new WaitForSeconds(10.5f);
+                
+                yield return new WaitForSeconds(3.3f);
             }
             flag = false;
         }
@@ -138,7 +138,7 @@ public class FishController : MobParent
             if (dist <= traceDist)
             {
                 isTrace = true;
-                yield return new WaitForSeconds(9);
+                yield return new WaitForSeconds(3);
             }
             else
             {
@@ -148,18 +148,6 @@ public class FishController : MobParent
             checkFlag = false;
         }
 
-    }
-
-
-    void CheckRange()
-    {
-        poz = trans_.position;
-        float x = poz.x;    float z = poz.z;
-        x = Random.Range(x - 2.5f , x+ 2.5f );
-        z = Random.Range(z - 2.5f, x + 2.5f );
-        poz = new Vector3(x, 0, z);
-        dirr = poz;
-        Debug.Log(dirr);
     }
 
     public override void IsDead()

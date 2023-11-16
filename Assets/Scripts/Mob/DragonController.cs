@@ -8,7 +8,7 @@ public class DragonController : MobParent
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
     public GameObject[] bodyFxs;
     public GameObject[] meteos;   //blueberry poz blueberry bomb
-    Player player;
+    public GameObject Player;
 
     Transform trans_;
     Transform playerTrans_;
@@ -24,8 +24,6 @@ public class DragonController : MobParent
 
     float waitingTime;
     float speed = 10f;
-
-    public bool meteoAll = false;
 
     bool flag = false;
     bool looking = true;
@@ -82,7 +80,7 @@ public class DragonController : MobParent
             trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
 
         float dit = Vector3.Distance(playerTrans_.position, trans_.position);
-        if (dit >= 5)
+        if (dit >= 10)
         {
             trans_.Translate(dirr * speed * Time.fixedDeltaTime);
             normalAtk = false;
@@ -105,7 +103,9 @@ public class DragonController : MobParent
 
     IEnumerator Phase2()
     {
-        while(HP < MaxHP)
+        yield return new WaitForSeconds(4.5f);
+        looking = true;
+        while (HP < MaxHP)
         {
             if (HP >= MaxHP)
             {
@@ -113,10 +113,14 @@ public class DragonController : MobParent
             }
             else
             {
+                Debug.Log("aa");
+
+                looking = true;
                 atkFlag = true;
                 ani_.SetTrigger("Reset");
-                int p = Random.Range(0, fxs.Length + 1);
-                //int p = 5;
+                int p = Random.Range(0, fxs.Length+1);
+                Debug.Log("Pattern: " + p);
+                //int p = 4;
                 switch (p)
                 {
                     case 0:
@@ -142,7 +146,7 @@ public class DragonController : MobParent
                 }
                 yield return new WaitForSeconds(waitingTime);
                 atkFlag = false;
-                yield return new WaitForSeconds(Random.Range(1.5f, 3.1f));
+                yield return new WaitForSeconds(0.5f);
             }
         }
     }
@@ -181,6 +185,7 @@ public class DragonController : MobParent
             BodyFx(false);
             flag = false;
         }
+        Debug.Log("Rolling Out");
     }
 
     //flame shot
@@ -260,7 +265,6 @@ public class DragonController : MobParent
                 ani_.SetBool("Fly", false);
                 rigid_.useGravity = true;
                 speed = 10f;
-                looking = true;
             }
             else //Do it later
             {
@@ -280,9 +284,11 @@ public class DragonController : MobParent
                 ani_.speed = 1;
             }
             fxs[3].SetActive(false);
+            looking = true;
             BodyFx(false);
             flag = false;
         }
+        Debug.Log("Fly out");
     }
 
     IEnumerator Meteo()
@@ -300,63 +306,60 @@ public class DragonController : MobParent
             if(Random.Range(0, 2) == 0)  //�ѹ��� ������ ��ġ�� 10~30���� ���׿� ����
             {
                 //Debug.Log("Before selecting N");
-                int n = Random.Range(10, 31);
+                int n = Random.Range(40, 61);
                 //Debug.Log("N="+n);
                 waitingTime = (float)n * 0.1f + 1.5f;
                 Debug.Log("Summon " + n + "meteors!!");
                 Vector3 nowPoz = trans_.position;
                 for(int i = 0; i < n; i++)
                 {
-                    float x = Random.Range(-45f, 45f);
-                    float z = Random.Range(-45f, 45f);
-                    Vector3 spawnPoz = nowPoz + new Vector3(x, 0, z);
+                    float x = Random.Range(-150f, 150f);
+                    float z = Random.Range(-150f, 150f);
+                    Vector3 spawnPoz = nowPoz + new Vector3(x, -2, z);
                     GameObject obj =  Instantiate(meteos[0]);
                     obj.transform.position = spawnPoz;
                     obj.name = "MeteoPoz " + i;
 
-                    spawnPoz += new Vector3(0, 10, 0);
+                    spawnPoz += new Vector3(0, 20, 0);
                     obj = Instantiate(meteos[1]);
                     obj.transform.position = spawnPoz;
                     obj.name = "Meteo " + i;
-                    yield return new WaitForSeconds(0.45f);
+                    yield return new WaitForSeconds(0.1f);
                 }
                 yield return new WaitForSeconds(1.5f);
-                meteoAll = true;
             }
             else  //���׿� 5��~10���� �÷��̾� �Ӹ����� ����
             {
-                int n = Random.Range(5, 11);
-                waitingTime = 0.5f * n;
+                int n = Random.Range(10, 21);
+                waitingTime = 0.65f * n;
                 Debug.Log(n + "Meteos!");
                 for(int i = 0; i < n; i++)
                 {
                     float x = playerTrans_.position.x;
                     float z = playerTrans_.position.z;
-                    Vector3 spawnPoz =  new Vector3(x, 0, z);
+                    Vector3 spawnPoz =  new Vector3(x, -2, z);
                     GameObject obj = Instantiate(meteos[0]);
                     obj.transform.position = spawnPoz;
                     obj.name = "MeteoPoz " + i;
 
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.65f);
 
-                    spawnPoz += new Vector3(0, 10, 0);
+                    spawnPoz += new Vector3(0, 20, 0);
                     obj = Instantiate(meteos[1]);
                     obj.transform.position = spawnPoz;
                     obj.name = "Meteo " + i;
                 }
 
             }
-
             yield return new WaitForSeconds(0.1f);
             fxs[4].SetActive(false);
             ani_.SetBool("Spin", false);
             looking = true;
             dirr = Vector3.forward;
             BodyFx(false);
-            meteoAll = false;
             flag = false;
         }
-
+        Debug.Log("Meteo Out");
     }
 
     IEnumerator Summon()
@@ -367,31 +370,31 @@ public class DragonController : MobParent
             looking = false;
             BodyFx(true);
             dirr = Vector3.zero;
-            leftMob = Random.Range(3, 13);
-            waitingTime = leftMob * 3f;
-            while (leftMob > 0)
-            {
-                int n = Random.Range(1, 6);
-                leftMob -= n;
-                Debug.Log("Summon" + n);
-                fxs[4].SetActive(true);
-                ani_.SetBool("Spin", true);
-                for (int i = 0; i < n; i++)
+            leftMob = 10;
+            Debug.Log("Total Mob: " + leftMob);
+
+            waitingTime = 5f;
+
+            fxs[4].SetActive(true);
+            ani_.SetBool("Spin", true);
+            for (int i = 0; i < leftMob; i++)
                 {
-                    float tX = trans_.position.x + Random.Range(-50f, 50f);
-                    float tZ = trans_.position.x + Random.Range(-50f, 50f);
+                    float tX = trans_.position.x + Random.Range(-150f, 150f);
+                    float tZ = trans_.position.x + Random.Range(-150f, 150f);
                     int random = Random.Range(0, GameManager.instance.SpawnManager.pools.Length);
                     GameObject obj = GameManager.instance.SpawnManager.Get(random);
                     obj.transform.position = new Vector3(tX, 1, tZ);
                     obj.transform.parent = mobSpawn.transform;
 
-                    yield return new WaitForSeconds(0.4f);
+                    yield return new WaitForSeconds(0.5f);
                 }
-                fxs[4].SetActive(false);
-                ani_.SetBool("Spin", false);
-                yield return new WaitForSeconds(3);
-            }
+
+             fxs[4].SetActive(false);
+             ani_.SetBool("Spin", false);
+           
+            leftMob = 0;
             BodyFx(false);
+            looking = true;
             dirr = Vector3.forward;
             flag = false;
         }
@@ -442,7 +445,7 @@ public class DragonController : MobParent
         if (!dmgFlag)
         {
             dmgFlag = true;
-            player.HP -= dmg;
+            Player.GetComponent<Player>().HP -= dmg;
             yield return new WaitForSeconds(time);
             dmgFlag = false;
         }
