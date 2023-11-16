@@ -15,6 +15,7 @@ public class BattleUI : MonoBehaviour
     RectTransform AimRect;
     GameObject targetMob;
 
+
     private void Start()
     {
         mine = GetComponent<RectTransform>();
