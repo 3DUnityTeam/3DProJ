@@ -37,6 +37,18 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-        
+        if (PauseUI.activeSelf || ResultUI.activeSelf || CollectUI.activeSelf)
+        {
+            GameManager.instance.isCursorLocked = false;
+        }
+    }
+
+    public void FinshGame(bool result)
+    {
+        //true: ½Â¸®, false: ÆÐ¹è
+        GameManager.instance.StopManager.TimeStop();
+        BattleUI.SetActive(false);
+        CollectUI.SetActive(false);
+        ResultUI.SetActive(true);
     }
 }

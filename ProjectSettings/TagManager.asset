@@ -5,9 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - Floor
   - Lemon
   - Land
+  - Bomb
+  - Mob
+  - Poz
   layers:
   - Default
   - TransparentFX
@@ -15,6 +17,7 @@ TagManager:
   - 
   - Water
   - UI
+  - Bullet
   - 
   - 
   - 
@@ -28,8 +31,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Wall
   - 
   - 
   - 

@@ -8,6 +8,7 @@
 2. WeaponsIamges: 무기 아이콘들
 3. AudioManager: 노래 설정(새로해야함)
 4. focus: 초점
+5. Tofu: 두부모판 넣기
 
 ## WeaponManager
 위치 GameManager 하위 자식으로 등록되어있음

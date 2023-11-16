@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SnakeController : MonoBehaviour
+public class SnakeController : MobParent
 {
     enum State
     {
@@ -14,12 +14,12 @@ public class SnakeController : MonoBehaviour
     Transform trans_;
     Animator ani_;
 
-    [SerializeField]
-    int maxHp = 2;
-    int hp = 0;
+    public GameObject fx;
+    public GameObject[] lods;
 
     [SerializeField]
     float traceDist = 50f;
+    [SerializeField]
     float speed = 3.0f;
     float rollingTime = 5.0f;
 
@@ -27,13 +27,35 @@ public class SnakeController : MonoBehaviour
 
     bool flag = false;
     bool atk = false;
-
+    bool spawn = true;
     private void Awake()
     {
+        MaxHP = 10;
+        HP = 0;
+
+        Fx(false);
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
+    }
+
+    void Fx(bool t)
+    {
+        for(int i = 0; i < lods.Length; i++)
+        {
+            lods[i].SetActive(t);
+        }
+    }
+
+    private IEnumerator Start()
+    {
+        fx.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        this.gameObject.SetActive(true);
+        Fx(true);
+        fx.SetActive(false);
+        spawn = false;
     }
 
     private void Update()
@@ -44,21 +66,37 @@ public class SnakeController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp == maxHp)
+        if (HP >= MaxHP)
+        {
+            DeleteDict();
             IsDead();
+        }
         else
         {
-
-            if (state == State.IDLE)
+            if (spawn)
             {
-                trans_.Translate(dirr * speed * Time.deltaTime);
-                ani_.SetBool("Spin", false);
+                dirr = Vector3.zero;
             }
             else
             {
-                //trans_.Translate(dirr * speed * 2.5f* Time.deltaTime);
-                ani_.SetBool("Spin", true);
-                trans_.Translate(dirr * speed * 2.5f * Time.deltaTime);
+                if (state == State.IDLE)
+                {
+                    trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                    ani_.SetBool("Spin", false);
+                }
+                else
+                {
+                    trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+                    float dit = Vector3.Distance(playerTrans_.position, trans_.position);
+                    if (dit >= 5)
+                    {
+                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                    }
+                    else
+                    {
+                        trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+                    }
+                }
             }
         }
     }
@@ -110,18 +148,4 @@ public class SnakeController : MonoBehaviour
         Destroy(this.gameObject, 2.5f);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            ani_.SetTrigger("Hit");
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            
-        }
-    }
 }

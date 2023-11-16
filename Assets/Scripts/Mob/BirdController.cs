@@ -1,20 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-public class BirdController : MonoBehaviour
+public class BirdController : MobParent
 {
     public Transform firePoz;
     public GameObject bomb;
+
+    public GameObject[] lods;
+    public GameObject fx;
 
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
 
     [SerializeField]
-    int maxHp = 1;
-    int hp = 0;
-
     float traceDist = 3.0f;
+    [SerializeField]
     float speed = 4.0f;
     float rollingTime = 3.0f;
 
@@ -23,18 +24,40 @@ public class BirdController : MonoBehaviour
     bool isTrace = false;
     bool flag = false;
     bool expFlag = false;
+    bool spawn = true;  
 
     private void Awake()
     {
+        MaxHP= 1;
+        HP = 0;
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
     }
 
+    void Fx(bool t)
+    {
+        for (int i = 0; i < lods.Length; i++)
+        {
+            lods[i].SetActive(t);
+        }
+    }
+
+    private IEnumerator Start()
+    {
+        fx.SetActive(true);
+        Fx(false);
+        yield return new WaitForSeconds(1.5f);
+        this.gameObject.SetActive(true);
+        Fx(true);
+        spawn = false;
+        fx.SetActive(false);
+    }
+
     private void Update()
     {
-        if(hp < maxHp)
+        if(HP < MaxHP)
         {
             StartCoroutine("CheckState");
             StartCoroutine("DoMove");
@@ -43,19 +66,34 @@ public class BirdController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hp == maxHp)
+        if (HP >= MaxHP)
+        {
+            DeleteDict();
             IsDead();
+        }
         else
         {
-
-            if (!isTrace)
-            {
-                trans_.Translate(dirr * speed * Time.deltaTime);
-            }
+            if (spawn)
+                dirr = Vector3.zero;
             else
             {
-                trans_.LookAt(playerTrans_);
-                trans_.Translate(dirr * speed * 2f* Time.deltaTime);
+                if (!isTrace)
+                {
+                    trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+                    float dit = Vector3.Distance(playerTrans_.position, trans_.position);
+                    if (dit >= 5)
+                    {
+                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                    }
+                    else
+                    {
+                        trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+                    }
+                }
             }
         }
     }
@@ -114,19 +152,5 @@ public class BirdController : MonoBehaviour
     void IsDead()
     {
         StartCoroutine("Explore");
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
     }
 }

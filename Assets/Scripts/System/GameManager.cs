@@ -20,10 +20,13 @@ public class GameManager : MonoBehaviour
 
     [Header("#Player")]
     //인게임 플레이어
+    public Tofu tofuFoolr;
     public Player player;
     //초점
     public GameObject focus;
-    
+    //커서
+    public bool isCursorLocked;
+
     [Header("#Manager")]
     //UI 매니저 
     public UIManager UIManager;
@@ -35,10 +38,17 @@ public class GameManager : MonoBehaviour
     public AimManager AimManager;
     //시간 정지 매니저
     public StopManager StopManager;
+    //총알 풀 매니저
+    public PoolManager bulletPoolManger;
+    //이펙트 풀 매니저
+    public PoolManager effectPoolManger;
+    //스폰 매니저
+    public SpawnManager SpawnManager;
 
     [Header("#WeaponImage")]
     //무기 이미지
     public Sprite[] WeaponImages;
+    public Sprite[] SpecialWeaponImages;
     public Sprite BaseImage;
 
     private void Awake()
@@ -61,11 +71,41 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        isCursorLocked = true;
         StopManager.TimeStop();
         AudioManager.PlayBgm(AudioManager.Bgm.Title);
         AudioManager.PlaySfx(AudioManager.Sfx.Dead);
+        if (UIManager == null)
+        {
+            isCursorLocked = false;
+            StopManager.TimePass();
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C)){
+            isCursorLocked = !isCursorLocked;
+        }
+        player.AP = 100;
     }
 
+    private void LateUpdate()
+    {
+        //if (tofuFoolr == null)
+        //{
+        //    return;
+        //}
+        //if (tofuFoolr.HP <= 0)
+        //{
+        //    UIManager.FinshGame(false);
+        //}else if (bossHp <= 0)
+        //{
+        //    UIManager.FinshGame(true);
+        //}
+        //커서 중앙 잠금 구현
+        Cursor.visible = !isCursorLocked;
+        Cursor.lockState= !isCursorLocked?(CursorLockMode)0:(CursorLockMode)1;
+    }
     public void Save(string key,float value)
     {
         PlayerPrefs.SetFloat(key, value);
