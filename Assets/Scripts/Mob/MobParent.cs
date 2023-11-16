@@ -34,9 +34,16 @@ public class MobParent : MonoBehaviour
     {
         if (other.gameObject.gameObject.GetComponent<TriggerCollison>() != null)
         {
+            bool caneffect = true;
             TriggerCollison trigger = other.gameObject.GetComponent<TriggerCollison>();
-            GameObject effect = GameManager.instance.effectPoolManger.Get(trigger.effectcode - 1);
-            effect.transform.position = other.ClosestPoint(transform.position);
+            if(caneffect)
+            {
+                caneffect = false;
+                GameObject effect = GameManager.instance.effectPoolManger.Get(trigger.effectcode - 1);
+                effect.transform.position = other.ClosestPoint(transform.position);
+                
+            }
+            
             HP = HP + 1;
         }
     }
