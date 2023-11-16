@@ -87,12 +87,13 @@ public class Player : MonoBehaviour
         myTR = GetComponent<Transform>();
         myanim = tofu.GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
         if (Time.timeScale == 0)
+        {
             return;
+        }
 
         //대쉬 상태 아닐때
         if (!isdashed)
@@ -223,7 +224,7 @@ public class Player : MonoBehaviour
             //쿨타임
             dcooltime = dashcooltime;
             //스태미나 소모
-            AP = AP - 50;
+            //AP = AP - 50;
             regenAPStart = false;
             regenAPTime = 0;
         }
