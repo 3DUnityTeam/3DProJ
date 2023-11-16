@@ -133,6 +133,7 @@ MonoBehaviour:
   - {fileID: 2651605080776483522}
   - {fileID: 2651605080545288416}
   - {fileID: 2651605081520167479}
+  CollectSpecialWeapon: {fileID: 4541376481722007702}
 --- !u!1001 &6648705790228999565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,6 +313,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 330951257105979104, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260129124246785089, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260129124457804980, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260129125284591254, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 6318067442163474454, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -339,6 +356,11 @@ GameObject:
 --- !u!1 &2651605081520167479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8685357311747684282, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
+  m_PrefabInstance: {fileID: 6648705790228999565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4541376481722007702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7152498415408262427, guid: 3f252e971584dc840a2fce5322b0c7f4, type: 3}
   m_PrefabInstance: {fileID: 6648705790228999565}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &6723989987161478969 stripped

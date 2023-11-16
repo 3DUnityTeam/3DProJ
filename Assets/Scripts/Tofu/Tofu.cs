@@ -5,9 +5,9 @@ using UnityEngine;
 public class Tofu : MonoBehaviour
 {
     //HP
-    private float maxHP = 100f;
+    private float maxHP = 50000f;
     public float MaxHP { get { return this.maxHP; } }
-    private float hp = 100f;
+    private float hp = 50000f;
     public float HP { get { return this.hp; } set { this.hp = value; } }
     GameManager manager = GameManager.instance;
     // Start is called before the first frame update

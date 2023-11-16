@@ -28,9 +28,7 @@ public class BirdController : MobParent
 
     private void Awake()
     {
-        MaxHP= 1;
-        HP = 0;
-        playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        MaxHP = 40;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
@@ -43,9 +41,19 @@ public class BirdController : MobParent
             lods[i].SetActive(t);
         }
     }
+    public override void OnEnable()
+    {
+        isTrace = false;
+        flag = false;
+        expFlag = false;
+        spawn = true;
+        StartCoroutine(Start());
+        base.OnEnable();
+    }
 
     private IEnumerator Start()
     {
+        playerTrans_ = GameManager.instance.player.transform;
         fx.SetActive(true);
         Fx(false);
         yield return new WaitForSeconds(1.5f);
@@ -53,22 +61,26 @@ public class BirdController : MobParent
         Fx(true);
         spawn = false;
         fx.SetActive(false);
+
+        //모판 지속데미지
+        StartCoroutine(IsLive(10));
     }
 
     private void Update()
     {
-        if(HP < MaxHP)
-        {
-            StartCoroutine("CheckState");
-            StartCoroutine("DoMove");
-        }
+
+        if (Dead)
+            return;
+        StartCoroutine("CheckState");
+        StartCoroutine("DoMove");
     }
 
     private void FixedUpdate()
     {
+        if (Dead)
+            return;
         if (HP >= MaxHP)
         {
-            DeleteDict();
             IsDead();
         }
         else
@@ -144,13 +156,12 @@ public class BirdController : MobParent
             yield return new WaitForSeconds(2.0f);
             Instantiate(bomb, firePoz.position, firePoz.rotation);
             ani_.SetTrigger("Happy");
-            yield return new WaitForSeconds(2.5f);
-            Destroy(this.gameObject);
         }
     }
 
-    void IsDead()
+    public override void IsDead()
     {
         StartCoroutine("Explore");
+        base.IsDead();
     }
 }

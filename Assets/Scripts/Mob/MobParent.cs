@@ -4,47 +4,86 @@ using UnityEngine;
 
 public class MobParent : MonoBehaviour
 {
-    //ÃÖ´ë Ã¼·Â
-    private int maxHp;
-    //ÇöÀç Ã¼·Â
-    private int hp;
+    private bool dead;
+    private float dotDamage;
+    //ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½
+    private float maxHp;
+    //ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
+    private float hp=0;
 
-    //ÃÖ´ë Ã¼·Â ÇÁ·ÎÆÛÆ¼
-    public int MaxHP { get { return this.maxHp; } set { this.maxHp = value; } }
-    //ÇöÀç Ã¼·Â ÇÁ·ÎÆÛÆ¼
-    public int HP { get { return this.hp; } set { this.hp = value; } }
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public bool Dead { get { return this.dead; }set { this.dead = value; } }
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public float DotDamage { get { return this.dotDamage; }set { this.dotDamage = value; } }
+    //ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
+    public float MaxHP { get { return this.maxHp; } set { this.maxHp = value; } }
+    //ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
+    public float HP { get { return this.hp; } set { this.hp = value; } }
 
-    public void DeleteDict()
-    {
-        GameManager.instance.SpawnManager.spawnMob.Remove(gameObject.GetInstanceID());
-    }
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            HP=HP+1;
+            BulletCtrl bulletInfo = collision.gameObject.GetComponent<BulletCtrl>();
+            HP = HP + bulletInfo.damage;
         }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
+        //ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ 
+        ///
+        /// public new void OnCollisionEnter(Collision collision)  //ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        ///{
+        ///    base.OnCollisionEnter(collision);
+        ///    #ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
+        ///}
+        ///
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.gameObject.GetComponent<TriggerCollison>() != null)
         {
             bool caneffect = true;
-            TriggerCollison trigger = other.gameObject.GetComponent<TriggerCollison>();
+            TriggerCollison effectInfo = other.gameObject.GetComponent<TriggerCollison>();
             if(caneffect)
             {
                 caneffect = false;
-                GameObject effect = GameManager.instance.effectPoolManger.Get(trigger.effectcode - 1);
+                GameObject effect = GameManager.instance.effectPoolManger.Get(effectInfo.effectcode - 1);
                 effect.transform.position = other.ClosestPoint(transform.position);
                 
             }
             
-            HP = HP + 1;
+			HP = HP + effectInfo.damage;
+        }
+    }
+
+    public virtual void OnEnable()
+    {
+        Collider collider = gameObject.GetComponent<Collider>();
+        collider.enabled = true;
+        HP = 0;
+        Dead = false;
+    }
+
+    public virtual void IsDead() {
+        Dead = true;
+        Collider collider = gameObject.GetComponent<Collider>();
+        collider.enabled = false;
+        StartCoroutine(Die());
+    }
+
+    private IEnumerator Die()
+    {
+        yield return new WaitForSeconds(2.5f);
+        gameObject.SetActive(false);
+    }
+
+    public IEnumerator IsLive(float damage)
+    {
+        DotDamage = damage;
+        while(HP < MaxHP)
+        {
+            yield return new WaitForFixedUpdate();
+            GameManager.instance.tofuFoolr.HP = GameManager.instance.tofuFoolr.HP - damage * Time.fixedDeltaTime;
         }
     }
 }

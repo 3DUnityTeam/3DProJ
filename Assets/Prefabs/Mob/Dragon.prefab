@@ -943,6 +943,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7539286505454239565, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539286505454239565, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
 --- !u!1 &5353797589117991227 stripped
@@ -1447,7 +1455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d5091e4ba4f704193993d2be6a7579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobSpawn: {fileID: 0}
   mobs:
   - {fileID: 1131222428449617283, guid: 68e2f5123a281c14ebf65600f0e4caec, type: 3}
   - {fileID: 4868344612650304854, guid: fe7c19621e28444438a2676c6d4e9e9f, type: 3}
@@ -1470,7 +1477,6 @@ MonoBehaviour:
   - {fileID: 482132250158656441, guid: 450a2c4f2bca9c24aa7b8bb09af2a9d0, type: 3}
   skillDmg: 0
   maxMob: 1
-  maxHunger: 100
   meteoAll: 0
 --- !u!4 &4246169673696567883 stripped
 Transform:
@@ -1501,6 +1507,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 762352654476923557, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
       propertyPath: clearBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741693452841693106, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
+      propertyPath: m_Intensity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7110241354176310799, guid: c4ed38c72957f2241ad144a1614956d9, type: 3}
