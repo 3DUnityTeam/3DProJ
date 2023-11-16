@@ -24637,7 +24637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 5
   maxHeight: 0
-  width: -10
+  width: 0
   rotation: 0
   sightspeed: 0.01
 --- !u!81 &1525716968
