@@ -831,7 +831,7 @@ MonoBehaviour:
   CommonParent: {fileID: 4233404945323076705}
   SpecialParent: {fileID: 5399018965215556409}
   moveSpeed: 22
-  dashpower: 2500
+  dashpower: 5000
   dashcooltime: 0.3
   isJump: 0
   JumpPower: 30
