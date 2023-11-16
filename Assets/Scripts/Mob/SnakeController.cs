@@ -30,7 +30,7 @@ public class SnakeController : MobParent
     bool spawn = true;
     private void Awake()
     {
-        MaxHP = 2;
+        MaxHP = 10;
         HP = 0;
 
         Fx(false);

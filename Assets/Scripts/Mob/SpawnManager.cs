@@ -27,8 +27,15 @@ public class SpawnManager : MonoBehaviour
         while (leftMob > 0)
         {
             int n = Random.Range(1, 6);
-            leftMob -= n;
+            if(leftMob -n < 0)
+            {
+                n = leftMob;
+                leftMob = 0;
+            }
+            else
+                leftMob -= n;
             Debug.Log("Summon" + n);
+            
             for (int i = 0; i < n; i++)
             {
                 float tX = trans_.position.x + Random.Range(-100f, 100f);
