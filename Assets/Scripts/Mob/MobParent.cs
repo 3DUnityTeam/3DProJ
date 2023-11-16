@@ -32,8 +32,18 @@ public class MobParent : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Trigger"))
+        if (other.gameObject.gameObject.GetComponent<TriggerCollison>() != null)
         {
+            bool caneffect = true;
+            TriggerCollison trigger = other.gameObject.GetComponent<TriggerCollison>();
+            if(caneffect)
+            {
+                caneffect = false;
+                GameObject effect = GameManager.instance.effectPoolManger.Get(trigger.effectcode - 1);
+                effect.transform.position = other.ClosestPoint(transform.position);
+                
+            }
+            
             HP = HP + 1;
         }
     }

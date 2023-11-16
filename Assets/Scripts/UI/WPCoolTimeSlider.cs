@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WPCoolTimeSlider : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class WPCoolTimeSlider : MonoBehaviour
     float heat = 0f;
     float maxheat = 1f;
     Slider slider;
-    public Text childTime;
+    public TextMeshProUGUI childTime;
     // Start is called before the first frame update
     void Start()
     {

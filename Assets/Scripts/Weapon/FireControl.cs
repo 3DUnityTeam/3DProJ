@@ -13,6 +13,7 @@ public class FireControl : MonoBehaviour
     private new AudioSource audio;
     public MeshRenderer muzzelFlash;
     public GameObject muzzlefire;
+    public Light muzzlelight;
     private Gunmove gunmove;
 
     [Header ("내부 수치")]
@@ -33,6 +34,18 @@ public class FireControl : MonoBehaviour
         ctime = rapidspeed;
         //audio = GetComponent<AudioSource>();
         //muzzelFlash.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        if(muzzlefire)
+        {
+            muzzlefire.SetActive(false);
+        }
+        if(muzzlelight)
+        {
+            muzzlelight.enabled = false;
+        }
     }
 
     private void Update()
@@ -79,7 +92,7 @@ public class FireControl : MonoBehaviour
             }
 
             firedbullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
-            StartCoroutine(parent.Shoot());
+            parent.shoot();
         }
         //audio.PlayOneShot(fireSfx, 1.0f);
         if(muzzelFlash != null)
@@ -88,6 +101,7 @@ public class FireControl : MonoBehaviour
         }
         else if(muzzlefire != null)
         {
+            muzzlelight.enabled = true;
             muzzlefire.SetActive(true);
             StartCoroutine(ShowMuzzleFire());
         }
@@ -106,15 +120,19 @@ public class FireControl : MonoBehaviour
         muzzelFlash.transform.localScale = localscale * scale;
 
         muzzelFlash.enabled = true;
+        muzzlelight.enabled = true;
 
         yield return new WaitForSeconds(rapidspeed/4);
         muzzelFlash.transform.localScale = localscale;
         muzzelFlash.enabled = false;
+        muzzlelight.enabled = false;
     }
     IEnumerator ShowMuzzleFire()
     {
 
         yield return new WaitForSeconds(rapidspeed - 0.2f);
         muzzlefire.SetActive(false);
+        muzzlelight.enabled = false;
+
     }
 }

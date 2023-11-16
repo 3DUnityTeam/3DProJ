@@ -39,6 +39,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 287420984695541187}
     m_Modifications:
+    - target: {fileID: 1700359068685943124, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
+      propertyPath: m_Color.b
+      value: 0.021359911
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700359068685943124, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700359068685943124, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
+      propertyPath: m_Color.r
+      value: 0.12951273
+      objectReference: {fileID: 0}
     - target: {fileID: 3435252860518481728, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -66,6 +78,10 @@ PrefabInstance:
     - target: {fileID: 5149035597298364944, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
       propertyPath: m_Name
       value: Pamabam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423123359680159077, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8591613752450007589, guid: 54f6db30917bdf5428fb99a1ed561187, type: 3}
       propertyPath: m_RootOrder

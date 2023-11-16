@@ -9532,7 +9532,7 @@ GameObject:
   - component: {fileID: 4021103657954561942}
   - component: {fileID: 4021103657954561943}
   - component: {fileID: 4021103657954561960}
-  - component: {fileID: 3759082322272305374}
+  - component: {fileID: 2947219487169014424}
   m_Layer: 0
   m_Name: Hit_Weapon3Effect
   m_TagString: Untagged
@@ -9549,7 +9549,7 @@ Transform:
   m_GameObject: {fileID: 4021103657954561961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7356675331608156007}
@@ -9642,7 +9642,7 @@ ParticleSystem:
   m_GameObject: {fileID: 4021103657954561961}
   serializedVersion: 8
   lengthInSec: 0.5
-  simulationSpeed: 1
+  simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
@@ -14257,7 +14257,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &3759082322272305374
+--- !u!114 &2947219487169014424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14269,7 +14269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e454fa650772c9b4380ef0926d8ebee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectTime: 0.5
+  effectTime: 1
+  lightTime: 0
+  effectlight: {fileID: 0}
 --- !u!1 &4311522845078898388
 GameObject:
   m_ObjectHideFlags: 0
