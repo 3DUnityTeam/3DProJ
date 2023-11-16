@@ -414,11 +414,8 @@ public class DragonController : MonoBehaviour
         { 
             nowHunger++;
         }
-    }
 
-    private void OnTriggerEnter(Collider other)  //µå·¡°ï ¸öÅë µ¥¹ÌÁö
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))  //µå·¡°ï ¸öÅë µ¥¹ÌÁö
         {
             if (rolling)
             {

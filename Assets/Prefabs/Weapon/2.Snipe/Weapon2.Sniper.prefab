@@ -136,12 +136,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: bulletspeed
-      value: 5000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: muzzelFlash
       value: 
       objectReference: {fileID: 4291460242070913467}
+    - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: muzzlelight
+      value: 
+      objectReference: {fileID: 8058766147235458794}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: "\uACF5\uACA9\uC18D\uB3C4"
       value: 0.7
@@ -152,6 +156,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2673980076835637864, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.18431371
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.26642254
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_SpotAngle
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_InnerSpotAngle
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -165,6 +197,11 @@ Transform:
 --- !u!23 &4291460242070913467 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1064557632959074089, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+  m_PrefabInstance: {fileID: 3839395495729270418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &8058766147235458794 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 6529718913977294968, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
   m_PrefabInstance: {fileID: 3839395495729270418}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &9181823533660561449 stripped

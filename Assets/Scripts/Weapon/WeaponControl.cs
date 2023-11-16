@@ -53,6 +53,10 @@ public class WeaponControl : MonoBehaviour
         }
     }
 
+    public void shoot()
+    {
+        StartCoroutine(Shoot());
+    }
     public IEnumerator Shoot()
     {
         currentheat += heatIncrease;

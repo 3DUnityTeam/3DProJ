@@ -19103,7 +19103,7 @@ Transform:
   m_GameObject: {fileID: 164666595712105531}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 164666594770988008}
@@ -23854,7 +23854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e454fa650772c9b4380ef0926d8ebee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectTime: 2.5
+  effectTime: 2
+  lightTime: 1
+  effectlight: {fileID: 164666595712105525}
 --- !u!108 &12603500655897501
 Light:
   m_ObjectHideFlags: 0

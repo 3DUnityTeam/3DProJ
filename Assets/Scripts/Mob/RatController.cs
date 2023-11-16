@@ -26,7 +26,7 @@ public class RatController : MobParent
 
     private void Awake()
     {
-        MaxHP= 1;
+        MaxHP= 5;
         HP = 0;
 
         playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -89,6 +89,7 @@ public class RatController : MobParent
                     else
                     {
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+                        ani_.SetTrigger("Atk");
                     }
                 }
             }

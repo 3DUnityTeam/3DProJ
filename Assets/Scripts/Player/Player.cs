@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
     public GameObject boost;
     public ParticleSystem boosterimpact;
     public GameObject[] boosters;
+    //대쉬하다 점프할때 쓰는 변수
+    private bool dashjumped;
 
     int movedirection;
 
@@ -85,12 +87,13 @@ public class Player : MonoBehaviour
         myTR = GetComponent<Transform>();
         myanim = tofu.GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
         if (Time.timeScale == 0)
+        {
             return;
+        }
 
         //대쉬 상태 아닐때
         if (!isdashed)
@@ -127,6 +130,8 @@ public class Player : MonoBehaviour
             //점프 시작지점
             if (!isJump)
             {
+                if(Input.GetKey(KeyCode.LeftShift))
+                { dashjumped = true; }
                 isJump = true;
                 boosterimpact.Play();
                 rigid.velocity = new Vector3(0, JumpPower, 0);
@@ -150,6 +155,24 @@ public class Player : MonoBehaviour
         {
             boost.SetActive(false);
             rigid.useGravity = true;
+            if(isdashed)
+            {
+                if(dashjumped)
+                {
+                    dashjumped = false;
+                    rigid.useGravity = true;
+                }
+                else
+                {
+                    rigid.useGravity = false;
+                }
+            }
+            else
+            {
+                rigid.useGravity = true;
+            }
+            
+
             isboost = false;
         }
 
