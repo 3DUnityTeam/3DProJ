@@ -23921,7 +23921,7 @@ MonoBehaviour:
   effectTime: 2.5
   damage: 0
   effect: {fileID: 0}
-  effectcode: 2
+  effectcode: 4
   width: 2
 --- !u!1 &6646146572685632117
 GameObject:

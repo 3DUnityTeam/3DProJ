@@ -10,6 +10,8 @@ public class ProgressManager : MonoBehaviour
     public bool boss1Cleared = false;
     public bool boss2Cleared = false;
     public bool dragonCleared = false;
+
+    private bool mapchanged = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,10 @@ public class ProgressManager : MonoBehaviour
     {
         if(boss1Cleared && boss2Cleared)
         {
-            Map[0].SetActive(false);
-            Map[1].SetActive(true);
+            if(!mapchanged)
+            {
+                StartCoroutine(Mapchange());
+            }
         }
         if(dragonCleared)
         {
@@ -49,5 +53,18 @@ public class ProgressManager : MonoBehaviour
         {
             Fires[i - 1].SetActive(true);
         }
+    }
+
+    public IEnumerator Mapchange()
+    {
+        mapchanged = true;
+        //gameManager.StopManager.TimeStop();
+        gameManager.UIManager.Fadeinout(false);
+        yield return new WaitForSeconds(3f);
+        Map[0].SetActive(false);
+        Map[1].SetActive(true);
+        //gameManager.StopManager.TimePass();
+        gameManager.UIManager.Fadeinout(true);
+
     }
 }

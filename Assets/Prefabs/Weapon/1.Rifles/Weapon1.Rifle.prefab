@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletspeed
-      value: 7500
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: muzzelFlash
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletspeed
-      value: 7500
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: muzzelFlash

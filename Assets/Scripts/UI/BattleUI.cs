@@ -11,6 +11,9 @@ public class BattleUI : MonoBehaviour
     [Header("Aim")]
     public GameObject CrossHair;
 
+    [Header("Fadeinout")]
+    public FadeIn fadeIn;
+
     RectTransform mine;
     RectTransform AimRect;
     GameObject targetMob;

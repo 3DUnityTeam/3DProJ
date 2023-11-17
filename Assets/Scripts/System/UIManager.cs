@@ -43,6 +43,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void Fadeinout(bool inout)
+    {
+        //true : 화면 하얗지 않게 false:화면 하얗게
+        if(inout == true)
+        {
+            BattleUI.GetComponent<BattleUI>().fadeIn.state = FadeIn.State.fadein;
+        }
+        else if(inout == false)
+        {
+            BattleUI.GetComponent<BattleUI>().fadeIn.state = FadeIn.State.fadeout;
+        }
+        
+    }
     public void FinshGame(bool result)
     {
         //true: 승리, false: 패배

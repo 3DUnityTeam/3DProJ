@@ -22488,7 +22488,7 @@ GameObject:
   - component: {fileID: 1144703793}
   - component: {fileID: 1144703792}
   - component: {fileID: 1144703798}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Gukmul
   m_TagString: Land
   m_Icon: {fileID: 0}
