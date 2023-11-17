@@ -9338,6 +9338,18 @@ PrefabInstance:
       propertyPath: dragon
       value: 
       objectReference: {fileID: 1168691366}
+    - target: {fileID: 962929449948848351, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 962929449948848351, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4021103657954561961, guid: e6b69b02e731a9e4d943d4f5fc5a8333, type: 3}
+    - target: {fileID: 962929449948848351, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4039841046030784335, guid: e0fbfdc46a0a89c4d91509a4937c1db9, type: 3}
     - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: Boss
       value: 
@@ -9362,6 +9374,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3897222930089778128, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 552963471711653691, guid: 629e1b8186e4c6d4684c06dc77251bb3, type: 3}
     - target: {fileID: 3964682984119144437, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -22345,6 +22361,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 3320863119022213438, guid: 7caf0d98296a65948bfcd32b55f62356, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcece9ec06d4978449d2036290e4302a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7caf0d98296a65948bfcd32b55f62356, type: 3}
 --- !u!4 &1135627861 stripped
@@ -41177,6 +41197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossSnake
       objectReference: {fileID: 0}
+    - target: {fileID: 6684969641763554655, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
 --- !u!1 &1759656446
@@ -46503,6 +46527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRat
       objectReference: {fileID: 0}
+    - target: {fileID: 5032420731282141976, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
 --- !u!4 &2062549143 stripped
@@ -46689,6 +46717,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4030340841346355868, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6297803929822288755, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_Intensity
       value: 0
@@ -46785,7 +46817,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6477257994599799664, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
 --- !u!1 &2084365681
 GameObject:

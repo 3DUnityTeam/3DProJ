@@ -73,8 +73,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 61dab0b6e506c6a43b12d9fde15b2393, type: 3}
   - {fileID: 21300000, guid: bbe833a9207e7fa41bbd3ce71ad09605, type: 3}
   SpecialWeaponImages:
-  - {fileID: 21300000, guid: 2a5c892bdd014164da633b8c6fd0f246, type: 3}
-  - {fileID: 21300000, guid: 6960c6bd5088317429f7e0e033bee813, type: 3}
+  - {fileID: 21300000, guid: be5e96db7d644dd4fae7cb578f0d3871, type: 3}
+  - {fileID: 21300000, guid: d775fd6f0e3b7a2419d264fe551ea332, type: 3}
   - {fileID: 21300000, guid: 0825dfa25de4551469e65496af7b3c71, type: 3}
   BaseImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &551858577900020405
@@ -236,7 +236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1331590942521464780, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
       propertyPath: prefabs.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1331590942521464780, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
       propertyPath: prefabs.Array.data[0]
@@ -614,6 +614,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
+      propertyPath: prefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
+      propertyPath: prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8154665223632144087, guid: 13c37ea23220a1b4c9b18ca558a2394a, type: 3}
+    - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
+      propertyPath: prefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 604231223496487144, guid: d08778889c833f0448defd025d0e1a53, type: 3}
     - target: {fileID: 6666128261155394547, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
       propertyPath: m_Name
       value: BulletPoolManager
