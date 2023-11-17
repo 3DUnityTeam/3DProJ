@@ -38,6 +38,7 @@ public class Pamabam : MonoBehaviour
                 //상태가 보통일 경우
                 cooltime -= Time.deltaTime;
 
+                muzzle.transform.localRotation = transform.localRotation = Quaternion.Euler(0, 0, 0);
                 if (target)
                 {
                     transform.LookAt(target.position);
@@ -69,16 +70,19 @@ public class Pamabam : MonoBehaviour
             case State.special:
                 if (target)
                 {
+                    Vector3 center = target.GetComponent<Collider>().bounds.center;
                     transform.LookAt(target.position);
                     Vector3 strangle = transform.localEulerAngles;
                     strangle.x = 0;
                     strangle.z = 0;
                     // 자식 개체의 localrotation을 제한을 줄 쿼터니언으로 설정
                     transform.localEulerAngles = strangle;
+                    muzzle.transform.LookAt(center);
                 }
                 else
                 {
                     transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    muzzle.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
                 break;
         }
