@@ -10,6 +10,9 @@ TagManager:
   - Bomb
   - Mob
   - Poz
+  - Wall
+  - FxTemporaire
+  - Trigger
   layers:
   - Default
   - TransparentFX

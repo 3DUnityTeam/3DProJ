@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4538705007390358895}
   - component: {fileID: 4429030790093067514}
   - component: {fileID: 2147727122767604971}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 6564894937657140757}
   - component: {fileID: 1384090862274033591}
   - component: {fileID: 8535382089547044770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2509219247639833629}
   - component: {fileID: 4249900000320313491}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 6585766308069655742}
   - component: {fileID: 6464656009619319422}
   - component: {fileID: 6462864726887189014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Small flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5021,7 +5021,7 @@ GameObject:
   - component: {fileID: 6464119768657590236}
   - component: {fileID: 6464436243842888760}
   - component: {fileID: 6118809382635667043}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CFXR Fire Breath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9705,3 +9705,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectTime: 5
+  lightTime: 0
+  effectlight: {fileID: 0}
