@@ -20,6 +20,7 @@ public class FireControl : MonoBehaviour
     public float rapidspeed = 0.7f;
     private float ctime = 0f;
     public float bulletspeed = 2000f;
+    public float damage = 20f;
     
 
     private void Awake()
@@ -91,6 +92,7 @@ public class FireControl : MonoBehaviour
                 direction = (gunmove.basic.position - firePos.transform.position).normalized;
             }
 
+            firedbullet.GetComponent<BulletCtrl>().damage = damage;
             firedbullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
             parent.shoot();
         }

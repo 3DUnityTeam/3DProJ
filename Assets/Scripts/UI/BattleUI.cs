@@ -13,6 +13,9 @@ public class BattleUI : MonoBehaviour
     public GameObject CrossHPBar;
     public GameObject CrossHeatingBar;
 
+    [Header("Fadeinout")]
+    public FadeIn fadeIn;
+
     RectTransform mine;
     RectTransform AimRect;
     GameObject targetMob;

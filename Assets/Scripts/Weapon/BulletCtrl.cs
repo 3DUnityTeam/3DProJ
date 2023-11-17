@@ -26,6 +26,15 @@ public class BulletCtrl : MonoBehaviour
         if(collision.gameObject.CompareTag("Mob") || collision.gameObject.CompareTag("Land"))
         {
             GameObject effect = GameManager.instance.effectPoolManger.Get(effectID - 1);
+
+            if(effect.GetComponent<TriggerCollison>() != null)
+            {
+                effect.GetComponent<TriggerCollison>().damage = damage;
+                damage = 0;
+            }
+            
+            
+            
             effect.transform.position = collision.contacts[0].point;
             gameObject.SetActive(false);
         }

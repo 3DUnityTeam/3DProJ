@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletspeed
-      value: 7500
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: muzzelFlash
@@ -516,6 +516,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: downAngle
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: leftAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: rightAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: upperAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: "\uC0C1\uB2E8\uAC01\uB3C4"
       value: 70
       objectReference: {fileID: 0}
@@ -568,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletspeed
-      value: 7500
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: muzzelFlash
@@ -645,6 +661,22 @@ PrefabInstance:
     - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: basic
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: downAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: leftAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: rightAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: upperAngle
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7658866066768806848, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: "\uC0C1\uB2E8\uAC01\uB3C4"

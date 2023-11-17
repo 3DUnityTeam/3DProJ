@@ -478,7 +478,7 @@ public class Player : MonoBehaviour
                     break;
             }
             rigid.useGravity = false;
-            moveSpeed = moveSpeed * 6;
+            moveSpeed = moveSpeed * 3.5f;
         }
         else
         {

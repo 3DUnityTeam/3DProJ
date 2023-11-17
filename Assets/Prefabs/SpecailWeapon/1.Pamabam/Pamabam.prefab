@@ -487,6 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   firePos: {fileID: 398809445598468191}
+  bulletID: 4
   muzzle: {fileID: 2392649568590364257}
   beam: {fileID: 2134417668128644489}
   enemyTag: Mob
