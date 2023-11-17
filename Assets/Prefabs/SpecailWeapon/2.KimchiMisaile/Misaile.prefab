@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 612708824336094168}
   - component: {fileID: 2974413988802482916}
   - component: {fileID: 3286997010478591265}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Misaile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 615785069896259183}
   - component: {fileID: 3890234293511427719}
   - component: {fileID: 1413499888889537851}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,6 +298,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CFXR Fire Breath
       objectReference: {fileID: 0}
+    - target: {fileID: 3383001450436680569, guid: 3983581956f911440863a565bf1f1d24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383152555699173527, guid: 3983581956f911440863a565bf1f1d24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3384974227367517963, guid: 3983581956f911440863a565bf1f1d24, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -354,6 +362,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4465181723658132379, guid: 3983581956f911440863a565bf1f1d24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3983581956f911440863a565bf1f1d24, type: 3}
 --- !u!4 &7656626087154065195 stripped
@@ -373,6 +385,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1718786175027855391}
     m_Modifications:
+    - target: {fileID: 496487244642044104, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 496487245117367874, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566140890059193891, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820042, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -432,6 +456,10 @@ PrefabInstance:
     - target: {fileID: 9027514048236820045, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
       propertyPath: m_Name
       value: KimchiEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027514048236820045, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c5e6df6f51d04a4ca597632979699ed, type: 3}
