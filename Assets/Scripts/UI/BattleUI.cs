@@ -10,6 +10,8 @@ public class BattleUI : MonoBehaviour
     public GameObject CollectSpecialWeapon;
     [Header("Aim")]
     public GameObject CrossHair;
+    public GameObject CrossHPBar;
+    public GameObject CrossHeatingBar;
 
     [Header("Fadeinout")]
     public FadeIn fadeIn;
@@ -39,6 +41,22 @@ public class BattleUI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //크로스헤어 열 바
+        WeaponManager WeaponManager = GameManager.instance.WeaponManager;
+        GameObject weapon = WeaponManager.Weapon[WeaponManager.collectNum - 1];
+        WeaponControl weaponControl = weapon.GetComponent<WeaponControl>();
+        float heat = weaponControl.currentheat;
+        float maxheat = weaponControl.Heat;
+        if (weaponControl.state == WeaponControl.State.overheat)
+        {
+            CrossHeatingBar.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 150f/255f);
+        }
+        else
+        {
+            CrossHeatingBar.GetComponent<Image>().color = new Color(255f / 255f, 97f/255f,0, 150f / 255f);
+        }
+        CrossHeatingBar.GetComponent<Image>().fillAmount =0.2f + ((heat) / maxheat) * 0.6f;
+        
         //타켓 설정 필요
         targetMob = GameManager.instance.AimManager.aimingTarget;
         if (GameManager.instance.player.gameObject.activeSelf)
@@ -51,11 +69,21 @@ public class BattleUI : MonoBehaviour
         }
         if (targetMob != null)
         {
-            FollowTarget(targetMob);
+            MobParent mob;
+            if(targetMob.TryGetComponent<MobParent>(out mob))
+            {
+                CrossHPBar.GetComponent<Image>().fillAmount = 0.2f+((mob.MaxHP-mob.HP) / mob.MaxHP)*0.6f;
+                FollowTarget(targetMob);
+            }
+            else
+            {
+                Debug.Log("Mob에 몹 부모없다");
+            }
         }
         else
         {
-            ResetAim();
+            CrossHPBar.GetComponent<Image>().fillAmount = 0;
+              ResetAim();
         }
     }
     public void FollowTarget(GameObject obj)

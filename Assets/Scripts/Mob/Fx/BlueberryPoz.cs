@@ -5,7 +5,7 @@ public class BlueberryPoz : MonoBehaviour
 
     private void Update()
     {
-            Destroy(this.gameObject, 1.8f);
+        Destroy(this.gameObject, 1.8f);
     }
 
     private void OnTriggerEnter(Collider other)

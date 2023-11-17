@@ -44,8 +44,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.99607843, g: 0.6039216, b: 0.3764706, a: 1}
-  m_Intensity: 0
-  m_Range: 10
+  m_Intensity: 3.2582965
+  m_Range: 9.063992
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -4931,6 +4931,7 @@ GameObject:
   - component: {fileID: 6294508013172393187}
   - component: {fileID: 3770819115314925417}
   - component: {fileID: -173256316900432272}
+  - component: {fileID: 1498214235056856335}
   m_Layer: 0
   m_Name: SoupFire
   m_TagString: Untagged
@@ -9870,9 +9871,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6294508013172393196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57c26839dfcddc43915e1d3766f0c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireDmg: 0.5
+--- !u!136 &1498214235056856335
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294508013172393196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.89141595
+  m_Height: 3.0289037
+  m_Direction: 1
+  m_Center: {x: -0.000026344871, y: 1.4807149, z: -0.21742375}

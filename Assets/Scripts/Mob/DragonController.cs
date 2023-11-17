@@ -4,21 +4,33 @@ using UnityEngine.SceneManagement;
 
 public class DragonController : MobParent
 {
+    //GameManager`s manager
     GameObject mobSpawn;
+    Player player;
+    Transform playerTrans_;
+
+    //UnityCompent
+    Transform trans_;
+    Rigidbody rigid_;
+    Animator ani_;
+
+    bool deadCheck = false;
+
+
+    [Header("#Pattern")]
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
     public GameObject[] bodyFxs;
     public GameObject[] meteos;   //blueberry poz blueberry bomb
-    public GameObject Player;
-    public Player player;
 
-    Transform trans_;
-    Transform playerTrans_;
-    Rigidbody rigid_;
-    Animator ani_;
+    [Header("#DirectDamage")]
+    public float rollingDamage=16;
+    public float normalAtkDamage =10;
+    public float flingAtkDamage =16;
 
     Vector3 dirr = Vector3.zero;
 
     public int skillDmg;
+    [Header("#SpawnMobCount")]
     [SerializeField]
     int maxMob = 50;
     int leftMob;
@@ -28,7 +40,6 @@ public class DragonController : MobParent
 
     bool flag = false;
     bool looking = true;
-    bool dmgFlag = false;
     bool atkFlag = false;
 
     bool flame = false;
@@ -38,7 +49,7 @@ public class DragonController : MobParent
 
     private void Awake()
     {
-        MaxHP = 4000;
+        MaxHP = 4000f;
         HP = 0;
 
         leftMob = maxMob;
@@ -49,9 +60,10 @@ public class DragonController : MobParent
     }
     private void Start()
     {
+        player = GameManager.instance.player;
         mobSpawn = GameManager.instance.SpawnManager.gameObject;
 
-        playerTrans_ = GameManager.instance.player.transform;
+        playerTrans_ = player.transform;
 
         NextPhase();
     }
@@ -68,6 +80,8 @@ public class DragonController : MobParent
 
     private void FixedUpdate()
     {
+        if (Dead)
+            return;
         if (HP >= MaxHP)
         {
             BeHappy();
@@ -104,47 +118,39 @@ public class DragonController : MobParent
         looking = true;
         while (HP < MaxHP)
         {
-            if (HP >= MaxHP)
+            looking = true;
+            atkFlag = true;
+            ani_.SetTrigger("Reset");
+            int p = Random.Range(0, fxs.Length+1);
+            //int p = 4;
+            Debug.Log("Pattern: " + p);
+            switch (p)
             {
-                BeHappy();
+                case 0:
+                    break;
+                case 1:
+                    StartCoroutine(RollingAtk());
+                    break;
+                case 2:
+                    StartCoroutine(FlameShot());
+                    break;
+                case 3:
+                    StartCoroutine(FlyAtk());
+                    break;
+                case 4:
+                    StartCoroutine(Meteo());
+                    break;
+                case 5:
+                    StartCoroutine(Summon());
+                    break;
+                default:
+                    Debug.Log("Dragon Script: Out of index!");
+                    break;
             }
-            else
-            {
-                Debug.Log("aa");
-
-                looking = true;
-                atkFlag = true;
-                ani_.SetTrigger("Reset");
-                int p = Random.Range(0, fxs.Length+1);
-                Debug.Log("Pattern: " + p);
-                //int p = 4;
-                switch (p)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        StartCoroutine("RollingAtk");
-                        break;
-                    case 2:
-                        StartCoroutine("FlameShot");
-                        break;
-                    case 3:
-                        StartCoroutine("FlyAtk");
-                        break;
-                    case 4:
-                        StartCoroutine("Meteo");
-                        break;
-                    case 5:
-                        StartCoroutine("Summon");
-                        break;
-                    default:
-                        Debug.Log("Dragon Script: Out of index!");
-                        break;
-                }
-                yield return new WaitForSeconds(waitingTime);
-                atkFlag = false;
-                yield return new WaitForSeconds(0.5f);
-            }
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(waitingTime);
+            atkFlag = false;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -403,9 +409,19 @@ public class DragonController : MobParent
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
         HP = MaxHP;
-        //SceneManager.LoadScene("Win");
-        base.IsDead();
+        if (!deadCheck)
+        {
+            deadCheck = true;
+            //SceneManager.LoadScene("Win");
+            StartCoroutine(WaitDeadStatus());
+        }
     }
+    IEnumerator WaitDeadStatus()
+    {
+        yield return new WaitForSeconds(3);
+        Dead = true;
+    }
+
 
     void BodyFx(bool t)
     {
@@ -415,36 +431,31 @@ public class DragonController : MobParent
         bodyFxs[3].SetActive(t);
     }
 
-    public new void OnCollisionEnter(Collision collision)  //�巡�� ���� ������
+    public new void OnCollisionStay(Collision collision)
     {
-        base.OnCollisionEnter(collision);
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (rolling)
+            if (DirectTimer >= 1)
             {
-                StartCoroutine(DMGtoPlayer(8, 0.5f));
+                if (rolling)
+                {
+                    GameManager.instance.player.GetHitDamage(rollingDamage);
+                }
+                else if (normalAtk)
+                {
+                    GameManager.instance.player.GetHitDamage(normalAtkDamage);
+                }
+                else if (flingAtk)
+                {
+                    GameManager.instance.player.GetHitDamage(flingAtkDamage);
+                }
+                DirectTimer = 0;
             }
-
-            if (normalAtk)
-            {
-                StartCoroutine(DMGtoPlayer(5, 1.5f));
-            }
-
-            if (flingAtk)
-            {
-                StartCoroutine(DMGtoPlayer(8, 0.5f));
-            }
+            DirectTimer += Time.fixedDeltaTime;
         }
     }
-
-    IEnumerator DMGtoPlayer(float dmg, float time)
+    public new void OnCollisionExit(Collision collision)
     {
-        if (!dmgFlag)
-        {
-            dmgFlag = true;
-            Player.GetComponent<Player>().HP -= dmg;
-            yield return new WaitForSeconds(time);
-            dmgFlag = false;
-        }
+        base.OnCollisionExit(collision);
     }
 }

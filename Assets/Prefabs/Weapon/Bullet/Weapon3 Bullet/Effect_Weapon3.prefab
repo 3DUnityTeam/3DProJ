@@ -23919,7 +23919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapontype: 0
   effectTime: 2.5
-  damage: 0
+  damage: 120
   effect: {fileID: 0}
   effectcode: 4
   width: 2
