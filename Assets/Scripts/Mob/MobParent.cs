@@ -45,16 +45,15 @@ public class MobParent : MonoBehaviour
     //enter(collider,trigger)
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.gameObject.GetComponent<TriggerCollison>() != null)
+        TriggerCollison effectInfo;
+        if (other.gameObject.TryGetComponent<TriggerCollison>(out effectInfo))
         {
             bool caneffect = true;
-            TriggerCollison effectInfo = other.gameObject.GetComponent<TriggerCollison>();
             if(caneffect)
             {
                 caneffect = false;
                 GameObject effect = GameManager.instance.effectPoolManger.Get(effectInfo.effectcode - 1);
                 effect.transform.position = other.ClosestPoint(transform.position);
-                
             }
             
 			HP = HP + effectInfo.damage;
@@ -68,7 +67,7 @@ public class MobParent : MonoBehaviour
         {
             if (DirectTimer >= 1)
             {
-                GameManager.instance.player.HP -= Damage;
+                GameManager.instance.player.GetHitDamage(Damage);
                 DirectTimer = 0;
             }
             DirectTimer += Time.fixedDeltaTime;
@@ -76,7 +75,7 @@ public class MobParent : MonoBehaviour
     }
 
     //exit(collider,trigger)
-    private void OnCollisionExit(Collision collision)
+    public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

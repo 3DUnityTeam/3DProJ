@@ -14,6 +14,8 @@ public class DragonController : MobParent
     Rigidbody rigid_;
     Animator ani_;
 
+    bool deadCheck = false;
+
 
     [Header("#Pattern")]
     public GameObject[] fxs;  //bounce eff, rolling eff, flame, Meteo summon eff
@@ -47,7 +49,7 @@ public class DragonController : MobParent
 
     private void Awake()
     {
-        MaxHP = 4000;
+        MaxHP = 4000f;
         HP = 0;
 
         leftMob = maxMob;
@@ -78,6 +80,8 @@ public class DragonController : MobParent
 
     private void FixedUpdate()
     {
+        if (Dead)
+            return;
         if (HP >= MaxHP)
         {
             BeHappy();
@@ -114,48 +118,39 @@ public class DragonController : MobParent
         looking = true;
         while (HP < MaxHP)
         {
-            if (HP >= MaxHP)
+            looking = true;
+            atkFlag = true;
+            ani_.SetTrigger("Reset");
+            int p = Random.Range(0, fxs.Length+1);
+            //int p = 4;
+            Debug.Log("Pattern: " + p);
+            switch (p)
             {
-                BeHappy();
+                case 0:
+                    break;
+                case 1:
+                    StartCoroutine(RollingAtk());
+                    break;
+                case 2:
+                    StartCoroutine(FlameShot());
+                    break;
+                case 3:
+                    StartCoroutine(FlyAtk());
+                    break;
+                case 4:
+                    StartCoroutine(Meteo());
+                    break;
+                case 5:
+                    StartCoroutine(Summon());
+                    break;
+                default:
+                    Debug.Log("Dragon Script: Out of index!");
+                    break;
             }
-            else
-            {
-                Debug.Log("aa");
-
-                looking = true;
-                atkFlag = true;
-                ani_.SetTrigger("Reset");
-                int p = Random.Range(0, fxs.Length+1);
-                Debug.Log("Pattern: " + p);
-                //int p = 4;
-                switch (p)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        StartCoroutine("RollingAtk");
-                        break;
-                    case 2:
-                        StartCoroutine("FlameShot");
-                        break;
-                    case 3:
-                        StartCoroutine("FlyAtk");
-                        break;
-                    case 4:
-                        StartCoroutine("Meteo");
-                        break;
-                    case 5:
-                        StartCoroutine("Summon");
-                        break;
-                    default:
-                        Debug.Log("Dragon Script: Out of index!");
-                        break;
-                }
-                yield return new WaitForSeconds(0.5f);
-                yield return new WaitForSeconds(waitingTime);
-                atkFlag = false;
-                yield return new WaitForSeconds(0.5f);
-            }
+            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(waitingTime);
+            atkFlag = false;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -414,9 +409,19 @@ public class DragonController : MobParent
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
         HP = MaxHP;
-        //SceneManager.LoadScene("Win");
-        base.IsDead();
+        if (!deadCheck)
+        {
+            deadCheck = true;
+            //SceneManager.LoadScene("Win");
+            StartCoroutine(WaitDeadStatus());
+        }
     }
+    IEnumerator WaitDeadStatus()
+    {
+        yield return new WaitForSeconds(3);
+        Dead = true;
+    }
+
 
     void BodyFx(bool t)
     {
@@ -434,19 +439,23 @@ public class DragonController : MobParent
             {
                 if (rolling)
                 {
-                    player.HP -= rollingDamage;
+                    GameManager.instance.player.GetHitDamage(rollingDamage);
                 }
                 else if (normalAtk)
                 {
-                    player.HP -= normalAtkDamage;
+                    GameManager.instance.player.GetHitDamage(normalAtkDamage);
                 }
                 else if (flingAtk)
                 {
-                    player.HP -= flingAtkDamage;
+                    GameManager.instance.player.GetHitDamage(flingAtkDamage);
                 }
                 DirectTimer = 0;
             }
             DirectTimer += Time.fixedDeltaTime;
         }
+    }
+    public new void OnCollisionExit(Collision collision)
+    {
+        base.OnCollisionExit(collision);
     }
 }

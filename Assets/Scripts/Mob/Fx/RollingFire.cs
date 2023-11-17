@@ -8,5 +8,4 @@ public class RollingFire : MonoBehaviour
     {
         Destroy(this.gameObject, 2.3f);
     }
-
 }

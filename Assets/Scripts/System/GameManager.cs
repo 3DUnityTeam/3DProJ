@@ -101,9 +101,9 @@ public class GameManager : MonoBehaviour
         }
         else if (Boss.TryGetComponent<DragonController>(out dragon))
         {
-            if (dragon.HP >= dragon.MaxHP)
+            if (dragon.Dead)
             {
-                //UIManager.FinshGame(true);
+                UIManager.FinshGame(true);
             }
         }
         //커서 중앙 잠금 구현
