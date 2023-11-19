@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FireControl : MonoBehaviour
 {
+    public enum WeaponType
+    {
+        bullet,beam
+    }
+
     [Header("외부 오브젝트")]
     private WeaponControl parent;
     private AimManager aimManager;
@@ -11,15 +16,22 @@ public class FireControl : MonoBehaviour
     public Transform firePos;
     public AudioClip fireSfx;
     private new AudioSource audio;
+    //총알 발사 타입 무기일 때 쓰는거
     public MeshRenderer muzzelFlash;
     public GameObject muzzlefire;
     public Light muzzlelight;
+    //빔 타입일 때 쓰는 거
+    public GameObject Beam;
     private Gunmove gunmove;
 
-    [Header ("내부 수치")]
+    [Header("내부 수치")]
+    public WeaponType weaponType = WeaponType.bullet;
     public float rapidspeed = 0.7f;
     private float ctime = 0f;
+    //총알 발사 타입일 때 쓰는 거
     public float bulletspeed = 2000f;
+    //빔 타입일 때 쓰는 거
+    public float beamtime = 0.3f;
     public float damage = 20f;
     
 
@@ -68,45 +80,55 @@ public class FireControl : MonoBehaviour
     // Update is called once per frame
     void Fire()
     {
-        GameObject firedbullet = GameManager.instance.bulletPoolManger.Get(bulletID - 1);
-        Vector3 direction;
-
-        if (firedbullet != null)
+        switch(weaponType)
         {
-            // 오브젝트 풀에서 나온 오브젝트의 초기 상태 설정
-            firedbullet.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            firedbullet.transform.position = firePos.transform.position;
-            firedbullet.transform.rotation = firePos.transform.rotation;
+            case WeaponType.bullet:
+                GameObject firedbullet = GameManager.instance.bulletPoolManger.Get(bulletID - 1);
+                Vector3 direction;
 
-            if (aimManager.aimingTarget != null)
-            {
-                // 타겟을 향하도록 회전 설정
-                Vector3 center = aimManager.aimingTarget.GetComponent<Collider>().bounds.center;
-                firedbullet.transform.LookAt(center);
-                direction = (center - firePos.transform.position).normalized;
-            }
-            else
-            {
-                // 타겟이 없을 경우 초기 방향 설정
-                firedbullet.transform.forward = firePos.transform.forward;
-                direction = (gunmove.basic.position - firePos.transform.position).normalized;
-            }
+                if (firedbullet != null)
+                {
+                    // 오브젝트 풀에서 나온 오브젝트의 초기 상태 설정
+                    firedbullet.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    firedbullet.transform.position = firePos.transform.position;
+                    firedbullet.transform.rotation = firePos.transform.rotation;
 
-            firedbullet.GetComponent<BulletCtrl>().damage = damage;
-            firedbullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
-            parent.shoot();
+                    if (aimManager.aimingTarget != null)
+                    {
+                        // 타겟을 향하도록 회전 설정
+                        Vector3 center = aimManager.aimingTarget.GetComponent<Collider>().bounds.center;
+                        firedbullet.transform.LookAt(center);
+                        direction = (center - firePos.transform.position).normalized;
+                    }
+                    else
+                    {
+                        // 타겟이 없을 경우 초기 방향 설정
+                        firedbullet.transform.forward = firePos.transform.forward;
+                        direction = (gunmove.basic.position - firePos.transform.position).normalized;
+                    }
+
+                    firedbullet.GetComponent<BulletCtrl>().damage = damage;
+                    firedbullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
+                    parent.shoot();
+                }
+                //audio.PlayOneShot(fireSfx, 1.0f);
+                if (muzzelFlash != null)
+                {
+                    StartCoroutine(ShowMuzzleFlash());
+                }
+                else if (muzzlefire != null)
+                {
+                    muzzlelight.enabled = true;
+                    muzzlefire.SetActive(true);
+                    StartCoroutine(ShowMuzzleFire());
+                }
+                break;
+
+            case WeaponType.beam:
+                StartCoroutine(Beamshow(beamtime));
+                break;
         }
-        //audio.PlayOneShot(fireSfx, 1.0f);
-        if(muzzelFlash != null)
-        {
-            StartCoroutine(ShowMuzzleFlash());
-        }
-        else if(muzzlefire != null)
-        {
-            muzzlelight.enabled = true;
-            muzzlefire.SetActive(true);
-            StartCoroutine(ShowMuzzleFire());
-        }
+        
         
     }
 
@@ -134,5 +156,13 @@ public class FireControl : MonoBehaviour
         muzzlefire.SetActive(false);
         muzzlelight.enabled = false;
 
+    }
+
+    IEnumerator Beamshow(float time)
+    {
+        Beam.SetActive(true);
+        Beam.GetComponent<TriggerCollison>().damage = damage;
+        yield return new WaitForSeconds(time);
+        Beam.SetActive(false);
     }
 }
