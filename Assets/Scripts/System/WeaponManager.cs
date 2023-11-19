@@ -12,6 +12,8 @@ public class WeaponManager : MonoBehaviour
     public List<WeaponType> collect = new List<WeaponType>();
     //생성된 일반 무기
     public GameObject[] Weapon;
+    //현재 들고 있는 무기 번호
+    public int collectNum;
 
     //특수 무기 쿨타임
     public float specialWeaponCools;
@@ -36,6 +38,10 @@ public class WeaponManager : MonoBehaviour
         SP2,
     }
 
+    private void Awake()
+    {
+        collectNum = 1;
+    }
 
     //일반 목록에 저장
     public bool SaveWP(WeaponType type)
@@ -166,6 +172,7 @@ public class WeaponManager : MonoBehaviour
         //무기 바꾸기
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            collectNum = 1;
             for (int i = 0; i < WP.Length; i++)
             {
                 if (WP[i] == null)
@@ -184,6 +191,7 @@ public class WeaponManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            collectNum = 2;
             for (int i = 0; i < WP.Length; i++)
             {
                 if (WP[i] == null)
@@ -202,6 +210,7 @@ public class WeaponManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            collectNum = 3;
             for (int i = 0; i < WP.Length; i++)
             {
                 if (WP[i] == null)

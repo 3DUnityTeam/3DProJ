@@ -49,10 +49,10 @@ MonoBehaviour:
   state: 0
   basic: {fileID: 0}
   target: {fileID: 0}
-  "\uC88C\uCE21\uAC01\uB3C4": 50
-  "\uC6B0\uCE21\uAC01\uB3C4": 10
-  "\uC0C1\uB2E8\uAC01\uB3C4": 80
-  "\uD558\uB2E8\uAC01\uB3C4": 60
+  upperAngle: 60
+  downAngle: 60
+  leftAngle: 20
+  rightAngle: 20
 --- !u!114 &1054957233805711078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,13 +65,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b652eac0afe7dc4499efdbd202d32a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimManager: {fileID: 0}
   bulletID: 1
   firePos: {fileID: 0}
   fireSfx: {fileID: 0}
   muzzelFlash: {fileID: 0}
-  "\uACF5\uACA9\uC18D\uB3C4": 0.7
-  "\uCD1D\uC54C\uC18D\uB3C4": 4000
+  muzzlefire: {fileID: 0}
+  muzzlelight: {fileID: 0}
+  rapidspeed: 0.7
+  bulletspeed: 2000
+  damage: 550
 --- !u!1001 &3553744355243831743
 PrefabInstance:
   m_ObjectHideFlags: 0

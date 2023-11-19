@@ -24,6 +24,13 @@ public class Player : MonoBehaviour
     public GameObject tofu;
     public GameObject CommonParent;
     public GameObject SpecialParent;
+    //Damage
+    [Header("#Damage")]
+    bool isBlock = false;
+    float blockTime = 0.2f;
+    float blockTimer = 0f;
+
+
 
     //이동
     [Header("Move")]
@@ -480,12 +487,73 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    public void GetHitDamage(float damage)
+    {
+        //dot
+        if (damage < 5f)
+        {
+            HP = HP - damage;
+        }
+        //unit
+        else
+        {
+            if (!isBlock)
+            {
+                isBlock = true;
+                StartCoroutine(BlockPile());
+                HP = HP - damage;
+            }
+        }
+    }
+    IEnumerator BlockPile()
+    {
+        if (isBlock)
+        {
+            while (blockTimer < blockTime)
+            {
+                yield return new WaitForFixedUpdate();
+                blockTimer += Time.fixedDeltaTime;
+            }
+            isBlock = false;
+            blockTimer = 0;
+        }
+        
+    }
     //충돌 이벤트
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Land"))
         {
             isJump = false;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bomb"))
+        {
+            Blueberry berry;
+            if(other.gameObject.TryGetComponent<Blueberry>(out berry))
+            {
+                if (!berry.bomb)
+                {
+                    berry.bomb = true;
+                    GetHitDamage(berry.damage);
+                }
+            }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        FlameShot shot;
+        if (other.TryGetComponent<FlameShot>(out shot))
+        {
+            GetHitDamage(shot.flameDmg * Time.fixedDeltaTime);
+        }
+        RollingFire rolling;
+        if (other.TryGetComponent<RollingFire>(out rolling))
+        {
+            GetHitDamage(rolling.fireDmg * Time.fixedDeltaTime);
         }
     }
 }

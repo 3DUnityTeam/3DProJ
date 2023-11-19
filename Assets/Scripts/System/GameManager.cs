@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("#Boss")]
     public GameObject Boss;
+
     [Header("#Player")]
     //인게임 플레이어
     public Tofu tofuFoolr;
@@ -101,9 +102,9 @@ public class GameManager : MonoBehaviour
         }
         else if (Boss.TryGetComponent<DragonController>(out dragon))
         {
-            if (dragon.HP >= dragon.MaxHP)
+            if (dragon.Dead)
             {
-                //UIManager.FinshGame(true);
+                UIManager.FinshGame(true);
             }
         }
         //커서 중앙 잠금 구현

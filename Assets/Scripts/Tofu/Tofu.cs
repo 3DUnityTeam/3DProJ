@@ -9,6 +9,7 @@ public class Tofu : MonoBehaviour
     public float MaxHP { get { return this.maxHP; } }
     private float hp = 50000f;
     public float HP { get { return this.hp; } set { this.hp = value; } }
+    bool isRevive = false;
     GameManager manager = GameManager.instance;
     // Start is called before the first frame update
     void Start()
@@ -19,17 +20,19 @@ public class Tofu : MonoBehaviour
     void Update()
     {
         manager = GameManager.instance;
-        if (manager.player.HP <= 0)
+        if (manager.player.HP <= 0 && !isRevive)
         {
+            isRevive = true;
             StartCoroutine(RevivePly());
         }
     }
     IEnumerator RevivePly()
     {
         yield return new WaitForSeconds(3);
+        HP = HP - (MaxHP * 0.12f);
         manager.player.gameObject.SetActive(true);
         manager.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         manager.player.HP = manager.player.MaxHP;
-
+        isRevive = false;
     }
 }
