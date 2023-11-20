@@ -50582,6 +50582,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1419754109}
     - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
+      propertyPath: summons
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
       propertyPath: mobSpawn
       value: 
       objectReference: {fileID: 499430493}
