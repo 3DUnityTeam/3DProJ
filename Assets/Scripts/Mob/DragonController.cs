@@ -64,6 +64,7 @@ public class DragonController : MobParent
     private new void Start()
     {
         base.Start();
+        mobClear = true;
         personalColor = new Color(1, 0, 1);
         player = GameManager.instance.player;
         mobSpawn = GameManager.instance.SpawnManager.gameObject;

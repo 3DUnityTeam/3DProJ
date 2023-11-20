@@ -21,7 +21,6 @@ public class BossRat : MobParent
     bool isFound = false;
 
     bool deadCheck = false;
-    bool mobClear = false;
 
     private void Awake()
     {
@@ -180,4 +179,6 @@ public class BossRat : MobParent
         yield return new WaitForSeconds(3);
         Dead = true;
     }
+
+
 }

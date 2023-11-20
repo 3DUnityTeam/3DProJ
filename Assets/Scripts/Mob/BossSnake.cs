@@ -21,7 +21,6 @@ public class BossSnake : MobParent
     bool flag_ = false;
 
     bool deadCheck = false;
-    bool mobClear = false;
 
     private void Awake()
     {
@@ -149,6 +148,8 @@ public class BossSnake : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
+            if (GameManager.instance.AimManager.mobList.Contains(gameObject))
+                GameManager.instance.AimManager.mobList.Remove(gameObject);
             GameManager.instance.progressManager.Clear(1);
             deadCheck = true;
             StartCoroutine(WaitDeadStatus());

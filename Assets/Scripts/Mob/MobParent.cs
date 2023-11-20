@@ -10,7 +10,7 @@ public class MobParent : MonoBehaviour
 
     private float damage;
     private bool dead;
-    private float dotDamage;
+    private float dotDamage=0;
     //�ִ� ü��
     private float maxHp;
     //���� ü��
@@ -31,6 +31,7 @@ public class MobParent : MonoBehaviour
     public float HP { get { return this.hp; } set { this.hp = value; } }
 
     bool flag__ = false;
+    public bool mobClear = false;
 
     public void Start()
     {
@@ -43,6 +44,10 @@ public class MobParent : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             BulletCtrl bulletInfo = collision.gameObject.GetComponent<BulletCtrl>();
+            if (!mobClear)
+            {
+                GameManager.instance.UIManager.BattleUI.GetComponent<BattleUI>().MassageState("다수의 몹이 주인을 지켜주는 듯하다.");
+            }
             HP = HP + bulletInfo.damage;
         }
         //�÷��̾�� ������ �����°� �� ���� �ڵ�� 
@@ -129,10 +134,13 @@ public class MobParent : MonoBehaviour
     public IEnumerator IsLive(float damage)
     {
         DotDamage = damage;
-        while(HP < MaxHP)
+        GameManager.instance.tofuFoolr.attackCount += damage / 10;
+
+        while (HP < MaxHP)
         {
             yield return new WaitForFixedUpdate();
-            GameManager.instance.tofuFoolr.HP = GameManager.instance.tofuFoolr.HP - damage * Time.fixedDeltaTime;
+            GameManager.instance.tofuFoolr.HP = GameManager.instance.tofuFoolr.HP - damage * Time.fixedDeltaTime/10;
         }
+        GameManager.instance.tofuFoolr.attackCount -= damage / 10;
     }
 }

@@ -30,6 +30,7 @@ public class BirdController : MobParent
     private void Awake()
     {
         MaxHP = 40;
+        mobClear = true;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;

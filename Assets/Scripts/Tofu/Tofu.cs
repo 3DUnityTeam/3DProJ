@@ -5,14 +5,14 @@ using UnityEngine;
 public class Tofu : MonoBehaviour
 {
     //HP
-    private float maxHP = 50000f;
+    private float maxHP = 600f;
     public float MaxHP { get { return this.maxHP; } }
-    private float hp = 50000f;
+    private float hp = 600f;
     public float HP { get { return this.hp; } set { this.hp = value; } }
     private float timeSpeed;
     public float TimeSpeed { get { return this.timeSpeed; } set { this.timeSpeed = value; } }
 
-    public int attackCount;
+    public float attackCount;
 
     bool isRevive = false;
     GameManager manager = GameManager.instance;
@@ -46,8 +46,6 @@ public class Tofu : MonoBehaviour
         yield return new WaitForSeconds(revivetime);
         HP = HP - (MaxHP * 0.12f);
         manager.player.gameObject.SetActive(true);
-        manager.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        manager.player.HP = manager.player.MaxHP;
         isRevive = false;
     }
 }
