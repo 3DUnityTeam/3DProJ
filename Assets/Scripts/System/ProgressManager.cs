@@ -7,6 +7,9 @@ public class ProgressManager : MonoBehaviour
     GameManager gameManager;
     public GameObject[] Map;
     public GameObject[] Fires;
+    public GameObject circle;
+    public GameObject ready;
+    public GameObject Breath;
     public Transform bossspawnpoint;
     public Transform playerspawnpoint;
     public bool boss1Cleared = false;
@@ -62,17 +65,45 @@ public class ProgressManager : MonoBehaviour
     public IEnumerator Mapchange()
     {
         mapchanged = true;
-        //gameManager.StopManager.TimeStop();
+        yield return new WaitForSeconds(3f);
+        gameManager.statemessage.MassageState("드래곤이 화가 난 것 같아요!");
+        yield return new WaitForSeconds(1.2f);
+        circle.SetActive(true);
+        yield return new WaitForSeconds(2.3f);
+        gameManager.statemessage.MassageState("드래곤이 두부를 진심으로 해치려 해요!");
+        ready.SetActive(true);
+        yield return new WaitForSeconds(1.2f);
+        Breath.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
         gameManager.UIManager.Fadeinout(false);
         yield return new WaitForSeconds(3f);
         Map[0].SetActive(false);
+        //불 전부 비활성화
+        circle.SetActive(false);
+        ready.SetActive(false);
+        Breath.SetActive(false);
         Map[1].SetActive(true);
         gameManager.Boss.transform.position = bossspawnpoint.position;
         gameManager.Boss.GetComponent<DragonController>().enabled = true;
         gameManager.player.gameObject.SetActive(true);
         gameManager.player.gameObject.transform.position = playerspawnpoint.position;
-        //gameManager.StopManager.TimePass();
         gameManager.UIManager.Fadeinout(true);
+        /*GameObject deadeffect = GameManager.instance.effectPoolManger.Get(7 - 1);
+        deadeffect.transform.position = gameManager.player.gameObject.transform.position;
+        gameManager.player.gameObject.SetActive(false);
+        StartCoroutine(RevivePly(3));*/
+        yield return new WaitForSeconds(3f);
+        gameManager.statemessage.MassageState("두부를 지켜야 합니다!");
 
+    }
+
+
+    IEnumerator RevivePly(float revivetime)
+    {
+        GameManager.instance.UIManager.Dead(revivetime);
+        yield return new WaitForSeconds(revivetime);
+        gameManager.player.gameObject.SetActive(true);
+        gameManager.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameManager.player.HP = gameManager.player.MaxHP;
     }
 }

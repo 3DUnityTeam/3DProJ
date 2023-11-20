@@ -4063,7 +4063,7 @@ MonoBehaviour:
   dashpower: 2500
   dashcooltime: 0.3
   isJump: 0
-  JumpPower: 30
+  JumpPower: 0.2
   boost: {fileID: 1540781542}
   boosterimpact: {fileID: 1080216571}
   boosters:
