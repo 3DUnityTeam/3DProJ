@@ -92,6 +92,8 @@ public class BossRat : MobParent
             int n = Random.Range(10, 21);
             for (int i = 0; i < n; i++)
             {
+                if (Dead)
+                    break;
                 float x = Random.Range(-50f, 50f);
                 float z = Random.Range(-50f, 50f);
                 Vector3 spawnPoz = trans_.position + new Vector3(x, -2, z);
@@ -126,8 +128,11 @@ public class BossRat : MobParent
             }
             else
             {
-                isWatching = true;
-                StartCoroutine(Meteos());
+                if (!Dead)
+                {
+                    isWatching = true;
+                    StartCoroutine(Meteos());
+                }
             }
         }
         else
