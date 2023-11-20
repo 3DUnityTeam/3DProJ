@@ -39,7 +39,8 @@ public class HUD : MonoBehaviour
                     if (i == 0)
                     {
                         float distance = Vector3.Distance(manager.player.transform.position, manager.Boss.transform.position);
-                        if (minDistance > distance)
+                        MobParent bossSript = manager.Boss.GetComponent<MobParent>();
+                        if (minDistance > distance && bossSript.HP<bossSript.MaxHP)
                         {
                             nearBoss = manager.Boss;
                             minDistance = distance;
@@ -48,7 +49,8 @@ public class HUD : MonoBehaviour
                     else
                     {
                         float distance = Vector3.Distance(manager.player.transform.position, manager.SubBoss[i - 1].transform.position);
-                        if (minDistance > distance)
+                        MobParent bossSript = manager.SubBoss[i - 1].GetComponent<MobParent>();
+                        if (minDistance > distance && bossSript.HP < bossSript.MaxHP)
                         {
                             nearBoss = manager.SubBoss[i - 1];
                             minDistance = distance;

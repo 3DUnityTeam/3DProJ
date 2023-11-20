@@ -44,8 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a345d9c7645be244f80fa330b6644608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map: []
-  Fires: []
+  Map:
+  - {fileID: 0}
+  - {fileID: 0}
+  Fires:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4462454863167749681, guid: 2b55796de8f3a474392656c7c366ae8c, type: 3}
+  - {fileID: 3101034369564890333, guid: 2b508fc3de404744cb245cfcad8f6ee1, type: 3}
+  - {fileID: 6618050586814012011, guid: 47600cedcd6bbe14aa34281590e1062c, type: 3}
+  bossspawnpoint: {fileID: 0}
+  playerspawnpoint: {fileID: 0}
   boss1Cleared: 0
   boss2Cleared: 0
   dragonCleared: 0

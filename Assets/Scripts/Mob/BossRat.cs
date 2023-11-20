@@ -166,9 +166,11 @@ public class BossRat : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
-            GameManager.instance.progressManager.boss2Cleared = true;
+            GameManager.instance.progressManager.Clear(2);
             deadCheck = true;
             //SceneManager.LoadScene("Win");
+            if (GameManager.instance.AimManager.mobList.Contains(gameObject))
+                GameManager.instance.AimManager.mobList.Remove(gameObject);
             StartCoroutine(WaitDeadStatus());
         }
     }
@@ -177,6 +179,5 @@ public class BossRat : MobParent
         heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
-        GameManager.instance.progressManager.Clear(2);
     }
 }
