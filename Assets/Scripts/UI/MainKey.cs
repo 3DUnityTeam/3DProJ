@@ -52,5 +52,10 @@ public class MainKey : MonoBehaviour
             pressed[8].SetActive(true);
         if (Input.GetKeyUp(KeyCode.Space))
             pressed[8].SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.E))
+            pressed[9].SetActive(true);
+        if (Input.GetKeyUp(KeyCode.E))
+            pressed[9].SetActive(false);
     }
 }
