@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176dd982141d87449a29d9c311a90525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectID: 3
+  effectID: 6
   damage: 20
   boost: {fileID: 7659146430039300953}
   bulletspeed: 2000

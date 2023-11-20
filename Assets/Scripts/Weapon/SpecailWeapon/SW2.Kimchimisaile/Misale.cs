@@ -22,7 +22,9 @@ public class Misale : MonoBehaviour
 
     void OnEnable()
     {
+        GetComponent<TrailRenderer>().enabled = false;
         boost.SetActive(false);
+        GetComponent<TrailRenderer>().enabled = true;
         StartCoroutine(ActiveFalse());
         StartCoroutine(Stop());
         StartCoroutine(Shoot());

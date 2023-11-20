@@ -109,7 +109,7 @@ public class FireControl : MonoBehaviour
 
                     firedbullet.GetComponent<BulletCtrl>().damage = damage;
                     firedbullet.GetComponent<Rigidbody>().AddForce(direction * bulletspeed);
-                    parent.shoot();
+                    
                 }
                 //audio.PlayOneShot(fireSfx, 1.0f);
                 if (muzzelFlash != null)
@@ -128,8 +128,8 @@ public class FireControl : MonoBehaviour
                 StartCoroutine(Beamshow(beamtime));
                 break;
         }
-        
-        
+
+        parent.shoot();
     }
 
     IEnumerator ShowMuzzleFlash()
