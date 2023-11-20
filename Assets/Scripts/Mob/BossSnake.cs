@@ -56,6 +56,8 @@ public class BossSnake : MobParent
             flag = true;
             Fxs[1].SetActive(true);
             ani_.SetBool("Flame", true);
+            if (Dead)
+                Fxs[1].SetActive(false);
             yield return new WaitForSeconds(2.2f);
             Fxs[1].SetActive(false);
             ani_.SetBool("Flame", false);
@@ -109,8 +111,11 @@ public class BossSnake : MobParent
             }
             else
             {
-                isWatching = true;
-                StartCoroutine(FlameShot());
+                if (!Dead)
+                {
+                    isWatching = true;
+                    StartCoroutine(FlameShot());
+                }
             }
         }
         else
