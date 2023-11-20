@@ -13,17 +13,21 @@ public class BossSnake : MobParent
 
     public float traceDist = 6.5f;
     public int summons = 50;
+    public int mobs;
 
     bool isWatching = false;
     bool flag = false;
     bool isFound = false;
+    bool flag_ = false;
 
     bool deadCheck = false;
+    bool mobClear = false;
 
     private void Awake()
     {
         personalColor = Color.red;
         MaxHP = 2500f;
+        mobs = summons;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
     }
@@ -33,6 +37,12 @@ public class BossSnake : MobParent
     {
         if (!Dead)
         {
+            if (mobs <= 0)
+                mobClear = true;
+            else
+                HP = 0;
+            
+
             StartCoroutine(CheckState());
             if (HP >= MaxHP)
             {
@@ -41,13 +51,17 @@ public class BossSnake : MobParent
 
             if (isWatching)
             {
-                trans_.LookAt(new Vector3(Player.transform.position.x, trans_.position.y, Player.transform.position.z));
+                Vector3 dir = Player.transform.position - this.transform.position;
+                trans_.rotation = Quaternion.Lerp(this.transform.rotation, 
+                    Quaternion.LookRotation(dir), Time.deltaTime * 0.98f);
             }
         }
         else
+        {
+            Fxs[1].SetActive(false);
             return;
+        }
     }
-
 
     IEnumerator FlameShot()
     {
@@ -56,8 +70,6 @@ public class BossSnake : MobParent
             flag = true;
             Fxs[1].SetActive(true);
             ani_.SetBool("Flame", true);
-            if (Dead)
-                Fxs[1].SetActive(false);
             yield return new WaitForSeconds(2.2f);
             Fxs[1].SetActive(false);
             ani_.SetBool("Flame", false);
@@ -75,7 +87,6 @@ public class BossSnake : MobParent
             ani_.SetBool("Summon", true);
             for (int i = 0; i < summons; i++)
             {
-                Debug.Log("4");
                 if (!isFound)
                     break;
                 else
@@ -86,12 +97,13 @@ public class BossSnake : MobParent
                     GameObject obj = GameManager.instance.SpawnManager.Get(random);
                     obj.transform.position = new Vector3(tX, trans_.position.y, tZ);
                     obj.transform.parent = mobSpawn.transform;
+                    obj.name = "Tomato";
 
                     summons--;
                     yield return new WaitForSeconds(0.95f);
                 }
             }
-            summons = 0;
+            //summons = 0;
             Fxs[0].SetActive(false);
             ani_.SetBool("Summon", false);
             flag = false;
@@ -111,7 +123,7 @@ public class BossSnake : MobParent
             }
             else
             {
-                if (!Dead)
+                if (!Dead && mobClear)
                 {
                     isWatching = true;
                     StartCoroutine(FlameShot());
