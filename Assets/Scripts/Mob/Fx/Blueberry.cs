@@ -9,11 +9,13 @@ public class Blueberry : MonoBehaviour
     public bool bomb;
     SphereCollider coll;
     float baseRadius;
+    float effectTime;
     private void Awake()
     {
         bomb = false;
         coll = GetComponent<SphereCollider>();
         baseRadius = coll.radius;
+        effectTime = fx.GetComponent<ParticleSystem>().duration;
     }
 
     IEnumerator Start()
@@ -32,7 +34,7 @@ public class Blueberry : MonoBehaviour
         while (coll.radius<=1.4f)   
         {
             yield return new WaitForFixedUpdate();
-            coll.radius += ((1.4f - baseRadius) * Time.fixedDeltaTime)*0.5f;
+            coll.radius += ((1.4f - baseRadius) * Time.fixedDeltaTime)* effectTime;
         }
         coll.radius= baseRadius;
     }
