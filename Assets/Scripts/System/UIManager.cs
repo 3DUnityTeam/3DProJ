@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject CollectUI;
     public GameObject BattleUI;
     public GameObject ResultUI;
+    public GameObject DeadUI;
     public Image[] WeaponIcons;
 
     public void Init()
@@ -46,15 +47,15 @@ public class UIManager : MonoBehaviour
     public void Fadeinout(bool inout)
     {
         //true : 화면 하얗지 않게 false:화면 하얗게
-        if(inout == true)
+        if (inout == true)
         {
             BattleUI.GetComponent<BattleUI>().fadeIn.state = FadeIn.State.fadein;
         }
-        else if(inout == false)
+        else if (inout == false)
         {
             BattleUI.GetComponent<BattleUI>().fadeIn.state = FadeIn.State.fadeout;
         }
-        
+
     }
     public void FinshGame(bool result)
     {
@@ -63,5 +64,19 @@ public class UIManager : MonoBehaviour
         BattleUI.SetActive(false);
         CollectUI.SetActive(false);
         ResultUI.SetActive(true);
+        ResultUI.GetComponent<ResultUI>().Textchange(true);
+    }
+
+    public void Dead(float deadtime)
+    {
+        StartCoroutine(stopdead(deadtime));
+        DeadUI.SetActive(true);
+        DeadUI.GetComponent<DeadUI>().Dead(deadtime);
+    }
+
+    IEnumerator stopdead(float deadtime)
+    {
+        yield return new WaitForSeconds(deadtime);
+        DeadUI.SetActive(false);
     }
 }
