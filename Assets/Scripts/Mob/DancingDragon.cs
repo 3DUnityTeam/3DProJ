@@ -7,6 +7,7 @@ public class DancingDragon : MonoBehaviour
 
     private void Start()
     {
+
         ani = GetComponent<Animator>();
     }
 

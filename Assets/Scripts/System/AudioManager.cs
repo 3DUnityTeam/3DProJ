@@ -92,8 +92,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBgm(Bgm bgm)
     {
-        bgmPlayer.clip = bgmClip[(int)bgm];
-        bgmPlayer.Play();
+        //bgmPlayer.clip = bgmClip[(int)bgm];
+        //bgmPlayer.Play();
     }
 
     public void ChangeVolume()

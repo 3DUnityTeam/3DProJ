@@ -109,7 +109,7 @@ public class BattleUI : MonoBehaviour
 
     IEnumerator HideMassage()
     {
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(2.5f);
         statemassage.text = "";
 
     }

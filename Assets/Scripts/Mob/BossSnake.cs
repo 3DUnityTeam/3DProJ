@@ -137,9 +137,8 @@ public class BossSnake : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
-            GameManager.instance.progressManager.boss1Cleared = true;
+            GameManager.instance.progressManager.Clear(1);
             deadCheck = true;
-            //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
         }
     }
@@ -148,6 +147,5 @@ public class BossSnake : MobParent
         heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
-        GameManager.instance.progressManager.Clear(1);
     }
 }
