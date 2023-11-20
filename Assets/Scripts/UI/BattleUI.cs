@@ -111,6 +111,5 @@ public class BattleUI : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
         statemassage.text = "";
-
     }
 }

@@ -33,6 +33,7 @@ public class SnakeController : MobParent
     {
         MaxHP = 80;
         Fx(false);
+        mobClear = true;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
