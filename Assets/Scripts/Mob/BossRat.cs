@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BossRat : MobParent
 {
+    public GameObject pm;
     public GameObject heart;
     public GameObject Fxs; //Summon
     public GameObject Player;
@@ -147,6 +148,7 @@ public class BossRat : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
+            pm.GetComponent<ProgressManager>().boss2Cleared = true;
             deadCheck = true;
             //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
