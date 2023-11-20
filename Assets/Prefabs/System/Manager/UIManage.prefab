@@ -658,6 +658,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3577081747067898134, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213117470445429498, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 5699097342172841820, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -694,10 +702,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6462257790620075507, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 836
+      objectReference: {fileID: 0}
     - target: {fileID: 7839358997116826452, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
       propertyPath: fadeIn
       value: 
       objectReference: {fileID: 3394282623677426227}
+    - target: {fileID: 8633176197275281849, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 376ce9649dc28834cb55388bb56b8613, type: 3}
 --- !u!1 &321556196627192809 stripped

@@ -22,6 +22,9 @@ public class Tofu : MonoBehaviour
         manager = GameManager.instance;
         if (manager.player.HP <= 0 && !isRevive)
         {
+            GameObject deadeffect = GameManager.instance.effectPoolManger.Get(7 - 1);
+            deadeffect.transform.position = manager.player.gameObject.transform.position;
+            manager.player.gameObject.SetActive(false);
             isRevive = true;
             StartCoroutine(RevivePly());
         }

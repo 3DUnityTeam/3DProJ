@@ -28,6 +28,7 @@ public class DragonController : MobParent
     public float flingAtkDamage =16;
 
     Vector3 dirr = Vector3.zero;
+    Vector3 resetPoz = new Vector3(-95, 4.3f, 19);
 
     public int skillDmg;
     [Header("#SpawnMobCount")]
@@ -35,7 +36,7 @@ public class DragonController : MobParent
     int maxMob = 50;
     int leftMob;
 
-    float waitingTime;
+    //float waitingTime;
     float speed = 10f;
 
     bool flag = false;
@@ -46,6 +47,7 @@ public class DragonController : MobParent
     bool rolling = false;
     bool normalAtk = false;
     bool flingAtk = false;
+    bool isEnd = false;
 
     private void Awake()
     {
@@ -67,17 +69,7 @@ public class DragonController : MobParent
 
         playerTrans_ = player.transform;
 
-        NextPhase();
-    }
-
-    public void NextPhase()
-    {
-        ani_.SetTrigger("Phase2");
-        Debug.Log("Phase2 start");
-        BodyFx(false);
-        fxs[4].SetActive(false);
-        dirr = Vector3.forward;
-        StartCoroutine("Phase2");
+         NextPhase();
     }
 
     private void FixedUpdate()
@@ -114,46 +106,77 @@ public class DragonController : MobParent
         }
     }
 
+    public void NextPhase()
+    {
+        ani_.SetTrigger("Phase2");
+        Debug.Log("Phase2 start");
+        BodyFx(false);
+        fxs[4].SetActive(false);
+        dirr = Vector3.forward;
+        StartCoroutine("Phase2");
+    }
+
     IEnumerator Phase2()
     {
         yield return new WaitForSeconds(4.5f);
         looking = true;
-        while (HP < MaxHP)
+        isEnd = true;
+    }
+
+    private void Update()
+    {
+        if (HP < MaxHP)
         {
-            looking = true;
-            atkFlag = true;
-            ani_.SetTrigger("Reset");
-            int p = Random.Range(0, fxs.Length+1);
-            //int p = 4;
-            Debug.Log("Pattern: " + p);
-            switch (p)
+            if (trans_.position.x < -210 || trans_.position.x > 210 
+                || trans_.position.z < -210 || trans_.position.z > 210)
             {
-                case 0:
-                    break;
-                case 1:
-                    StartCoroutine(RollingAtk());
-                    break;
-                case 2:
-                    StartCoroutine(FlameShot());
-                    break;
-                case 3:
-                    StartCoroutine(FlyAtk());
-                    break;
-                case 4:
-                    StartCoroutine(Meteo());
-                    break;
-                case 5:
-                    StartCoroutine(Summon());
-                    break;
-                default:
-                    Debug.Log("Dragon Script: Out of index!");
-                    break;
+                trans_.position = resetPoz;
             }
-            yield return new WaitForSeconds(0.5f);
-            yield return new WaitForSeconds(waitingTime);
-            atkFlag = false;
-            yield return new WaitForSeconds(0.5f);
+
+
+            if (isEnd)
+            {
+                isEnd = false;
+
+                looking = true;
+                atkFlag = true;
+                ani_.SetTrigger("Reset");
+                int p = Random.Range(0, fxs.Length + 1);
+                //int p = 4;
+                Debug.Log("Pattern: " + p);
+                switch (p)
+                {
+                    case 0:
+                        StartCoroutine(JustWalk());
+                        break;
+                    case 1:
+                        StartCoroutine(RollingAtk());
+                        break;
+                    case 2:
+                        StartCoroutine(FlameShot());
+                        break;
+                    case 3:
+                        StartCoroutine(FlyAtk());
+                        break;
+                    case 4:
+                        StartCoroutine(Meteo());
+                        break;
+                    case 5:
+                        StartCoroutine(Summon());
+                        break;
+                    default:
+                        Debug.Log("Dragon Script: Out of index!");
+                        break;
+                }
+                atkFlag = false;
+            }
         }
+    }
+
+    IEnumerator JustWalk()
+    {
+        yield return new WaitForSeconds(3.5f);
+        isEnd = true;
     }
 
     //Rolling toward player, 1~5times
@@ -166,7 +189,7 @@ public class DragonController : MobParent
             speed = 18;
             int x = Random.Range(1, 6);
             Debug.Log("Rolling " + x+ "times!");
-            waitingTime = (1.3f + x * 3f);
+            //waitingTime = (1.3f + x * 3f);
             ani_.SetBool("Rolling", true);
             yield return new WaitForSeconds(1.3f);
             for (int i = 0; i < x; i++)
@@ -189,6 +212,7 @@ public class DragonController : MobParent
             dirr = Vector3.forward;
             BodyFx(false);
             flag = false;
+            isEnd = true;
         }
         Debug.Log("Rolling Out");
     }
@@ -202,32 +226,14 @@ public class DragonController : MobParent
             BodyFx(true);
             Debug.Log("Flame Shot!");
             ani_.SetBool("Flame", true);
-            waitingTime = 5.2f;
+            //waitingTime = 5.2f;
             looking = false;
             dirr = Vector3.zero;
             yield return new WaitForSeconds(0.2f);
             ani_.speed = 0.0f;
             fxs[2].SetActive(true);
             flame = true;
-
-            /*
-            Vector3 vec = playerTrans_.position - trans_.position;
-            vec.Normalize();
-            Quaternion q = Quaternion.LookRotation(vec);
-            float rY = q.y;
-            trans_.rotation = Quaternion.Euler(0, rY, 0);
-            for(int i = 0; i <60 ; i++)
-            {
-                trans_.rotation = Quaternion.Euler(0, rY - i, 0);
-                yield return new WaitForSeconds(0.0415f);
-            }
-            for (int i = 0; i < 60; i++)
-            {
-                trans_.rotation = Quaternion.Euler(0, rY + i, 0);
-                yield return new WaitForSeconds(0.0415f);
-            }
-            */
-            yield return new WaitForSeconds(waitingTime);
+            yield return new WaitForSeconds(5.2f);
             flame = false;
             fxs[2].SetActive(false);
             ani_.SetBool("Flame", false);
@@ -236,6 +242,7 @@ public class DragonController : MobParent
             dirr = Vector3.forward;
             BodyFx(false);
             flag = false;
+            isEnd = true;
         }
     }
 
@@ -255,7 +262,7 @@ public class DragonController : MobParent
             int r = Random.Range(0, 1);
             if(r == 0)
             {
-                waitingTime = 2.3f;
+                //waitingTime = 2.3f;
                 Debug.Log("Dash!");
                 ani_.SetBool("Dash", true);
                 looking = false;
@@ -273,7 +280,7 @@ public class DragonController : MobParent
             }
             else //Do it later
             {
-                waitingTime = 5.2f;
+                //waitingTime = 5.2f;
                 Debug.Log("Flame Bomb!");
                 trans_.position = new Vector3(trans_.position.x, trans_.position.y + 3.5f, trans_.position.z);
                 
@@ -292,6 +299,7 @@ public class DragonController : MobParent
             looking = true;
             BodyFx(false);
             flag = false;
+            isEnd = true;
         }
         Debug.Log("Fly out");
     }
@@ -313,7 +321,7 @@ public class DragonController : MobParent
                 //Debug.Log("Before selecting N");
                 int n = Random.Range(40, 61);
                 //Debug.Log("N="+n);
-                waitingTime = (float)n * 0.1f + 1.5f;
+                //waitingTime = (float)n * 0.1f + 1.5f;
                 Debug.Log("Summon " + n + "meteors!!");
                 Vector3 nowPoz = trans_.position;
                 for(int i = 0; i < n; i++)
@@ -325,7 +333,7 @@ public class DragonController : MobParent
                     obj.transform.position = spawnPoz;
                     obj.name = "MeteoPoz " + i;
 
-                    spawnPoz += new Vector3(0, 20, 0);
+                    spawnPoz += new Vector3(0, 30, 0);
                     obj = Instantiate(meteos[1]);
                     obj.transform.position = spawnPoz;
                     obj.name = "Meteo " + i;
@@ -336,7 +344,7 @@ public class DragonController : MobParent
             else  //���׿� 5��~10���� �÷��̾� �Ӹ����� ����
             {
                 int n = Random.Range(10, 21);
-                waitingTime = 0.65f * n;
+                //waitingTime = 0.65f * n;
                 Debug.Log(n + "Meteos!");
                 for(int i = 0; i < n; i++)
                 {
@@ -363,6 +371,7 @@ public class DragonController : MobParent
             dirr = Vector3.forward;
             BodyFx(false);
             flag = false;
+            isEnd = true;
         }
         Debug.Log("Meteo Out");
     }
@@ -378,7 +387,7 @@ public class DragonController : MobParent
             leftMob = 10;
             Debug.Log("Total Mob: " + leftMob);
 
-            waitingTime = 5f;
+            //waitingTime = 5f;
 
             fxs[4].SetActive(true);
             ani_.SetBool("Spin", true);
@@ -402,6 +411,7 @@ public class DragonController : MobParent
             looking = true;
             dirr = Vector3.forward;
             flag = false;
+            isEnd = true;
         }
     }
 
