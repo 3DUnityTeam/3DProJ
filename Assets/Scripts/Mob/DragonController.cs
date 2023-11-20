@@ -116,8 +116,8 @@ public class DragonController : MobParent
 
     IEnumerator Phase2()
     {
-        yield return new WaitForSeconds(4.5f);
         looking = true;
+        yield return new WaitForSeconds(4.5f);
         isEnd = true;
     }
 
@@ -355,7 +355,7 @@ public class DragonController : MobParent
 
                     yield return new WaitForSeconds(0.65f);
 
-                    spawnPoz += new Vector3(0, 20, 0);
+                    spawnPoz += new Vector3(0, 30, 0);
                     obj = Instantiate(meteos[1]);
                     obj.transform.position = spawnPoz;
                     obj.name = "Meteo " + i;
@@ -391,8 +391,8 @@ public class DragonController : MobParent
             ani_.SetBool("Spin", true);
             for (int i = 0; i < leftMob; i++)
                 {
-                    float tX = trans_.position.x + Random.Range(-150f, 150f);
-                    float tZ = trans_.position.x + Random.Range(-150f, 150f);
+                    float tX = trans_.position.x + Random.Range(-100f, 100f);
+                    float tZ = trans_.position.x + Random.Range(-100f, 100f);
                     int random = Random.Range(0, GameManager.instance.SpawnManager.pools.Length);
                     GameObject obj = GameManager.instance.SpawnManager.Get(random);
                     obj.transform.position = new Vector3(tX, 1, tZ);

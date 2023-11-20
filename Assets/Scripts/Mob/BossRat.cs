@@ -17,8 +17,12 @@ public class BossRat : MobParent
     bool flag = false;
     bool isFound = false;
 
+    bool deadCheck = false;
+
     private void Awake()
     {
+        MaxHP = 1000f;
+        HP = 0;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
     }
@@ -26,6 +30,13 @@ public class BossRat : MobParent
 
     private void Update()
     {
+        if (Dead)
+            return;
+        if (HP >= MaxHP)
+        {
+            BeHappy();
+        }
+
         StartCoroutine(CheckState());
 
         if (isWatching)
@@ -127,9 +138,20 @@ public class BossRat : MobParent
         yield return new WaitForSeconds(0.3f);
     }
 
-    void IsDead()
+    void BeHappy()
     {
         ani_.SetTrigger("Happy");
-        Destroy(this.gameObject, 2.5f);
+        HP = MaxHP;
+        if (!deadCheck)
+        {
+            deadCheck = true;
+            //SceneManager.LoadScene("Win");
+            StartCoroutine(WaitDeadStatus());
+        }
+    }
+    IEnumerator WaitDeadStatus()
+    {
+        yield return new WaitForSeconds(3);
+        Dead = true;
     }
 }
