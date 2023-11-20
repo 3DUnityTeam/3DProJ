@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boss: {fileID: 0}
+  SubBoss: []
   tofuFoolr: {fileID: 0}
   player: {fileID: 0}
   focus: {fileID: 0}
@@ -66,6 +67,7 @@ MonoBehaviour:
   bulletPoolManger: {fileID: 3897222930089778128}
   effectPoolManger: {fileID: 962929449948848351}
   SpawnManager: {fileID: 7747030868081173907}
+  progressManager: {fileID: 8479810530230209623}
   WeaponImages:
   - {fileID: 21300000, guid: 84844b78e98926148b782b6911cef573, type: 3}
   - {fileID: 21300000, guid: 22d57796e4f70cb4fbc4aec3f8c06589, type: 3}
@@ -133,10 +135,6 @@ PrefabInstance:
     - target: {fileID: 2233501584717397776, guid: e6ba7b2772dba4844adae5fee91980c6, type: 3}
       propertyPath: m_Name
       value: AimManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8499621581697538236, guid: e6ba7b2772dba4844adae5fee91980c6, type: 3}
-      propertyPath: maxDistance
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ba7b2772dba4844adae5fee91980c6, type: 3}
@@ -218,6 +216,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5706791412518956236, guid: cca8c213aceb1bf4583fd8f4db4992de, type: 3}
   m_PrefabInstance: {fileID: 692228055286584288}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8479810530230209623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8950093921377558455, guid: cca8c213aceb1bf4583fd8f4db4992de, type: 3}
+  m_PrefabInstance: {fileID: 692228055286584288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a345d9c7645be244f80fa330b6644608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1336132594743457203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,22 +307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8341611848425811364}
     m_Modifications:
-    - target: {fileID: 1331590942521464780, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
-      propertyPath: prefabs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1331590942521464780, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
-      propertyPath: prefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 3125985776100685557, guid: 9a7a00e3377b0c84abb0113c693d7f73, type: 3}
-    - target: {fileID: 1331590942521464780, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
-      propertyPath: prefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 4039841046030784335, guid: 03a133aed6a37d64e97fcbfc929e122c, type: 3}
-    - target: {fileID: 1331590942521464780, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
-      propertyPath: prefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 164666595712105531, guid: 804187d64c4a2154099827652e91bdca, type: 3}
     - target: {fileID: 1660410965579528955, guid: 46cd6e4d125627347b0fd45b4e442527, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -435,34 +428,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: channels
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: bgmClip.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: sfxClip.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: bgmClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a1944aa7c9b294499f993b3c5b484f5, type: 3}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: bgmClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 3aa8f1d7601a19d4c88dcaaa262c2e06, type: 3}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: sfxClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: a2b51b225bf36d84d8229678edb7762e, type: 3}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: sfxClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: fe3018dbfd00f04429fa5b0feab4ac61, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
 --- !u!114 &1769951722274786521 stripped
@@ -678,18 +643,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
-      propertyPath: prefabs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
-      propertyPath: prefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 8154665223632144087, guid: 13c37ea23220a1b4c9b18ca558a2394a, type: 3}
-    - target: {fileID: 5996821637509678581, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
-      propertyPath: prefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 604231223496487144, guid: d08778889c833f0448defd025d0e1a53, type: 3}
     - target: {fileID: 6666128261155394547, guid: 6033ffa919cadd440a176f90f8b8cd19, type: 3}
       propertyPath: m_Name
       value: BulletPoolManager
