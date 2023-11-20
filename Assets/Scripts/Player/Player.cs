@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
+    public enum SceneSetting
+    {
+        title, game
+    };
     Rigidbody rigid;
     Animator myanim;
     private Transform myTR;
 
+    public SceneSetting playerscene = SceneSetting.game;
     //Status
     //HP
     private float maxHP = 100f;
@@ -108,8 +113,18 @@ public class Player : MonoBehaviour
             //바뀐 화면 회전 속도 조정
             mousespeed = xTurnSpeed;
             //키입력
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
+
+            if(playerscene == SceneSetting.game)
+            {
+                h = Input.GetAxisRaw("Horizontal");
+                v = Input.GetAxisRaw("Vertical");
+            }
+            else if(playerscene == SceneSetting.title)
+            {
+                h = -(Input.GetAxisRaw("Horizontal"));
+                v = -(Input.GetAxisRaw("Vertical"));
+            }
+            
             inputMove = (h != 0f || v != 0f);
             //이동은 fixedupdate
         }

@@ -84,7 +84,10 @@ public class GameManager : MonoBehaviour
             isCursorLocked = false;
             StopManager.TimePass();
         }
-        Boss.GetComponent<DragonController>().enabled = false;
+        if(Boss.GetComponent<DragonController>() != null)
+        {
+            Boss.GetComponent<DragonController>().enabled = false;
+        }
     }
     private void Update()
     {
