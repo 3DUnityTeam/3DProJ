@@ -10005,6 +10005,7 @@ GameObject:
   - component: {fileID: 3280519133390621043}
   - component: {fileID: 3280519133390621004}
   - component: {fileID: 6615117404273432225}
+  - component: {fileID: 2248426313846962072}
   m_Layer: 0
   m_Name: SoyuLaserBeam
   m_TagString: Untagged
@@ -14800,6 +14801,24 @@ CapsuleCollider:
   m_Height: 350
   m_Direction: 1
   m_Center: {x: 0, y: 175, z: -0.00000005960466}
+--- !u!114 &2248426313846962072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280519133390621005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8a6fe687277f848b27502d5695133a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapontype: 1
+  effectTime: 5
+  damage: 200
+  effect: {fileID: 0}
+  effectcode: 2
+  width: 2
 --- !u!1 &3280519133430969738
 GameObject:
   m_ObjectHideFlags: 0

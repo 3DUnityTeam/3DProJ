@@ -10282,6 +10282,18 @@ PrefabInstance:
       propertyPath: dragon
       value: 
       objectReference: {fileID: 1168691366}
+    - target: {fileID: 962929449948848351, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 962929449948848351, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+    - target: {fileID: 962929449948848351, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: prefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 2433282508537954060, guid: 19d178d07bacc3745a51056057fc8a95, type: 3}
     - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: Boss
       value: 
@@ -40367,7 +40379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bba3fb8f0e1708845bbeb5b021243e98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -258
+      value: -249
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bba3fb8f0e1708845bbeb5b021243e98, type: 3}
       propertyPath: m_LocalPosition.y
