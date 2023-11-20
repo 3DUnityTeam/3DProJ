@@ -84,6 +84,8 @@ public class AudioManager : MonoBehaviour
                 continue;
             }
             channelIndex = loopIndex;
+            if (sfxPlayers[loopIndex].clip == null)
+                continue;
             sfxPlayers[loopIndex].clip = sfxClip[(int)sfx];
             sfxPlayers[loopIndex].Play();
             break;
@@ -92,6 +94,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBgm(Bgm bgm)
     {
+        if (bgmPlayer.clip == null)
+            return;
         bgmPlayer.clip = bgmClip[(int)bgm];
         bgmPlayer.Play();
     }

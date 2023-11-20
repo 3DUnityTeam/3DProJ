@@ -160,6 +160,8 @@ public class BossRat : MobParent
             GameManager.instance.progressManager.boss2Cleared = true;
             deadCheck = true;
             //SceneManager.LoadScene("Win");
+            if (GameManager.instance.AimManager.mobList.Contains(gameObject))
+                GameManager.instance.AimManager.mobList.Remove(gameObject);
             StartCoroutine(WaitDeadStatus());
         }
     }
