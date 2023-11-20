@@ -16,13 +16,10 @@ public class BossSnake : MobParent
     bool flag = false;
     bool isFound = false;
 
-    bool deadCheck = false;
-
     private void Awake()
     {
-        MaxHP = 1000f;
-        HP = 0;
-
+        personalColor = Color.red;
+        MaxHP = 2500f;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
     }
@@ -30,14 +27,6 @@ public class BossSnake : MobParent
 
     private void Update()
     {
-        if (Dead)
-            return;
-        if (HP >= MaxHP)
-        {
-            BeHappy();
-        }
-
-
         StartCoroutine(CheckState());
 
         if (isWatching)
@@ -124,20 +113,9 @@ public class BossSnake : MobParent
         yield return new WaitForSeconds(0.3f);
     }
 
-    void BeHappy()
+    new void IsDead()
     {
         ani_.SetTrigger("Happy");
-        HP = MaxHP;
-        if (!deadCheck)
-        {
-            deadCheck = true;
-            //SceneManager.LoadScene("Win");
-            StartCoroutine(WaitDeadStatus());
-        }
-    }
-    IEnumerator WaitDeadStatus()
-    {
-        yield return new WaitForSeconds(3);
-        Dead = true;
+        Destroy(this.gameObject, 2.5f);
     }
 }

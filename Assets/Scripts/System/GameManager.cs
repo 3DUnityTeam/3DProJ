@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("#Boss")]
     public GameObject Boss;
+    public GameObject[] SubBoss;
 
     [Header("#Player")]
     //인게임 플레이어
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
     public Sprite[] SpecialWeaponImages;
     public Sprite BaseImage;
 
+    [Header("#UImessage")]
+    //UI에 상황 메시지를 표기하는 공간
+    public BattleUI statemessage;
+
     private void Awake()
     {
         instance = this;
@@ -77,6 +82,7 @@ public class GameManager : MonoBehaviour
             isCursorLocked = false;
             StopManager.TimePass();
         }
+        Boss.GetComponent<DragonController>().enabled = false;
     }
     private void Update()
     {

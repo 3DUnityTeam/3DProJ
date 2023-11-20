@@ -51,8 +51,9 @@ public class BirdController : MobParent
         base.OnEnable();
     }
 
-    private IEnumerator Start()
+    private new IEnumerator Start()
     {
+        base.Start();
         playerTrans_ = GameManager.instance.player.transform;
         fx.SetActive(true);
         Fx(false);
