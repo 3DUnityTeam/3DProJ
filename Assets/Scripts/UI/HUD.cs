@@ -31,9 +31,61 @@ public class HUD : MonoBehaviour
                 slider.value = manager.player.HP / manager.player.MaxHP;
                 break;
             case HUDType.Boss:
-                float hp = manager.Boss.GetComponent<DragonController>().HP;
-                float maxHP= manager.Boss.GetComponent<DragonController>().MaxHP;
-                slider.value = (maxHP-hp) / maxHP;
+                GameObject nearBoss = null;
+                float minDistance = manager.AimManager.maxDistance * 2;
+                for (int i = 0; i < 1 + manager.SubBoss.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        float distance = Vector3.Distance(manager.player.transform.position, manager.Boss.transform.position);
+                        if (minDistance > distance)
+                        {
+                            nearBoss = manager.Boss;
+                            minDistance = distance;
+                        }
+                    }
+                    else
+                    {
+                        float distance = Vector3.Distance(manager.player.transform.position, manager.SubBoss[i - 1].transform.position);
+                        if (minDistance > distance)
+                        {
+                            nearBoss = manager.SubBoss[i - 1];
+                            minDistance = distance;
+                        }
+                    }
+                }
+                if (minDistance < manager.AimManager.maxDistance * 1.3f)
+                {
+                    int childCount = gameObject.transform.childCount;
+                    for (int j = 0; j < childCount; j++)
+                    {
+                        Transform child = gameObject.transform.GetChild(j);
+                        child.gameObject.SetActive(true);
+                    }
+                    MobParent nearSript = nearBoss.GetComponent<MobParent>();
+
+                    //색깔 지정
+                    Transform fillArea=gameObject.transform.Find("Fill Area");
+                    Transform fill=fillArea.transform.Find("Fill");
+                    Image sliderColor = fill.gameObject.GetComponent<Image>();
+                    if (nearSript.personalColor != null)
+                    {
+                        sliderColor.color = nearSript.personalColor;
+                    }
+                    //체력 조정
+                    float hp = nearSript.HP;
+                    float maxHP = nearSript.MaxHP;
+                    slider.value = (maxHP - hp) / maxHP;
+                }
+                else
+                {
+                    int childCount = gameObject.transform.childCount;
+                    for (int j = 0; j < childCount; j++)
+                    {
+                        Transform child = gameObject.transform.GetChild(j);
+                        child.gameObject.SetActive(false);
+                    }
+                }
                 break;
             case HUDType.AP:
                 slider.value = manager.player.AP / manager.player.MaxAP;

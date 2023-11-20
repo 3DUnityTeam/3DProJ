@@ -47,9 +47,9 @@ public class FishController : MobParent
         StartCoroutine(Start());
         base.OnEnable();
     }
-
-    private IEnumerator Start()
+    private new IEnumerator Start()
     {
+        base.Start();
         playerTrans_ = GameManager.instance.player.transform;
 
         fx.SetActive(true);

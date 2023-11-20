@@ -8,9 +8,9 @@ public class AimManager : MonoBehaviour
     //추적 타입
     public enum TrackType
     {
-        Lock,
+        None,
         Near,
-        //Strong
+        //Lock
     }
     //현재 추적타입
     public TrackType type=(TrackType)0;
@@ -50,9 +50,9 @@ public class AimManager : MonoBehaviour
     void FixedUpdate()
     {
         List<GameObject>[] pools = GameManager.instance.SpawnManager.pools;
-        for (int i=0; i < pools.Length; i++)
+        for (int i = 0; i < pools.Length; i++)
         {
-            for(int j = 0; j < pools[i].Count; j++)
+            for (int j = 0; j < pools[i].Count; j++)
             {
                 if (!pools[i][j].GetComponent<MobParent>().Dead)
                 {
@@ -69,8 +69,6 @@ public class AimManager : MonoBehaviour
             }
         }
         //추적 대상 저장
-        if (!mobList.Contains(GameManager.instance.Boss))
-            mobList.Add(GameManager.instance.Boss);
         aimingTarget =IsTrackingTarget();
     }
     //추적 대상 구하기
@@ -91,9 +89,8 @@ public class AimManager : MonoBehaviour
         //최소거리 초기값(최대값 +1)
         float minDistance = maxDistance + 1f;
 
-        //Strong 타입 변수
-        //가장 강한 대상
-        GameObject strongMob=null;
+        if (type == TrackType.None)
+            return null;
 
         if (mobList == null)
             return null;
@@ -131,39 +128,39 @@ public class AimManager : MonoBehaviour
         }
 
         //현재 타입에 따라 작동
-        if (type == TrackType.Lock)
-        {
-            //트리거 작동
-            if (togle==1)
-            {
-                //다음 대상
-                count++;
-                //트리거 리셋
-                togle = 0;
-                //정렬 조건에 따라 오름 차순
-                lockList.Sort((GameObject x, GameObject y)=>
-                {
-                    if (lockDic[x] < lockDic[y]) return -1;
-                    else if (lockDic[x] > lockDic[y]) return 1;
-                    else return 0;  
-                });
-                //대상 숫자가 리스트의 크기보다 크면 리셋
-                if (count >= lockList.Count)
-                {
-                    count = 0;
-                }
-                //추적 대상 저장
-                aimingTarget = lockList[count];
-            }
-            //추적 대상 있는지 확인
-            if (lockList.Contains(aimingTarget))
-            {
-                return lockList[count];
-            }
-            //추적 대상없으면null
-            return null;
-        }
-        else if (type == TrackType.Near)
+        //if (type == TrackType.Lock)
+        //{
+        //    //트리거 작동
+        //    if (togle==1)
+        //    {
+        //        //다음 대상
+        //        count++;
+        //        //트리거 리셋
+        //        togle = 0;
+        //        //정렬 조건에 따라 오름 차순
+        //        lockList.Sort((GameObject x, GameObject y)=>
+        //        {
+        //            if (lockDic[x] < lockDic[y]) return -1;
+        //            else if (lockDic[x] > lockDic[y]) return 1;
+        //            else return 0;  
+        //        });
+        //        //대상 숫자가 리스트의 크기보다 크면 리셋
+        //        if (count >= lockList.Count)
+        //        {
+        //            count = 0;
+        //        }
+        //        //추적 대상 저장
+        //        aimingTarget = lockList[count];
+        //    }
+        //    //추적 대상 있는지 확인
+        //    if (lockList.Contains(aimingTarget))
+        //    {
+        //        return lockList[count];
+        //    }
+        //    //추적 대상없으면null
+        //    return null;
+        //}
+        if (type == TrackType.Near)
             return nearMob;
         //else if (type == TrackType.Strong)
         //    return strongMob;

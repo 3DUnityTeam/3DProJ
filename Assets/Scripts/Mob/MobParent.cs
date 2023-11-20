@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MobParent : MonoBehaviour
 {
+    public Color personalColor;
+
     private float damage;
     private bool dead;
     private float dotDamage;
@@ -25,6 +28,12 @@ public class MobParent : MonoBehaviour
     public float MaxHP { get { return this.maxHp; } set { this.maxHp = value; } }
     //���� ü�� ������Ƽ
     public float HP { get { return this.hp; } set { this.hp = value; } }
+
+    public void Start()
+    {
+        if (!GameManager.instance.AimManager.mobList.Contains(gameObject))
+            GameManager.instance.AimManager.mobList.Add(gameObject);
+    }
 
     public void OnCollisionEnter(Collision collision)
     {
