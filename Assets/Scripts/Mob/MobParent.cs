@@ -30,6 +30,8 @@ public class MobParent : MonoBehaviour
     //���� ü�� ������Ƽ
     public float HP { get { return this.hp; } set { this.hp = value; } }
 
+    bool flag__ = false;
+
     public void Start()
     {
         if (!GameManager.instance.AimManager.mobList.Contains(gameObject))
@@ -110,8 +112,18 @@ public class MobParent : MonoBehaviour
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(2.5f);
-        gameObject.SetActive(false);
+        if (!flag__)
+        {
+            flag__ = true;
+            if (this.name == "Tomato")
+                GameObject.Find("BossSnake").GetComponent<BossSnake>().mobs--;
+            if (this.name == "Lemon")
+                GameObject.Find("BossRat").GetComponent<BossRat>().mobs--;
+
+            yield return new WaitForSeconds(2.5f);
+            gameObject.SetActive(false);
+            flag__ = false;
+        }
     }
 
     public IEnumerator IsLive(float damage)

@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
     }
     public void Init()
     {
-        //º¼·ı ÃÊ±âÈ­
+        //ë³¼ë¥¨ ì´ˆê¸°í™”
         if (GameManager.instance.Load("BGM") == -1)
         {
             bgmVolume = 0.5f;
@@ -51,16 +51,16 @@ public class AudioManager : MonoBehaviour
             sfxVolume = GameManager.instance.Load("SFX");
         }
 
-        //¹è°æÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
-        GameObject bgmObject = new GameObject("BgmPlayer");//ÁöÁ¤ÇÏ·Á¸é °ıÈ£¾È¿¡
+        //ë°°ê²½ìŒ í”Œë ˆì´ì–´ ì´ˆê¸°í™”
+        GameObject bgmObject = new GameObject("BgmPlayer");//ì§€ì •í•˜ë ¤ë©´ ê´„í˜¸ì•ˆì—
         bgmObject.transform.parent = transform;
-        bgmPlayer = bgmObject.AddComponent<AudioSource>(); //ÄÄÆ÷³ÍÆ® ÁöÁ¤
-        bgmPlayer.playOnAwake = false; //¹Ù·Î ÀÛµ¿µÇ´Â°Å Â÷´Ü.ÇÑ¹ø¸¸ Ãâ·ÂX
-        bgmPlayer.loop = true; //¹İº¹
+        bgmPlayer = bgmObject.AddComponent<AudioSource>(); //ì»´í¬ë„ŒíŠ¸ ì§€ì •
+        bgmPlayer.playOnAwake = false; //ë°”ë¡œ ì‘ë™ë˜ëŠ”ê±° ì°¨ë‹¨.í•œë²ˆë§Œ ì¶œë ¥X
+        bgmPlayer.loop = true; //ë°˜ë³µ
         bgmPlayer.volume = bgmVolume;
 
 
-        //È¿°úÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+        //íš¨ê³¼ìŒ í”Œë ˆì´ì–´ ì´ˆê¸°í™”
         GameObject sfxObject = new GameObject("SfxPlayer");
         sfxObject.transform.parent = transform;
         sfxPlayers = new AudioSource[channels];
@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
         for (int index = 0; index < sfxPlayers.Length; index++)
         {
             sfxPlayers[index] = sfxObject.AddComponent<AudioSource>();
-            sfxPlayers[index].playOnAwake = false; //¹Ù·Î ÀÛµ¿µÇ´Â°Å Â÷´Ü.ÇÑ¹ø¸¸ Ãâ·ÂX
+            sfxPlayers[index].playOnAwake = false; //ë°”ë¡œ ì‘ë™ë˜ëŠ”ê±° ì°¨ë‹¨.í•œë²ˆë§Œ ì¶œë ¥X
             sfxPlayers[index].volume = sfxVolume;
         }
     }
@@ -115,7 +115,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.Stop();
     }
 
-    //¹Ù²ï BGM »ç¿îµå ÀúÀå
+    //ë°”ë€ BGM ì‚¬ìš´ë“œ ì €ì¥
     public void SaveBGMSound(float per)
     {
         float volume = per;
@@ -123,7 +123,7 @@ public class AudioManager : MonoBehaviour
         GameManager.instance.Save("BGM", volume);
         ChangeVolume();
     }
-    //¹Ù²ï SFX »ç¿îµå ÀúÀå
+    //ë°”ë€ SFX ì‚¬ìš´ë“œ ì €ì¥
     public void SaveSFXSound(float per)
     {
         float volume = per;
