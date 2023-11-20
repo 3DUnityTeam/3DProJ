@@ -119,8 +119,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9181823533660561449}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: beamtime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: bulletID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: rapidspeed
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: weaponType
