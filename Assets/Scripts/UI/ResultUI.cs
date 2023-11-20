@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ResultUI : MonoBehaviour
 {
     public GameObject[] CollectWeapon;
     public GameObject CollectSpecialWeapon;
+    public Color[] colors;
+    public TextMeshProUGUI text;
+    public string[] texts;
     private void OnEnable()
     {
         GameManager.instance.StopManager.TimeStop();
@@ -24,5 +28,23 @@ public class ResultUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Textchange(bool result)
+    {
+        if (result == true)
+        {
+            text.text = texts[0];
+            text.color = colors[0];
+        }
+        else if (result == false)
+        {
+            text.text = texts[1];
+            text.color = colors[1];
+        }
+        else
+        {
+            return;
+        }
     }
 }

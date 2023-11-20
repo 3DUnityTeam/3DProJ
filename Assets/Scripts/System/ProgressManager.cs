@@ -7,6 +7,7 @@ public class ProgressManager : MonoBehaviour
     GameManager gameManager;
     public GameObject[] Map;
     public GameObject[] Fires;
+    public Transform bossspawnpoint;
     public bool boss1Cleared = false;
     public bool boss2Cleared = false;
     public bool dragonCleared = false;
@@ -63,6 +64,8 @@ public class ProgressManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Map[0].SetActive(false);
         Map[1].SetActive(true);
+        gameManager.Boss.transform.position = bossspawnpoint.position;
+        gameManager.Boss.GetComponent<DragonController>().enabled = true;
         //gameManager.StopManager.TimePass();
         gameManager.UIManager.Fadeinout(true);
 

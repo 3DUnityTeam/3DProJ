@@ -26,12 +26,13 @@ public class Tofu : MonoBehaviour
             deadeffect.transform.position = manager.player.gameObject.transform.position;
             manager.player.gameObject.SetActive(false);
             isRevive = true;
-            StartCoroutine(RevivePly());
+            StartCoroutine(RevivePly(5));
         }
     }
-    IEnumerator RevivePly()
+    IEnumerator RevivePly(float revivetime)
     {
-        yield return new WaitForSeconds(3);
+        GameManager.instance.UIManager.Dead(revivetime);
+        yield return new WaitForSeconds(revivetime);
         HP = HP - (MaxHP * 0.12f);
         manager.player.gameObject.SetActive(true);
         manager.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
