@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LemonController : MonoBehaviour
 {
-    float firePower = 800f;
+    float firePower = 1600f;
     Rigidbody rigid_;
 
     void Start()
@@ -19,7 +19,7 @@ public class LemonController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Land"))
         {
-            Destroy(this.gameObject, 1.5f);
+            Destroy(this.gameObject, 0.3f);
         }
     }
 }
