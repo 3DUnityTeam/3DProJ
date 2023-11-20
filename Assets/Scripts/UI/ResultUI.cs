@@ -13,7 +13,7 @@ public class ResultUI : MonoBehaviour
     public string[] texts;
     private void OnEnable()
     {
-        GameManager.instance.StopManager.TimeStop();
+        //GameManager.instance.StopManager.TimeStop();
         GameManager game = GameManager.instance;
         List<WeaponManager.WeaponType> collect = game.WeaponManager.collect;
         List<WeaponManager.SpecialWeaponType> specialCollect = game.WeaponManager.specialCollect;
