@@ -59,7 +59,6 @@ public class BossRat : MobParent
             ani_.SetBool("Summon", true);
             for (int i = 0; i < summons; i++)
             {
-                Debug.Log("4");
                 if (!isFound)
                     break;
                 else
