@@ -85,7 +85,7 @@ public class BossRat : MobParent
                     obj.name = "Lemon";
 
                     summons--;
-                    yield return new WaitForSeconds(0.95f);
+                    yield return new WaitForSeconds(0.15f);
                 }
             }
             //summons = 0;
