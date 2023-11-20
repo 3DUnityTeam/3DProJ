@@ -124,7 +124,7 @@ public class RatController : MobParent
             else
             {
                 Instantiate(lemon, firePoz.position, firePoz.rotation);
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.56f);
             }
             flag = false;
         }

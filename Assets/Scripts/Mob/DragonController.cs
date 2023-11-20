@@ -29,7 +29,7 @@ public class DragonController : MobParent
     public float flingAtkDamage =16;
 
     Vector3 dirr = Vector3.zero;
-    Vector3 resetPoz = new Vector3(-95, 4.3f, 19);
+    Vector3 resetPoz = new Vector3(-95, 8f, 19);
 
     public int skillDmg;
     [Header("#SpawnMobCount")]
@@ -38,7 +38,7 @@ public class DragonController : MobParent
     int leftMob;
 
     //float waitingTime;
-    float speed = 10f;
+    float speed = 18f;
 
     bool flag = false;
     bool looking = true;
@@ -187,7 +187,7 @@ public class DragonController : MobParent
         {
             flag = true;
             BodyFx(true);
-            speed = 18;
+            speed = 30;  //Rolling speed
             int x = Random.Range(1, 6);
             Debug.Log("Rolling " + x+ "times!");
             //waitingTime = (1.3f + x * 3f);
@@ -209,7 +209,7 @@ public class DragonController : MobParent
                 yield return new WaitForSeconds(0.1f);
             }
             ani_.SetBool("Rolling", false);
-            speed = 10;
+            speed = 18;
             dirr = Vector3.forward;
             BodyFx(false);
             flag = false;
@@ -271,13 +271,13 @@ public class DragonController : MobParent
                 trans_.position = new Vector3(trans_.position.x, trans_.position.y - 2f, trans_.position.z);
 
                 dirr = Vector3.forward;
-                speed = 20f;
+                speed = 32f;
                 yield return new WaitForSeconds(2.3f);
 
                 ani_.SetBool("Dash", false) ;
                 ani_.SetBool("Fly", false);
                 rigid_.useGravity = true;
-                speed = 10f;
+                speed = 18f;
             }
             else //Do it later
             {
