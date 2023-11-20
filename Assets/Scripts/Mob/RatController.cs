@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RatController : MobParent
 {
+    public GameObject heart;
     public Transform firePoz;
     public GameObject lemon;
 
@@ -147,6 +148,7 @@ public class RatController : MobParent
 
     public override void IsDead()
     {
+        heart.SetActive(true);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }

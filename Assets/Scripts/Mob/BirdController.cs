@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BirdController : MobParent
 {
+    public GameObject heart;
     public Transform firePoz;
     public GameObject bomb;
 
@@ -162,6 +163,7 @@ public class BirdController : MobParent
 
     public override void IsDead()
     {
+        heart.SetActive(true);
         StartCoroutine("Explore");
         base.IsDead();
     }
