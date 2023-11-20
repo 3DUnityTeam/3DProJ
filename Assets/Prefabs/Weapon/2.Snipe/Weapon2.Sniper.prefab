@@ -48,8 +48,8 @@ MonoBehaviour:
   state: 0
   Heat: 1000
   currentheat: 0
-  HeatCooltime: 3
-  heatIncrease: 100
+  HeatCooltime: 2.1
+  heatIncrease: 180
   heatDecrease: 50
 --- !u!1001 &3839395495729270418
 PrefabInstance:
@@ -112,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 2669067965591790148}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: damage
-      value: 550
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: firePos

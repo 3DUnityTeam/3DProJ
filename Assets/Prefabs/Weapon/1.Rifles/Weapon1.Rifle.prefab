@@ -144,8 +144,8 @@ MonoBehaviour:
   Heat: 1000
   currentheat: 0
   HeatCooltime: 0.7
-  heatIncrease: 7
-  heatDecrease: 20
+  heatIncrease: 32
+  heatDecrease: 40
 --- !u!1 &2938176249413868260
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +428,10 @@ PrefabInstance:
       value: Rifle Weapon R
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletID
       value: 1
       objectReference: {fileID: 0}
@@ -573,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 754681698982567187, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: m_Name
       value: Rifle Weapon L
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
+      propertyPath: damage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletID
