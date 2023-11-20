@@ -152,7 +152,7 @@ public class BossRat : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
-            pm.GetComponent<ProgressManager>().boss2Cleared = true;
+            GameManager.instance.progressManager.boss2Cleared = true;
             deadCheck = true;
             //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
