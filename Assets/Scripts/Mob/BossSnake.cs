@@ -132,7 +132,7 @@ public class BossSnake : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
-            pm.GetComponent<ProgressManager>().boss1Cleared = true;
+            GameManager.instance.progressManager.boss1Cleared = true;
             deadCheck = true;
             //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
