@@ -30,7 +30,7 @@ public class DeadUI : MonoBehaviour
         Mathf.Clamp(currentdead, 0, dead);
         int second = Mathf.FloorToInt(dead - currentdead);
         slider.value = currentdead / dead;
-        seconds.text = second + "초 뒤에 부활...";
+        seconds.text = (second + 1) + "초 뒤에 부활...";
     }
 
     public void Dead(float deadtime)

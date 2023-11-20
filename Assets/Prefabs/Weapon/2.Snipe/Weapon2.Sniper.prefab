@@ -111,9 +111,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2669067965591790148}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: damage
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: firePos
       value: 
       objectReference: {fileID: 9181823533660561449}
+    - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: bulletID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1054957233805711078, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
       propertyPath: weaponType
       value: 1
@@ -130,7 +138,40 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1171546067130690774, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6675360084231043707, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352418924806452026, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Center.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352418924806452026, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Center.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352418924806452026, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352418924806452026, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985795061231078933, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: damage
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985795061231078933, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
+      propertyPath: effectcode
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6705979742328155937, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b5eebf6ad24152d47bab062a049ca80b, type: 3}
 --- !u!1 &2669067965591790148 stripped
 GameObject:
