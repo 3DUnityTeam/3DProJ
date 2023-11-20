@@ -9,11 +9,17 @@ public class Tofu : MonoBehaviour
     public float MaxHP { get { return this.maxHP; } }
     private float hp = 50000f;
     public float HP { get { return this.hp; } set { this.hp = value; } }
+    private float timeSpeed;
+    public float TimeSpeed { get { return this.timeSpeed; } set { this.timeSpeed = value; } }
+
+    public int attackCount;
+
     bool isRevive = false;
     GameManager manager = GameManager.instance;
     // Start is called before the first frame update
     void Start()
     {
+        timeSpeed = 1;
     }
 
     // Update is called once per frame
@@ -29,6 +35,11 @@ public class Tofu : MonoBehaviour
             StartCoroutine(RevivePly(5));
         }
     }
+    void FixedUpdate()
+    {
+        HP -= Time.fixedDeltaTime*(timeSpeed);
+    }
+    
     IEnumerator RevivePly(float revivetime)
     {
         GameManager.instance.UIManager.Dead(revivetime);

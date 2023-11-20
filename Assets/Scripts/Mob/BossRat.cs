@@ -42,7 +42,11 @@ public class BossRat : MobParent
 
             if (isWatching)
             {
-                trans_.LookAt(new Vector3(Player.transform.position.x, trans_.position.y, Player.transform.position.z));
+
+                Vector3 dir = Player.transform.position - this.transform.position;
+                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
+
+                //trans_.LookAt(new Vector3(Player.transform.position.x, trans_.position.y, Player.transform.position.z));
             }
         }
         else

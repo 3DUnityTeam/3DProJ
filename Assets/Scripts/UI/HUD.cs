@@ -10,7 +10,8 @@ public class HUD : MonoBehaviour
         Boss,
         Player,
         AP,
-        Tofu
+        Tofu,
+        Timer
     }
     public HUDType type;
     Slider slider;
@@ -68,9 +69,12 @@ public class HUD : MonoBehaviour
                     Transform fillArea=gameObject.transform.Find("Fill Area");
                     Transform fill=fillArea.transform.Find("Fill");
                     Image sliderColor = fill.gameObject.GetComponent<Image>();
+                    Transform background=gameObject.transform.Find("Background");
+                    Image backgroundColor = background.gameObject.GetComponent<Image>();
                     if (nearSript.personalColor != null)
                     {
                         sliderColor.color = nearSript.personalColor;
+                        backgroundColor.color = nearSript.personalColor;
                     }
                     //체력 조정
                     float hp = nearSript.HP;
@@ -91,16 +95,12 @@ public class HUD : MonoBehaviour
                 slider.value = manager.player.AP / manager.player.MaxAP;
                 break;
             case HUDType.Tofu:
-                float tofu_hp = manager.tofuFoolr.HP;
-                float tofu_maxHP = manager.tofuFoolr.MaxHP;
-                if (tofu_hp > 0)
-                {
-                    text.text = string.Format("{0:F1}", tofu_hp / tofu_maxHP * 100) + "%";
-                }
-                else
-                {
-                    text.text = 0+"%";
-                }
+                //00:00.00
+                float timer = GameManager.instance.tofuFoolr.HP;
+                int min = Mathf.FloorToInt(timer / 60);
+                int sec = Mathf.FloorToInt(timer % 60);
+                int millSec= Mathf.FloorToInt((timer % 60 - Mathf.FloorToInt(timer % 60))*100);
+                text.text= string.Format("{0:D2}:{1:D2}.{2:D2}", min, sec, millSec);
                 break;
         }
     }
