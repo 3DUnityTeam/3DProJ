@@ -14,17 +14,20 @@ public class BossRat : MobParent
 
     public float traceDist = 6.5f;
     public int summons = 50;
+    public int mobs;
 
     bool isWatching = false;
     bool flag = false;
     bool isFound = false;
 
     bool deadCheck = false;
+    bool mobClear = false;
 
     private void Awake()
     {
         personalColor = Color.yellow;
         MaxHP = 2500f;
+        mobs = summons;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
     }
@@ -34,6 +37,11 @@ public class BossRat : MobParent
     {
         if (!Dead)
         {
+            if (mobs <= 0)
+                mobClear = true;
+            else
+                HP = 0;
+
             StartCoroutine(CheckState());
 
             if (HP >= MaxHP)
@@ -74,12 +82,13 @@ public class BossRat : MobParent
                     GameObject obj = GameManager.instance.SpawnManager.Get(random);
                     obj.transform.position = new Vector3(tX, trans_.position.y, tZ);
                     obj.transform.parent = mobSpawn.transform;
+                    obj.name = "Lemon";
 
                     summons--;
                     yield return new WaitForSeconds(0.95f);
                 }
             }
-            summons = 0;
+            //summons = 0;
             Fxs.SetActive(false);
             ani_.SetBool("Summon", false);
             flag = false;
@@ -96,6 +105,8 @@ public class BossRat : MobParent
             int n = Random.Range(10, 21);
             for (int i = 0; i < n; i++)
             {
+                if (Dead)
+                    break;
                 float x = Random.Range(-50f, 50f);
                 float z = Random.Range(-50f, 50f);
                 Vector3 spawnPoz = trans_.position + new Vector3(x, -2, z);
@@ -130,8 +141,11 @@ public class BossRat : MobParent
             }
             else
             {
-                isWatching = true;
-                StartCoroutine(Meteos());
+                if (!Dead)
+                {
+                    isWatching = true;
+                    StartCoroutine(Meteos());
+                }
             }
         }
         else
