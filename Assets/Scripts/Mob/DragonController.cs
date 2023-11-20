@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class DragonController : MobParent
 {
+    public GameObject heart;
     //GameManager`s manager
     GameObject mobSpawn;
     Player player;
@@ -430,6 +431,7 @@ public class DragonController : MobParent
     }
     IEnumerator WaitDeadStatus()
     {
+        heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
     }

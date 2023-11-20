@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MobParent : MonoBehaviour
 {
+
     public Color personalColor;
 
     private float damage;

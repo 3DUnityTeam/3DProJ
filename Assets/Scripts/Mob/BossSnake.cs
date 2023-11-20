@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BossSnake : MobParent
 {
+    public GameObject heart;
     public GameObject[] Fxs; //Summon, Fire Breath
     public GameObject Player;
     public GameObject mobSpawn;
@@ -137,6 +138,7 @@ public class BossSnake : MobParent
     }
     IEnumerator WaitDeadStatus()
     {
+        heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
     }
