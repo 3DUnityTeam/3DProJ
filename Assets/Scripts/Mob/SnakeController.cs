@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SnakeController : MobParent
 {
+    public GameObject heart;
     enum State
     {
         IDLE, TRACE
@@ -161,6 +162,7 @@ public class SnakeController : MobParent
 
     public override void IsDead()
     {
+        heart.SetActive(true);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }

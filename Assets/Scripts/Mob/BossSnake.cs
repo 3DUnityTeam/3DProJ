@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossSnake : MobParent
 {
+    public GameObject pm;
+    public GameObject heart;
     public GameObject[] Fxs; //Summon, Fire Breath
     public GameObject Player;
     public GameObject mobSpawn;
@@ -130,6 +132,7 @@ public class BossSnake : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
+            pm.GetComponent<ProgressManager>().boss1Cleared = true;
             deadCheck = true;
             //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
@@ -137,6 +140,7 @@ public class BossSnake : MobParent
     }
     IEnumerator WaitDeadStatus()
     {
+        heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
         GameManager.instance.progressManager.Clear(1);

@@ -8,11 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: cfxr heart break dissolve ab
-  m_Shader: {fileID: -6465566751694194690, guid: 1a29b4d27eb8b04479ef89c00dea533d,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 1a29b4d27eb8b04479ef89c00dea533d, type: 3}
   m_ValidKeywords:
   - _ALPHABLEND_ON
-  - _CFXR_DISSOLVE
   - _CFXR_DITHERED_SHADOWS_ON
   - _CFXR_SINGLE_CHANNEL
   - _FADING_ON
@@ -96,7 +94,7 @@ Material:
     - _UVDistortionAdd: 0
     - _UseAlphaClip: 0
     - _UseBackLighting: 0
-    - _UseDissolve: 1
+    - _UseDissolve: 0
     - _UseDissolveOffsetUV: 0
     - _UseEF: 0
     - _UseEmission: 0
