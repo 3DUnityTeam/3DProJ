@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FishController : MobParent
 {
+    public GameObject heart;
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
@@ -152,6 +153,7 @@ public class FishController : MobParent
 
     public override void IsDead()
     {
+        heart.SetActive(true);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }

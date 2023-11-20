@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BossRat : MobParent
 {
+    public GameObject heart;
     public GameObject Fxs; //Summon
     public GameObject Player;
     public GameObject mobSpawn;
@@ -154,6 +155,7 @@ public class BossRat : MobParent
     }
     IEnumerator WaitDeadStatus()
     {
+        heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
     }

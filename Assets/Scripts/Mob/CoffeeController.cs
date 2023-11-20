@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CoffeeController : MobParent
 {
+    public GameObject heart;
     public GameObject coffee;
     public GameObject warnCoffee;
     
@@ -157,6 +158,7 @@ public class CoffeeController : MobParent
 
     public override void IsDead()
     {
+        heart.SetActive(true);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }
