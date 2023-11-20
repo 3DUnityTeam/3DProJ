@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
@@ -16,13 +17,16 @@ public class BattleUI : MonoBehaviour
     [Header("Fadeinout")]
     public FadeIn fadeIn;
 
+    [Header("StateMassage")]
+    public TextMeshProUGUI statemassage;
+
     RectTransform mine;
     RectTransform AimRect;
     GameObject targetMob;
 
 
     private void Start()
-    {
+    { 
         mine = GetComponent<RectTransform>();
         AimRect = CrossHair.GetComponent<RectTransform>();
     }
@@ -37,6 +41,7 @@ public class BattleUI : MonoBehaviour
         }
         WeaponManager.SpecialWeaponType specialCollect = game.WeaponManager.specialCollect[0];
         CollectSpecialWeapon.GetComponent<Image>().sprite = game.SpecialWeaponImages[(int)specialCollect];
+        MassageState("중간보스를 무찌르세요!");
     }
 
     private void FixedUpdate()
@@ -94,5 +99,18 @@ public class BattleUI : MonoBehaviour
     public void ResetAim()
     {
         AimRect.anchoredPosition = Vector2.zero;
+    }
+
+    public void MassageState(string message)
+    {
+        statemassage.text = message;
+        StartCoroutine(HideMassage());
+    }
+
+    IEnumerator HideMassage()
+    {
+        yield return new WaitForSeconds(3.2f);
+        statemassage.text = "";
+
     }
 }

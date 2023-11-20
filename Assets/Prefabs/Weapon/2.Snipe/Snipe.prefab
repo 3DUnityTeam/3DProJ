@@ -237,6 +237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnipeLaser
       objectReference: {fileID: 0}
+    - target: {fileID: 3280519133390621005, guid: e91444fd7ce44244084ec4c7c45154a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621042, guid: e91444fd7ce44244084ec4c7c45154a7, type: 3}
       propertyPath: m_RootOrder
       value: 1
