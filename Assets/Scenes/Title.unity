@@ -3954,6 +3954,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5293248282520713131, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 8854346849036619714}
+    - target: {fileID: 5293248282520713131, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1390781907084095472}
@@ -4050,6 +4054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5dd83ca0a830c43a90fdbf47f8c9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerscene: 0
   ap: 200
   tofu: {fileID: 8854346848389227020}
   CommonParent: {fileID: 4233404945194692075}
@@ -4058,7 +4063,7 @@ MonoBehaviour:
   dashpower: 2500
   dashcooltime: 0.3
   isJump: 0
-  JumpPower: 30
+  JumpPower: 0.2
   boost: {fileID: 1540781542}
   boosterimpact: {fileID: 1080216571}
   boosters:
