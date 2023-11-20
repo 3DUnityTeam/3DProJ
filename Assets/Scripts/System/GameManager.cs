@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public PoolManager effectPoolManger;
     //스폰 매니저
     public PoolManager SpawnManager;
+    //진행 매니저
+    public ProgressManager progressManager;
 
     [Header("#WeaponImage")]
     //무기 이미지

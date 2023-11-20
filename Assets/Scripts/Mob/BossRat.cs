@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BossRat : MobParent
 {
+    public GameObject pm;
     public GameObject heart;
     public GameObject Fxs; //Summon
     public GameObject Player;
@@ -63,7 +64,6 @@ public class BossRat : MobParent
             ani_.SetBool("Summon", true);
             for (int i = 0; i < summons; i++)
             {
-                Debug.Log("4");
                 if (!isFound)
                     break;
                 else
@@ -152,6 +152,7 @@ public class BossRat : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
+            pm.GetComponent<ProgressManager>().boss2Cleared = true;
             deadCheck = true;
             //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
@@ -162,5 +163,6 @@ public class BossRat : MobParent
         heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
+        GameManager.instance.progressManager.Clear(2);
     }
 }
