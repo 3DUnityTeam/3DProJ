@@ -19,6 +19,8 @@ public class BossRat : MobParent
 
     private void Awake()
     {
+        personalColor = Color.yellow;
+        MaxHP = 2500f;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
     }
@@ -127,7 +129,7 @@ public class BossRat : MobParent
         yield return new WaitForSeconds(0.3f);
     }
 
-    void IsDead()
+    new void IsDead()
     {
         ani_.SetTrigger("Happy");
         Destroy(this.gameObject, 2.5f);

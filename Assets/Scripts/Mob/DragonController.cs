@@ -60,8 +60,10 @@ public class DragonController : MobParent
         ani_ = GetComponent<Animator>();
         BodyFx(false);
     }
-    private void Start()
+    private new void Start()
     {
+        base.Start();
+        personalColor = new Color(1, 0, 1);
         player = GameManager.instance.player;
         mobSpawn = GameManager.instance.SpawnManager.gameObject;
 
@@ -464,7 +466,7 @@ public class DragonController : MobParent
             DirectTimer += Time.fixedDeltaTime;
         }
     }
-    public new void OnCollisionExit(Collision collision)
+    private new void OnCollisionExit(Collision collision)
     {
         base.OnCollisionExit(collision);
     }

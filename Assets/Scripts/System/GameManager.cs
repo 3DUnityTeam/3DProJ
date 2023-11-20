@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("#Boss")]
     public GameObject Boss;
+    public GameObject[] SubBoss;
 
     [Header("#Player")]
     //인게임 플레이어
