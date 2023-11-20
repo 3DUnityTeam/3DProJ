@@ -159,5 +159,6 @@ public class BossRat : MobParent
         heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
+        GameManager.instance.progressManager.Clear(2);
     }
 }
