@@ -6020,6 +6020,11 @@ Transform:
   m_Father: {fileID: 257101418}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &235434961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5032420731282141976, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
+  m_PrefabInstance: {fileID: 2057782424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &236028797
 GameObject:
   m_ObjectHideFlags: 0
@@ -10591,6 +10596,18 @@ PrefabInstance:
       propertyPath: tofuFoolr
       value: 
       objectReference: {fileID: 2084365683}
+    - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: SubBoss.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: SubBoss.Array.data[0]
+      value: 
+      objectReference: {fileID: 980066186}
+    - target: {fileID: 1054180899516952816, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
+      propertyPath: SubBoss.Array.data[1]
+      value: 
+      objectReference: {fileID: 235434961}
     - target: {fileID: 1698216276539340039, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -22562,6 +22579,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4158711411171294054, guid: 7e404d87061176442aefafa1aee1c0c6, type: 3}
   m_PrefabInstance: {fileID: 977727787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &980066186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6684969641763554655, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
+  m_PrefabInstance: {fileID: 1758782018}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &981196444
 PrefabInstance:
