@@ -309,8 +309,8 @@ MonoBehaviour:
   - {fileID: 4868344612882636725}
   - {fileID: 4868344612137333347}
   fx: {fileID: 3280519132654277539}
-  traceDist: 8
-  speed: 3
+  traceDist: 48
+  speed: 13
 --- !u!1 &4868344612855252477
 GameObject:
   m_ObjectHideFlags: 0

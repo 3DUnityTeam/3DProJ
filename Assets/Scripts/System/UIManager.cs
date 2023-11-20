@@ -60,7 +60,10 @@ public class UIManager : MonoBehaviour
     public void FinshGame(bool result)
     {
         //true: ½Â¸®, false: ÆÐ¹è
-        GameManager.instance.StopManager.TimeStop();
+        if(!result)
+        {
+            GameManager.instance.StopManager.TimeStop();
+        }
         BattleUI.SetActive(false);
         CollectUI.SetActive(false);
         ResultUI.SetActive(true);

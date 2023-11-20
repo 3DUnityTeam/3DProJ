@@ -113,10 +113,11 @@ public class GameManager : MonoBehaviour
         }
         else if (Boss.TryGetComponent<DragonController>(out dragon))
         {
-            if (dragon.Dead)
-            {
-                UIManager.FinshGame(true);
-            }
+        }
+
+        if(progressManager.dragonCleared == true)
+        {
+            UIManager.FinshGame(true);
         }
         //커서 중앙 잠금 구현
         Cursor.visible = !isCursorLocked;

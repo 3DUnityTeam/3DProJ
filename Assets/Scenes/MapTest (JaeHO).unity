@@ -46028,6 +46028,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1419754109}
     - target: {fileID: 6684969641763554643, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
+      propertyPath: summons
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684969641763554643, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
       propertyPath: mobSpawn
       value: 
       objectReference: {fileID: 499430493}
@@ -46085,7 +46089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7543513367444109960, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.181
+      value: 0.119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
@@ -52005,7 +52009,7 @@ PrefabInstance:
       objectReference: {fileID: 1419754109}
     - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
       propertyPath: summons
-      value: 10
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
       propertyPath: mobSpawn

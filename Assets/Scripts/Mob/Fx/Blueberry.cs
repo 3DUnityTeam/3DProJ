@@ -51,12 +51,12 @@ public class Blueberry : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Land"))
         {
-            Destroy(this.gameObject, 1.2f);
+            Destroy(this.gameObject, 0.6f);
             StartCoroutine(EnableFX());
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(this.gameObject, 1.2f);
+            Destroy(this.gameObject, 0.6f);
             StartCoroutine(EnableFX());
         }
     }

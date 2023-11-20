@@ -119,18 +119,18 @@ public class CoffeeController : MobParent
             {
                 trans_.Rotate(0, Random.Range(0, 180f), 0);
                 dirr = Vector3.forward;
-                yield return new WaitForSeconds(6.5f);
+                yield return new WaitForSeconds(1.5f);
             }
             else
             {
                 ani_.SetBool("Atk", true);
                 Vector3 firePoz = playerTrans_.position + new Vector3(0, 5, 0);
                 Instantiate(warnCoffee, firePoz, playerTrans_.rotation);
-                yield return new WaitForSeconds(0.8f);
+                yield return new WaitForSeconds(0.3f);
                 ani_.SetBool("Atk", false);
-                firePoz += new Vector3(0, 5, 0);
+                firePoz += new Vector3(0, 10, 0);
                 Instantiate(coffee, firePoz, playerTrans_.rotation);
-                yield return new WaitForSeconds(8f);
+                yield return new WaitForSeconds(1.8f);
             }
             flag = false;
         }
@@ -146,7 +146,7 @@ public class CoffeeController : MobParent
             if (dist <= traceDist)
             {
                 isTrace = true;
-                yield return new WaitForSeconds(10f);
+                yield return new WaitForSeconds(2.5f);
             }
             else
             {
