@@ -1237,6 +1237,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &484650558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902082152307728164, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+  m_PrefabInstance: {fileID: 906338828380416507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &587006811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3526,6 +3531,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1514064399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902082153400101447, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+  m_PrefabInstance: {fileID: 906338828380416507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1528351733
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,6 +5653,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 734645936}
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+      propertyPath: BaseUI
+      value: 
+      objectReference: {fileID: 484650558}
+    - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1390781907084095472}
@@ -5657,7 +5671,7 @@ PrefabInstance:
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: ButtonBox
       value: 
-      objectReference: {fileID: 352086257}
+      objectReference: {fileID: 1514064399}
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: fadeinbox
       value: 
@@ -5820,6 +5834,7 @@ MonoBehaviour:
   tofu: {fileID: 8854346848389227020}
   CommonParent: {fileID: 4233404945194692075}
   SpecialParent: {fileID: 5399018965088219827}
+  blockTimer: 0
   moveSpeed: 5
   dashpower: 2500
   dashcooltime: 0.3

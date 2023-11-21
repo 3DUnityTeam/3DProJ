@@ -766,7 +766,6 @@ GameObject:
   - component: {fileID: 5836441662117222608}
   - component: {fileID: 5836441662117222611}
   - component: {fileID: 5836441662117222610}
-  - component: {fileID: 4538958914821967841}
   m_Layer: 0
   m_Name: Dancing Dragon
   m_TagString: Untagged
@@ -860,19 +859,6 @@ CapsuleCollider:
   m_Height: 1.8542118
   m_Direction: 1
   m_Center: {x: 0, y: 1.0822449, z: 0.42368835}
---- !u!114 &4538958914821967841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5836441662117222612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce14edb779073f4a8566dc5f791bbbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pm: {fileID: 0}
 --- !u!1 &6420751771441717643
 GameObject:
   m_ObjectHideFlags: 0
