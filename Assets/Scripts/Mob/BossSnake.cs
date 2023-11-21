@@ -109,7 +109,7 @@ public class BossSnake : MobParent
                     obj.name = "Tomato";
 
                     summons--;
-                    yield return new WaitForSeconds(0.2f);
+                    yield return new WaitForSeconds(0.9f);
                 }
             }
             //summons = 0;
