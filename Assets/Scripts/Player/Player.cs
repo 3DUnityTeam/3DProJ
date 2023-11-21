@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     [Header("#Damage")]
     bool isBlock = false;
     float blockTime = 0.2f;
-    float blockTimer = 0f;
+    public float blockTimer = 0f;
 
 
 
@@ -516,8 +516,8 @@ public class Player : MonoBehaviour
             if (!isBlock)
             {
                 isBlock = true;
-                StartCoroutine(BlockPile());
                 HP = HP - damage;
+                StartCoroutine(BlockPile());
             }
         }
     }
@@ -561,6 +561,16 @@ public class Player : MonoBehaviour
                 {
                     berry.bomb = true;
                     GetHitDamage(berry.damage);
+                }
+            }
+
+            SparrowBomb sparrow;
+            if (other.gameObject.TryGetComponent<SparrowBomb>(out sparrow))
+            {
+                if (!sparrow.bomb)
+                {
+                    sparrow.bomb = true;
+                    GetHitDamage(sparrow.damage);
                 }
             }
         }

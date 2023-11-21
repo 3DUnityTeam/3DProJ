@@ -35,6 +35,8 @@ public class MobParent : MonoBehaviour
 
     public void Start()
     {
+        Dead = false;
+        Damage = 5;
         if (!GameManager.instance.AimManager.mobList.Contains(gameObject))
             GameManager.instance.AimManager.mobList.Add(gameObject);
     }
