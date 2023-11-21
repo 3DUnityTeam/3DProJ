@@ -45,11 +45,11 @@ public class ProgressManager : MonoBehaviour
         {
             case 1:
                 boss1Cleared = true;
-                gameManager.statemessage.MassageState("뱀을 무찔렀어요!");
+                gameManager.statemessage.MassageState("뱀이 두부맛에 행복해해요!");
                 break;
             case 2:
                 boss2Cleared = true;
-                gameManager.statemessage.MassageState("쥐를 무찔렀어요!");
+                gameManager.statemessage.MassageState("쥐가 두부맛에 행복해해요!");
                 break;
             case 3:
                 dragonCleared = true;
@@ -66,7 +66,7 @@ public class ProgressManager : MonoBehaviour
     {
         mapchanged = true;
         yield return new WaitForSeconds(3f);
-        gameManager.statemessage.MassageState("드래곤이 화가 난 것 같아요!");
+        gameManager.statemessage.MassageState("드래곤이 보다못해 화가 난 것 같아요!");
         yield return new WaitForSeconds(1.2f);
         circle.SetActive(true);
         yield return new WaitForSeconds(2.3f);

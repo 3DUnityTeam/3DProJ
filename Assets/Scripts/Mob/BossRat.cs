@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossRat : MobParent
 {
-    public GameObject pm;
+    public GameObject arua;
     public GameObject heart;
     public GameObject Fxs; //Summon
     public GameObject Player;
@@ -16,6 +16,7 @@ public class BossRat : MobParent
     public int summons = 50;
     public int mobs;
 
+    bool mobcleared = false;
     bool isWatching = false;
     bool flag = false;
     bool isFound = false;
@@ -37,7 +38,16 @@ public class BossRat : MobParent
         if (!Dead)
         {
             if (mobs <= 0)
+            {
+                arua.SetActive(false);
                 mobClear = true;
+
+                if(!mobcleared)
+                {
+                    mobcleared = true;
+                    GameManager.instance.statemessage.MassageState("쥐의 보호막이 해제됐어요!");
+                }
+            }
             else
                 HP = 0;
 

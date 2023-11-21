@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ClickEvent : MonoBehaviour
 {
     //���̽��Ǵ� UI
+    public GameObject ButtonBox;
+    public GameObject keys;
     public GameObject BaseUI;
     //�ɼ�â
     public GameObject OptionUI;
@@ -13,8 +15,19 @@ public class ClickEvent : MonoBehaviour
     public GameObject effect1;
     public GameObject effect2;
     public FadeIn fadeinbox;
+
+    public IEnumerator Start()
+    {
+        GameManager.instance.AudioManager.PlayBgm(AudioManager.Bgm.TitleBGM);
+        yield return new WaitForSeconds(3);
+        ButtonBox.SetActive(true);
+        keys.SetActive(true);
+    }
     public void GoToBattle()
     {
+        GameManager.instance.AudioManager.StopBgm();
+        keys.SetActive(false);
+        ButtonBox.SetActive(false);
         StartCoroutine(Battlemovie());
     }
     //Ÿ��Ʋ ������ �̵�
@@ -50,8 +63,13 @@ public class ClickEvent : MonoBehaviour
 
     public IEnumerator Battlemovie()
     {
+        GameManager.instance.AudioManager.PlaySfxLoop(AudioManager.Sfx.BoostLoop);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Opening);
         effect1.SetActive(true);
         yield return new WaitForSeconds(1f);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Breath1);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Breath1);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Breath1);
         effect2.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         fadeinbox.state = FadeIn.State.fadeout;

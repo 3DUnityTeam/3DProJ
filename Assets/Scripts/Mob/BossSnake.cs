@@ -15,6 +15,7 @@ public class BossSnake : MobParent
     public int summons = 50;
     public int mobs;
 
+    bool mobcleared = false;
     bool isWatching = false;
     bool flag = false;
     bool isFound = false;
@@ -37,7 +38,16 @@ public class BossSnake : MobParent
         if (!Dead)
         {
             if (mobs <= 0)
+            {
+                arua.SetActive(false);
                 mobClear = true;
+
+                if (!mobcleared)
+                {
+                    mobcleared = true;
+                    GameManager.instance.statemessage.MassageState("뱀의 보호막이 해제됐어요!");
+                }
+            }
             else
                 HP = 0;
             
