@@ -48,6 +48,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f0d6bd20b54f024292d3f9c85ceeb02, type: 3}
   - {fileID: 8300000, guid: 098302cc3f13c2e4fa20a540926833d0, type: 3}
   - {fileID: 8300000, guid: 7cf0ab664915c2147a64d2430c88cd59, type: 3}
+  - {fileID: 8300000, guid: 6f0d6bd20b54f024292d3f9c85ceeb02, type: 3}
+  - {fileID: 8300000, guid: cf4a005a70e368641a7ac50693951778, type: 3}
   bgmVolume: 0.5
   sfxClip:
   - {fileID: 8300000, guid: f6dc90511e3e2cb42a45be7692a801eb, type: 3}
