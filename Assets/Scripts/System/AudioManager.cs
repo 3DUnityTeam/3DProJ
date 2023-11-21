@@ -19,17 +19,36 @@ public class AudioManager : MonoBehaviour
 
     public enum Bgm
     {
-        Title,
+        TitleBGM,
         Page1,
         Page2,
     }
     public enum Sfx
     {
-        Dead,
-        Hit,
-        Lose,
-        Win,
-        Select,
+        //타이틀 화면용
+
+        Opening,
+        Breath1,
+        Breath2,
+        Wind,
+
+
+        //실제 전투용
+
+        Weapon1,
+        Weapon1effect,
+        Weapon2,
+        Weapon2effect,
+        Weapon3,
+        Weapon3effect,
+        Sweapon1,
+        Sweapon1effect,
+        Sweapon2,
+        Sweapon2effect,
+        Boost,
+        BoostLoop,
+        StateSound
+
     }
     public void Init()
     {
@@ -84,18 +103,33 @@ public class AudioManager : MonoBehaviour
                 continue;
             }
             channelIndex = loopIndex;
-            if (sfxPlayers[loopIndex].clip == null)
-                continue;
             sfxPlayers[loopIndex].clip = sfxClip[(int)sfx];
             sfxPlayers[loopIndex].Play();
             break;
         }
     }
 
+    public int PlaySfxLoop(Sfx sfx)
+    {
+        for (int index = 0; index < sfxPlayers.Length; index++)
+        {
+            int loopIndex = (index + channelIndex) % sfxPlayers.Length;
+
+            if (sfxPlayers[loopIndex].isPlaying)
+            {
+                continue;
+            }
+            channelIndex = loopIndex;
+            sfxPlayers[loopIndex].clip = sfxClip[(int)sfx];
+            sfxPlayers[loopIndex].Play();
+            sfxPlayers[loopIndex].loop = true;
+            return loopIndex;
+        }
+        return -1;
+    }
+
     public void PlayBgm(Bgm bgm)
     {
-        if (bgmPlayer.clip == null)
-            return;
         bgmPlayer.clip = bgmClip[(int)bgm];
         bgmPlayer.Play();
     }

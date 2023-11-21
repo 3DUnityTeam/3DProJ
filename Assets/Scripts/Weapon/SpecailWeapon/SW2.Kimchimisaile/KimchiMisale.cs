@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KimchiMisale : MonoBehaviour
 {
+    public AudioManager.Sfx sound;
     private WeaponControl parent;
     public Transform muzzle;
     public int bulletID;
@@ -79,8 +80,9 @@ public class KimchiMisale : MonoBehaviour
             muzzlelight.enabled = true;
             muzzlefire.SetActive(true);
         }
-         
-         StartCoroutine(ShowMuzzleFire());
+
+        GameManager.instance.AudioManager.PlaySfx(sound);
+        StartCoroutine(ShowMuzzleFire());
 
     }
 

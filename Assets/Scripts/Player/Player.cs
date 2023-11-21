@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
         myanim = tofu.GetComponent<Animator>();
     }
     // Update is called once per frame
+
     void Update()
     {
         if (Time.timeScale == 0)
@@ -155,6 +156,7 @@ public class Player : MonoBehaviour
                 if(Input.GetKey(KeyCode.LeftShift))
                 { dashjumped = true; }
                 isJump = true;
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
                 boosterimpact.Play();
                 rigid.velocity = new Vector3(0, JumpPower, 0);
                 isboost = true;
@@ -233,6 +235,7 @@ public class Player : MonoBehaviour
                 }
             }
             //대쉬 방향 및 힘
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
             Vector3 forceDirection = dashvector * dashpower;
 
             //코루틴작동
@@ -537,6 +540,9 @@ public class Player : MonoBehaviour
     }
     private void OnEnable()
     {
+        if(playerscene == SceneSetting.game)
+        { GameManager.instance.AudioManager.PlaySfxLoop(AudioManager.Sfx.BoostLoop); }
+        
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         HP = MaxHP;
         isBlock = false;

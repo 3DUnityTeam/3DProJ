@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BulletEffectControl : MonoBehaviour
 {
+    public AudioManager.Sfx sound;
     public float effectTime;
     public float lightTime;
     public GameObject effectlight;
     private void OnEnable()
     {
+        GameManager.instance.AudioManager.PlaySfx(sound);
         StartCoroutine(Effectcontrol());
 
         if(effectlight != null)

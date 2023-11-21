@@ -10,6 +10,7 @@ public class FireControl : MonoBehaviour
     }
 
     [Header("외부 오브젝트")]
+    public AudioManager.Sfx sound;
     private WeaponControl parent;
     private AimManager aimManager;
     public int bulletID;
@@ -128,7 +129,7 @@ public class FireControl : MonoBehaviour
                 StartCoroutine(Beamshow(beamtime));
                 break;
         }
-
+        GameManager.instance.AudioManager.PlaySfx(sound);
         parent.shoot();
     }
 
