@@ -6,6 +6,7 @@ using TMPro;
 
 public class ResultUI : MonoBehaviour
 {
+    public AudioManager.Bgm bgm;
     public GameObject[] CollectWeapon;
     public GameObject CollectSpecialWeapon;
     public Color[] colors;
@@ -15,6 +16,8 @@ public class ResultUI : MonoBehaviour
     {
         //GameManager.instance.StopManager.TimeStop();
         GameManager game = GameManager.instance;
+        game.AudioManager.StopBgm();
+        game.AudioManager.PlayBgm(bgm);
         List<WeaponManager.WeaponType> collect = game.WeaponManager.collect;
         List<WeaponManager.SpecialWeaponType> specialCollect = game.WeaponManager.specialCollect;
         for(int i = 0; i < collect.Count; i++)

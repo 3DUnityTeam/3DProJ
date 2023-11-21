@@ -420,6 +420,7 @@ public class DragonController : MobParent
     //full happy dragon
     void BeHappy()
     {
+        
         dirr = Vector3.zero;
         ani_.SetTrigger("Happy");
         HP = MaxHP;
@@ -428,14 +429,16 @@ public class DragonController : MobParent
             deadCheck = true;
             //SceneManager.LoadScene("Win");
             StartCoroutine(WaitDeadStatus());
+            GameManager.instance.progressManager.Clear(3);
         }
+        
     }
     IEnumerator WaitDeadStatus()
     {
         heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
-        GameManager.instance.progressManager.Clear(3);
+        
     }
 
 
