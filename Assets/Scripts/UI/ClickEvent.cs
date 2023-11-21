@@ -10,9 +10,12 @@ public class ClickEvent : MonoBehaviour
     //�ɼ�â
     public GameObject OptionUI;
     //Battle ������ �̵�
+    public GameObject effect1;
+    public GameObject effect2;
+    public FadeIn fadeinbox;
     public void GoToBattle()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(Battlemovie());
     }
     //Ÿ��Ʋ ������ �̵�
     public void GoToTitle()
@@ -43,5 +46,16 @@ public class ClickEvent : MonoBehaviour
     {
         GameManager.instance.StopManager.TimePass();
         gameObject.SetActive(false);
+    }
+
+    public IEnumerator Battlemovie()
+    {
+        effect1.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        effect2.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        fadeinbox.state = FadeIn.State.fadeout;
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(1);
     }
 }

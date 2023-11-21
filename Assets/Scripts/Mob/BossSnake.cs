@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossSnake : MobParent
 {
-    public GameObject pm;
+    public GameObject arua;
     public GameObject heart;
     public GameObject[] Fxs; //Summon, Fire Breath
     public GameObject Player;
