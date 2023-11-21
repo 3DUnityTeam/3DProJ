@@ -96,10 +96,9 @@ public class FishController : MobParent
                 {
                     trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
                     float dit = Vector3.Distance(playerTrans_.position, trans_.position);
-                    if (dit <= 5)
+                    if (dit < 5)
                     {
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
-
                     }
                     else
                     {
@@ -123,8 +122,9 @@ public class FishController : MobParent
             }
             else
             {
-                
+                dirr = Vector3.forward;
                 yield return new WaitForSeconds(3.3f);
+                dirr = Vector3.zero;
             }
             flag = false;
         }

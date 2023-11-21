@@ -17,6 +17,11 @@ public class HUD : MonoBehaviour
     Slider slider;
     Text text;
 
+    bool result = false;
+    int     min_result;
+    int     sec_result;
+    int millSec_result;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +109,18 @@ public class HUD : MonoBehaviour
                 int millSec= Mathf.FloorToInt((timer % 60 - Mathf.FloorToInt(timer % 60))*100);
                 float count = manager.tofuFoolr.attackCount;
                 text.text= string.Format("{0:D2}:{1:D2}.{2:D2}(ек{3:#.#})", min, sec, millSec,count+1);
+                break;
+            case HUDType.Timer:
+                //00:00.00
+                if (!result)
+                {
+                    result = true;
+                    float timer_result = GameManager.instance.tofuFoolr.HP;
+                    min_result = Mathf.FloorToInt(timer_result / 60);
+                    sec_result = Mathf.FloorToInt(timer_result % 60);
+                    millSec_result = Mathf.FloorToInt((timer_result % 60 - Mathf.FloorToInt(timer_result % 60)) * 100);
+                }
+                text.text = string.Format("{0:D2}:{1:D2}.{2:D2}", min_result, sec_result, millSec_result);
                 break;
         }
     }

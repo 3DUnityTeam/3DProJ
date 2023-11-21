@@ -67,6 +67,7 @@ public class BirdController : MobParent
 
         //모판 지속데미지
         StartCoroutine(IsLive(10));
+        Debug.Log(Damage);
     }
 
     private void Update()
@@ -100,7 +101,7 @@ public class BirdController : MobParent
                 {
                     trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
                     float dit = Vector3.Distance(playerTrans_.position, trans_.position);
-                    if (dit >= 5)
+                    if (dit >= 2.5)
                     {
                         trans_.Translate(dirr * speed * Time.fixedDeltaTime);
                     }
