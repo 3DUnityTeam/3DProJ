@@ -15,7 +15,7 @@ public class StopManager : MonoBehaviour
         {
             if (manager.UIManager.CollectUI.activeSelf && manager.UIManager.PauseUI.activeSelf)
                 return;
-            if (manager.UIManager.ResultUI.activeSelf && manager.UIManager.PauseUI.activeSelf)
+            if (manager.UIManager.ResultUIDefeat.activeSelf && manager.UIManager.PauseUI.activeSelf)
                 return;
         }
 
