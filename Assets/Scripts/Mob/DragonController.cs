@@ -64,6 +64,7 @@ public class DragonController : MobParent
     private new void Start()
     {
         base.Start();
+        mobClear = true;
         personalColor = new Color(1, 0, 1);
         player = GameManager.instance.player;
         mobSpawn = GameManager.instance.SpawnManager.gameObject;
@@ -434,6 +435,7 @@ public class DragonController : MobParent
         heart.SetActive(true);
         yield return new WaitForSeconds(3);
         Dead = true;
+        GameManager.instance.progressManager.Clear(3);
     }
 
 

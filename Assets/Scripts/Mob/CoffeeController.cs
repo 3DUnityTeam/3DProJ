@@ -29,6 +29,7 @@ public class CoffeeController : MobParent
     private void Awake()
     {
         MaxHP = 200;
+        mobClear = true;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;

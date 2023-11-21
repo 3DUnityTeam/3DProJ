@@ -535,6 +535,13 @@ public class Player : MonoBehaviour
         }
         
     }
+    private void OnEnable()
+    {
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        HP = MaxHP;
+        isBlock = false;
+        blockTimer = 0;
+    }
     //충돌 이벤트
     private void OnCollisionEnter(Collision collision)
     {

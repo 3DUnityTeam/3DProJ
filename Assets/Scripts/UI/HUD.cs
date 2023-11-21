@@ -102,7 +102,8 @@ public class HUD : MonoBehaviour
                 int min = Mathf.FloorToInt(timer / 60);
                 int sec = Mathf.FloorToInt(timer % 60);
                 int millSec= Mathf.FloorToInt((timer % 60 - Mathf.FloorToInt(timer % 60))*100);
-                text.text= string.Format("{0:D2}:{1:D2}.{2:D2}", min, sec, millSec);
+                float count = manager.tofuFoolr.attackCount;
+                text.text= string.Format("{0:D2}:{1:D2}.{2:D2}(ек{3:#.#})", min, sec, millSec,count+1);
                 break;
         }
     }
