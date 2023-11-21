@@ -6,8 +6,8 @@ public class BossSnake : MobParent
     public GameObject arua;
     public GameObject heart;
     public GameObject[] Fxs; //Summon, Fire Breath
-    public GameObject Player;
-    public GameObject mobSpawn;
+    GameObject Player;
+    GameObject mobSpawn;
     Transform trans_;
     Animator ani_;
 
@@ -32,6 +32,12 @@ public class BossSnake : MobParent
         ani_ = GetComponent<Animator>();
     }
 
+    private new void Start()
+    {
+        base.Start();
+        Player = GameManager.instance.player.gameObject;
+        mobSpawn = GameManager.instance.SpawnManager.gameObject;
+    }
 
     private void Update()
     {

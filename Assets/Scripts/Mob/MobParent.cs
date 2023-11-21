@@ -122,11 +122,30 @@ public class MobParent : MonoBehaviour
         if (!flag__)
         {
             flag__ = true;
+            GameObject[] sub = GameManager.instance.SubBoss;
             if (this.name == "Tomato")
-                GameObject.Find("BossSnake").GetComponent<BossSnake>().mobs--;
-            if (this.name == "Lemon")
-                GameObject.Find("BossRat").GetComponent<BossRat>().mobs--;
-
+            {
+                BossSnake snake;
+                for (int i = 0; i < sub.Length; i++){
+                    if(sub[i].TryGetComponent<BossSnake>(out snake))
+                    {
+                        snake.mobs--;
+                        break;
+                    }
+                }
+            }
+            if (this.name == "Lemon") 
+            {
+                BossRat rat;
+                for (int i = 0; i < sub.Length; i++)
+                {
+                    if (sub[i].TryGetComponent<BossRat>(out rat))
+                    {
+                        rat.mobs--;
+                        break;
+                    }
+                }
+            }
             yield return new WaitForSeconds(2.5f);
             gameObject.SetActive(false);
             flag__ = false;
