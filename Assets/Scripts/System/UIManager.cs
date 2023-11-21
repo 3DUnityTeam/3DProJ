@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject CollectUI;
     public GameObject BattleUI;
-    public GameObject ResultUI;
+    public GameObject ResultUIDefeat;
+    public GameObject ResultUIVictory;
     public GameObject DeadUI;
     public Image[] WeaponIcons;
 
@@ -16,7 +17,8 @@ public class UIManager : MonoBehaviour
     {
         PauseUI.SetActive(false);
         BattleUI.SetActive(false);
-        ResultUI.SetActive(false);
+        ResultUIDefeat.SetActive(false);
+        ResultUIVictory.SetActive(false);
         CollectUI.SetActive(true);
     }
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-        if (PauseUI.activeSelf || ResultUI.activeSelf || CollectUI.activeSelf)
+        if (PauseUI.activeSelf || ResultUIDefeat.activeSelf || ResultUIVictory.activeSelf || CollectUI.activeSelf)
         {
             GameManager.instance.isCursorLocked = false;
         }
@@ -66,8 +68,18 @@ public class UIManager : MonoBehaviour
         }
         BattleUI.SetActive(false);
         CollectUI.SetActive(false);
-        ResultUI.SetActive(true);
-        ResultUI.GetComponent<ResultUI>().Textchange(true);
+        switch(result)
+        {
+            case true:
+                ResultUIVictory.SetActive(true);
+                break;
+            case false:
+                ResultUIDefeat.SetActive(true);
+                break;
+            default:
+                return;
+                break;
+        }
     }
 
     public void Dead(float deadtime)

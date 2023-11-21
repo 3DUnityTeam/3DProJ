@@ -66,6 +66,7 @@ public class ProgressManager : MonoBehaviour
     {
         mapchanged = true;
         yield return new WaitForSeconds(3f);
+        gameManager.AudioManager.StopBgm();
         gameManager.statemessage.MassageState("드래곤이 보다못해 화가 난 것 같아요!");
         yield return new WaitForSeconds(1.2f);
         circle.SetActive(true);
@@ -93,6 +94,7 @@ public class ProgressManager : MonoBehaviour
         gameManager.player.gameObject.SetActive(false);
         StartCoroutine(RevivePly(3));*/
         yield return new WaitForSeconds(3f);
+        gameManager.AudioManager.PlayBgm(AudioManager.Bgm.Page2);
         gameManager.statemessage.MassageState("두부를 지켜야 합니다!");
 
     }
