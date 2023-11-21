@@ -6,8 +6,8 @@ public class BossRat : MobParent
     public GameObject arua;
     public GameObject heart;
     public GameObject Fxs; //Summon
-    public GameObject Player;
-    public GameObject mobSpawn;
+    GameObject Player;
+    GameObject mobSpawn;
     public GameObject[] meteos;
     Transform trans_;
     Animator ani_;
@@ -30,6 +30,12 @@ public class BossRat : MobParent
         mobs = summons;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
+    }
+    private new void Start()
+    {
+        base.Start();
+        Player = GameManager.instance.player.gameObject;
+        mobSpawn = GameManager.instance.SpawnManager.gameObject;
     }
 
 
