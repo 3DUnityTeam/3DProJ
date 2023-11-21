@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ab675e6698bde46fd87143fb0d7580cb, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3f1e52dec055a3a4f850420ef19cb2b2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.090077855, g: 0.28178278, b: 0.4859934, a: 1}
+  m_IndirectSpecularColor: {r: 0.08558715, g: 0.18905303, b: 0.43228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -979,6 +979,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6da175c1349cbfa419a7ac76edb0072e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cbf85a57b85d304bbb153fb448650d8, type: 3}
+--- !u!1 &352086257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902082153400101447, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+  m_PrefabInstance: {fileID: 906338828380416507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &357297590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1190715497526427671, guid: 8a0e1d3fb4f2ddf4ba4a0eccefcd3df6, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1190715497526427671, guid: 8a0e1d3fb4f2ddf4ba4a0eccefcd3df6, type: 3}
       propertyPath: m_Color.b
@@ -5087,6 +5092,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 902082153400101440, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 902082153400101447, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 902082153520863368, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: m_ReferenceResolution.x
       value: 1600
@@ -5164,6 +5177,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+      propertyPath: keys
+      value: 
+      objectReference: {fileID: 734645936}
+    - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: effect1
       value: 
       objectReference: {fileID: 794895411}
@@ -5171,6 +5188,10 @@ PrefabInstance:
       propertyPath: effect2
       value: 
       objectReference: {fileID: 1849081150}
+    - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
+      propertyPath: ButtonBox
+      value: 
+      objectReference: {fileID: 352086257}
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: fadeinbox
       value: 

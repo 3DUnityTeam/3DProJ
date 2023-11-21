@@ -6825,6 +6825,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bb47b2717c7c4874786ddfa976e2d091, type: 3}
+--- !u!1 &271956685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8344938447340593196, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
+  m_PrefabInstance: {fileID: 1758782018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &271962955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41976,6 +41981,11 @@ Transform:
   m_Father: {fileID: 91481707}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+--- !u!1 &1553079405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6843099559848890982, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
+  m_PrefabInstance: {fileID: 2057782424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1557567754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46011,6 +46021,10 @@ PrefabInstance:
       propertyPath: pm
       value: 
       objectReference: {fileID: 593058907}
+    - target: {fileID: 6684969641763554643, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
+      propertyPath: arua
+      value: 
+      objectReference: {fileID: 271956685}
     - target: {fileID: 6684969641763554643, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
       propertyPath: heart
       value: 
@@ -51987,6 +52001,10 @@ PrefabInstance:
       propertyPath: pm
       value: 
       objectReference: {fileID: 593058907}
+    - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
+      propertyPath: arua
+      value: 
+      objectReference: {fileID: 1553079405}
     - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
       propertyPath: heart
       value: 

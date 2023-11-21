@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ClickEvent : MonoBehaviour
 {
     //���̽��Ǵ� UI
+    public GameObject ButtonBox;
+    public GameObject keys;
     public GameObject BaseUI;
     //�ɼ�â
     public GameObject OptionUI;
@@ -13,8 +15,17 @@ public class ClickEvent : MonoBehaviour
     public GameObject effect1;
     public GameObject effect2;
     public FadeIn fadeinbox;
+
+    public IEnumerator Start()
+    {
+        yield return new WaitForSeconds(3);
+        ButtonBox.SetActive(true);
+        keys.SetActive(true);
+    }
     public void GoToBattle()
     {
+        keys.SetActive(false);
+        ButtonBox.SetActive(false);
         StartCoroutine(Battlemovie());
     }
     //Ÿ��Ʋ ������ �̵�

@@ -46,7 +46,7 @@ public class MobParent : MonoBehaviour
             BulletCtrl bulletInfo = collision.gameObject.GetComponent<BulletCtrl>();
             if (!mobClear)
             {
-                GameManager.instance.UIManager.BattleUI.GetComponent<BattleUI>().MassageState("다수의 몹이 주인을 지켜주는 듯하다.");
+                GameManager.instance.UIManager.BattleUI.GetComponent<BattleUI>().MassageState("부하부터 쓰러트려야 잡을 수 있을 것 같아요!");
             }
             HP = HP + bulletInfo.damage;
         }
