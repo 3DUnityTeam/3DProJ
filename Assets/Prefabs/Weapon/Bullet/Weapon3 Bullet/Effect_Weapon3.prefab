@@ -23923,6 +23923,7 @@ MonoBehaviour:
   effect: {fileID: 0}
   effectcode: 4
   width: 2
+  sound: 9
 --- !u!1 &6646146572685632117
 GameObject:
   m_ObjectHideFlags: 0

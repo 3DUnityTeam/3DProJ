@@ -18,12 +18,15 @@ public class TriggerCollison : MonoBehaviour
     public GameObject effect;
     public int effectcode;
     public float width = 2;
+    public AudioManager.Sfx sound;
+
     // Start is called before the first frame update
 
     private void OnEnable()
     {
+        GameManager.instance.AudioManager.PlaySfx(sound);
         //effect = GameManager.instance.effectPoolManger.Get(effectcode - 1);
-        if(weapontype == WeaponCode.explosion)
+        if (weapontype == WeaponCode.explosion)
         {
             StartCoroutine(Effectcontrol());
             myCD = GetComponent<SphereCollider>();

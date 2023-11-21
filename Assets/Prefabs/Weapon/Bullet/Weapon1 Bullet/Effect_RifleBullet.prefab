@@ -9611,6 +9611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e454fa650772c9b4380ef0926d8ebee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 5
   effectTime: 0.5
   lightTime: 0
   effectlight: {fileID: 0}

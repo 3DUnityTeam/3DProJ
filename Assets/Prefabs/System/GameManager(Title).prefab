@@ -47,18 +47,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839a8185c9dfbc044b34e8af2239f0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossMaxHp: 100
-  bossHp: 50
-  tofu: {fileID: 0}
+  Boss: {fileID: 0}
+  SubBoss: []
+  tofuFoolr: {fileID: 0}
   player: {fileID: 0}
   focus: {fileID: 0}
+  isCursorLocked: 0
   UIManager: {fileID: 0}
   AudioManager: {fileID: 8650963537530035880}
   WeaponManager: {fileID: 0}
   AimManager: {fileID: 0}
   StopManager: {fileID: 7233182520670690924}
+  bulletPoolManger: {fileID: 0}
+  effectPoolManger: {fileID: 0}
+  SpawnManager: {fileID: 0}
+  progressManager: {fileID: 0}
   WeaponImages: []
+  SpecialWeaponImages: []
   BaseImage: {fileID: 0}
+  statemessage: {fileID: 0}
 --- !u!1001 &906338828646564986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,26 +372,6 @@ PrefabInstance:
       propertyPath: bgmClip.Array.size
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: sfxClip.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: bgmClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a1944aa7c9b294499f993b3c5b484f5, type: 3}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: bgmClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 3aa8f1d7601a19d4c88dcaaa262c2e06, type: 3}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: sfxClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: a2b51b225bf36d84d8229678edb7762e, type: 3}
-    - target: {fileID: 2551084042030850820, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
-      propertyPath: sfxClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: fe3018dbfd00f04429fa5b0feab4ac61, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef15c738e738884ba2459dbb5e1421c, type: 3}
 --- !u!4 &5092819001845102133 stripped
