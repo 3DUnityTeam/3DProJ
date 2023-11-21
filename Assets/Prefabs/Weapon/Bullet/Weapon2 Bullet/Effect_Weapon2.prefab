@@ -4988,6 +4988,7 @@ GameObject:
   - component: {fileID: 2708598583397607897}
   - component: {fileID: 2708598583397607910}
   - component: {fileID: 2708598583397607899}
+  - component: {fileID: -8823807911621040997}
   m_Layer: 0
   m_Name: Effect_Weapon2
   m_TagString: Untagged
@@ -9718,7 +9719,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2708598583397607911}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9205bc1bbacc90040a998067b5643d16, type: 3}
   m_Name: 
@@ -9882,6 +9883,22 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 0}
+--- !u!114 &-8823807911621040997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708598583397607911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e454fa650772c9b4380ef0926d8ebee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 7
+  effectTime: 0.5
+  lightTime: 0
+  effectlight: {fileID: 0}
 --- !u!1 &2708598584241629776
 GameObject:
   m_ObjectHideFlags: 0

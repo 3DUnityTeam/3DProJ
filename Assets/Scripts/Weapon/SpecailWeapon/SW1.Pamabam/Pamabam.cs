@@ -14,6 +14,7 @@ public class Pamabam : MonoBehaviour
     public int bulletID;
     public GameObject muzzle;
     public GameObject beam;
+    private WeaponControl parent;
     public string enemyTag = "Mob";
     [Header ("내부 수치")]
     public Transform target;
@@ -25,6 +26,7 @@ public class Pamabam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        parent = gameObject.GetComponentInParent<WeaponControl>();
         cooltime = Cooltime;
         InvokeRepeating("UpdateTraget", 0f, 0.02f);
     }
@@ -133,9 +135,11 @@ public class Pamabam : MonoBehaviour
 
     void SpecialShoot()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Sweapon1);
         StartCoroutine(Shootstop());
         state = State.special;
         beam.SetActive(true);
+        parent.shoot();
         /*target = GameManager.instance.AimManager.aimingTarget.transform;
         GameObject bullet = GameManager.instance.bulletPoolManger.Get(1);
         bullet.transform.position = firePos.position;

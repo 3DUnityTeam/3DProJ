@@ -77,8 +77,6 @@ public class GameManager : MonoBehaviour
             isCursorLocked = true;
         }
         StopManager.TimeStop();
-        AudioManager.PlayBgm(AudioManager.Bgm.Title);
-        AudioManager.PlaySfx(AudioManager.Sfx.Dead);
         if (UIManager == null)
         {
             isCursorLocked = false;
