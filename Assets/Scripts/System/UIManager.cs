@@ -62,10 +62,12 @@ public class UIManager : MonoBehaviour
     public void FinshGame(bool result)
     {
         //true: ½Â¸®, false: ÆÐ¹è
+        /*
         if(!result)
         {
             GameManager.instance.StopManager.TimeStop();
         }
+        */
         BattleUI.SetActive(false);
         CollectUI.SetActive(false);
         switch(result)
@@ -74,6 +76,7 @@ public class UIManager : MonoBehaviour
                 ResultUIVictory.SetActive(true);
                 break;
             case false:
+                GameManager.instance.StopManager.TimeStop();
                 ResultUIDefeat.SetActive(true);
                 break;
             default:

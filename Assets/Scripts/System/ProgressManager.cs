@@ -10,6 +10,10 @@ public class ProgressManager : MonoBehaviour
     public GameObject circle;
     public GameObject ready;
     public GameObject Breath;
+    
+    public GameObject EndingPoz;
+    public GameObject player;
+
     public Transform bossspawnpoint;
     public Transform playerspawnpoint;
     public bool boss1Cleared = false;
@@ -35,6 +39,7 @@ public class ProgressManager : MonoBehaviour
         }
         if(dragonCleared)
         {
+            player.transform.position = EndingPoz.transform.position;
             gameManager.UIManager.FinshGame(true);
         }
     }
