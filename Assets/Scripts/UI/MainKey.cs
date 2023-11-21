@@ -62,5 +62,10 @@ public class MainKey : MonoBehaviour
             pressed[10].SetActive(true);
         if (Input.GetKeyUp(KeyCode.C))
             pressed[10].SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            pressed[11].SetActive(true);
+        if (Input.GetKeyUp(KeyCode.Q))
+            pressed[11].SetActive(false);
     }
 }
