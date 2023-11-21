@@ -8,7 +8,12 @@ public class PauseUI : MonoBehaviour
     public GameObject Option;
     private void OnEnable()
     {
+        GameManager.instance.isCursorLocked = false;
         ButtonBox.SetActive(true);
         Option.SetActive(false);
+    }
+    private void OnDisable()
+    {
+        GameManager.instance.isCursorLocked = true;
     }
 }

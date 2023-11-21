@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personalColor: {r: 0, g: 0, b: 0, a: 0}
+  mobClear: 0
   heart: {fileID: 6855314210226104583}
   firePoz: {fileID: 6726140794647683389}
   bomb: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}

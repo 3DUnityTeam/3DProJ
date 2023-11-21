@@ -5,9 +5,9 @@ using UnityEngine;
 public class Tofu : MonoBehaviour
 {
     //HP
-    private float maxHP = 600f;
+    public float maxHP = 600f;
     public float MaxHP { get { return this.maxHP; } }
-    private float hp = 600f;
+    private float hp;
     public float HP { get { return this.hp; } set { this.hp = value; } }
     private float timeSpeed;
     public float TimeSpeed { get { return this.timeSpeed; } set { this.timeSpeed = value; } }
@@ -19,6 +19,7 @@ public class Tofu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HP = MaxHP;
         timeSpeed = 1;
     }
 
