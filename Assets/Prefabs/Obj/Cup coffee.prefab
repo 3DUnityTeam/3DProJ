@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6995958893042994948}
   - component: {fileID: 58708637926935243}
   - component: {fileID: 3542405133157022744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 116534589963530554}
   - component: {fileID: 116534589963530553}
   - component: {fileID: 919132149161229830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cup coffee
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62262420cda916a4d9d8bd7097e19310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   exp: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
   expPoz: {fileID: 438180580538683800}
 --- !u!1 &2881613312453257342
@@ -311,7 +312,7 @@ GameObject:
   - component: {fileID: 1741189878610880089}
   - component: {fileID: 9109189564242144246}
   - component: {fileID: 7990525207487663516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +395,7 @@ GameObject:
   - component: {fileID: 8446431823890082901}
   - component: {fileID: 3249780289787299085}
   - component: {fileID: 5849497076454866861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +478,7 @@ GameObject:
   - component: {fileID: 3351973438928187967}
   - component: {fileID: 8415925503378551655}
   - component: {fileID: 8023455070887040062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +563,7 @@ GameObject:
   - component: {fileID: 1415855143380561151}
   - component: {fileID: 8066850693049789454}
   - component: {fileID: 4456926482889015317}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cup coffee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62262420cda916a4d9d8bd7097e19310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   exp: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
   expPoz: {fileID: 3796513458835518129}
 --- !u!1 &5515579388238347128
@@ -776,7 +778,7 @@ GameObject:
   - component: {fileID: 8802035570301766350}
   - component: {fileID: 6493249401290847661}
   - component: {fileID: 4896824020464015306}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +862,7 @@ GameObject:
   - component: {fileID: 4036032524382086215}
   - component: {fileID: 3557500955199952974}
   - component: {fileID: 1379813614003490791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
