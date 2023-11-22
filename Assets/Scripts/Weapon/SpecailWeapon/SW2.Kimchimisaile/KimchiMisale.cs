@@ -17,6 +17,7 @@ public class KimchiMisale : MonoBehaviour
     public float ctime = 0f;
     public float bulletspeed = 2000f;
     public float damage = 20f;
+    public int shootCount = 4;
 
 
     private void Awake()
@@ -51,7 +52,7 @@ public class KimchiMisale : MonoBehaviour
             {
                 if (parent.state == WeaponControl.State.normal || parent.state == WeaponControl.State.shooted)
                 {
-                    Fire();
+                    StartCoroutine(Shoot());
                     ctime = rapidspeed;
                 }
             }
@@ -78,7 +79,6 @@ public class KimchiMisale : MonoBehaviour
             firedbullet.GetComponent<Misale>().damage = damage;
             firedbullet.GetComponent<Misale>().bulletspeed = bulletspeed;
             firedbullet.GetComponent<Rigidbody>().AddForce(Vector3.up * bulletspeed);
-            parent.shoot();
         }
         //audio.PlayOneShot(fireSfx, 1.0f);
         if(muzzlelight != null)
@@ -98,5 +98,15 @@ public class KimchiMisale : MonoBehaviour
         muzzlefire.SetActive(false);
         muzzlelight.enabled = false;
 
+    }
+
+    IEnumerator Shoot()
+    {
+        parent.shoot();
+        for (int i = 0; i < shootCount; i++)
+        {
+            Fire();
+            yield return new WaitForSeconds(0.45f);
+        }
     }
 }

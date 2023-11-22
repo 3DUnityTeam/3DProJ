@@ -96,7 +96,10 @@ public class DragonController : MobParent
         {
             trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
             if (!atkFlag)
+            {
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Atk);
                 ani_.SetTrigger("Atk");
+            }
             normalAtk = true;
         }
 
@@ -198,7 +201,8 @@ public class DragonController : MobParent
             {
                 dirr = Vector3.forward;
                 looking = false;
-                for(int j = 0; j < 27; j++)
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.DragonRolling);
+                for (int j = 0; j < 27; j++)
                 {
                     Instantiate(fxs[1], new Vector3(trans_.position.x, -0.2f, trans_.position.z), trans_.rotation);
                     yield return new WaitForSeconds(0.1f);
@@ -235,6 +239,7 @@ public class DragonController : MobParent
             ani_.speed = 0.0f;
             fxs[2].SetActive(true);
             flame = true;
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.FireSpit);
             yield return new WaitForSeconds(5.2f);
             flame = false;
             fxs[2].SetActive(false);
@@ -261,42 +266,22 @@ public class DragonController : MobParent
             rigid_.useGravity = false;
             trans_.position = new Vector3(trans_.position.x, trans_.position.y + 3.5f, trans_.position.z);
 
-            int r = Random.Range(0, 1);
-            if(r == 0)
-            {
-                //waitingTime = 2.3f;
-                Debug.Log("Dash!");
-                ani_.SetBool("Dash", true);
-                looking = false;
+            //waitingTime = 2.3f;
+            Debug.Log("Dash!");
+            ani_.SetBool("Dash", true);
+            looking = false;
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Dash);
+            trans_.position = new Vector3(trans_.position.x, trans_.position.y - 2f, trans_.position.z);
 
-                trans_.position = new Vector3(trans_.position.x, trans_.position.y - 2f, trans_.position.z);
+            dirr = Vector3.forward;
+            speed = 32f;
+            yield return new WaitForSeconds(2.3f);
 
-                dirr = Vector3.forward;
-                speed = 32f;
-                yield return new WaitForSeconds(2.3f);
+            ani_.SetBool("Dash", false) ;
+            ani_.SetBool("Fly", false);
+            rigid_.useGravity = true;
+            speed = 18f;
 
-                ani_.SetBool("Dash", false) ;
-                ani_.SetBool("Fly", false);
-                rigid_.useGravity = true;
-                speed = 18f;
-            }
-            else //Do it later
-            {
-                //waitingTime = 5.2f;
-                Debug.Log("Flame Bomb!");
-                trans_.position = new Vector3(trans_.position.x, trans_.position.y + 3.5f, trans_.position.z);
-                
-                ani_.SetBool("Flame", true);
-                yield return new WaitForSeconds(0.2f);
-                ani_.speed = 0;
-                dirr = Vector3.zero;
-
-
-                yield return new WaitForSeconds(5f);
-                rigid_.useGravity = true;
-                ani_.SetBool("Flame", false);
-                ani_.speed = 1;
-            }
             fxs[3].SetActive(false);
             looking = true;
             BodyFx(false);
@@ -334,7 +319,7 @@ public class DragonController : MobParent
                     GameObject obj =  Instantiate(meteos[0]);
                     obj.transform.position = spawnPoz;
                     obj.name = "MeteoPoz " + i;
-
+                    GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.ObjSpawn);
                     spawnPoz += new Vector3(0, 30, 0);
                     obj = Instantiate(meteos[1]);
                     obj.transform.position = spawnPoz;
@@ -354,9 +339,9 @@ public class DragonController : MobParent
                     float z = playerTrans_.position.z;
                     Vector3 spawnPoz =  new Vector3(x, -2, z);
                     GameObject obj = Instantiate(meteos[0]);
+                    GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.ObjSpawn);
                     obj.transform.position = spawnPoz;
                     obj.name = "MeteoPoz " + i;
-
                     yield return new WaitForSeconds(0.65f);
 
                     spawnPoz += new Vector3(0, 30, 0);
@@ -398,7 +383,8 @@ public class DragonController : MobParent
                     float tX = trans_.position.x + Random.Range(-100f, 100f);
                     float tZ = trans_.position.x + Random.Range(-100f, 100f);
                     int random = Random.Range(0, GameManager.instance.SpawnManager.pools.Length);
-                    GameObject obj = GameManager.instance.SpawnManager.Get(random);
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.MobSpawn);
+                GameObject obj = GameManager.instance.SpawnManager.Get(random);
                     obj.transform.position = new Vector3(tX, 1, tZ);
                     obj.transform.parent = mobSpawn.transform;
 
@@ -428,6 +414,7 @@ public class DragonController : MobParent
         {
             deadCheck = true;
             //SceneManager.LoadScene("Win");
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
             StartCoroutine(WaitDeadStatus());
             GameManager.instance.progressManager.Clear(3);
         }

@@ -42,27 +42,19 @@ public class WPCoolTimeSlider : MonoBehaviour
         }
         else if (type == WeaponType.Special)
         {
-            WeaponControl pama;
-            KimchiMisale kimch;
+            WeaponControl control;
             GameObject special = GameManager.instance.WeaponManager.SpecialWeapon;
-            GameObject child = special.transform.GetChild(0).gameObject;
-            if (special.TryGetComponent<WeaponControl>(out pama))
+            if (special.TryGetComponent<WeaponControl>(out control))
             {
-                heat = pama.currentheat;
-                maxheat = pama.Heat;
-                slider.value = (heat) / maxheat;
-            }
-            else if (child.TryGetComponent<KimchiMisale>(out kimch))
-            {
-                heat = kimch.ctime;
-                maxheat = kimch.rapidspeed;
-                slider.value = (maxheat - heat) / maxheat;
+                heat = control.currentheat;
+                maxheat = control.Heat;
             }
             if (true)
             {
                 childTime.text = string.Format("{0:F1}", heat / maxheat * 100) + "%";
             }
             //Max 값 도달시
+            slider.value = heat / maxheat;
             if (slider.value >= 1)
             {
                 childTime.text = "100%";//childTime.text = string.Format("{0:F0}", GameManager.instance.WeaponManager.weaponCools[WeaponNum]);

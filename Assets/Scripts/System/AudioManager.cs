@@ -49,8 +49,21 @@ public class AudioManager : MonoBehaviour
         Sweapon2effect,
         Boost,
         BoostLoop,
-        StateSound
+        StateSound,
 
+        //몬스터 용
+        ObjSpawn,
+        IceFall,
+        CoffeeBerryFall,
+        FireSpit,
+        MobSpawn,
+        LemonShoot,
+        LemonFall,
+        DragonRolling,
+        Atk,
+        Dash,
+        BirdBomb,
+        Happy
     }
     public void Init()
     {

@@ -51,11 +51,13 @@ public class Blueberry : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Land"))
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.CoffeeBerryFall);
             Destroy(this.gameObject, 0.6f);
             StartCoroutine(EnableFX());
         }
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.CoffeeBerryFall);
             Destroy(this.gameObject, 0.6f);
             StartCoroutine(EnableFX());
         }

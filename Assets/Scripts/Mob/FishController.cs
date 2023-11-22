@@ -155,6 +155,7 @@ public class FishController : MobParent
     public override void IsDead()
     {
         heart.SetActive(true);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }

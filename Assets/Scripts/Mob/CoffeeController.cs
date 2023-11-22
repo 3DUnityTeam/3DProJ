@@ -126,6 +126,7 @@ public class CoffeeController : MobParent
                 ani_.SetBool("Atk", true);
                 Vector3 firePoz = playerTrans_.position + new Vector3(0, 5, 0);
                 Instantiate(warnCoffee, firePoz, playerTrans_.rotation);
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.ObjSpawn);
                 yield return new WaitForSeconds(0.3f);
                 ani_.SetBool("Atk", false);
                 firePoz += new Vector3(0, 10, 0);
@@ -160,6 +161,7 @@ public class CoffeeController : MobParent
     public override void IsDead()
     {
         heart.SetActive(true);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }

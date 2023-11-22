@@ -104,6 +104,7 @@ public class RatController : MobParent
                     }
                     else
                     {
+                        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Atk);
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
                         ani_.SetTrigger("Atk");
                     }
@@ -124,6 +125,7 @@ public class RatController : MobParent
             }
             else
             {
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.LemonShoot);
                 Instantiate(lemon, firePoz.position, firePoz.rotation);
                 yield return new WaitForSeconds(0.56f);
             }
@@ -150,6 +152,7 @@ public class RatController : MobParent
     public override void IsDead()
     {
         heart.SetActive(true);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
         ani_.SetTrigger("Happy");
         base.IsDead();
     }

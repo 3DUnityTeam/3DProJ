@@ -61,6 +61,7 @@ public class BossRat : MobParent
 
             if (HP >= MaxHP)
             {
+                isWatching = false;
                 BeHappy();
             }
 
@@ -91,16 +92,18 @@ public class BossRat : MobParent
                     break;
                 else
                 {
-                    float tX = trans_.position.x + Random.Range(-10f, 10f);
-                    float tZ = trans_.position.x + Random.Range(-10f, 10f);
+                    float tX = trans_.position.x + Random.Range(-40f,40f);
+                    float tZ = trans_.position.x + Random.Range(-40f, 40f);
                     int random = Random.Range(0, GameManager.instance.SpawnManager.pools.Length);
+                    GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.MobSpawn);
                     GameObject obj = GameManager.instance.SpawnManager.Get(random);
+
                     obj.transform.position = new Vector3(tX, trans_.position.y, tZ);
                     obj.transform.parent = mobSpawn.transform;
                     obj.name = "Lemon";
 
                     summons--;
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.75f);
                 }
             }
             //summons = 0;
@@ -128,7 +131,7 @@ public class BossRat : MobParent
                 GameObject obj = Instantiate(meteos[0]);
                 obj.transform.position = spawnPoz;
                 obj.name = "MeteoPoz " + i;
-
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.ObjSpawn);
                 spawnPoz += new Vector3(0, 30, 0);
                 obj = Instantiate(meteos[1]);
                 obj.transform.position = spawnPoz;
@@ -156,7 +159,7 @@ public class BossRat : MobParent
             }
             else
             {
-                if (!Dead)
+                if (HP < MaxHP)
                 {
                     isWatching = true;
                     StartCoroutine(Meteos());
@@ -181,6 +184,7 @@ public class BossRat : MobParent
         HP = MaxHP;
         if (!deadCheck)
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
             GameManager.instance.progressManager.Clear(2);
             deadCheck = true;
             //SceneManager.LoadScene("Win");
