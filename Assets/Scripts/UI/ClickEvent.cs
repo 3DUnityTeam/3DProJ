@@ -82,6 +82,6 @@ public class ClickEvent : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         fadeinbox.state = FadeIn.State.fadeout;
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

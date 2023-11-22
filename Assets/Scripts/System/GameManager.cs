@@ -116,11 +116,6 @@ public class GameManager : MonoBehaviour
         {
         }
 
-        if(progressManager.dragonCleared == true)
-        {
-            UIManager.FinshGame(true);
-        }
-
         if(progressManager.boss1Cleared && progressManager.boss2Cleared)
         {
             bgm = AudioManager.Bgm.Page2;
