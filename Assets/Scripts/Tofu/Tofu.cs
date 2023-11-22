@@ -38,6 +38,8 @@ public class Tofu : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (GameManager.instance.UIManager.ResultUIDefeat.activeSelf == true || GameManager.instance.UIManager.ResultUIVictory == true)
+            return;
         HP -= Time.fixedDeltaTime*(timeSpeed);
     }
     
