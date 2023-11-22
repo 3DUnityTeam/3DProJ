@@ -21,6 +21,7 @@ public class ProgressManager : MonoBehaviour
     public bool dragonCleared = false;
 
     private bool mapchanged = false;
+    private bool cleared = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +40,10 @@ public class ProgressManager : MonoBehaviour
         }
         if(dragonCleared)
         {
-            player.transform.position = EndingPoz.transform.position;
-            gameManager.UIManager.FinshGame(true);
+            if(!cleared)
+            {
+                StartCoroutine(Finish());
+            }
         }
     }
 
@@ -112,5 +115,17 @@ public class ProgressManager : MonoBehaviour
         gameManager.player.gameObject.SetActive(true);
         gameManager.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameManager.player.HP = gameManager.player.MaxHP;
+    }
+
+    IEnumerator Finish()
+    {
+        cleared = true;
+        gameManager.AudioManager.StopBgm();
+        gameManager.UIManager.Fadeinout(false);
+        yield return new WaitForSeconds(3f);
+        player.transform.position = EndingPoz.transform.position;
+        player.transform.rotation = EndingPoz.transform.rotation;
+        gameManager.UIManager.FinshGame(true);
+
     }
 }

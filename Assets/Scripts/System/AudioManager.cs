@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
         TitleBGM,
         Page1,
         Page2,
+        Defeat,
+        Victory
     }
     public enum Sfx
     {
