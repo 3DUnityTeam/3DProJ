@@ -117,7 +117,6 @@ public class DragonController : MobParent
         Debug.Log("Phase2 start");
         BodyFx(false);
         fxs[4].SetActive(false);
-        dirr = Vector3.forward;
         StartCoroutine("Phase2");
     }
 
@@ -125,6 +124,7 @@ public class DragonController : MobParent
     {
         looking = true;
         yield return new WaitForSeconds(4.5f);
+        dirr = Vector3.forward;
         isEnd = true;
     }
 
