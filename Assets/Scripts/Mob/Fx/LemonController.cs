@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class LemonController : MonoBehaviour
 {
-    float firePower = 800f;
+    float firePower = 1600f;
     Rigidbody rigid_;
+    public float damage = 5;
 
     void Start()
     {
@@ -14,12 +15,13 @@ public class LemonController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Player")){
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.LemonFall);
+            GameManager.instance.player.GetHitDamage(damage);
             Destroy(this.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Land"))
+        }else if(collision.gameObject.CompareTag("Land"))
         {
-            Destroy(this.gameObject, 1.5f);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.LemonFall);
+            Destroy(this.gameObject, 0.3f);
         }
     }
 }

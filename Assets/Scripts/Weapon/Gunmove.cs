@@ -14,10 +14,10 @@ public class Gunmove : MonoBehaviour
     public Transform target;
     AimManager aimManager;
 
-    public float ÁÂÃø°¢µµ = 10f;
-    public float ¿ìÃø°¢µµ = 10f;
-    public float »ó´Ü°¢µµ = 10f;
-    public float ÇÏ´Ü°¢µµ = 10f;
+    public float upperAngle = 10f;
+    public float downAngle = 10f;
+    public float leftAngle = 10f;
+    public float rightAngle = 10f;
 
     private void Awake()
     {
@@ -25,6 +25,11 @@ public class Gunmove : MonoBehaviour
 
     private void Start()
     {
+        float limit = GameManager.instance.AimManager.limitAngle;
+        float angle = Mathf.Acos(limit) * (180 / Mathf.PI);
+
+        leftAngle = Mathf.Acos(angle);
+        rightAngle = Mathf.Acos(angle);
     }
     void Update()
     {
@@ -35,41 +40,48 @@ public class Gunmove : MonoBehaviour
         {
             case State.noTarget:
                 transform.LookAt(basic.position);
-                float xRotation = transform.rotation.eulerAngles.x;
-                transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                //float xRotation = transform.rotation.eulerAngles.x;
+                //transform.localEulerAngles = transform.localEulerAngles;
+                //transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                 break;
             case State.Targeted:
-                transform.LookAt(target.position);
-                Vector3 trangle = transform.localEulerAngles;
-                trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
-                trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
-                trangle.x = Mathf.Clamp(trangle.x, -(ÇÏ´Ü°¢µµ), »ó´Ü°¢µµ);
-                trangle.y = Mathf.Clamp(trangle.y, -(ÁÂÃø°¢µµ), ¿ìÃø°¢µµ);
-                // ÀÚ½Ä °³Ã¼ÀÇ localrotationÀ» Á¦ÇÑÀ» ÁÙ ÄõÅÍ´Ï¾ðÀ¸·Î ¼³Á¤
-                transform.localEulerAngles = trangle;
+                Vector3 center = target.GetComponent<Collider>().bounds.center;
+                transform.LookAt(center);
+                
+                // ï¿½Ú½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ localrotationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í´Ï¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                
 
                 break;
+
+
         }
-        // ¿ÀºêÁ§Æ®ÀÇ y, z Ãà È¸ÀüÀ» °íÁ¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ y, z ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        Vector3 trangle = transform.localEulerAngles;
+        trangle.x = (trangle.x > 180) ? trangle.x - 360 : trangle.x;
+        trangle.y = (trangle.y > 180) ? trangle.y - 360 : trangle.y;
+        trangle.x = Mathf.Clamp(trangle.x, -(downAngle), upperAngle);
+        trangle.y = Mathf.Clamp(trangle.y, -(leftAngle), rightAngle);
+        trangle.z = 0;
+        transform.localEulerAngles = trangle;
 
-        
 
-        // »õ·Î¿î È¸Àü°ªÀ» Àû¿ë
-        
-        
+        // ï¿½ï¿½ï¿½Î¿ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+
     }
 
     IEnumerator CheckTarget()
     {
         yield return new WaitForSeconds(0.1f);
-        if (aimManager.aimingTarget == null)
-        {
-            state = State.noTarget;
-        }
-        else if (aimManager.aimingTarget != null)
+        if (aimManager.aimingTarget != null)
         {
             target = aimManager.aimingTarget.transform;
             state = State.Targeted;
+        }
+        else
+        {
+            target = basic;
+            state = State.noTarget;
         }
     }
 }

@@ -66,11 +66,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimManager: {fileID: 0}
-  bullet: {fileID: 8154665223632144087, guid: 24864a298bcb42541ae2fd73af0e84ae, type: 3}
+  bulletID: 0
   firePos: {fileID: 204428333491709745}
   fireSfx: {fileID: 0}
   muzzelFlash: {fileID: 0}
-  cooltime: 0.2
+  rapidspeed: 0.7
+  bulletspeed: 2000
 --- !u!1001 &5518089621155643706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,7 +81,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5639200775689004555, guid: 9e08960e82b81db48bb7ae117e2a4748, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.607
+      value: 1.197
       objectReference: {fileID: 0}
     - target: {fileID: 7102755500998319186, guid: 9e08960e82b81db48bb7ae117e2a4748, type: 3}
       propertyPath: m_RootOrder

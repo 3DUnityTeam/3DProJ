@@ -55,7 +55,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e78955b2cfcfa73479b0cfe8e7ba17f5, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9589,7 +9588,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 869742a199537664ea313c65dc8525cc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14490,7 +14488,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 869742a199537664ea313c65dc8525cc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14553,6 +14550,8 @@ GameObject:
   - component: {fileID: 4593184484909914550}
   - component: {fileID: 4593184484909914553}
   - component: {fileID: 4593184484909914548}
+  - component: {fileID: 4747517946848144730}
+  - component: {fileID: 132754320046638934}
   m_Layer: 0
   m_Name: CFXR2 WW Explosion
   m_TagString: Bomb
@@ -14569,7 +14568,7 @@ Transform:
   m_GameObject: {fileID: 4593184484909914552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8730105067150012858}
@@ -14591,7 +14590,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4593184484909914552}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -19391,7 +19390,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 869742a199537664ea313c65dc8525cc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19454,7 +19452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9205bc1bbacc90040a998067b5643d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBehavior: 2
+  clearBehavior: 1
   cameraShake:
     enabled: 0
     useMainCamera: 0
@@ -19631,6 +19629,33 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 0
   fadeOutReference: {fileID: 0}
+--- !u!114 &4747517946848144730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593184484909914552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ea1b8402d020a4b9379a20b93df723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  bomb: 0
+--- !u!135 &132754320046638934
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593184484909914552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4593184484999142886
 GameObject:
   m_ObjectHideFlags: 0
@@ -24463,7 +24488,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 50350a9c0e5b6454d873d1984e97cde4, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24557,9 +24581,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.559, g: 0.17468749, b: 0.05240625, a: 1}
-  m_Intensity: 0
-  m_Range: 4
+  m_Color: {r: 0.6869382, g: 0.30954617, b: 0.05156742, a: 1}
+  m_Intensity: 3.9706588
+  m_Range: 9.487484
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -29458,7 +29482,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 869742a199537664ea313c65dc8525cc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34359,7 +34382,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 869742a199537664ea313c65dc8525cc, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34465,7 +34487,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e78955b2cfcfa73479b0cfe8e7ba17f5, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

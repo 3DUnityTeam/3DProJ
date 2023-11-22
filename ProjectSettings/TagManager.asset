@@ -5,16 +5,23 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - Floor
   - Lemon
   - Land
+  - Bomb
+  - Mob
+  - Poz
+  - Wall
+  - FxTemporaire
+  - Trigger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Bullet
+  - Coffee
   - 
   - 
   - 
@@ -27,9 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Wall
   - 
   - 
   - 

@@ -256,6 +256,14 @@ PrefabInstance:
       propertyPath: m_Text
       value: Option
       objectReference: {fileID: 0}
+    - target: {fileID: 8948428488860178523, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}
+      propertyPath: m_text
+      value: "\uC635\uC158"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948428488860178523, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}
+      propertyPath: m_fontSize
+      value: 22.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}
 --- !u!224 &8371755915426955515 stripped
@@ -361,6 +369,14 @@ PrefabInstance:
     - target: {fileID: 5137213236310659868, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}
       propertyPath: m_Text
       value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948428488860178523, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}
+      propertyPath: m_text
+      value: "\uB098\uAC00\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948428488860178523, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}
+      propertyPath: m_fontSize
+      value: 22.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c1bda4c9d15cf84a95516b3984665f4, type: 3}

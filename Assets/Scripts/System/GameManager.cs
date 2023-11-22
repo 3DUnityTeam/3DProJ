@@ -9,21 +9,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-
-    public float bossMaxHp = 100f;
-    [Range(0, 100)]
-    public float bossHp = 50f;
-    private float maxHP = 100f;
-    public float MaxHP { get { return this.maxHP; } }
-    private float hp = 100f;
-    public float HP { get { return this.hp; } set { this.hp = value; } }
+    [Header("#Boss")]
+    public GameObject Boss;
+    public GameObject[] SubBoss;
 
     [Header("#Player")]
     //인게임 플레이어
+    public Tofu tofuFoolr;
     public Player player;
     //초점
     public GameObject focus;
-    
+    //커서
+    public bool isCursorLocked;
+
     [Header("#Manager")]
     //UI 매니저 
     public UIManager UIManager;
@@ -35,11 +33,27 @@ public class GameManager : MonoBehaviour
     public AimManager AimManager;
     //시간 정지 매니저
     public StopManager StopManager;
+    //총알 풀 매니저
+    public PoolManager bulletPoolManger;
+    //이펙트 풀 매니저
+    public PoolManager effectPoolManger;
+    //스폰 매니저
+    public PoolManager SpawnManager;
+    //진행 매니저
+    public ProgressManager progressManager;
 
     [Header("#WeaponImage")]
     //무기 이미지
     public Sprite[] WeaponImages;
+    public Sprite[] SpecialWeaponImages;
     public Sprite BaseImage;
+
+    [Header("#UImessage")]
+    //UI에 상황 메시지를 표기하는 공간
+    public BattleUI statemessage;
+
+    [Header("#BasicBGM")]
+    public AudioManager.Bgm bgm;
 
     private void Awake()
     {
@@ -61,11 +75,51 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        if (UIManager != null)
+        {
+            isCursorLocked = true;
+        }
         StopManager.TimeStop();
-        AudioManager.PlayBgm(AudioManager.Bgm.Title);
-        AudioManager.PlaySfx(AudioManager.Sfx.Dead);
+        if (UIManager == null)
+        {
+            isCursorLocked = false;
+            StopManager.TimePass();
+        }
+        if(Boss.GetComponent<DragonController>() != null)
+        {
+            Boss.GetComponent<DragonController>().enabled = false;
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C)){
+            isCursorLocked = !isCursorLocked;
+        }
     }
 
+    private void LateUpdate()
+    {
+        if (tofuFoolr == null)
+        {
+            return;
+        }
+        DragonController dragon;
+        if (tofuFoolr.HP <= 0)
+        {
+            UIManager.FinshGame(false);
+        }
+        else if (Boss.TryGetComponent<DragonController>(out dragon))
+        {
+        }
+
+        if(progressManager.boss1Cleared && progressManager.boss2Cleared)
+        {
+            bgm = AudioManager.Bgm.Page2;
+        }
+        //커서 중앙 잠금 구현
+        Cursor.visible = !isCursorLocked;
+        Cursor.lockState= !isCursorLocked?(CursorLockMode)0:(CursorLockMode)1;
+    }
     public void Save(string key,float value)
     {
         PlayerPrefs.SetFloat(key, value);

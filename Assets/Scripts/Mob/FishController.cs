@@ -1,17 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-public class FishController : MonoBehaviour
+public class FishController : MobParent
 {
+    public GameObject heart;
     Transform playerTrans_;
     Transform trans_;
     Animator ani_;
 
-    [SerializeField]
-    int maxHp = 3;
-    int hp = 0;
+    public GameObject[] lods;
+    public GameObject fx;
 
+    [SerializeField]
     float traceDist = 6.0f;
+    [SerializeField]
     float speed = 1.0f;
 
     Vector3 dirr = Vector3.zero;
@@ -20,37 +22,89 @@ public class FishController : MonoBehaviour
     bool isTrace = false;
     bool flag = false;
     bool checkFlag = false;
-    bool isArrive = false;
+    bool spawn = true;
 
     private void Awake()
     {
-        playerTrans_ = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        MaxHP = 120;
+        mobClear = true;
         trans_ = GetComponent<Transform>();
         ani_ = GetComponent<Animator>();
         traceDist *= 3.5f;
     }
 
+    void Fx(bool t)
+    {
+        for (int i = 0; i < lods.Length; i++)
+        {
+            lods[i].SetActive(t);
+        }
+    }
+
+    public override void OnEnable()
+    {
+        isTrace = false;
+        flag = false;
+        spawn = true;
+        StartCoroutine(Start());
+        base.OnEnable();
+    }
+    private new IEnumerator Start()
+    {
+        base.Start();
+        playerTrans_ = GameManager.instance.player.transform;
+
+        fx.SetActive(true);
+        Fx(false);
+        yield return new WaitForSeconds(1.5f);
+        this.gameObject.SetActive(true);
+        Fx(true);
+        spawn = false;
+        fx.SetActive(false);
+
+        //���� ���ӵ�����
+        StartCoroutine(IsLive(15));
+    }
+
     private void Update()
     {
+        if (Dead)
+            return;
         StartCoroutine("CheckState");
         StartCoroutine("DoMove");
     }
 
     private void FixedUpdate()
     {
-        if (hp == maxHp)
+        if (Dead)
+            return;
+        if (HP >= MaxHP)
+        {
             IsDead();
+        }
         else
         {
-
-            if (!isTrace)
-            {
-                trans_.Translate(dirr * speed * Time.fixedDeltaTime);
-                ani_.SetBool("Atk", false);
-            }
+            if (spawn)
+                dirr = Vector3.zero;
             else
             {
-                trans_.LookAt(playerTrans_);
+                if (!isTrace)
+                {
+                    trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    trans_.LookAt(new Vector3(playerTrans_.position.x, trans_.position.y, playerTrans_.position.z));
+                    float dit = Vector3.Distance(playerTrans_.position, trans_.position);
+                    if (dit < 5)
+                    {
+                        trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
+                    }
+                    else
+                    {
+                        trans_.Translate(dirr * speed * Time.fixedDeltaTime);
+                    }
+                }
             }
         }
     }
@@ -68,8 +122,9 @@ public class FishController : MonoBehaviour
             }
             else
             {
-                CheckRange();
-                yield return new WaitForSeconds(10.5f);
+                dirr = Vector3.forward;
+                yield return new WaitForSeconds(3.3f);
+                dirr = Vector3.zero;
             }
             flag = false;
         }
@@ -85,7 +140,7 @@ public class FishController : MonoBehaviour
             if (dist <= traceDist)
             {
                 isTrace = true;
-                yield return new WaitForSeconds(9);
+                yield return new WaitForSeconds(3);
             }
             else
             {
@@ -97,35 +152,11 @@ public class FishController : MonoBehaviour
 
     }
 
-
-    void CheckRange()
+    public override void IsDead()
     {
-        poz = trans_.position;
-        float x = poz.x;    float z = poz.z;
-        x = Random.Range(x - 2.5f , x+ 2.5f );
-        z = Random.Range(z - 2.5f, x + 2.5f );
-        poz = new Vector3(x, 0, z);
-        dirr = poz;
-        Debug.Log(dirr);
-    }
-
-    void IsDead()
-    {
+        heart.SetActive(true);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
         ani_.SetTrigger("Happy");
-        Destroy(this.gameObject, 2.5f);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            hp++;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-        }
+        base.IsDead();
     }
 }

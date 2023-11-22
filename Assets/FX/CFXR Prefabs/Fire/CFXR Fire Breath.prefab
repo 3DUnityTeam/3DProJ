@@ -106,13 +106,15 @@ GameObject:
   - component: {fileID: 8891297334280618237}
   - component: {fileID: 8892177129927377689}
   - component: {fileID: 762352654476923557}
+  - component: {fileID: 7110241354176310799}
+  - component: {fileID: 8601021620718379192}
   m_Layer: 0
   m_Name: CFXR Fire Breath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8767152486562788127
 Transform:
   m_ObjectHideFlags: 0
@@ -122,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 8764043878647920493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8769712368058676127}
@@ -4895,6 +4897,33 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 0
   fadeOutReference: {fileID: 8891297334280618237}
+--- !u!136 &7110241354176310799
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764043878647920493}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 3
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.1, z: 1.6}
+--- !u!114 &8601021620718379192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764043878647920493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70047e2ae8047848896553dd3ce4216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flameDmg: 12
 --- !u!1 &8764373218812076563
 GameObject:
   m_ObjectHideFlags: 0
