@@ -10,6 +10,10 @@ public class ProgressManager : MonoBehaviour
     public GameObject circle;
     public GameObject ready;
     public GameObject Breath;
+    
+    public GameObject EndingPoz;
+    public GameObject player;
+
     public Transform bossspawnpoint;
     public Transform playerspawnpoint;
     public bool boss1Cleared = false;
@@ -17,6 +21,7 @@ public class ProgressManager : MonoBehaviour
     public bool dragonCleared = false;
 
     private bool mapchanged = false;
+    private bool cleared = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +40,10 @@ public class ProgressManager : MonoBehaviour
         }
         if(dragonCleared)
         {
-            gameManager.UIManager.FinshGame(true);
+            if(!cleared)
+            {
+                StartCoroutine(Finish());
+            }
         }
     }
 
@@ -66,6 +74,7 @@ public class ProgressManager : MonoBehaviour
     {
         mapchanged = true;
         yield return new WaitForSeconds(3f);
+        gameManager.AudioManager.StopBgm();
         gameManager.statemessage.MassageState("드래곤이 보다못해 화가 난 것 같아요!");
         yield return new WaitForSeconds(1.2f);
         circle.SetActive(true);
@@ -93,6 +102,7 @@ public class ProgressManager : MonoBehaviour
         gameManager.player.gameObject.SetActive(false);
         StartCoroutine(RevivePly(3));*/
         yield return new WaitForSeconds(3f);
+        gameManager.AudioManager.PlayBgm(AudioManager.Bgm.Page2);
         gameManager.statemessage.MassageState("두부를 지켜야 합니다!");
 
     }
@@ -105,5 +115,17 @@ public class ProgressManager : MonoBehaviour
         gameManager.player.gameObject.SetActive(true);
         gameManager.player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameManager.player.HP = gameManager.player.MaxHP;
+    }
+
+    IEnumerator Finish()
+    {
+        cleared = true;
+        gameManager.AudioManager.StopBgm();
+        gameManager.UIManager.Fadeinout(false);
+        yield return new WaitForSeconds(3f);
+        player.transform.position = EndingPoz.transform.position;
+        player.transform.rotation = EndingPoz.transform.rotation;
+        gameManager.UIManager.FinshGame(true);
+
     }
 }

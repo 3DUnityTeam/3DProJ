@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ClickEvent : MonoBehaviour
 {
     //���̽��Ǵ� UI
+    public Player player;
     public GameObject ButtonBox;
     public GameObject keys;
     public GameObject BaseUI;
@@ -18,10 +19,16 @@ public class ClickEvent : MonoBehaviour
 
     public IEnumerator Start()
     {
-        GameManager.instance.AudioManager.PlayBgm(AudioManager.Bgm.TitleBGM);
-        yield return new WaitForSeconds(3);
-        ButtonBox.SetActive(true);
-        keys.SetActive(true);
+        if(player != null)
+        {
+            player.enabled = false;
+            GameManager.instance.AudioManager.PlayBgm(AudioManager.Bgm.TitleBGM);
+            yield return new WaitForSeconds(3);
+            player.enabled = true;
+            ButtonBox.SetActive(true);
+            keys.SetActive(true);
+        }
+        
     }
     public void GoToBattle()
     {
@@ -58,6 +65,7 @@ public class ClickEvent : MonoBehaviour
     public void StartGame()
     {
         GameManager.instance.StopManager.TimePass();
+        GameManager.instance.AudioManager.PlayBgm(GameManager.instance.bgm);
         gameObject.SetActive(false);
     }
 
@@ -74,6 +82,6 @@ public class ClickEvent : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         fadeinbox.state = FadeIn.State.fadeout;
         yield return new WaitForSeconds(4f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

@@ -81,6 +81,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0825dfa25de4551469e65496af7b3c71, type: 3}
   BaseImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   statemessage: {fileID: 5132033540575504129}
+  bgm: 1
 --- !u!1001 &551858577900020405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -696,6 +697,14 @@ PrefabInstance:
       propertyPath: CollectUI
       value: 
       objectReference: {fileID: 6974512118402648855}
+    - target: {fileID: 790492314629077704, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}
+      propertyPath: ResultUIDefeat
+      value: 
+      objectReference: {fileID: 3356081687377316391}
+    - target: {fileID: 790492314629077704, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}
+      propertyPath: ResultUIVictory
+      value: 
+      objectReference: {fileID: 4645697283904980745}
     - target: {fileID: 790492314629077705, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -782,6 +791,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}
+--- !u!1 &3356081687377316391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6316313692626847039, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}
+  m_PrefabInstance: {fileID: 8735645540808920856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4645697283904980745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4126399266388396049, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}
+  m_PrefabInstance: {fileID: 8735645540808920856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5132033540575504129 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4468584603673733145, guid: 2f736f38595e95d4ebeac594372b46a4, type: 3}

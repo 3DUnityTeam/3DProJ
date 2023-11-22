@@ -103,6 +103,7 @@ public class BattleUI : MonoBehaviour
 
     public void MassageState(string message)
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.StateSound);
         statemassage.text = message;
         StartCoroutine(HideMassage());
     }

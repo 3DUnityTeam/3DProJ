@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
     //UI에 상황 메시지를 표기하는 공간
     public BattleUI statemessage;
 
+    [Header("#BasicBGM")]
+    public AudioManager.Bgm bgm;
+
     private void Awake()
     {
         instance = this;
@@ -92,10 +95,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)){
             isCursorLocked = !isCursorLocked;
         }
-        if (UIManager != null)
-        {
-            player.AP = 100;
-        }
     }
 
     private void LateUpdate()
@@ -113,9 +112,9 @@ public class GameManager : MonoBehaviour
         {
         }
 
-        if(progressManager.dragonCleared == true)
+        if(progressManager.boss1Cleared && progressManager.boss2Cleared)
         {
-            UIManager.FinshGame(true);
+            bgm = AudioManager.Bgm.Page2;
         }
         //커서 중앙 잠금 구현
         Cursor.visible = !isCursorLocked;
