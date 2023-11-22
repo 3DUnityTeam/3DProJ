@@ -14,7 +14,7 @@ public class KimchiMisale : MonoBehaviour
 
     [Header("내부 수치")]
     public float rapidspeed = 0.7f;
-    private float ctime = 0f;
+    public float ctime = 0f;
     public float bulletspeed = 2000f;
     public float damage = 20f;
 
@@ -45,7 +45,6 @@ public class KimchiMisale : MonoBehaviour
 
     private void Update()
     {
-        ctime -= Time.deltaTime;
         if (ctime <= 0)
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -58,6 +57,13 @@ public class KimchiMisale : MonoBehaviour
             }
         }
 
+    }
+    private void FixedUpdate()
+    {
+        if (ctime > 0)
+        {
+            ctime -= Time.fixedDeltaTime;
+        }
     }
     // Update is called once per frame
     void Fire()

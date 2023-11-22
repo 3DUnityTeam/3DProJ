@@ -1294,11 +1294,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &484650558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 902082152307728164, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
-  m_PrefabInstance: {fileID: 906338828380416507}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &587006811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1529,7 +1524,7 @@ RectTransform:
   - {fileID: 2079407643}
   - {fileID: 1451315197}
   m_Father: {fileID: 906338828380416508}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5133,7 +5128,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 906338828380416508}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5535,7 +5530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 902082153400101440, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 902082153400101440, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5712,7 +5707,7 @@ PrefabInstance:
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: BaseUI
       value: 
-      objectReference: {fileID: 484650558}
+      objectReference: {fileID: 0}
     - target: {fileID: 4671014957546021067, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: player
       value: 
@@ -5763,7 +5758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8048653593896510703, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8048653593896510703, guid: ebf73387fdf43af4e9d58d73e7b9fd1f, type: 3}
       propertyPath: m_LocalScale.x
