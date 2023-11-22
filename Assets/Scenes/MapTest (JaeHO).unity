@@ -5193,6 +5193,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6085244094340670023, guid: e4a1cc210f3a1e84ba7af73d81c714a1, type: 3}
+      propertyPath: allowFullscreen
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4a1cc210f3a1e84ba7af73d81c714a1, type: 3}
 --- !u!1001 &171296680
