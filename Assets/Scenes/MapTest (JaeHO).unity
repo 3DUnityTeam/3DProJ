@@ -12385,7 +12385,7 @@ PrefabInstance:
     - target: {fileID: 1769951722274786521, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: sfxClip.Array.data[26]
       value: 
-      objectReference: {fileID: 8300000, guid: fbf0d2e5bdb7ee6439f3b3cdfa4eae6a, type: 3}
+      objectReference: {fileID: 8300000, guid: db04fb358f3f29844b868191de467a3a, type: 3}
     - target: {fileID: 1769951722274786521, guid: e51341c17ba423e4e8bad6d388e82dca, type: 3}
       propertyPath: sfxClip.Array.data[27]
       value: 
