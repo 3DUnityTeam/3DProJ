@@ -58763,20 +58763,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1390781908281110138, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: somoap
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1390781908281110138, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: moveSpeed
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 1743478785000902011, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
-      propertyPath: HeatCooltime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1743478785000902011, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
-      propertyPath: heatDecrease
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1743478785000902011, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
-      propertyPath: heatIncrease
-      value: 300
+    - target: {fileID: 1390781908281110138, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: jisoksomoap
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2419280200662785241, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_IsActive
@@ -58798,9 +58794,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6020228757620488226, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
-      propertyPath: HeatCooltime
-      value: 1
+    - target: {fileID: 5179816760242518110, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
+      propertyPath: damage
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 6297803929822288755, guid: 7225833fcc9f4004c99ec0d96b459be1, type: 3}
       propertyPath: m_Intensity

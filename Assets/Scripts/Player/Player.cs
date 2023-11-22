@@ -50,6 +50,11 @@ public class Player : MonoBehaviour
     private float regenAPTime = 0;
     private bool regenAPStart = false;
 
+    //대쉬 소모량
+    public float somoap = 50f;
+    //지속 대쉬 소모량
+    public float jisoksomoap = 10f;
+
     //카메라 회전
     [Header("Rotaion")]
     private float xTurnSpeed = 250f;
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
     private float dcooltime = 0f;
     //대쉬 쉬는 시간
     private float dashTime = 0;
+    
 
     //점프
     [Header("Jump")]
@@ -249,7 +255,7 @@ public class Player : MonoBehaviour
             //쿨타임
             dcooltime = dashcooltime;
             //스태미나 소모
-            AP = AP - 50;
+            AP = AP - somoap;
             regenAPStart = false;
             regenAPTime = 0;
         }
@@ -359,7 +365,7 @@ public class Player : MonoBehaviour
             //1초마다
             if (dashTime > 1)
             {
-                AP = AP - 8;
+                AP = AP - jisoksomoap;
                 dashTime = 0;
             }
         }
@@ -471,7 +477,7 @@ public class Player : MonoBehaviour
     //플레이어 지속 부스트 애니메이션
     IEnumerator Dashjinheng(float time)
     {
-        if (AP < 8)
+        if (AP < jisoksomoap)
         {
             //대쉬 초기화
             myanim.SetInteger("dashing", 2);
