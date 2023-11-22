@@ -143,9 +143,9 @@ MonoBehaviour:
   state: 0
   Heat: 1000
   currentheat: 0
-  HeatCooltime: 0.7
+  HeatCooltime: 0.2
   heatIncrease: 32
-  heatDecrease: 40
+  heatDecrease: 92
 --- !u!1 &2938176249413868260
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: damage
-      value: 30
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletID
@@ -588,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: damage
-      value: 30
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3810554234890755666, guid: 49fff59f5378ef048aa3edf3055331e8, type: 3}
       propertyPath: bulletID

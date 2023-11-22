@@ -106,7 +106,7 @@ public class KimchiMisale : MonoBehaviour
         for (int i = 0; i < shootCount; i++)
         {
             Fire();
-            yield return new WaitForSeconds(0.45f);
+            yield return new WaitForSeconds(0.42f);
         }
     }
 }
