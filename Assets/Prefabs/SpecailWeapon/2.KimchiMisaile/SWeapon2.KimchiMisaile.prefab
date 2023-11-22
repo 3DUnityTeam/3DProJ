@@ -48,9 +48,9 @@ MonoBehaviour:
   state: 0
   Heat: 1000
   currentheat: 0
-  HeatCooltime: 0
-  heatIncrease: 0
-  heatDecrease: 0
+  HeatCooltime: 0.7
+  heatIncrease: 1000
+  heatDecrease: 200
 --- !u!1001 &1968231657006274384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,6 +61,10 @@ PrefabInstance:
     - target: {fileID: 1350161661308916384, guid: 230aff76e6c49c349a535e37198df0f3, type: 3}
       propertyPath: sound
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350161661308916384, guid: 230aff76e6c49c349a535e37198df0f3, type: 3}
+      propertyPath: damage
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1350161661308916384, guid: 230aff76e6c49c349a535e37198df0f3, type: 3}
       propertyPath: rapidspeed
