@@ -277,6 +277,11 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        if (transform.position.y < -150 || transform.position.y > 150)
+        {
+            rigid.velocity = Vector3.zero;
+            transform.position = GameManager.instance.progressManager.playerspawnpoint.transform.position;
+        }
         //대쉬 쿨타임
         dcooltime -= Time.fixedDeltaTime;
         //이동
