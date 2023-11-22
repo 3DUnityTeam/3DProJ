@@ -29,7 +29,7 @@ public class DragonController : MobParent
     public float flingAtkDamage =16;
 
     Vector3 dirr = Vector3.zero;
-    Vector3 resetPoz = new Vector3(-95, 8f, 19);
+    Vector3 resetPoz = new Vector3(0, 4f, 0);
 
     public int skillDmg;
     [Header("#SpawnMobCount")]
@@ -137,6 +137,9 @@ public class DragonController : MobParent
             {
                 trans_.position = resetPoz;
             }
+            
+            if(trans_.position.y < 0)
+                trans_.position = resetPoz;
 
 
             if (isEnd)
