@@ -95,10 +95,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)){
             isCursorLocked = !isCursorLocked;
         }
-        if (UIManager != null)
-        {
-            player.AP = 100;
-        }
     }
 
     private void LateUpdate()
