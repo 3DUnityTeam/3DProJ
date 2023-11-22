@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
             //쿨타임
             dcooltime = dashcooltime;
             //스태미나 소모
-            //AP = AP - 50;
+            AP = AP - 50;
             regenAPStart = false;
             regenAPTime = 0;
         }

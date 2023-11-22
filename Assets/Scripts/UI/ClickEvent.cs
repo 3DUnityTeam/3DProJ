@@ -46,12 +46,18 @@ public class ClickEvent : MonoBehaviour
     public void OpenOption()
     {
         OptionUI.SetActive(true);
-        BaseUI.SetActive(false);
+        if (BaseUI != null)
+        {
+            BaseUI.SetActive(false);
+        }
     }
     //����â �ݱ�(�ɼ��� â ��Ȱ��ȭ)
     public void BackOption()
     {
-        BaseUI.SetActive(true);
+        if (BaseUI != null)
+        {
+            BaseUI.SetActive(true);
+        }
         OptionUI.SetActive(false);
     }
     //���� ���� ��ư
