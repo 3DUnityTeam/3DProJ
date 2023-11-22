@@ -21,7 +21,7 @@ public class Pamabam : MonoBehaviour
     public float range = 20f;
     public float Cooltime = 1.2f;
     public float bulletspeed = 2000f;
-    private float cooltime = 1.2f;
+    [HideInInspector]public float cooltime = 1.2f;
     private Vector3 direction;
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,10 @@ public class Pamabam : MonoBehaviour
         {
             case State.normal:
                 //상태가 보통일 경우
-                cooltime -= Time.deltaTime;
+                if (cooltime > 0)
+                {
+                    cooltime -= Time.deltaTime;
+                }
 
                 muzzle.transform.localRotation = transform.localRotation = Quaternion.Euler(0, 0, 0);
                 if (target)
@@ -62,11 +65,11 @@ public class Pamabam : MonoBehaviour
                     Shoot();
                     cooltime = Cooltime;
                 }
-
                 if (Input.GetKey(KeyCode.Q))
                 {
                     SpecialShoot();
                 }
+
 
                 break;
 
@@ -135,11 +138,11 @@ public class Pamabam : MonoBehaviour
 
     void SpecialShoot()
     {
+        parent.shoot();
         GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Sweapon1);
         StartCoroutine(Shootstop());
         state = State.special;
         beam.SetActive(true);
-        parent.shoot();
         /*target = GameManager.instance.AimManager.aimingTarget.transform;
         GameObject bullet = GameManager.instance.bulletPoolManger.Get(1);
         bullet.transform.position = firePos.position;

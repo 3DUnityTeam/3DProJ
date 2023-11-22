@@ -105,6 +105,7 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[index].playOnAwake = false; //바로 작동되는거 차단.한번만 출력X
             sfxPlayers[index].volume = sfxVolume;
         }
+        return;
     }
 
     public void PlaySfx(Sfx sfx)
