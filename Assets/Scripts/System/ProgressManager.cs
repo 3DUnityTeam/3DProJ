@@ -13,6 +13,7 @@ public class ProgressManager : MonoBehaviour
     
     public GameObject EndingPoz;
     public GameObject player;
+    public GameObject spawnmanager;
 
     public Transform bossspawnpoint;
     public Transform playerspawnpoint;
@@ -76,13 +77,17 @@ public class ProgressManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         gameManager.AudioManager.StopBgm();
         gameManager.statemessage.MassageState("드래곤이 보다못해 화가 난 것 같아요!");
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
+        gameManager.AudioManager.PlaySfx(AudioManager.Sfx.Breath2);
+        yield return new WaitForSeconds(0.2f);
         circle.SetActive(true);
+
         yield return new WaitForSeconds(2.3f);
         gameManager.statemessage.MassageState("드래곤이 두부를 진심으로 해치려 해요!");
         ready.SetActive(true);
         yield return new WaitForSeconds(1.2f);
         Breath.SetActive(true);
+        gameManager.AudioManager.PlaySfx(AudioManager.Sfx.Breath1);
         yield return new WaitForSeconds(1.5f);
         gameManager.UIManager.Fadeinout(false);
         yield return new WaitForSeconds(3f);
@@ -120,6 +125,7 @@ public class ProgressManager : MonoBehaviour
     IEnumerator Finish()
     {
         cleared = true;
+        spawnmanager.SetActive(false);
         gameManager.AudioManager.StopBgm();
         gameManager.UIManager.Fadeinout(false);
         yield return new WaitForSeconds(3f);

@@ -13,11 +13,16 @@ public class IntroUI : MonoBehaviour
     public Image myImage;
     public float alphaSpeed = 0.5f;
     public Sprite[] stories;
+    public float audiodeacreaseTime;
 
     public State state = State.fadein;
+    private AudioSource myaudio;
+    public AudioSource booksound;
+    public bool sounddecrease = false;
     // Start is called before the first frame update
     void Start()
     {
+        myaudio = GetComponent<AudioSource>();
         StartCoroutine(StartStory());
     }
 
@@ -53,6 +58,11 @@ public class IntroUI : MonoBehaviour
                 break;
         }
 
+        if(sounddecrease)
+        {
+            DecreaseVolume();
+        }
+
         
         
         
@@ -65,14 +75,23 @@ public class IntroUI : MonoBehaviour
 
     public IEnumerator StartStory()
     {
+        yield return new WaitForSeconds(3.5f);
+        state = State.fadeout;
+        yield return new WaitForSeconds(2.5f);
         int a = stories.Length;
+        myaudio.Play();
         for (int i = 0; i < a; i++)
         {
             myImage.sprite = stories[i];
+            booksound.Play();
             state = State.fadein;
 
             yield return new WaitForSeconds(6f);
 
+            if (i == a - 3)
+            {
+                sounddecrease = true;
+            }
             state = State.fadeout;
 
             yield return new WaitForSeconds(4f);
@@ -84,5 +103,12 @@ public class IntroUI : MonoBehaviour
                 SceneManager.LoadScene("Title");
             }
         }
+    }
+
+    void DecreaseVolume()
+    {
+        float currentVolume = myaudio.volume;
+        float decreaseAmount = currentVolume / audiodeacreaseTime;
+        myaudio.volume -= decreaseAmount * Time.deltaTime;
     }
 }
