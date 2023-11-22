@@ -61,6 +61,7 @@ public class BossSnake : MobParent
             StartCoroutine(CheckState());
             if (HP >= MaxHP)
             {
+                isWatching = false;
                 BeHappy();
             }
 
@@ -141,7 +142,7 @@ public class BossSnake : MobParent
             }
             else
             {
-                if (!Dead && mobClear)
+                if (HP < MaxHP && mobClear)
                 {
                     isWatching = true;
                     StartCoroutine(FlameShot());
@@ -150,15 +151,12 @@ public class BossSnake : MobParent
         }
         else
         {
-            if (!Dead)
-            {
                 isFound = false;
                 isWatching = false;
                 ani_.SetBool("Summon", false);
                 Fxs[0].SetActive(false);
                 ani_.SetBool("Flame", false);
                 Fxs[1].SetActive(false);
-            }
         }
 
         yield return new WaitForSeconds(0.3f);

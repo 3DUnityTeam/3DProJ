@@ -61,6 +61,7 @@ public class BossRat : MobParent
 
             if (HP >= MaxHP)
             {
+                isWatching = false;
                 BeHappy();
             }
 
@@ -158,7 +159,7 @@ public class BossRat : MobParent
             }
             else
             {
-                if (!Dead)
+                if (HP < MaxHP)
                 {
                     isWatching = true;
                     StartCoroutine(Meteos());
