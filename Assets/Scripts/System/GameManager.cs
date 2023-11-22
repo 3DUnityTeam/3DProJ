@@ -95,10 +95,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)){
             isCursorLocked = !isCursorLocked;
         }
-        if (UIManager != null)
-        {
-            player.AP = 100;
-        }
     }
 
     private void LateUpdate()
@@ -114,11 +110,6 @@ public class GameManager : MonoBehaviour
         }
         else if (Boss.TryGetComponent<DragonController>(out dragon))
         {
-        }
-
-        if(progressManager.dragonCleared == true)
-        {
-            UIManager.FinshGame(true);
         }
 
         if(progressManager.boss1Cleared && progressManager.boss2Cleared)
