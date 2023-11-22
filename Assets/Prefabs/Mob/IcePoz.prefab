@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621005, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_Name
-      value: LemonBerryPoz
+      value: IcePoz
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621005, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_TagString
@@ -109,15 +109,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621042, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621042, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621042, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133390621042, guid: 23a27e4c44468c94894ceced976712a3, type: 3}
       propertyPath: m_LocalPosition.x
