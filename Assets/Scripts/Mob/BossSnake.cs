@@ -85,6 +85,7 @@ public class BossSnake : MobParent
             flag = true;
             Fxs[1].SetActive(true);
             ani_.SetBool("Flame", true);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.FireSpit);
             yield return new WaitForSeconds(2.2f);
             Fxs[1].SetActive(false);
             ani_.SetBool("Flame", false);
@@ -106,10 +107,12 @@ public class BossSnake : MobParent
                     break;
                 else
                 {
-                    float tX = trans_.position.x + Random.Range(-10f, 10f);
-                    float tZ = trans_.position.x + Random.Range(-10f, 10f);
+                    float tX = trans_.position.x + Random.Range(-30f, 30f);
+                    float tZ = trans_.position.x + Random.Range(-30f, 30f);
                     int random = Random.Range(0, GameManager.instance.SpawnManager.pools.Length);
+                    GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.MobSpawn);
                     GameObject obj = GameManager.instance.SpawnManager.Get(random);
+
                     obj.transform.position = new Vector3(tX, trans_.position.y, tZ);
                     obj.transform.parent = mobSpawn.transform;
                     obj.name = "Tomato";
@@ -147,12 +150,15 @@ public class BossSnake : MobParent
         }
         else
         {
-            isFound = false;
-            isWatching = false;
-            ani_.SetBool("Summon", false);
-            Fxs[0].SetActive(false);
-            ani_.SetBool("Flame", false);
-            Fxs[1].SetActive(false);
+            if (!Dead)
+            {
+                isFound = false;
+                isWatching = false;
+                ani_.SetBool("Summon", false);
+                Fxs[0].SetActive(false);
+                ani_.SetBool("Flame", false);
+                Fxs[1].SetActive(false);
+            }
         }
 
         yield return new WaitForSeconds(0.3f);
@@ -174,6 +180,7 @@ public class BossSnake : MobParent
     IEnumerator WaitDeadStatus()
     {
         heart.SetActive(true);
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
         yield return new WaitForSeconds(3);
         Dead = true;
     }

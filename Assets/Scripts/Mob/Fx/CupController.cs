@@ -12,6 +12,7 @@ public class CupController : MonoBehaviour
         if (collision.gameObject.CompareTag("Land") && !once)
         {
             once = true;
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.CoffeeBerryFall);
             Instantiate(exp, expPoz.position, expPoz.rotation);
             Destroy(this.gameObject, 0.5f);
         }
@@ -19,6 +20,7 @@ public class CupController : MonoBehaviour
         {
             once = true;
             GameManager.instance.player.GetHitDamage(damage);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.CoffeeBerryFall);
             Instantiate(exp, expPoz.position, expPoz.rotation);
             Destroy(this.gameObject, 0.5f);
         }

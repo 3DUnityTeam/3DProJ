@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class Blueberry : MonoBehaviour
+public class IceController : MonoBehaviour
 {
     public GameObject fx;
-    public float damage=12;
+    public float damage = 12;
 
     public bool bomb;
     SphereCollider coll;
@@ -28,15 +28,15 @@ public class Blueberry : MonoBehaviour
     {
         if (fx == null)
         {
-            yield return null;  
+            yield return null;
         }
         fx.SetActive(true);
-        while (coll.radius<=1.4f)   
+        while (coll.radius <= 1.4f)
         {
             yield return new WaitForFixedUpdate();
-            coll.radius += ((1.4f - baseRadius) * Time.fixedDeltaTime)* effectTime;
+            coll.radius += ((1.4f - baseRadius) * Time.fixedDeltaTime) * effectTime;
         }
-        coll.radius= baseRadius;
+        coll.radius = baseRadius;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,13 +51,13 @@ public class Blueberry : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Land"))
         {
-            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.CoffeeBerryFall);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.IceFall);
             Destroy(this.gameObject, 0.6f);
             StartCoroutine(EnableFX());
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.CoffeeBerryFall);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.IceFall);
             Destroy(this.gameObject, 0.6f);
             StartCoroutine(EnableFX());
         }

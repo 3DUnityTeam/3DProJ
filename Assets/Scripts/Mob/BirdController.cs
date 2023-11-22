@@ -157,8 +157,10 @@ public class BirdController : MobParent
             dirr = Vector3.zero;
             expFlag = true;
             ani_.SetBool("Atk", true);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.BirdBomb);
             yield return new WaitForSeconds(2.0f);
             Instantiate(bomb, firePoz.position, firePoz.rotation);
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
             ani_.SetTrigger("Happy");
         }
     }
