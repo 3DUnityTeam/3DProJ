@@ -107,6 +107,7 @@ public class CollectWeaponUI : MonoBehaviour
         //추가되었을때
         if (result)
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
             //비어있는 칸 구하기 비어있으면 -1 아니면 채워짐
             int clickCount = -1;
             for (int j = 0; j < Com_CollectNum.Length; j++)
@@ -142,6 +143,7 @@ public class CollectWeaponUI : MonoBehaviour
         bool result=GameManager.instance.WeaponManager.RemoveWP((WeaponManager.WeaponType)WPnum);
         if (result)
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
             CommonWeaponIcons[WPnum].interactable = true;
             Com_CollectNum[i]= -1;
         }
@@ -156,6 +158,7 @@ public class CollectWeaponUI : MonoBehaviour
         //추가되었을때
         if (result)
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
             //선택된 무기 번호
             Spe_CollectNum = i;
             //선택된 무기 이미지 및 이펙트
@@ -177,6 +180,7 @@ public class CollectWeaponUI : MonoBehaviour
         bool result=GameManager.instance.WeaponManager.RemoveSpecialWP((WeaponManager.SpecialWeaponType)WPnum);
         if (result)
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
             SpecialWeaponIcons[WPnum].interactable = true;
             Spe_CollectNum= -1;
         }

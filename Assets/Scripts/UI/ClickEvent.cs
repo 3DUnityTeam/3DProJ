@@ -32,6 +32,7 @@ public class ClickEvent : MonoBehaviour
     }
     public void GoToBattle()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
         GameManager.instance.AudioManager.StopBgm();
         keys.SetActive(false);
         ButtonBox.SetActive(false);
@@ -40,11 +41,13 @@ public class ClickEvent : MonoBehaviour
     //Ÿ��Ʋ ������ �̵�
     public void GoToTitle()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
         SceneManager.LoadScene("Title");
     }
     //����â ����(������ â ��Ȱ��ȭ)
     public void OpenOption()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
         OptionUI.SetActive(true);
         if (BaseUI != null)
         {
@@ -54,6 +57,7 @@ public class ClickEvent : MonoBehaviour
     //����â �ݱ�(�ɼ��� â ��Ȱ��ȭ)
     public void BackOption()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
         if (BaseUI != null)
         {
             BaseUI.SetActive(true);
@@ -63,6 +67,7 @@ public class ClickEvent : MonoBehaviour
     //���� ���� ��ư
     public void ExitGame()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
         Debug.Log("test");
         Application.Quit();
     }
@@ -70,8 +75,11 @@ public class ClickEvent : MonoBehaviour
     //���� ����
     public void StartGame()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Boost);
         GameManager.instance.StopManager.TimePass();
-        GameManager.instance.AudioManager.PlayBgm(GameManager.instance.bgm);
+        if (gameObject != GameManager.instance.UIManager.PauseUI) { 
+            GameManager.instance.AudioManager.PlayBgm(GameManager.instance.bgm);
+        }
         gameObject.SetActive(false);
     }
 
