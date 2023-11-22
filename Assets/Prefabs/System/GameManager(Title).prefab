@@ -66,6 +66,7 @@ MonoBehaviour:
   SpecialWeaponImages: []
   BaseImage: {fileID: 0}
   statemessage: {fileID: 0}
+  bgm: 0
 --- !u!1001 &906338828646564986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -205,6 +206,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3760004669968663283, guid: 3b294f64a3ebff247b93fa3e45f308ff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.1759949
+      objectReference: {fileID: 0}
     - target: {fileID: 4521512349568073750, guid: 3b294f64a3ebff247b93fa3e45f308ff, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -219,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7143124143498600597, guid: 3b294f64a3ebff247b93fa3e45f308ff, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b294f64a3ebff247b93fa3e45f308ff, type: 3}
