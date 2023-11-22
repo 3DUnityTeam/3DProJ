@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class HUD : MonoBehaviour
         Player,
         AP,
         Tofu,
+        Count,
         Timer
     }
     public HUDType type;
     Slider slider;
-    Text text;
+    TextMeshProUGUI text;
 
     bool result = false;
     int     min_result;
@@ -25,7 +27,7 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<Text>();
+        text = GetComponent<TextMeshProUGUI>();
         slider = GetComponent<Slider>();
     }
     private void FixedUpdate()
@@ -107,8 +109,13 @@ public class HUD : MonoBehaviour
                 int min = Mathf.FloorToInt(timer / 60);
                 int sec = Mathf.FloorToInt(timer % 60);
                 int millSec= Mathf.FloorToInt((timer % 60 - Mathf.FloorToInt(timer % 60))*100);
+                
+                text.text= "남은 시간 : " + string.Format("{0:D2}:{1:D2}.{2:D2}", min, sec, millSec);
+                break;
+            case HUDType.Count:
+                //00:00.00
                 float count = manager.tofuFoolr.attackCount;
-                text.text= string.Format("{0:D2}:{1:D2}.{2:D2}(ⅹ{3:#.#})", min, sec, millSec,count+1);
+                text.text = "시간 소모 속도 : " + (count + 1);
                 break;
             case HUDType.Timer:
                 //00:00.00
