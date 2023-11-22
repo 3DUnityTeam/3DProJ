@@ -15,10 +15,12 @@ public class LemonController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Player")){
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.LemonFall);
             GameManager.instance.player.GetHitDamage(damage);
             Destroy(this.gameObject);
         }else if(collision.gameObject.CompareTag("Land"))
         {
+            GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.LemonFall);
             Destroy(this.gameObject, 0.3f);
         }
     }

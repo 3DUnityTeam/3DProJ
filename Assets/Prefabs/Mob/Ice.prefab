@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4947770439739465344}
   - component: {fileID: 4947770439739465374}
   - component: {fileID: 4947770439739465372}
-  - component: {fileID: 4051373398359834707}
   - component: {fileID: 5053217378214180449}
   - component: {fileID: 8349790129547629131}
+  - component: {fileID: -8090794758928916705}
   m_Layer: 6
   m_Name: Ice
   m_TagString: Bomb
@@ -223,21 +223,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &4051373398359834707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4947770439739465371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96b0a9a0f46cd346ac362a76b2de70f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fx: {fileID: 23652953949784566}
-  damage: 12
-  bomb: 0
 --- !u!135 &5053217378214180449
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -264,6 +249,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.7
   m_Center: {x: 0.0000009536743, y: 0, z: 0}
+--- !u!114 &-8090794758928916705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947770439739465371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c49979995f4a94497a9a578b5fcfba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fx: {fileID: 0}
+  damage: 12
+  bomb: 0
 --- !u!1 &4947770441240067197
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,10 +482,5 @@ PrefabInstance:
 --- !u!4 &23652953949784521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-  m_PrefabInstance: {fileID: 5091020302401173900}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &23652953949784566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
   m_PrefabInstance: {fileID: 5091020302401173900}
   m_PrefabAsset: {fileID: 0}

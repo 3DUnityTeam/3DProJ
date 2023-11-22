@@ -110,6 +110,7 @@ public class SnakeController : MobParent
                     }
                     else
                     {
+                        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Atk);
                         ani_.SetTrigger("Atk");
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
                     }
@@ -163,6 +164,7 @@ public class SnakeController : MobParent
 
     public override void IsDead()
     {
+        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Happy);
         heart.SetActive(true);
         ani_.SetTrigger("Happy");
         base.IsDead();
