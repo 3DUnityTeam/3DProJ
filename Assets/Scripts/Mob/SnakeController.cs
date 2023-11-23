@@ -110,7 +110,6 @@ public class SnakeController : MobParent
                     }
                     else
                     {
-                        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Atk);
                         ani_.SetTrigger("Atk");
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
                     }

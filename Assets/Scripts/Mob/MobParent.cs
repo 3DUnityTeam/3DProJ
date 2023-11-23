@@ -86,6 +86,7 @@ public class MobParent : MonoBehaviour
         {
             if (DirectTimer >= 1)
             {
+                GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Atk);
                 GameManager.instance.player.GetHitDamage(Damage);
                 DirectTimer = 0;
             }
@@ -160,7 +161,7 @@ public class MobParent : MonoBehaviour
         while (HP < MaxHP)
         {
             yield return new WaitForFixedUpdate();
-            GameManager.instance.tofuFoolr.HP = GameManager.instance.tofuFoolr.HP - damage * Time.fixedDeltaTime/10;
+            GameManager.instance.tofuFoolr.HP = GameManager.instance.tofuFoolr.HP - (damage * Time.fixedDeltaTime/10);
         }
         GameManager.instance.tofuFoolr.attackCount -= damage / 10;
     }

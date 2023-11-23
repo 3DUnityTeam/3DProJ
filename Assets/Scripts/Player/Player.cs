@@ -590,6 +590,16 @@ public class Player : MonoBehaviour
                     GetHitDamage(sparrow.damage);
                 }
             }
+
+            IceController ice;
+            if (other.gameObject.TryGetComponent<IceController>(out ice))
+            {
+                if (!ice.bomb)
+                {
+                    ice.bomb = true;
+                    GetHitDamage(ice.damage);
+                }
+            }
         }
     }
     private void OnTriggerStay(Collider other)

@@ -9,7 +9,7 @@ public class Tofu : MonoBehaviour
     public float MaxHP { get { return this.maxHP; } }
     private float hp;
     public float HP { get { return this.hp; } set { this.hp = value; } }
-    private float timeSpeed;
+    public float timeSpeed;
     public float TimeSpeed { get { return this.timeSpeed; } set { this.timeSpeed = value; } }
 
     public float attackCount;
@@ -38,7 +38,7 @@ public class Tofu : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (GameManager.instance.UIManager.ResultUIDefeat.activeSelf == true || GameManager.instance.UIManager.ResultUIVictory == true)
+        if (GameManager.instance.UIManager.ResultUIDefeat.activeSelf == true || GameManager.instance.UIManager.ResultUIVictory.activeSelf == true)
             return;
         HP -= Time.fixedDeltaTime*(timeSpeed);
     }

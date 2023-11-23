@@ -104,7 +104,6 @@ public class RatController : MobParent
                     }
                     else
                     {
-                        GameManager.instance.AudioManager.PlaySfx(AudioManager.Sfx.Atk);
                         trans_.Translate(dirr * 0 * Time.fixedDeltaTime);
                         ani_.SetTrigger("Atk");
                     }

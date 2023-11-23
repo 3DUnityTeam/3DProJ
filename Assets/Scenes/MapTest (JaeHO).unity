@@ -10018,6 +10018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 600
+  timeSpeed: 0
   attackCount: 0
 --- !u!1001 &326864208
 PrefabInstance:
@@ -26996,7 +26997,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4807921868179933399, guid: 031f4f4b1f7d8b7489da0919e18ceac3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 031f4f4b1f7d8b7489da0919e18ceac3, type: 3}
 --- !u!1001 &1042998855
 PrefabInstance:
@@ -33383,6 +33385,10 @@ PrefabInstance:
     - target: {fileID: 4246169673696567883, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246169673696567884, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
+      propertyPath: m_Center.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6957621029653666727, guid: 56cf160ae574b12409af7170ee11f806, type: 3}
       propertyPath: m_Enabled
@@ -51398,7 +51404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6684969641763554643, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
       propertyPath: summons
-      value: 1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6684969641763554649, guid: 4da2b0e619d4fd440b421275dc819d07, type: 3}
       propertyPath: m_RootOrder
@@ -58508,7 +58514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1979330607385291067, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
       propertyPath: summons
-      value: 1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5032420731282141970, guid: 2ddcee3c59a144f4d8ad5beeea17c961, type: 3}
       propertyPath: m_RootOrder
@@ -58978,6 +58984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 2400
+  timeSpeed: 0
   attackCount: 0
 --- !u!1001 &2085080723
 PrefabInstance:
